@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "the-new-css-reset/css/reset.css";
+
+@layer base {
+  :root {
+    --RED-CARMEN: #780000;
+    --CREAM-CARMEN: #fff7e7;
+    --BLACK-CARMEN: #0f0404;
+  }
+
+  @font-face {
+    font-family: Thunder;
+    src: url("../../public/fonts/ThunderVF.ttf");
+  }
+
+  @font-face {
+    font-family: Softgank;
+    src: url("../../public/fonts/Softgank.ttf");
+  }
+
+  @font-face {
+    font-family: ScratchySwashes;
+    src: url("../../public/fonts/ScratchySwashes.otf");
+  }
+}
