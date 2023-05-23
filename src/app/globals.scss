@@ -4,6 +4,11 @@
 @import "the-new-css-reset/css/reset.css";
 
 @layer base {
+  body {
+    background-color: black;
+    // background-color: var(--CREAM-CARMEN);
+  }
+
   :root {
     --RED-CARMEN: #780000;
     --CREAM-CARMEN: #fff7e7;
@@ -19,9 +24,16 @@
     font-family: Softgank;
     src: url("../../public/fonts/Softgank.ttf");
   }
+}
 
-  @font-face {
-    font-family: ScratchySwashes;
-    src: url("../../public/fonts/ScratchySwashes.otf");
-  }
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.inline-fix {
+  max-inline-size: none !important;
+}
+
+.bg-y {
+  background-position-y: calc(-100vh + 320px);
 }
