@@ -1,1 +1,11 @@
-{}
+{
+  "printWidth": 150,
+  "plugins": [
+    "prettier-plugin-tailwindcss"
+  ],
+  "tailwindAttributes": [
+    "className"
+  ],
+  "trailingComma": "all",
+  "semi": true
+}
