@@ -63,8 +63,8 @@ export default function Home() {
             </div>
           </div>
           <h3 className="break absolute left-1 top-2 flex rotate-12 flex-col flex-wrap items-center justify-start text-start font-softgank text-5xl text-red-carmen">
-            Tony
-            <h3>CARMEN</h3>
+            CARMEN
+            <span>Tony</span>
           </h3>
         </div>
       </div>
