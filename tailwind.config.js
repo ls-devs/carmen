@@ -20,6 +20,7 @@ module.exports = {
     },
     fontFamily: {
       thunder: ["Thunder", "sans-serif"],
+      thunderLC: ["ThunderLC", "sans-serif"],
       softgank: ["Softgank", "sans-serif"],
     },
   },

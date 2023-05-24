@@ -27,6 +27,8 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "postcss-import": "^15.1.0",
+    "postcss-nesting": "^11.2.2",
     "prettier-plugin-tailwindcss": "^0.3.0",
     "sass": "^1.62.1"
   }
