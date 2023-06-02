@@ -1,3 +1,4 @@
+import {Button} from "@/components/button";
 import Image from "next/image";
 
 export default function Home() {
@@ -13,8 +14,15 @@ export default function Home() {
           className="relative h-full w-full bg-cover bg-center bg-no-repeat object-cover"
           src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         ></video>
-        <div className="absolute -bottom-10 flex w-full items-center justify-center">
-          <svg className="h-[70px] w-[70px]" fill="none" height="123" viewBox="0 0 44 123" width="44" xmlns="http://www.w3.org/2000/svg">
+        <div className="absolute -bottom-10 z-[9] flex w-full items-center justify-center">
+          <svg
+            className="h-[70px] w-[70px]"
+            fill="none"
+            height="123"
+            viewBox="0 0 44 123"
+            width="44"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <g clipPath="url(#clip0_800_3247)">
               <path
                 d="M1.46647 48.6179C0.749527 48.4224 0.553999 48.0313 0.87988 47.4447C1.20576 46.793 2.05305 46.4671 3.42176 46.4671C4.3994 46.2064 5.2141 46.5974 5.86587 47.6403C6.58281 48.6831 7.39751 50.7687 8.30998 53.8972C9.22245 57.156 9.77644 59.4698 9.97197 60.8385C10.1675 62.2072 9.97197 62.9241 9.38539 62.9893C8.92915 63.1196 8.89656 63.6085 9.28762 64.4557C9.6135 65.2379 9.45056 65.6941 8.7988 65.8245C8.34257 65.8896 8.11445 65.9548 8.11445 66.02C8.11445 66.02 8.37515 66.1503 8.89656 66.411C9.22245 66.5414 9.48315 66.6392 9.67868 66.7043C9.93939 66.7695 10.1349 66.7043 10.2653 66.5088C10.6563 66.1829 11.1451 66.7695 11.7317 68.2686C12.3183 69.7024 13.133 72.1791 14.1758 75.6987C15.4142 80.261 15.8053 82.5748 15.349 82.6399C15.2187 82.6399 15.1535 82.7051 15.1535 82.8355C15.1535 82.9006 15.3164 82.9984 15.6423 83.1288C16.0334 83.3895 16.2289 83.585 16.2289 83.7153C16.2289 83.7805 16.066 83.976 15.7401 84.3019C15.0231 84.6278 15.0557 84.8885 15.8378 85.084C16.0985 85.2144 16.457 85.801 16.9132 86.8438C17.4347 87.8866 17.9887 89.1576 18.5752 90.6566C18.9663 92.0905 19.3899 93.3288 19.8462 94.3717C20.3024 95.3493 20.5957 95.8381 20.7261 95.8381C20.8564 95.8381 21.0519 95.4471 21.3126 94.665C21.6385 93.8828 22.0948 92.6119 22.6814 90.8521C23.2679 89.0924 23.9849 86.746 24.8322 83.8131C25.7446 80.8802 26.8526 77.2303 28.1562 72.8635C28.9383 70.3868 29.5249 68.7574 29.9159 67.9753C30.3722 67.128 30.7958 66.6717 31.1869 66.6066C31.5127 66.6066 31.7083 66.6066 31.7734 66.6066C31.9038 66.5414 31.806 66.4436 31.4802 66.3133C31.0239 66.0526 30.7306 65.5637 30.6003 64.8468C30.4699 64.1299 30.6003 63.5433 30.9913 63.087C31.1217 62.7612 31.3824 61.979 31.7734 60.7407C32.2297 59.5023 32.6859 58.0685 33.1421 56.4391C33.6636 54.8748 34.1198 53.441 34.5108 52.1374C34.9671 50.7687 35.2604 50.0192 35.3907 49.8888C35.5863 49.3674 35.7492 48.846 35.8796 48.3246C36.0751 47.738 36.238 47.184 36.3684 46.6626C36.6943 45.3591 37.0853 44.3814 37.5415 43.7297C37.9978 43.0127 38.5844 42.6543 39.3013 42.6543C39.7575 42.6543 40.2138 42.752 40.67 42.9476C41.1914 43.1431 41.5499 43.3712 41.7454 43.6319C42.0061 43.8926 42.1365 44.3163 42.1365 44.9029C42.1365 45.4894 41.9735 46.3041 41.6477 47.347C41.3218 48.3246 40.8655 49.6607 40.279 51.3553C39.7575 52.8544 39.2687 54.386 38.8125 55.9502C38.3563 57.5145 37.8674 59.0461 37.346 60.5452C37.0201 61.588 36.5965 62.9241 36.0751 64.5535C35.5537 66.1177 35.13 67.5516 34.8041 68.8551C33.9569 71.9184 33.1096 74.8188 32.2623 77.5562C31.4802 80.2936 30.7306 82.7051 30.0137 84.7908C29.3619 86.8764 28.8079 88.6036 28.3517 89.9723C27.8955 91.2758 27.5696 92.0905 27.374 92.4164C27.0482 92.7423 26.8852 93.1333 26.8852 93.5896L25.8098 97.0113C24.4411 100.596 22.7465 102.388 20.7261 102.388C19.6832 102.388 18.673 101.867 17.6954 100.824C17.3695 100.433 17.0762 100.042 16.8155 99.6509C16.5548 99.2599 16.2615 98.7385 15.9356 98.0867C15.6749 97.3698 15.349 96.4573 14.958 95.3493C14.6321 94.2413 14.1758 92.84 13.5893 91.1454C13.1982 90.4937 12.8723 89.7767 12.6116 88.9946C12.4161 88.2125 12.2206 87.6585 12.025 87.3326C11.6991 86.8112 12.025 86.2246 13.0027 85.5729C14.3062 85.1166 14.5017 84.9537 13.5893 85.084C13.0678 85.084 12.6116 84.9537 12.2206 84.693C11.8947 84.3671 11.5688 83.8457 11.2429 83.1288C10.917 82.3466 10.5586 81.3038 10.1675 80.0003C9.77644 78.6968 9.28762 76.9696 8.70104 74.8188C8.04927 72.5376 7.46269 70.4194 6.94128 68.4641C6.48504 66.5088 6.15916 65.3682 5.96363 65.0423C5.63775 64.4557 5.24669 63.4129 4.79046 61.9139C4.33422 60.4148 3.87799 58.8832 3.42176 57.3189C3.0307 55.6895 2.70482 54.1905 2.44411 52.8218C2.18341 51.4531 2.05305 50.6058 2.05305 50.2799C2.18341 49.8237 2.21599 49.4652 2.15082 49.2045C2.08564 48.9438 1.85752 48.7483 1.46647 48.6179ZM3.71505 46.6626C3.32399 46.7278 3.06329 47.1514 2.93293 47.9336C2.80258 48.7157 2.96552 49.3674 3.42176 49.8888C3.94317 50.1496 4.36681 50.0844 4.69269 49.6933C5.01857 49.3023 5.11634 48.7483 4.98599 48.0313C4.98599 47.6403 4.85563 47.347 4.59493 47.1514C4.3994 46.8256 4.10611 46.6626 3.71505 46.6626ZM6.84351 56.2435C6.64798 55.9177 6.51763 55.8199 6.45245 55.9502C6.45245 56.0806 6.48504 56.3739 6.55022 56.8301C6.61539 57.156 6.64798 57.4167 6.64798 57.6122C6.71316 57.7426 6.81092 57.7426 6.94128 57.6122C7.26716 57.2212 7.23457 56.7649 6.84351 56.2435Z"
@@ -36,39 +44,96 @@ export default function Home() {
       {/* HEADING VIDEO */}
 
       {/* NOTRE HISTOIRE */}
-      <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
-        <div className="flex items-center">
-          <h2 className="flex flex-col items-center justify-center font-thunder text-6xl text-red-carmen">
-            Notre <span className="my-5 text-8xl">Histoire</span>
-          </h2>
+      <div className="relative mt-20 flex w-full flex-col items-center justify-center">
+        <div className="absolute -top-[110px] h-[100px] w-full">
+          <Image
+            src={"/img/home/histoire/histoire_top.png"}
+            fill={true}
+            alt="CARMEN NOTRE HISTOIRE"
+            className="object-contain"
+          />
         </div>
-        <div className="relative mt-14 flex h-auto flex-col">
-          <h3 className="hidden overflow-hidden p-3 font-thunder text-3xl font-[500]">UN ART DE VIVRE</h3>
-          <p className="p-3 font-thunderLC text-lg leading-[21.5px]">
-            Chez Carmen, on ne mange pas seulement. On savoure, on partage, on rencontre, on rit, on aime, on se sent bien, on refait le monde, bref
-            on vit. S'asseoir à une table de Chez Carmen, le "restaurant des abattoirs", c'est plonger dans une ambiance bistrot conviviale où les
-            bons produits faits maison et savourés en bonne compagnie sont un art de vivre. Pièces du boucher, recettes grand-mère et plats "canaille"
-            sont les signatures de cette institution toulousaine, créé en 1956.
-          </p>
-          <span className="absolute -right-4 -top-24 -rotate-12 font-softgank text-8xl text-red-carmen">1956</span>
-        </div>
-        <div className="justfy-center relative flex h-auto w-full items-center px-2">
-          <div className="flex-center relative flex h-[300px] w-full justify-center border-2 border-blue-50">
-            <div className="absolute -bottom-2 -left-14 h-[230px] w-[230px]">
-              <Image src={"/img/home/histoire/histoire_screen.png"} alt="NOTRE HISTOIRE" fill={true} objectFit="contain" />
-            </div>
+        <div className="flex flex-col items-center overflow-hidden">
+          <div className="flex items-center">
+            <h2 className="flex flex-col items-center justify-center font-thunder text-6xl text-red-carmen">
+              Notre <span className="my-5 text-8xl">Histoire</span>
+            </h2>
+          </div>
+          <div className="relative mt-14 flex h-auto flex-col">
+            <h3 className="hidden overflow-hidden p-3 font-thunder text-3xl font-[500]">UN ART DE VIVRE</h3>
+            <p className="p-3 font-thunderLC text-lg leading-[21.5px]">
+              Chez Carmen, on ne mange pas seulement. On savoure, on partage, on rencontre, on rit, on aime, on se sent
+              bien, on refait le monde, bref on vit. S'asseoir à une table de Chez Carmen, le "restaurant des
+              abattoirs", c'est plonger dans une ambiance bistrot conviviale où les bons produits faits maison et
+              savourés en bonne compagnie sont un art de vivre. Pièces du boucher, recettes grand-mère et plats
+              "canaille" sont les signatures de cette institution toulousaine, créé en 1956.
+            </p>
+            <span className="absolute -right-4 -top-24 -rotate-12 font-softgank text-8xl text-red-carmen">1956</span>
+          </div>
+          <div className="justfy-center relative flex h-auto w-full items-center px-2">
+            <div className="flex-center relative flex h-[300px] w-full justify-center">
+              <div className="absolute -bottom-2 -left-14 h-[230px] w-[230px]">
+                <Image
+                  src={"/img/home/histoire/histoire_screen.png"}
+                  alt="NOTRE HISTOIRE"
+                  fill={true}
+                  className="object-contain"
+                />
+              </div>
 
-            <div className="absolute -right-24 top-0 h-[280px] w-[280px] rotate-12">
-              <Image src={"/img/home/histoire/tony_carmen.png"} alt="TONY CARMEN" fill={true} objectFit="contain" />
+              <div className="absolute -right-24 -top-3 h-[280px] w-[280px] rotate-[20deg]">
+                <Image
+                  src={"/img/home/histoire/tony_carmen_histoire.png"}
+                  alt="TONY CARMEN"
+                  fill={true}
+                  className="object-contain"
+                />
+              </div>
+            </div>
+            <div className="break absolute left-[13%] top-6 flex rotate-12 flex-col flex-wrap items-start justify-start text-start font-softgank text-5xl text-red-carmen">
+              <h3>Tony</h3>
+              <h3>CARMEN</h3>
             </div>
           </div>
-          <h3 className="break absolute left-1 top-2 flex rotate-12 flex-col flex-wrap items-center justify-start text-start font-softgank text-5xl text-red-carmen">
-            CARMEN
-            <span>Tony</span>
-          </h3>
+
+          <p className="p-3 font-thunderLC text-lg leading-[21.5px]">
+            ​Au centre-ville de Toulouse, dans le quartier des Carmes, à deux pas du Palais de Justice, Chez Carmen est
+            un endroit incontournable pour les amateurs de bonne chère, de plats cuisinés avec amour lentement mijotés,
+            et de moments de convivialité.
+          </p>
+          <div className="relative mt-12 flex h-[200px] w-full items-start justify-end border-2 border-slate-100">
+            <Button
+              color="red-carmen"
+              text="EN SAVOIR +"
+              textSize="text-xl"
+              width="w-[135px]"
+              height="h-[70px]"
+              classes={["!absolute left-0 top-0"]}
+            />
+            <div className="h-auto w-auto border-2 border-gray-600">
+              <Image
+                src={"/img/home/histoire/palais_de_justice.png"}
+                width={160}
+                height={160}
+                alt="PALAIS DE JUSTICE"
+                className="absolute -right-14 top-[15px] rotate-12"
+              />
+            </div>
+            <h3 className="-transform-x-1/2 absolute -top-12 left-1/2 -rotate-12 font-softgank text-3xl text-red-carmen">
+              PALAIS DE JUSTICE
+            </h3>
+          </div>
         </div>
       </div>
       {/* NOTRE HISTOIRE */}
+
+      {/* VIDEOS */}
+      <div className="relative h-[300px] w-full bg-red-carmen">
+        <div className="absolute -top-10 h-[50px] w-full">
+          <Image src={"/img/home/videos/videos_bg_top.png"} alt="VIDEOS" width={800} height={250} />
+        </div>
+      </div>
+      {/* VIDEOS */}
     </>
   );
 }

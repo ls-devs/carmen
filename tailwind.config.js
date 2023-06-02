@@ -14,6 +14,10 @@ module.exports = {
       backgroundSize: {
         "100%": "100%",
       },
+      backgroundImage: {
+      "red-button": "url('/img/buttons/button_red.png')",
+      "cream-button": "url('/img/buttons/bg_button_cream.png')",
+      },
       transitionDuration: {
         400: "400ms",
       },
