@@ -14,10 +14,10 @@ export const Footer = (props: {}) => {
     <footer
       className={`${
         route === "/actualites" || route === "/la-carte" ? "bg-red-carmen" : "bg-cream-carmen"
-      } flex-center relative h-auto w-full space-y-3`}
+      } flex-center relative h-auto w-full space-y-3 mt-40`}
     >
       <div className="flex h-full w-full flex-col items-center justify-center space-y-2 p-3 min-[425px]:flex-row md:my-12 md:items-center md:justify-between">
-        <div className="flex-center relative mt-20 h-full w-full min-[425px]:-mt-3 min-[425px]:w-9/12 min-[575px]:w-4/6 md:-mt-4 md:w-1/3 xl:-mt-12 2xl:-mt-8">
+        <div className="flex-center relative mt-20 h-full w-full min-[425px]:-mt-3 min-[425px]:w-9/12 min-[575px]:w-4/6 md:-mt-4 md:w-1/3 lg:mt-4 xl:mt-6 2xl:mt-8">
           <Image
             src={`/img/logo/carmen_logo_${route === "/actualites" || route === "/la-carte" ? "cream" : "red"}_4x.png`}
             width={300}
@@ -37,7 +37,7 @@ export const Footer = (props: {}) => {
             route === "/actualites" || route === "/la-carte" ? "text-cream-carmen" : "text-red-carmen"
           } min-[425px]:m-0 min-[425px]:!mb-20 min-[425px]:!mt-16 min-[425px]:w-full min-[425px]:items-end min-[425px]:space-y-0 md:!m-0 md:w-1/3`}
         >
-          <div className="mt-5 flex w-full items-center justify-center min-[425px]:m-0 min-[425px]:justify-end md:order-2">
+          <div className="mt-5 flex w-full items-center justify-center min-[425px]:m-0 min-[425px]:justify-end">
             <svg
               className="m-2 h-[45px] w-[45px] min-[425px]:m-1 min-[425px]:h-[35px] min-[425px]:w-[35px]"
               fill="none"
@@ -94,7 +94,7 @@ export const Footer = (props: {}) => {
               ></path>
             </svg>
           </div>
-          <h3 className="text-end text-lg md:!mt-12 md:text-xl xl:text-3xl">14 Av. Maurice Hauriou, 31000 Toulouse</h3>
+          <h3 className="text-end text-lg md:text-xl xl:text-3xl">14 Av. Maurice Hauriou, 31000 Toulouse</h3>
           <h3 className="hidden text-end text-2xl lg:flex">chezcarmen@contact.com</h3>
         </div>
         <div
