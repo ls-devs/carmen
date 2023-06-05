@@ -28,7 +28,11 @@ export const Button = ({
           : ""
       }`}
     >
-      <div className="relative flex h-full w-full items-center justify-center bg-red-button bg-contain bg-center bg-no-repeat">
+      <div
+        className={`relative flex h-full w-full items-center justify-center ${
+          color === "red-carmen" ? "bg-red-button" : "bg-cream-button"
+        } bg-contain bg-center bg-no-repeat`}
+      >
         <h3
           className={`absolute mt-2 font-thunder ${textSize} text-${
             color === "red-carmen" ? "cream-carmen" : "red-carmen"
