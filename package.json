@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -18,7 +18,8 @@
     "cssnano": "^6.0.1",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
-    "next": "13.4.2",
+    "million": "2.4.6-beta.0",
+    "next": "13.4.5",
     "postcss": "8.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -30,6 +31,6 @@
     "postcss-import": "^15.1.0",
     "postcss-nesting": "^11.2.2",
     "prettier-plugin-tailwindcss": "^0.3.0",
-    "sass": "^1.62.1"
+    "sass": "^1.63.3"
   }
 }
