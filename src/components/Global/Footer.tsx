@@ -1,9 +1,10 @@
 "use client";
+import {block} from "million/react";
 import Image from "next/image";
 import {usePathname} from "next/navigation";
 import React, {useEffect, useState} from "react";
 
-export const Footer = (props: {}) => {
+export const Footer = /* @optimize */ block(() => {
   const path = usePathname();
   const [route, setRoute] = useState<string>("");
 
@@ -14,7 +15,7 @@ export const Footer = (props: {}) => {
     <footer
       className={`${
         route === "/actualites" || route === "/la-carte" ? "bg-red-carmen" : "bg-cream-carmen"
-      } flex-center relative h-auto w-full space-y-3 mt-40`}
+      } flex-center relative mt-20 h-auto w-full space-y-3`}
     >
       <div className="flex h-full w-full flex-col items-center justify-center space-y-2 p-3 min-[425px]:flex-row md:my-12 md:items-center md:justify-between">
         <div className="flex-center relative mt-20 h-full w-full min-[425px]:-mt-3 min-[425px]:w-9/12 min-[575px]:w-4/6 md:-mt-4 md:w-1/3 lg:mt-4 xl:mt-6 2xl:mt-8">
@@ -115,4 +116,4 @@ export const Footer = (props: {}) => {
       />
     </footer>
   );
-};
+});

@@ -1,4 +1,4 @@
-import {Button} from "@/components/button";
+import {Button} from "@/components/Button/Button";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,16 +6,42 @@ export default function Home() {
   return (
     <>
       {/* HEADING VIDEO */}
-      <div className="relative h-[500px] items-center justify-center">
-        <video
-          height={500}
-          autoPlay
-          muted
-          poster="/img/home/heading/heading_video_thumbnail.png"
-          className="relative h-full w-full bg-cover bg-center bg-no-repeat object-cover"
-          src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-        ></video>
-        <div className="absolute -bottom-10 z-[9] flex w-full items-center justify-center">
+      <div className="relative flex h-[500px] items-center justify-center">
+        <div className="relative flex h-full w-full items-center justify-center bg-cover bg-center bg-no-repeat object-cover">
+          <video
+            height={500}
+            autoPlay
+            muted
+            poster="/img/home/heading/heading_video_thumbnail.png"
+            className="relative h-full w-full bg-cover bg-center bg-no-repeat object-cover md:w-4/5 md:rounded-xl"
+            src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+          />
+          <div className="absolute top-0 hidden h-full w-4/5 rotate-2 md:flex md:rounded-xl md:border-2 md:border-black-carmen"></div>
+          <Image
+            src={"/img/home/heading/couverts.png"}
+            width={400}
+            height={800}
+            alt="CHEZ CARMEN"
+            className="hidden md:absolute md:-left-16 md:top-0 md:flex"
+          />
+          <div className="hidden md:absolute md:right-0 md:top-0 md:flex md:h-full md:w-[250px]">
+            <Image
+              src={"/img/home/heading/heading_top_right_ph.png"}
+              width={200}
+              height={200}
+              alt="CHEZ CARMEN"
+              className="hidden md:absolute md:-right-6 md:-top-14 md:flex"
+            />
+            <Image
+              src={"/img/home/heading/heading_bot_right_ph.png"}
+              width={140}
+              height={140}
+              alt="CHEZ CARMEN"
+              className="hidden md:absolute md:bottom-16 md:right-0 md:flex"
+            />
+          </div>
+        </div>
+        <div className="absolute -bottom-10 z-[9] flex w-full items-center justify-center md:-bottom-14">
           <svg
             className="h-[70px] w-[70px]"
             fill="none"
@@ -46,17 +72,16 @@ export default function Home() {
 
       {/* NOTRE HISTOIRE */}
       <div className="relative mt-20 flex w-full flex-col items-center justify-center">
-        <div className="absolute -top-[110px] h-[100px] w-full">
-          <Image
-            src={"/img/home/histoire/histoire_top.png"}
-            fill={true}
-            alt="CARMEN NOTRE HISTOIRE"
-            className="object-contain"
-          />
-        </div>
+        <Image
+          src={"/img/home/histoire/histoire_top_4x.png"}
+          width={1100}
+          height={300}
+          alt="CARMEN NOTRE HISTOIRE"
+          className="absolute !-top-[120px] w-full object-contain sm:!-top-[140px] md:hidden lg:!-top-[200px]"
+        />
         <div className="flex flex-col items-center overflow-hidden">
           <div className="flex items-center">
-            <h2 className="flex flex-col items-center justify-center font-thunder text-6xl text-red-carmen">
+            <h2 className="z-20 flex flex-col items-center justify-center font-thunder text-6xl text-red-carmen">
               Notre <span className="my-5 text-8xl">Histoire</span>
             </h2>
           </div>
@@ -131,11 +156,11 @@ export default function Home() {
       {/* VIDEOS */}
       <div className="relative flex h-auto w-full items-center justify-center bg-red-carmen">
         <Image
-          src={"/img/home/videos/video_top_bgc.png"}
+          src={"/img/home/videos/video_top_4x.png"}
           alt="VIDEOS"
           width={1100}
           height={300}
-          className="absolute !-top-10 -z-[1] w-full"
+          className="absolute !-top-[55px] -z-[1] w-full sm:!-top-[70px] md:!-top-[120px] lg:!-top-[150px]"
         />
         <div className="flex h-full w-full flex-col items-center justify-center">
           <div className="relative order-2 mt-8 h-auto w-full">
@@ -288,7 +313,7 @@ export default function Home() {
           alt="VIDÉOS"
           width={1100}
           height={300}
-          className="absolute top-0 -z-[1]"
+          className="absolute !-top-0 w-full object-contain sm:!-top-0 lg:!-top-0"
         />
       </div>
       {/* NOS FOURNISSEURS */}
@@ -302,7 +327,7 @@ export default function Home() {
         <Image
           src={"/img/home/actualites/acutalités_top.png"}
           alt="ACUTALITES"
-          className="absolute -top-8 -z-[1]"
+          className="absolute !-top-[35px] w-full object-contain sm:!-top-[70px] lg:!-top-[120px]"
           width={1100}
           height={400}
         />
@@ -358,17 +383,17 @@ export default function Home() {
           </div>
         </div>
         <Image
-          src={"/img/home/actualites/actualites_bot.png"}
+          src={"/img/home/actualites/actualites_bot_4x.png"}
           alt="ACUTALITES"
-          className="absolute -bottom-8 -z-[1]"
+          className="absolute !-bottom-[25px] w-full object-contain sm:!-bottom-[50px] lg:!-bottom-[80px]"
           width={1100}
-          height={400}
+          height={300}
         />
       </div>
       {/* LES ACTUALITES CARMEN */}
 
       {/* GALERIE PHOTO */}
-      <div className="mt-20">
+      <div className="relative mt-20">
         <div className="mb-4 flex w-full items-center justify-center">
           <h2 className="font-thunder text-6xl text-red-carmen">Galerie Photo</h2>
         </div>
@@ -406,18 +431,18 @@ export default function Home() {
         <div className="my-8 flex h-auto w-full items-center justify-center">
           <Button color="red-carmen" text="VOIR LA GALERIE" textSize="text-xl" width="w-[135px]" height="h-[70px]" />
         </div>
-      </div>
-      {/* GALERIE PHOTO */}
-
-      {/* CONTACT */}
-      <div className="relative h-[600px] w-full bg-red-carmen">
         <Image
           src={"/img/home/contact/contact_top.png"}
           width={1100}
           height={300}
           alt="CONTACT"
-          className="absolute -top-8"
+          className="absolute !-bottom-[40px] w-full object-contain sm:!-bottom-[40px]"
         />
+      </div>
+      {/* GALERIE PHOTO */}
+
+      {/* CONTACT */}
+      <div className="relative h-auto w-full overflow-hidden bg-red-carmen">
         <div className="mt-12 flex w-full flex-col">
           <div className="h-[30px]"></div>
           <div className="px-5">
@@ -457,8 +482,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex h-auto w-full items-center justify-center">
-            <div className="relative flex h-[400px] w-[300px]">
+          <div className="mt-8 flex h-auto w-full items-center justify-center">
+            <div className="relative flex h-[250px] w-[300px]">
               <Image
                 src={"/img/home/contact/contact_nada_2x.png"}
                 width={174}
@@ -489,6 +514,53 @@ export default function Home() {
                 className="absolute left-0 top-[100px] z-20"
               />
             </div>
+          </div>
+          <div className="relative flex items-center justify-center overflow-hidden">
+            <div className="flex h-auto w-full items-center justify-center">
+              <Image
+                src={"/img/home/contact/map_top.png"}
+                width={600}
+                height={300}
+                alt="GOOGLE MAP"
+                className="absolute left-0 top-0"
+              />
+
+              <Image src={"/img/home/contact/map_ph.png"} width={600} height={300} alt="GOOGLE MAP" />
+
+              <Image
+                src={"/img/home/contact/map_top.png"}
+                width={600}
+                height={300}
+                alt="GOOGLE MAP"
+                className="absolute -bottom-1 left-0 rotate-180"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="mt-16 flex h-auto px-5">
+          <div className="w-auto">
+            <h2 className="font-thunder text-5xl text-cream-carmen">Horraires</h2>
+            <p className="font-thunderLC text-xl text-cream-carmen">
+              Ouvert tous les jours midi et soir sauf dimanche et lundi.
+            </p>
+          </div>
+          <div className="relative h-[220px] w-full">
+            <Image
+              src={"/img/home/contact/horraires_ph.png"}
+              alt="HORRAIRES"
+              width={111}
+              height={128}
+              className="absolute !-right-5 -top-12 object-contain"
+            />
+            <Image
+              src={"/img/home/contact/clock.png"}
+              alt="HORRAIRES"
+              width={163}
+              height={185}
+              className="absolute !-right-14 top-16 object-contain"
+            />
+
+            <h4 className="absolute right-0 top-12 rotate-12 font-softgank text-5xl text-cream-carmen">OPEN</h4>
           </div>
         </div>
       </div>
