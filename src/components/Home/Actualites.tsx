@@ -8,7 +8,7 @@ type ActualiteProps = {
   position: number;
 };
 
-export const Actualite: React.FC<ActualiteProps> = block(({addToItems, screenWidth, position}) => {
+export const Actualite: React.FC<ActualiteProps> = /* optimize */ block(({addToItems, screenWidth, position}) => {
   const myRef = useRef<HTMLDivElement | null>(null);
   const [myPosition, setMyPosition] = useState<number>(0);
 

@@ -21,26 +21,16 @@ export default function ListUsers() {
     refetchOnMount: false,
   });
 
-  const MyBlock: React.FC<{user: User}> = ({user}) => {
+  const UserBlock: React.FC<{user: User}> = /* optimize */ block(({user}) => {
     return (
       <div key={user.id} style={{border: "1px solid #ccc", textAlign: "center"}}>
-        <img src={`https://robohash.org/${user.id}?set=set2&size=180x180`} alt={user.name} width={180} height={180} />
-
-        <h3>{user.name}</h3>
-      </div>
-    );
-  };
-
-  const UserBlock: React.FC<{user: User}> = block(({user}) => {
-    return (
-      <div key={user.id} style={{border: "1px solid #ccc", textAlign: "center"}}>
-        <img src={`https://robohash.org/${user.id}?set=set2&size=180x180`} alt={user.name} width={180} height={180} />
+        <Image src={`https://robohash.org/${user.id}?set=set2&size=180x180`} alt={user.name} width={180} height={180} />
         <h3>{user.name}</h3>
       </div>
     );
   });
 
-  const Button = block((_props: {}) => {
+  const Button = /* optimize */ block(() => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [count, setCount] = useState(0);
     return (

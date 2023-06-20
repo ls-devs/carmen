@@ -3,7 +3,6 @@ import Hydrate from "@/utils/hydrateClient";
 import {dehydrate} from "@tanstack/react-query";
 import ListUsers from "./list-user";
 import {User} from "../types";
-import {headers} from "next/dist/client/components/headers";
 
 export const revalidate = 60;
 
@@ -18,7 +17,6 @@ export default async function Hydation() {
   await queryClient.prefetchQuery(["hydrate-users"], getUsers);
   const dehydratedState = dehydrate(queryClient);
 
-  const headersList = headers();
   return (
     <Hydrate state={dehydratedState}>
       <ListUsers />

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, {useRef, useState} from "react";
 
-export const Navbar = block((_props: {}) => {
+export const Navbar = /* optimize */ block(() => {
   const [loop, setLoop] = useState<number>(0);
   const menubarsRefs = useRef<SVGElement[]>([]);
   const menuBurger = useRef<HTMLDivElement>(null);

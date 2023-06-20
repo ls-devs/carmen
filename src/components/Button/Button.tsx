@@ -11,7 +11,7 @@ type ButtonProps = {
   height?: string;
 };
 
-export const Button: React.FC<ButtonProps> = block(({color, text, textSize, classes, height, width}) => {
+export const Button: React.FC<ButtonProps> = /* optimize */ block(({color, text, textSize, classes, height, width}) => {
   return (
     <button
       className={`flex ${height ? height : "h-[83px]"} ${
