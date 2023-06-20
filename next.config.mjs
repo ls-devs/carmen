@@ -12,8 +12,4 @@ const nextConfig = {
   },
 };
 
-export default million.next(nextConfig, {
-  mode: "react",
-  optimize: true,
-  server: true,
-});
+export default million.next(nextConfig);

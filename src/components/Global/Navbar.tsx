@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, {useRef, useState} from "react";
 
-export const Navbar = /* @optimize */ block(() => {
+export const Navbar = block((_props: {}) => {
   const [loop, setLoop] = useState<number>(0);
   const menubarsRefs = useRef<SVGElement[]>([]);
   const menuBurger = useRef<HTMLDivElement>(null);
@@ -23,7 +23,6 @@ export const Navbar = /* @optimize */ block(() => {
   };
 
   const onMenuClick = () => {
-    // menuBurger.current?.classList.toggle("!z-10");
     multipleToggles(menubarsRefs.current[0], ["!-translate-y-[20px]", "opacity-0"]);
     multipleToggles(menubarsRefs.current[1], ["-rotate-45", "!translate-y-[0px]"]);
     multipleToggles(menubarsRefs.current[2], ["rotate-45", "!translate-y-[0px]"]);
@@ -320,22 +319,10 @@ export const Navbar = /* @optimize */ block(() => {
         className="!-top-[70px] -z-10 hidden !h-[180px] md:max-lg:flex"
       />
       <div className="absolute left-0 top-0 hidden h-[450px] lg:flex">
-        <Image
-          src={"/img/navbar/header_top_left.png"}
-          width={90}
-          height={400}
-          alt="Carmen Header Tablette"
-          className=""
-        />
+        <Image src={"/img/navbar/header_top_left.png"} width={90} height={400} alt="Carmen Header Tablette" />
       </div>
       <div className="absolute right-0 top-0 hidden h-[100px] lg:flex">
-        <Image
-          src={"/img/navbar/header_top_right.png"}
-          width={400}
-          height={100}
-          alt="Carmen Header Tablette"
-          className=""
-        />
+        <Image src={"/img/navbar/header_top_right.png"} width={400} height={100} alt="Carmen Header Tablette" />
       </div>
     </nav>
   );

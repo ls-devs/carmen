@@ -19,7 +19,6 @@ export default async function Hydation() {
   const dehydratedState = dehydrate(queryClient);
 
   const headersList = headers();
-  console.log(headersList);
   return (
     <Hydrate state={dehydratedState}>
       <ListUsers />
