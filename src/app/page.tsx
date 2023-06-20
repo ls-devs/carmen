@@ -235,30 +235,36 @@ export default function Home() {
           </div>
           <div className="order-1 mt-8 flex h-full w-full flex-col items-center justify-center sm:absolute sm:right-0 sm:-mt-20 sm:h-auto sm:w-[40%] sm:items-start sm:justify-start">
             <h2 className="my-4 font-thunderLC text-7xl text-cream-carmen sm:my-0">VIDÉOS</h2>
-            <p className="hidden px-5 font-thunderLC text-cream-carmen sm:flex sm:px-0 sm:pr-5">
-              Elijah Craig, prêtre baptiste en Virginie, fonde sa distillerie au Kentucky, comté de Scott en 1789. Il
-              est considéré comme le père du bourbon tel que nous le connaissons : un « mash bill » composé
-              principalement de maïs, pour se différencier du « Rye » des états de l’est (Pennsylvanie et Maryland), et
-              surtout l’élevage en fût de chêne fortement bousiné. Le terme de « Bourbon » apparait autour de 1850,
-              avant on parle de « whiskey » tout simplement. Celui-ci fait référence au comté de Bourbon (dont le
-              chef-lieu est Paris), ce terme à consonance française est commun dans ces états du sud et du Midwest
-              américain qui ont appartenu à la France. A l’époque la Louisiane est une zone bien plus
-            </p>
-            <p className="px-5 font-thunderLC text-cream-carmen sm:hidden sm:px-0 sm:pr-5">
-              Elijah Craig, prêtre baptiste en Virginie, fonde sa distillerie au Kentucky, comté de Scott en 1789. Il
-              est considéré comme le père du bourbon tel que nous le connaissons : un « mash bill » composé
-              principalement de maïs, pour se différencier du « Rye » des états de l’est (Pennsylvanie et Maryland), et
-              surtout l’élevage en fût de chêne fortement bousiné.
-            </p>
+            {screenWidth >= 640 && (
+              <p className="px-5 font-thunderLC text-cream-carmen sm:flex sm:px-0 sm:pr-5">
+                Elijah Craig, prêtre baptiste en Virginie, fonde sa distillerie au Kentucky, comté de Scott en 1789. Il
+                est considéré comme le père du bourbon tel que nous le connaissons : un « mash bill » composé
+                principalement de maïs, pour se différencier du « Rye » des états de l’est (Pennsylvanie et Maryland),
+                et surtout l’élevage en fût de chêne fortement bousiné. Le terme de « Bourbon » apparait autour de 1850,
+                avant on parle de « whiskey » tout simplement. Celui-ci fait référence au comté de Bourbon (dont le
+                chef-lieu est Paris), ce terme à consonance française est commun dans ces états du sud et du Midwest
+                américain qui ont appartenu à la France. A l’époque la Louisiane est une zone bien plus
+              </p>
+            )}
+            {screenWidth < 640 && (
+              <p className="px-5 font-thunderLC text-cream-carmen sm:hidden sm:px-0 sm:pr-5">
+                Elijah Craig, prêtre baptiste en Virginie, fonde sa distillerie au Kentucky, comté de Scott en 1789. Il
+                est considéré comme le père du bourbon tel que nous le connaissons : un « mash bill » composé
+                principalement de maïs, pour se différencier du « Rye » des états de l’est (Pennsylvanie et Maryland),
+                et surtout l’élevage en fût de chêne fortement bousiné.
+              </p>
+            )}
           </div>
-          <div className="order-3 sm:absolute sm:right-0 sm:top-[405px] sm:hidden sm:w-1/3">
-            <p className="px-5 font-thunderLC text-cream-carmen sm:px-0 sm:pr-5">
-              Le terme de « Bourbon » apparait autour de 1850, avant on parle de « whiskey » tout simplement. Celui-ci
-              fait référence au comté de Bourbon (dont le chef-lieu est Paris), ce terme à consonance française est
-              commun dans ces états du sud et du Midwest américain qui ont appartenu à la France. A l’époque la
-              Louisiane est une zone bien plus
-            </p>
-          </div>
+          {screenWidth < 640 && (
+            <div className="order-3 sm:absolute sm:right-0 sm:top-[405px] sm:hidden sm:w-1/3">
+              <p className="px-5 font-thunderLC text-cream-carmen sm:px-0 sm:pr-5">
+                Le terme de « Bourbon » apparait autour de 1850, avant on parle de « whiskey » tout simplement. Celui-ci
+                fait référence au comté de Bourbon (dont le chef-lieu est Paris), ce terme à consonance française est
+                commun dans ces états du sud et du Midwest américain qui ont appartenu à la France. A l’époque la
+                Louisiane est une zone bien plus
+              </p>
+            </div>
+          )}
           <div className="relative order-3 h-[140px] w-full items-center justify-start sm:mt-16 sm:flex sm:items-center sm:justify-center">
             <Button
               color="cream-carmen"
@@ -534,7 +540,7 @@ export default function Home() {
       {/* GALERIE PHOTO */}
 
       {/* CONTACT */}
-      <div className="relative h-auto w-full overflow-hidden bg-red-carmen">
+      <div className="relative h-auto w-full overflow-hidden bg-red-carmen sm:flex">
         {screenWidth < 640 && (
           <>
             <div className="mt-12 flex w-full flex-col">
@@ -661,9 +667,72 @@ export default function Home() {
         )}
         {screenWidth >= 640 && screenWidth < 768 && (
           <>
-            <div className=""></div>
-            <div className="">
-              <h2>Contact</h2>
+            <div className="h-full min-h-[650px] w-1/2">
+              <Image
+                className="absolute"
+                src={"/img/home/contact/contact_nada_2x.png"}
+                alt="CONTACT"
+                width={200}
+                height={300}
+              />
+              <Image
+                className="absolute"
+                src={"/img/home/contact/contact_tel_2x.png"}
+                width={200}
+                height={300}
+                alt="CONTACT"
+              />
+              <Image
+                className="absolute"
+                src={"/img/home/contact/contact_panneau_2x.png"}
+                width={200}
+                height={300}
+                alt="CONTACT"
+              />
+              <Image
+                className="absolute"
+                src={"/img/home/contact/contact_phone_2x.png"}
+                width={200}
+                height={300}
+                alt="CONTACT"
+              />
+              <Image
+                className="absolute"
+                src={"/img/home/contact/contact_road_2x.png"}
+                width={200}
+                height={300}
+                alt="CONTACT"
+              />
+              <Image
+                className="absolute"
+                src={"/img/home/contact/contact_ph_2x.png"}
+                width={200}
+                height={300}
+                alt="CONTACT"
+              />
+            </div>
+            <div className="h-full w-1/2">
+              <div className="flex flex-col items-start justify-center space-y-3">
+                <h2 className="font-thunder text-6xl text-cream-carmen">Contact</h2>
+                <div className="flex flex-col">
+                  <h3 className="font-thunder text-xl text-cream-carmen">14 Av. Maurice Hauriou, 31000 Toulouse</h3>
+                  <Link href={"telto:05.61.42.04.95"} className="font-thunder text-xl font-bold text-cream-carmen">
+                    05.61.42.04.95
+                  </Link>
+                </div>
+                <div className="flex flex-col">
+                  <Link href={"mailto:chezcarmen@contact.com"} className="font-thunder text-xl text-cream-carmen">
+                    chezcarmen@contact.com
+                  </Link>
+                  <Link
+                    className="font-thunder text-xl font-bold text-cream-carmen"
+                    href={"http://instagram.com/chezcarmentoulouse"}
+                    target="_blank"
+                  >
+                    @chezcarmentoulouse
+                  </Link>
+                </div>
+              </div>
             </div>
           </>
         )}
