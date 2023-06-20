@@ -2,8 +2,9 @@
 
 import {User} from "../types";
 import {useQuery} from "@tanstack/react-query";
+import {For, block} from "million/react";
 import Image from "next/image";
-import React from "react";
+import React, {useState} from "react";
 
 async function getUsers() {
   const res = await fetch("https://jsonplaceholder.typicode.com/users", {next: {revalidate: 60}});
@@ -12,8 +13,6 @@ async function getUsers() {
 }
 export const revalidate = 60;
 export default function ListUsers() {
-  const [count, setCount] = React.useState(0);
-
   const {data, isLoading, isFetching, error} = useQuery({
     queryKey: ["hydrate-users"],
     queryFn: () => getUsers(),
@@ -22,15 +21,40 @@ export default function ListUsers() {
     refetchOnMount: false,
   });
 
+  const MyBlock: React.FC<{user: User}> = ({user}) => {
+    return (
+      <div key={user.id} style={{border: "1px solid #ccc", textAlign: "center"}}>
+        <img src={`https://robohash.org/${user.id}?set=set2&size=180x180`} alt={user.name} width={180} height={180} />
+
+        <h3>{user.name}</h3>
+      </div>
+    );
+  };
+
+  const UserBlock: React.FC<{user: User}> = block(({user}) => {
+    return (
+      <div key={user.id} style={{border: "1px solid #ccc", textAlign: "center"}}>
+        <img src={`https://robohash.org/${user.id}?set=set2&size=180x180`} alt={user.name} width={180} height={180} />
+        <h3>{user.name}</h3>
+      </div>
+    );
+  });
+
+  const Button = block((_props: {}) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [count, setCount] = useState(0);
+    return (
+      <>
+        <h4>{count}</h4>
+        <button onClick={() => setCount((prev) => prev + 1)}>Inc</button>
+      </>
+    );
+  });
+
   return (
-    <main style={{maxWidth: 1200, marginInline: "auto", padding: 20}}>
+    <div style={{maxWidth: 1200, marginInline: "auto", padding: 20}}>
       <div style={{marginBottom: "4rem", textAlign: "center"}}>
-        <h4 style={{marginBottom: 16}}>{count}</h4>
-        <button onClick={() => setCount((prev) => prev + 1)}>increment</button>
-        <button onClick={() => setCount((prev) => prev - 1)} style={{marginInline: 16}}>
-          decrement
-        </button>
-        <button onClick={() => setCount(0)}>reset</button>
+        <Button />
       </div>
 
       {error ? (
@@ -45,19 +69,9 @@ export default function ListUsers() {
             gap: 20,
           }}
         >
-          {data.map((user) => (
-            <div key={user.id} style={{border: "1px solid #ccc", textAlign: "center"}}>
-              <Image
-                src={`https://robohash.org/${user.id}?set=set2&size=180x180`}
-                alt={user.name}
-                width={180}
-                height={180}
-              />
-              <h3>{user.name}</h3>
-            </div>
-          ))}
+          <For each={data}>{(user) => <UserBlock user={user} />}</For>
         </div>
       ) : null}
-    </main>
+    </div>
   );
 }
