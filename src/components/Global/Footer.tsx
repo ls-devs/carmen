@@ -4,7 +4,7 @@ import Image from "next/image";
 import {usePathname} from "next/navigation";
 import React, {useEffect, useState} from "react";
 
-export const Footer = /* optimize */ block(() => {
+export const Footer = () => {
   const path = usePathname();
   const [route, setRoute] = useState<string>("");
 
@@ -116,4 +116,4 @@ export const Footer = /* optimize */ block(() => {
       />
     </footer>
   );
-});
+};

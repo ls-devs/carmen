@@ -272,7 +272,7 @@ export default function Home() {
               textSize="text-xl"
               width="w-[165px]"
               height="h-[70px]"
-              classes={["absolute", "top-[50%]", "-left-2", "-translate-y-[50%]", "sm:!relative"]}
+              classes={["absolute", "top-[50%]", "-left-2", "-translate-y-[50%]", "sm:!relative", "sm:!top-[30%]"]}
             />
           </div>
         </div>
@@ -380,7 +380,7 @@ export default function Home() {
         <Image
           src={"/img/home/actualites/acutalités_top.png"}
           alt="ACUTALITES"
-          className="absolute !-top-[35px] w-full object-contain sm:!-top-[70px] lg:!-top-[120px]"
+          className="sm:!-!top-[70px] absolute !-top-[35px] w-full object-contain lg:!-top-[120px]"
           width={1100}
           height={400}
         />
@@ -460,7 +460,7 @@ export default function Home() {
             </div>
           </>
         )}
-        {screenWidth >= 640 && screenWidth <= 768 && (
+        {screenWidth >= 640 && screenWidth <= 1024 && (
           <div className="hidden grid-cols-3 grid-rows-2 gap-2 p-6 sm:grid">
             <div className="relative row-span-2 flex h-full w-full flex-col">
               <Image
@@ -540,7 +540,7 @@ export default function Home() {
       {/* GALERIE PHOTO */}
 
       {/* CONTACT */}
-      <div className="relative h-auto w-full overflow-hidden bg-red-carmen sm:flex">
+      <div className="relative h-auto w-full overflow-hidden bg-red-carmen sm:flex sm:justify-center">
         {screenWidth < 640 && (
           <>
             <div className="mt-12 flex w-full flex-col">
@@ -639,7 +639,7 @@ export default function Home() {
             </div>
             <div className="mt-16 flex h-auto px-5">
               <div className="w-auto">
-                <h2 className="font-thunder text-5xl text-cream-carmen">Horraires</h2>
+                <h2 className="font-thunder text-5xl text-cream-carmen">Horaires</h2>
                 <p className="font-thunderLC text-xl text-cream-carmen">
                   Ouvert tous les jours midi et soir sauf dimanche et lundi.
                 </p>
@@ -665,54 +665,54 @@ export default function Home() {
             </div>
           </>
         )}
-        {screenWidth >= 640 && screenWidth < 768 && (
+        {screenWidth >= 640 && screenWidth < 1024 && (
           <>
-            <div className="h-full min-h-[650px] w-1/2">
+            <div className="relative h-full min-h-[650px] w-[500px] p-5">
               <Image
-                className="absolute"
+                className="absolute left-5 top-0"
                 src={"/img/home/contact/contact_nada_2x.png"}
                 alt="CONTACT"
                 width={200}
                 height={300}
               />
               <Image
-                className="absolute"
+                className="absolute left-0 top-[140px] z-20"
                 src={"/img/home/contact/contact_tel_2x.png"}
-                width={200}
+                width={250}
                 height={300}
                 alt="CONTACT"
               />
               <Image
-                className="absolute"
+                className="absolute -right-16 top-[90px] z-10"
                 src={"/img/home/contact/contact_panneau_2x.png"}
-                width={200}
-                height={300}
+                width={350}
+                height={350}
                 alt="CONTACT"
               />
               <Image
-                className="absolute"
+                className="absolute bottom-4 right-10 z-20 rotate-12"
                 src={"/img/home/contact/contact_phone_2x.png"}
-                width={200}
+                width={250}
                 height={300}
                 alt="CONTACT"
               />
               <Image
-                className="absolute"
+                className="absolute left-1/2 top-1/3 translate-x-[-50%]"
                 src={"/img/home/contact/contact_road_2x.png"}
                 width={200}
                 height={300}
                 alt="CONTACT"
               />
               <Image
-                className="absolute"
+                className="absolute bottom-20 left-0 -rotate-[25deg]"
                 src={"/img/home/contact/contact_ph_2x.png"}
                 width={200}
                 height={300}
                 alt="CONTACT"
               />
             </div>
-            <div className="h-full w-1/2">
-              <div className="flex flex-col items-start justify-center space-y-3">
+            <div className="h-full w-1/3 space-y-5">
+              <div className="mt-8 flex flex-col items-start justify-center space-y-3">
                 <h2 className="font-thunder text-6xl text-cream-carmen">Contact</h2>
                 <div className="flex flex-col">
                   <h3 className="font-thunder text-xl text-cream-carmen">14 Av. Maurice Hauriou, 31000 Toulouse</h3>
@@ -732,6 +732,33 @@ export default function Home() {
                     @chezcarmentoulouse
                   </Link>
                 </div>
+              </div>
+              <div className="relative flex items-center justify-center overflow-hidden">
+                <div className="flex h-auto w-full items-center justify-center">
+                  <Image
+                    src={"/img/home/contact/map_top.png"}
+                    width={600}
+                    height={300}
+                    alt="GOOGLE MAP"
+                    className="absolute left-0 top-0"
+                  />
+
+                  <Image src={"/img/home/contact/map_ph.png"} width={600} height={300} alt="GOOGLE MAP" />
+
+                  <Image
+                    src={"/img/home/contact/map_top.png"}
+                    width={600}
+                    height={300}
+                    alt="GOOGLE MAP"
+                    className="absolute -bottom-1 left-0 rotate-180"
+                  />
+                </div>
+              </div>
+              <div className="w-auto">
+                <h2 className="font-thunder text-5xl text-cream-carmen">Horaires</h2>
+                <p className="font-thunderLC text-xl text-cream-carmen">
+                  Ouvert tous les jours midi et soir sauf dimanche et lundi.
+                </p>
               </div>
             </div>
           </>

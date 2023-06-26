@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, {useRef, useState} from "react";
 
-export const Navbar = /* optimize */ block(() => {
+export const Navbar = () => {
   const [loop, setLoop] = useState<number>(0);
   const menubarsRefs = useRef<SVGElement[]>([]);
   const menuBurger = useRef<HTMLDivElement>(null);
@@ -17,7 +17,9 @@ export const Navbar = /* optimize */ block(() => {
   };
 
   const multipleToggles = (el: SVGElement | HTMLDivElement, classList: string[]) => {
+    console.log(el);
     classList.forEach((cl) => {
+      console.log(el);
       el.classList.toggle(cl);
     });
   };
@@ -326,4 +328,4 @@ export const Navbar = /* optimize */ block(() => {
       </div>
     </nav>
   );
-});
+};

@@ -15,7 +15,7 @@ export const Actualite: React.FC<ActualiteProps> = /* optimize */ block(({addToI
   useEffect(() => {
     if (screenWidth < 640) {
       setMyPosition(position * 270);
-    } else if (screenWidth >= 640 && screenWidth <= 768) {
+    } else if (screenWidth >= 640 && screenWidth <= 1024) {
       setMyPosition(position * 570);
     }
   }, [position, screenWidth]);
