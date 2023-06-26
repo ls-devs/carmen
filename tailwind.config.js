@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/pages/**/*.{js,ts,jsx,tsx,mdx}", "./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
     extend: {
       colors: {
@@ -15,8 +19,8 @@ module.exports = {
         "100%": "100%",
       },
       backgroundImage: {
-      "red-button": "url('/img/buttons/button_red.png')",
-      "cream-button": "url('/img/buttons/button_cream.png')",
+        "red-button": "url('/img/buttons/button_red.png')",
+        "cream-button": "url('/img/buttons/button_cream.png')",
       },
       transitionDuration: {
         400: "400ms",
