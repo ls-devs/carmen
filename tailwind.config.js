@@ -21,6 +21,8 @@ module.exports = {
       backgroundImage: {
         "red-button": "url('/img/buttons/button_red.png')",
         "cream-button": "url('/img/buttons/button_cream.png')",
+        price: "url('/img/la_carte/carte_price_bg_2x.png')",
+        "form-underline": "url('/img/contact/contact_input_underline_2x.png)",
       },
       transitionDuration: {
         400: "400ms",
