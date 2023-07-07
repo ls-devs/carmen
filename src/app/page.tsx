@@ -1,6 +1,7 @@
 "use client";
 import {Button} from "@/components/Button/Button";
 import {Actualite} from "@/components/Home/Actualites";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 import {useEffect, useRef, useState} from "react";
@@ -11,6 +12,15 @@ export default function Home() {
     if (!items.current.includes(item)) items.current.push(item);
   };
   const [screenWidth, setScreenWidth] = useState<number>(0);
+  const {data, isLoading, isFetching, isError} = useQuery({
+    queryKey: ["getHome"],
+    queryFn: async () => {
+      const req = await fetch(
+        `${process.env.NEXT_PUBLIC_CARMEN_BASE_URL}/pages?search=Accueil`
+      )
+      return req.json();
+    }
+  })
 
   useEffect(() => {
     const myObserver = new ResizeObserver((_entries) => {
@@ -27,17 +37,17 @@ export default function Home() {
   return (
     <>
       {/* HEADING VIDEO */}
-      <div className="relative flex h-[500px] items-center justify-center md:mt-5">
+      <div className="relative flex h-[500px] items-center justify-center md:mt-5 lg:mt-32 lg:mb-36">
         <div className="relative flex h-full w-full items-center justify-center bg-cover bg-center bg-no-repeat object-cover">
           <video
             height={500}
             autoPlay
             muted
             poster="/img/home/heading/heading_video_thumbnail.png"
-            className="relative h-full w-full bg-cover bg-center bg-no-repeat object-cover md:h-[450px] md:w-[90%] md:rounded-3xl"
+            className="relative h-full w-full bg-cover bg-center bg-no-repeat object-cover md:h-[450px] md:w-[90%] md:rounded-3xl lg:w-[900px] lg:h-[550px]"
             src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
           />
-          <div className="absolute top-0 hidden h-full w-4/5 rotate-[4deg] md:top-5 md:flex md:h-[450px] md:w-[91%] md:rounded-3xl md:border-[1px] md:border-black-carmen"></div>
+          <div className="absolute top-0 hidden h-full w-4/5 rotate-[4deg] md:top-5 md:flex md:h-[450px] md:w-[91%] md:rounded-3xl md:border-[1px] md:border-black-carmen lg:h-[550px] lg:w-[900px] lg:-top-5"></div>
           <Image
             src={"/img/home/heading/couverts.png"}
             width={400}
@@ -62,7 +72,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="absolute -bottom-10 z-[9] flex w-full items-center justify-center sm:-bottom-0 md:-bottom-6">
+        <div className="absolute -bottom-10 z-[9] flex w-full items-center justify-center sm:-bottom-0 md:-bottom-6 lg:-bottom-24">
           <svg
             className="h-[70px] w-[70px]"
             fill="none"
@@ -92,7 +102,7 @@ export default function Home() {
       {/* HEADING VIDEO */}
 
       {/* NOTRE HISTOIRE */}
-      <div className="relative mt-20 flex w-full flex-col items-center justify-center sm:mt-32">
+      <div className="relative mt-20 flex w-full flex-col items-center justify-center sm:mt-32 lg:mt-64">
         <Image
           src={"/img/home/histoire/histoire_top_4x.png"}
           width={1100}

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, {useRef, useState} from "react";
 
-export const Navbar = () => {
+export const Navbar = block(() => {
   const [loop, setLoop] = useState<number>(0);
   const menubarsRefs = useRef<SVGElement[]>([]);
   const menuBurger = useRef<HTMLDivElement>(null);
@@ -328,4 +328,4 @@ export const Navbar = () => {
       </div>
     </nav>
   );
-};
+});
