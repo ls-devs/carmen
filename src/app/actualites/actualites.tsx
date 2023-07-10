@@ -1,20 +1,19 @@
-"use client";
-import Image from "next/image";
-import React from "react";
-import {useQuery} from "@tanstack/react-query";
-import {ActualitesType} from "@/utils/types/types";
-import { fetchActualites } from "@/utils/fetchs/fetchs";
+"use client"
+import { ActualitesType } from '@/utils/types/types';
+import { useQuery } from '@tanstack/react-query';
+import React from 'react'
+import Image from 'next/image';
+import { fetchActualites } from '@/utils/fetchs/fetchs';
 
-export default function Page() {
+export default function Actualites() {
   const {data, isLoading, isFetching, isError} = useQuery<ActualitesType[]>({
     queryKey: ['getActualites'],
     queryFn: fetchActualites,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
   });
-
   return (
-    <div className="mt-20">
+      <div className="mt-20">
       <div className="relative h-auto w-full">
         <h1 className="mb-20 w-full text-center font-thunder text-6xl text-red-carmen">
           Actualités
@@ -161,5 +160,5 @@ export default function Page() {
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,7 +1,17 @@
 "use client";
+import { fetchHistoire } from "@/utils/fetchs/fetchs";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 
 export default function Page() {
+  const {data, isLoading, isFetching, isError} = useQuery({
+    queryKey: ['getHistoire'],
+    queryFn:  fetchHistoire,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+
+  })
+
   return (
     <div className="mt-20">
       <h1 className="jutify-center flex flex-col items-center font-thunder text-4xl text-red-carmen md:ml-[6%] md:w-[400px] md:flex-row md:justify-start md:text-6xl lg:ml-[7.5%] xl:ml-[8.5%]">
