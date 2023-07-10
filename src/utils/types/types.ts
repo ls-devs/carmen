@@ -1,4 +1,4 @@
-export type fetchActualites = {
+export type ActualitesType = {
   id: number;
   acf: {
     title: string;
@@ -7,3 +7,8 @@ export type fetchActualites = {
     image: string | boolean;
   };
 };
+
+export type HomePageType = {
+
+}
+

@@ -1,20 +1,19 @@
 "use client"
 
-import React from "react"
+import React, { useState } from "react"
 import {QueryClientProvider, QueryClient} from "@tanstack/react-query"
-import {ReactQueryDevtools} from "@tanstack/react-query-devtools"
+import {ReactQueryDevtools} from '@tanstack/react-query-devtools'
 
-function QueryProvider({children}: React.PropsWithChildren) {
-  const [client] = React.useState(
-    new QueryClient({defaultOptions: {queries: {staleTime: 5000}}})
-  )
+const ReactQueryWrapper = ({children}: React.PropsWithChildren) => { 
+  const queryClient = new QueryClient()
+  
 
   return (
-    <QueryClientProvider client={client}>
+    <QueryClientProvider client={queryClient}>
       {children}
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   )
 }
 
-export default QueryProvider
+export default ReactQueryWrapper
