@@ -1,18 +1,20 @@
 "use client";
+import { fetchOptions } from "@/utils/fetchs/fetchs";
 import { useQuery } from "@tanstack/react-query";
 import {block} from "million/react";
 import Image from "next/image";
 import {usePathname} from "next/navigation";
 import React, {useEffect, useState} from "react";
 
-export const Footer =  block(() => {
+export const Footer =  () => {
   const path = usePathname();
   const [route, setRoute] = useState<string>("");
 
   const {data, isLoading, isFetching, isError} = useQuery({
-    queryFn: async () => {
-      const req = await fetch(`${process.env.NEXT_PUBLIC_}`)
-    }
+    queryFn: fetchOptions,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+
   })
 
   useEffect(() => {
@@ -123,4 +125,4 @@ export const Footer =  block(() => {
       />
     </footer>
   );
-});
+};
