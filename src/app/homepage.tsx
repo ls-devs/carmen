@@ -1,21 +1,26 @@
-"use client";
-import {Button} from "@/components/Button/Button";
-import Fournisseurs from "@/components/Home/Fournisseurs";
-import { Histoire } from "@/components/Home/Histoire";
-import {Actualite} from "@/components/Home/Actualites";
-import { fetchAccueil } from "@/utils/fetchs/fetchs";
-import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
-import Link from "next/link";
-import {useEffect, useRef, useState} from "react";
+'use client';
+import { Button } from '@/components/Button/Button';
+import { Fournisseurs } from '@/components/Home/Fournisseurs';
+import { Histoire } from '@/components/Home/Histoire';
+import { Actualite } from '@/components/Home/Actualites';
+import { fetchAccueil } from '@/utils/fetchs/fetchs';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
+import { IHomePage } from '@/types/types';
+import { useQueryUtils } from '@/hooks/useQueryUtils';
+import { block } from 'million/react';
 
-export const HomePage = () => {
+export const HomePage = /* optimize */ block(() => {
   const items = useRef<HTMLDivElement[]>([]);
   const addToItems = (item: HTMLDivElement) => {
     if (!items.current.includes(item)) items.current.push(item);
   };
   const [screenWidth, setScreenWidth] = useState<number>(0);
-  const {data, isLoading, isFetching, isError} = useQuery(['getHome'], () => fetchAccueil())
+  const { data, isLoading, isFetching, isError } = useQueryUtils<IHomePage[]>({
+    qKey: ['getHome'],
+    qFn: () => fetchAccueil(),
+  });
 
   useEffect(() => {
     const myObserver = new ResizeObserver((_entries) => {
@@ -34,17 +39,18 @@ export const HomePage = () => {
       {/* HEADING VIDEO */}
       <div className="relative flex h-[500px] items-center justify-center md:mt-5 lg:mt-32 lg:mb-36">
         <div className="relative flex h-full w-full items-center justify-center bg-cover bg-center bg-no-repeat object-cover">
-          <video
-            height={500}
-            autoPlay
-            muted
-            poster="/img/home/heading/heading_video_thumbnail.png"
+          <iframe
+            width="560"
+            height="315"
+            src={`${data?.[0].acf.video_url.replace('watch?v=', 'embed/')}`}
+            title="YouTube video player"
             className="relative h-full w-full bg-cover bg-center bg-no-repeat object-cover md:h-[450px] md:w-[90%] md:rounded-3xl lg:w-[900px] lg:h-[550px]"
-            src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-          />
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
           <div className="absolute top-0 hidden h-full w-4/5 rotate-[4deg] md:top-5 md:flex md:h-[450px] md:w-[91%] md:rounded-3xl md:border-[1px] md:border-black-carmen lg:h-[550px] lg:w-[900px] lg:-top-5"></div>
           <Image
-            src={"/img/home/heading/couverts.png"}
+            src={'/img/home/heading/couverts.png'}
             width={400}
             height={800}
             alt="CHEZ CARMEN"
@@ -52,14 +58,14 @@ export const HomePage = () => {
           />
           <div className="hidden md:absolute md:right-0 md:top-0 md:flex md:h-full md:w-[250px]">
             <Image
-              src={"/img/home/heading/heading_top_right_ph.png"}
+              src={'/img/home/heading/heading_top_right_ph.png'}
               width={140}
               height={140}
               alt="CHEZ CARMEN"
               className="hidden md:absolute md:-right-2 md:top-0 md:flex"
             />
             <Image
-              src={"/img/home/heading/heading_bot_right_ph.png"}
+              src={'/img/home/heading/heading_bot_right_ph.png'}
               width={90}
               height={90}
               alt="CHEZ CARMEN"
@@ -97,13 +103,13 @@ export const HomePage = () => {
       {/* HEADING VIDEO */}
 
       {/* NOTRE HISTOIRE */}
-      <Histoire/>
+      <Histoire />
       {/* NOTRE HISTOIRE */}
 
       {/* VIDEOS */}
       <div className="relative flex h-auto w-full items-center justify-center bg-red-carmen sm:min-h-[700px] sm:justify-start">
         <Image
-          src={"/img/home/videos/video_top_4x.png"}
+          src={'/img/home/videos/video_top_4x.png'}
           alt="VIDEOS"
           width={1100}
           height={300}
@@ -140,7 +146,7 @@ export const HomePage = () => {
               </h3>
               <div className="absolute -top-12 right-0 sm:-top-32 sm:left-0">
                 <Image
-                  src={"/img/home/videos/videos_appareil.png"}
+                  src={'/img/home/videos/videos_appareil.png'}
                   alt="APPAREIL PHOTO"
                   width={100}
                   height={100}
@@ -148,39 +154,55 @@ export const HomePage = () => {
                 />
               </div>
               <div className="absolute -bottom-14 left-0">
-                <Image src={"/img/home/videos/videos_phone.png"} alt="APPAREIL PHOTO" width={100} height={100} />
+                <Image
+                  src={'/img/home/videos/videos_phone.png'}
+                  alt="APPAREIL PHOTO"
+                  width={100}
+                  height={100}
+                />
               </div>
             </div>
           </div>
           <div className="order-1 mt-8 flex h-full w-full flex-col items-center justify-center sm:absolute sm:right-0 sm:-mt-20 sm:h-auto sm:w-[40%] sm:items-start sm:justify-start">
-            <h2 className="my-4 font-thunderLC text-7xl text-cream-carmen sm:my-0">VIDÉOS</h2>
+            <h2 className="my-4 font-thunderLC text-7xl text-cream-carmen sm:my-0">
+              VIDÉOS
+            </h2>
             {screenWidth >= 640 && (
               <p className="px-5 font-thunderLC text-cream-carmen sm:flex sm:px-0 sm:pr-5">
-                Elijah Craig, prêtre baptiste en Virginie, fonde sa distillerie au Kentucky, comté de Scott en 1789. Il
-                est considéré comme le père du bourbon tel que nous le connaissons : un « mash bill » composé
-                principalement de maïs, pour se différencier du « Rye » des états de l’est (Pennsylvanie et Maryland),
-                et surtout l’élevage en fût de chêne fortement bousiné. Le terme de « Bourbon » apparait autour de 1850,
-                avant on parle de « whiskey » tout simplement. Celui-ci fait référence au comté de Bourbon (dont le
-                chef-lieu est Paris), ce terme à consonance française est commun dans ces états du sud et du Midwest
-                américain qui ont appartenu à la France. A l’époque la Louisiane est une zone bien plus
+                Elijah Craig, prêtre baptiste en Virginie, fonde sa distillerie
+                au Kentucky, comté de Scott en 1789. Il est considéré comme le
+                père du bourbon tel que nous le connaissons : un « mash bill »
+                composé principalement de maïs, pour se différencier du « Rye »
+                des états de l’est (Pennsylvanie et Maryland), et surtout
+                l’élevage en fût de chêne fortement bousiné. Le terme de «
+                Bourbon » apparait autour de 1850, avant on parle de « whiskey »
+                tout simplement. Celui-ci fait référence au comté de Bourbon
+                (dont le chef-lieu est Paris), ce terme à consonance française
+                est commun dans ces états du sud et du Midwest américain qui ont
+                appartenu à la France. A l’époque la Louisiane est une zone bien
+                plus
               </p>
             )}
             {screenWidth < 640 && (
               <p className="px-5 font-thunderLC text-cream-carmen sm:hidden sm:px-0 sm:pr-5">
-                Elijah Craig, prêtre baptiste en Virginie, fonde sa distillerie au Kentucky, comté de Scott en 1789. Il
-                est considéré comme le père du bourbon tel que nous le connaissons : un « mash bill » composé
-                principalement de maïs, pour se différencier du « Rye » des états de l’est (Pennsylvanie et Maryland),
-                et surtout l’élevage en fût de chêne fortement bousiné.
+                Elijah Craig, prêtre baptiste en Virginie, fonde sa distillerie
+                au Kentucky, comté de Scott en 1789. Il est considéré comme le
+                père du bourbon tel que nous le connaissons : un « mash bill »
+                composé principalement de maïs, pour se différencier du « Rye »
+                des états de l’est (Pennsylvanie et Maryland), et surtout
+                l’élevage en fût de chêne fortement bousiné.
               </p>
             )}
           </div>
           {screenWidth < 640 && (
             <div className="order-3 sm:absolute sm:right-0 sm:top-[405px] sm:hidden sm:w-1/3">
               <p className="px-5 font-thunderLC text-cream-carmen sm:px-0 sm:pr-5">
-                Le terme de « Bourbon » apparait autour de 1850, avant on parle de « whiskey » tout simplement. Celui-ci
-                fait référence au comté de Bourbon (dont le chef-lieu est Paris), ce terme à consonance française est
-                commun dans ces états du sud et du Midwest américain qui ont appartenu à la France. A l’époque la
-                Louisiane est une zone bien plus
+                Le terme de « Bourbon » apparait autour de 1850, avant on parle
+                de « whiskey » tout simplement. Celui-ci fait référence au comté
+                de Bourbon (dont le chef-lieu est Paris), ce terme à consonance
+                française est commun dans ces états du sud et du Midwest
+                américain qui ont appartenu à la France. A l’époque la Louisiane
+                est une zone bien plus
               </p>
             </div>
           )}
@@ -191,32 +213,50 @@ export const HomePage = () => {
               textSize="text-xl"
               width="w-[165px]"
               height="h-[70px]"
-              classes={["absolute", "top-[50%]", "-left-2", "-translate-y-[50%]", "sm:!relative", "sm:!top-[30%]"]}
+              classes={[
+                'absolute',
+                'top-[50%]',
+                '-left-2',
+                '-translate-y-[50%]',
+                'sm:!relative',
+                'sm:!top-[30%]',
+              ]}
             />
           </div>
         </div>
       </div>
       {/* VIDEOS */}
 
-      <Fournisseurs/>
+      <Fournisseurs />
 
       {/* LES ACTUALITES CARMEN */}
       <div className="relative bg-red-carmen">
         <div className="h-[40px]"></div>
         <h2 className="flex flex-col items-center justify-center font-thunder text-5xl font-extralight text-cream-carmen">
-          Les actualités <span className="font-thunderLC font-bold">Carmen</span>
+          Les actualités{' '}
+          <span className="font-thunderLC font-bold">Carmen</span>
         </h2>
         <Image
-          src={"/img/home/actualites/acutalités_top.png"}
+          src={'/img/home/actualites/acutalités_top.png'}
           alt="ACUTALITES"
           className="sm:!-!top-[70px] absolute !-top-[35px] w-full object-contain lg:!-top-[120px]"
           width={1100}
           height={400}
         />
         <div className="relative flex h-[640px] w-full items-center justify-center sm:mt-12 sm:h-[520px] sm:items-start">
-          <Actualite key={1} position={0} screenWidth={screenWidth} addToItems={addToItems} />
-          <Actualite key={0} position={1} screenWidth={screenWidth} addToItems={addToItems} />
-        </div> 
+          <Actualite
+            key={1}
+            position={0}
+            screenWidth={screenWidth}
+            addToItems={addToItems}
+          />
+          <Actualite
+            key={0}
+            position={1}
+            screenWidth={screenWidth}
+            addToItems={addToItems}
+          />
+        </div>
         <div className="mt-24 hidden w-full items-center justify-center sm:flex">
           <Button
             color="cream-carmen"
@@ -224,11 +264,17 @@ export const HomePage = () => {
             textSize="text-xl"
             width="w-[165px]"
             height="h-[70px]"
-            classes={["absolute", "top-[50%]", "-left-2", "-translate-y-[50%]", "sm:!relative"]}
+            classes={[
+              'absolute',
+              'top-[50%]',
+              '-left-2',
+              '-translate-y-[50%]',
+              'sm:!relative',
+            ]}
           />
         </div>
         <Image
-          src={"/img/home/actualites/actualites_bot_4x.png"}
+          src={'/img/home/actualites/actualites_bot_4x.png'}
           alt="ACUTALITES"
           className="absolute !-bottom-[25px] w-full object-contain sm:!-bottom-[50px] lg:!-bottom-[80px]"
           width={1100}
@@ -240,14 +286,16 @@ export const HomePage = () => {
       {/* GALERIE PHOTO */}
       <div className="relative mt-20">
         <div className="mb-4 flex w-full items-center justify-center pl-6 sm:justify-start">
-          <h2 className="font-thunder text-6xl text-red-carmen">Galerie Photo</h2>
+          <h2 className="font-thunder text-6xl text-red-carmen">
+            Galerie Photo
+          </h2>
         </div>
         {screenWidth < 640 && (
           <>
             <div className="flex h-auto w-full space-x-4">
               <div className="h-4/5 w-1/2">
                 <Image
-                  src={"/img/home/galerie/galerie_ph_1.png"}
+                  src={'/img/home/galerie/galerie_ph_1.png'}
                   width={200}
                   height={200}
                   alt="PHOTO PLACEHOLDER"
@@ -256,7 +304,7 @@ export const HomePage = () => {
               </div>
               <div className="h-full w-1/2">
                 <Image
-                  src={"/img/home/galerie/galerie_ph_2.png"}
+                  src={'/img/home/galerie/galerie_ph_2.png'}
                   width={200}
                   height={200}
                   alt="PHOTO PLACEHOLDER"
@@ -266,7 +314,12 @@ export const HomePage = () => {
             </div>
             <div className="relative mt-4 h-auto w-full sm:hidden">
               <div className="w-3/4">
-                <Image src={"/img/home/galerie/galerie_ph_3.png"} width={350} height={150} alt="GALERIE PLACEHOLDER" />
+                <Image
+                  src={'/img/home/galerie/galerie_ph_3.png'}
+                  width={350}
+                  height={150}
+                  alt="GALERIE PLACEHOLDER"
+                />
               </div>
               <div className="absolute -top-[50px] left-[110px] rotate-6">
                 <div className="relative">
@@ -293,7 +346,7 @@ export const HomePage = () => {
           <div className="hidden grid-cols-3 grid-rows-2 gap-2 p-6 sm:grid">
             <div className="relative row-span-2 flex h-full w-full flex-col">
               <Image
-                src={"/img/home/galerie/galerie_ph_2.png"}
+                src={'/img/home/galerie/galerie_ph_2.png'}
                 width={200}
                 height={200}
                 alt="PHOTO PLACEHOLDER"
@@ -317,7 +370,7 @@ export const HomePage = () => {
               </h3>
             </div>
             <Image
-              src={"/img/home/galerie/galerie_ph_1.png"}
+              src={'/img/home/galerie/galerie_ph_1.png'}
               width={200}
               height={200}
               alt="PHOTO PLACEHOLDER"
@@ -325,14 +378,14 @@ export const HomePage = () => {
             />
             <div className="flex flex-col items-center justify-center space-y-4">
               <Image
-                src={"/img/home/galerie/galerie_ph_3.png"}
+                src={'/img/home/galerie/galerie_ph_3.png'}
                 width={200}
                 height={200}
                 alt="PHOTO PLACEHOLDER"
                 className="h-full w-full object-cover"
               />
               <Image
-                src={"/img/home/galerie/galerie_ph_4.png"}
+                src={'/img/home/galerie/galerie_ph_4.png'}
                 width={200}
                 height={200}
                 alt="PHOTO PLACEHOLDER"
@@ -346,7 +399,7 @@ export const HomePage = () => {
                 </h3>
               </div>
               <Image
-                src={"/img/home/galerie/galerie_ph_5.png"}
+                src={'/img/home/galerie/galerie_ph_5.png'}
                 width={200}
                 height={200}
                 alt="PHOTO PLACEHOLDER"
@@ -356,10 +409,16 @@ export const HomePage = () => {
           </div>
         )}
         <div className="my-8 flex h-auto w-full items-center justify-center sm:my-0 sm:mb-24">
-          <Button color="red-carmen" text="VOIR LA GALERIE" textSize="text-xl" width="w-[135px]" height="h-[70px]" />
+          <Button
+            color="red-carmen"
+            text="VOIR LA GALERIE"
+            textSize="text-xl"
+            width="w-[135px]"
+            height="h-[70px]"
+          />
         </div>
         <Image
-          src={"/img/home/contact/contact_top.png"}
+          src={'/img/home/contact/contact_top.png'}
           width={1100}
           height={300}
           alt="CONTACT"
@@ -375,15 +434,22 @@ export const HomePage = () => {
             <div className="mt-12 flex w-full flex-col">
               <div className="h-[30px]"></div>
               <div className="px-5">
-                <h2 className="font-thunder text-8xl text-cream-carmen">Contact</h2>
+                <h2 className="font-thunder text-8xl text-cream-carmen">
+                  Contact
+                </h2>
                 <div className="flex flex-col">
-                  <h3 className="text-sm text-cream-carmen">14 Av. Maurice Hauriou, 31000 Toulouse</h3>
-                  <Link className="text-sm text-cream-carmen" href={"mailto:chezcarmen@contact.com"}>
+                  <h3 className="text-sm text-cream-carmen">
+                    14 Av. Maurice Hauriou, 31000 Toulouse
+                  </h3>
+                  <Link
+                    className="text-sm text-cream-carmen"
+                    href={'mailto:chezcarmen@contact.com'}
+                  >
                     chezcarmen@contact.com
                   </Link>
                   <Link
                     className="font-bold text-cream-carmen"
-                    href={"http://instagram.com/chezcarmentoulouse"}
+                    href={'http://instagram.com/chezcarmentoulouse'}
                     target="_blank"
                   >
                     @chezcarmentoulouse
@@ -392,7 +458,10 @@ export const HomePage = () => {
               </div>
               <div className="h-auto w-full">
                 <div className="relative mt-14 flex justify-start">
-                  <Link className="ml-6 font-thunder text-2xl text-cream-carmen" href={"telto:05 61 42 04 95"}>
+                  <Link
+                    className="ml-6 font-thunder text-2xl text-cream-carmen"
+                    href={'telto:05 61 42 04 95'}
+                  >
                     05 61 42 04 95
                     <svg
                       className="absolute -left-8 top-1/2 translate-y-[-50%]"
@@ -414,14 +483,14 @@ export const HomePage = () => {
               <div className="mt-8 flex h-auto w-full items-center justify-center">
                 <div className="relative flex h-[250px] w-[300px]">
                   <Image
-                    src={"/img/home/contact/contact_nada_2x.png"}
+                    src={'/img/home/contact/contact_nada_2x.png'}
                     width={174}
                     height={217}
                     alt="CONTACT"
                     className="absolute -top-20 right-0"
                   />
                   <Image
-                    src={"/img/home/contact/contact_ph_2x.png"}
+                    src={'/img/home/contact/contact_ph_2x.png'}
                     width={180}
                     height={27}
                     alt="CONTACT"
@@ -429,14 +498,14 @@ export const HomePage = () => {
                   />
 
                   <Image
-                    src={"/img/home/contact/contact_tel_2x.png"}
+                    src={'/img/home/contact/contact_tel_2x.png'}
                     width={130}
                     height={50}
                     alt="CONTACT"
                     className="absolute left-[25%] z-[18]"
                   />
                   <Image
-                    src={"/img/home/contact/contact_phone_2x.png"}
+                    src={'/img/home/contact/contact_phone_2x.png'}
                     width={250}
                     height={70}
                     alt="CONTACT"
@@ -447,17 +516,22 @@ export const HomePage = () => {
               <div className="relative flex items-center justify-center overflow-hidden">
                 <div className="flex h-auto w-full items-center justify-center">
                   <Image
-                    src={"/img/home/contact/map_top.png"}
+                    src={'/img/home/contact/map_top.png'}
                     width={600}
                     height={300}
                     alt="GOOGLE MAP"
                     className="absolute left-0 top-0"
                   />
 
-                  <Image src={"/img/home/contact/map_ph.png"} width={600} height={300} alt="GOOGLE MAP" />
+                  <Image
+                    src={'/img/home/contact/map_ph.png'}
+                    width={600}
+                    height={300}
+                    alt="GOOGLE MAP"
+                  />
 
                   <Image
-                    src={"/img/home/contact/map_top.png"}
+                    src={'/img/home/contact/map_top.png'}
                     width={600}
                     height={300}
                     alt="GOOGLE MAP"
@@ -468,28 +542,32 @@ export const HomePage = () => {
             </div>
             <div className="mt-16 flex h-auto px-5">
               <div className="w-auto">
-                <h2 className="font-thunder text-5xl text-cream-carmen">Horaires</h2>
+                <h2 className="font-thunder text-5xl text-cream-carmen">
+                  Horaires
+                </h2>
                 <p className="font-thunderLC text-xl text-cream-carmen">
                   Ouvert tous les jours midi et soir sauf dimanche et lundi.
                 </p>
               </div>
               <div className="relative h-[220px] w-full">
                 <Image
-                  src={"/img/home/contact/horraires_ph.png"}
+                  src={'/img/home/contact/horraires_ph.png'}
                   alt="HORRAIRES"
                   width={111}
                   height={128}
                   className="absolute !-right-5 -top-12 object-contain"
                 />
                 <Image
-                  src={"/img/home/contact/clock.png"}
+                  src={'/img/home/contact/clock.png'}
                   alt="HORRAIRES"
                   width={163}
                   height={185}
                   className="absolute !-right-14 top-16 object-contain"
                 />
 
-                <h4 className="absolute right-0 top-12 rotate-12 font-softgank text-5xl text-cream-carmen">OPEN</h4>
+                <h4 className="absolute right-0 top-12 rotate-12 font-softgank text-5xl text-cream-carmen">
+                  OPEN
+                </h4>
               </div>
             </div>
           </>
@@ -499,42 +577,42 @@ export const HomePage = () => {
             <div className="relative h-full min-h-[650px] w-[500px] p-5">
               <Image
                 className="absolute left-5 top-0"
-                src={"/img/home/contact/contact_nada_2x.png"}
+                src={'/img/home/contact/contact_nada_2x.png'}
                 alt="CONTACT"
                 width={200}
                 height={300}
               />
               <Image
                 className="absolute left-0 top-[140px] z-20"
-                src={"/img/home/contact/contact_tel_2x.png"}
+                src={'/img/home/contact/contact_tel_2x.png'}
                 width={250}
                 height={300}
                 alt="CONTACT"
               />
               <Image
                 className="absolute -right-16 top-[90px] z-10"
-                src={"/img/home/contact/contact_panneau_2x.png"}
+                src={'/img/home/contact/contact_panneau_2x.png'}
                 width={350}
                 height={350}
                 alt="CONTACT"
               />
               <Image
                 className="absolute bottom-4 right-10 z-20 rotate-12"
-                src={"/img/home/contact/contact_phone_2x.png"}
+                src={'/img/home/contact/contact_phone_2x.png'}
                 width={250}
                 height={300}
                 alt="CONTACT"
               />
               <Image
                 className="absolute left-1/2 top-1/3 translate-x-[-50%]"
-                src={"/img/home/contact/contact_road_2x.png"}
+                src={'/img/home/contact/contact_road_2x.png'}
                 width={200}
                 height={300}
                 alt="CONTACT"
               />
               <Image
                 className="absolute bottom-20 left-0 -rotate-[25deg]"
-                src={"/img/home/contact/contact_ph_2x.png"}
+                src={'/img/home/contact/contact_ph_2x.png'}
                 width={200}
                 height={300}
                 alt="CONTACT"
@@ -542,20 +620,30 @@ export const HomePage = () => {
             </div>
             <div className="h-full w-1/3 space-y-5">
               <div className="mt-8 flex flex-col items-start justify-center space-y-3">
-                <h2 className="font-thunder text-6xl text-cream-carmen">Contact</h2>
+                <h2 className="font-thunder text-6xl text-cream-carmen">
+                  Contact
+                </h2>
                 <div className="flex flex-col">
-                  <h3 className="font-thunder text-xl text-cream-carmen">14 Av. Maurice Hauriou, 31000 Toulouse</h3>
-                  <Link href={"telto:05.61.42.04.95"} className="font-thunder text-xl font-bold text-cream-carmen">
+                  <h3 className="font-thunder text-xl text-cream-carmen">
+                    14 Av. Maurice Hauriou, 31000 Toulouse
+                  </h3>
+                  <Link
+                    href={'telto:05.61.42.04.95'}
+                    className="font-thunder text-xl font-bold text-cream-carmen"
+                  >
                     05.61.42.04.95
                   </Link>
                 </div>
                 <div className="flex flex-col">
-                  <Link href={"mailto:chezcarmen@contact.com"} className="font-thunder text-xl text-cream-carmen">
+                  <Link
+                    href={'mailto:chezcarmen@contact.com'}
+                    className="font-thunder text-xl text-cream-carmen"
+                  >
                     chezcarmen@contact.com
                   </Link>
                   <Link
                     className="font-thunder text-xl font-bold text-cream-carmen"
-                    href={"http://instagram.com/chezcarmentoulouse"}
+                    href={'http://instagram.com/chezcarmentoulouse'}
                     target="_blank"
                   >
                     @chezcarmentoulouse
@@ -565,17 +653,22 @@ export const HomePage = () => {
               <div className="relative flex items-center justify-center overflow-hidden">
                 <div className="flex h-auto w-full items-center justify-center">
                   <Image
-                    src={"/img/home/contact/map_top.png"}
+                    src={'/img/home/contact/map_top.png'}
                     width={600}
                     height={300}
                     alt="GOOGLE MAP"
                     className="absolute left-0 top-0"
                   />
 
-                  <Image src={"/img/home/contact/map_ph.png"} width={600} height={300} alt="GOOGLE MAP" />
+                  <Image
+                    src={'/img/home/contact/map_ph.png'}
+                    width={600}
+                    height={300}
+                    alt="GOOGLE MAP"
+                  />
 
                   <Image
-                    src={"/img/home/contact/map_top.png"}
+                    src={'/img/home/contact/map_top.png'}
                     width={600}
                     height={300}
                     alt="GOOGLE MAP"
@@ -584,7 +677,9 @@ export const HomePage = () => {
                 </div>
               </div>
               <div className="w-auto">
-                <h2 className="font-thunder text-5xl text-cream-carmen">Horaires</h2>
+                <h2 className="font-thunder text-5xl text-cream-carmen">
+                  Horaires
+                </h2>
                 <p className="font-thunderLC text-xl text-cream-carmen">
                   Ouvert tous les jours midi et soir sauf dimanche et lundi.
                 </p>
@@ -597,5 +692,4 @@ export const HomePage = () => {
       {/* CONTACT */}
     </>
   );
-}
-
+});

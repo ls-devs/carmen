@@ -1,19 +1,18 @@
-import {Button} from "@/components/Button/Button";
-import { fetchOptions } from "@/utils/fetchs/fetchs";
-import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
-import Link from "next/link";
-import {useEffect, useState} from "react";
-import {useForm} from "react-hook-form";
+import { Button } from '@/components/Button/Button';
+import { fetchOptions } from '@/utils/fetchs/fetchs';
+import { useQuery } from '@tanstack/react-query';
+import { block } from 'million/react';
+import Image from 'next/image';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
-import React from 'react'
-
-export const Contact = (props : {}) => {
+export const Contact = block(() => {
   const {
     register,
     handleSubmit,
     watch,
-    formState: {errors},
+    formState: { errors },
   } = useForm();
   const onSubmit = (data: any) => console.log(data);
   const [screenWidth, setScreenWidth] = useState<number>(0);
@@ -30,26 +29,29 @@ export const Contact = (props : {}) => {
     };
   }, []);
 
-  const {data, isLoading, isFetching, isError} = useQuery({
+  const { data, isLoading, isFetching, isError } = useQuery({
     queryKey: ['getOptions'],
     queryFn: fetchOptions,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
-
-  })
+  });
 
   return (
     <div className="mt-[120px] flex flex-col">
       <div className="flex flex-col">
-        <h1 className="mb-5 text-center font-thunder text-6xl text-red-carmen">Contact</h1>
+        <h1 className="mb-5 text-center font-thunder text-6xl text-red-carmen">
+          Contact
+        </h1>
         <div className="flex flex-col items-center justify-center">
           <div className="flex flex-col">
             <div className="order-2 flex w-full flex-col items-center justify-center">
-              <h2 className="font-thunder text-2xl text-red-carmen">Formulaire</h2>
+              <h2 className="font-thunder text-2xl text-red-carmen">
+                Formulaire
+              </h2>
               <p className="text-center font-thunderLC text-lg text-red-carmen">
-                Une question, un commentaire, une suggestion ou une demande particulière ? N'hésitez
-                pas à nous envoyer un mail via le formulaire ci-dessous, nous y répondrons dès que
-                possible.
+                Une question, un commentaire, une suggestion ou une demande
+                particulière ? N'hésitez pas à nous envoyer un mail via le
+                formulaire ci-dessous, nous y répondrons dès que possible.
               </p>
             </div>
             <div className="flex w-full items-center justify-center">
@@ -59,21 +61,21 @@ export const Contact = (props : {}) => {
                 </p>
                 <Image
                   className="absolute -bottom-12 left-0 z-[3]"
-                  src={"/img/contact/pen_2x.png"}
+                  src={'/img/contact/pen_2x.png'}
                   alt="CONTACT"
                   width={250}
                   height={200}
                 />
                 <Image
                   className="absolute -right-5 -top-10 z-[3]"
-                  src={"/img/contact/paperclip_2x.png"}
+                  src={'/img/contact/paperclip_2x.png'}
                   alt="CONTACT"
                   width={200}
                   height={200}
                 />
                 <Image
                   className="absolute left-1/2 top-1/2 ml-8 -translate-x-1/2 -translate-y-1/2"
-                  src={"/img/contact/contact_ph_2x.png"}
+                  src={'/img/contact/contact_ph_2x.png'}
                   alt="CONTACT"
                   width={250}
                   height={200}
@@ -84,7 +86,10 @@ export const Contact = (props : {}) => {
           <div className="order-3 flex w-full flex-col">
             <div className="item-center flex flex-col justify-center px-8 pt-8">
               <div className="flex w-full flex-col items-start">
-                <label htmlFor="NOM" className="font-thunder text-xl font-semibold text-red-carmen">
+                <label
+                  htmlFor="NOM"
+                  className="font-thunder text-xl font-semibold text-red-carmen"
+                >
                   NOM*
                 </label>
                 <input type="text" />
@@ -108,7 +113,10 @@ export const Contact = (props : {}) => {
                 <input type="text" />
               </div>
               <div className="flex w-full flex-col items-start">
-                <label htmlFor="TEL" className="font-thunder text-xl font-semibold text-red-carmen">
+                <label
+                  htmlFor="TEL"
+                  className="font-thunder text-xl font-semibold text-red-carmen"
+                >
                   NUMÉRO DE TÉLÉPHONE*
                 </label>
                 <input type="text" />
@@ -142,7 +150,7 @@ export const Contact = (props : {}) => {
           <div className="flex items-start justify-start space-x-3 p-4">
             <div className="flex w-[150px] min-w-[150px] flex-col">
               <Image
-                src={"/img/contact/contact_rs_ph_2x.png"}
+                src={'/img/contact/contact_rs_ph_2x.png'}
                 alt="RÉSEAUX SOCIAUX"
                 width={220}
                 height={220}
@@ -153,7 +161,7 @@ export const Contact = (props : {}) => {
             </div>
             <div className="flex w-[150px] min-w-[150px] flex-col">
               <Image
-                src={"/img/contact/contact_rs_ph_2x.png"}
+                src={'/img/contact/contact_rs_ph_2x.png'}
                 alt="RÉSEAUX SOCIAUX"
                 width={220}
                 height={220}
@@ -164,7 +172,7 @@ export const Contact = (props : {}) => {
             </div>
             <div className="flex w-[150px] min-w-[150px] flex-col">
               <Image
-                src={"/img/contact/contact_rs_ph_2x.png"}
+                src={'/img/contact/contact_rs_ph_2x.png'}
                 alt="RÉSEAUX SOCIAUX"
                 width={220}
                 height={220}
@@ -182,20 +190,22 @@ export const Contact = (props : {}) => {
               <div className="mt-12 flex w-full flex-col">
                 <div className="h-[30px]"></div>
                 <div className="px-5">
-                  <h2 className="font-thunder text-8xl text-cream-carmen">Contact</h2>
+                  <h2 className="font-thunder text-8xl text-cream-carmen">
+                    Contact
+                  </h2>
                   <div className="flex flex-col">
                     <h3 className="text-sm text-cream-carmen">
                       14 Av. Maurice Hauriou, 31000 Toulouse
                     </h3>
                     <Link
                       className="text-sm text-cream-carmen"
-                      href={"mailto:chezcarmen@contact.com"}
+                      href={'mailto:chezcarmen@contact.com'}
                     >
                       chezcarmen@contact.com
                     </Link>
                     <Link
                       className="font-bold text-cream-carmen"
-                      href={"http://instagram.com/chezcarmentoulouse"}
+                      href={'http://instagram.com/chezcarmentoulouse'}
                       target="_blank"
                     >
                       @chezcarmentoulouse
@@ -206,7 +216,7 @@ export const Contact = (props : {}) => {
                   <div className="relative mt-14 flex justify-start">
                     <Link
                       className="ml-6 font-thunder text-2xl text-cream-carmen"
-                      href={"telto:05 61 42 04 95"}
+                      href={'telto:05 61 42 04 95'}
                     >
                       05 61 42 04 95
                       <svg
@@ -229,14 +239,14 @@ export const Contact = (props : {}) => {
                 <div className="mt-8 flex h-auto w-full items-center justify-center">
                   <div className="relative flex h-[250px] w-[300px]">
                     <Image
-                      src={"/img/home/contact/contact_nada_2x.png"}
+                      src={'/img/home/contact/contact_nada_2x.png'}
                       width={174}
                       height={217}
                       alt="CONTACT"
                       className="absolute -top-20 right-0"
                     />
                     <Image
-                      src={"/img/home/contact/contact_ph_2x.png"}
+                      src={'/img/home/contact/contact_ph_2x.png'}
                       width={180}
                       height={27}
                       alt="CONTACT"
@@ -244,14 +254,14 @@ export const Contact = (props : {}) => {
                     />
 
                     <Image
-                      src={"/img/home/contact/contact_tel_2x.png"}
+                      src={'/img/home/contact/contact_tel_2x.png'}
                       width={130}
                       height={50}
                       alt="CONTACT"
                       className="absolute left-[25%] z-[18]"
                     />
                     <Image
-                      src={"/img/home/contact/contact_phone_2x.png"}
+                      src={'/img/home/contact/contact_phone_2x.png'}
                       width={250}
                       height={70}
                       alt="CONTACT"
@@ -262,7 +272,7 @@ export const Contact = (props : {}) => {
                 <div className="relative flex items-center justify-center overflow-hidden">
                   <div className="flex h-auto w-full items-center justify-center">
                     <Image
-                      src={"/img/home/contact/map_top.png"}
+                      src={'/img/home/contact/map_top.png'}
                       width={600}
                       height={300}
                       alt="GOOGLE MAP"
@@ -270,14 +280,14 @@ export const Contact = (props : {}) => {
                     />
 
                     <Image
-                      src={"/img/home/contact/map_ph.png"}
+                      src={'/img/home/contact/map_ph.png'}
                       width={600}
                       height={300}
                       alt="GOOGLE MAP"
                     />
 
                     <Image
-                      src={"/img/home/contact/map_top.png"}
+                      src={'/img/home/contact/map_top.png'}
                       width={600}
                       height={300}
                       alt="GOOGLE MAP"
@@ -288,21 +298,23 @@ export const Contact = (props : {}) => {
               </div>
               <div className="mt-16 flex h-auto px-5">
                 <div className="w-auto">
-                  <h2 className="font-thunder text-5xl text-cream-carmen">Horaires</h2>
+                  <h2 className="font-thunder text-5xl text-cream-carmen">
+                    Horaires
+                  </h2>
                   <p className="font-thunderLC text-xl text-cream-carmen">
                     Ouvert tous les jours midi et soir sauf dimanche et lundi.
                   </p>
                 </div>
                 <div className="relative h-[220px] w-full">
                   <Image
-                    src={"/img/home/contact/horraires_ph.png"}
+                    src={'/img/home/contact/horraires_ph.png'}
                     alt="HORRAIRES"
                     width={111}
                     height={128}
                     className="absolute !-right-5 -top-12 object-contain"
                   />
                   <Image
-                    src={"/img/home/contact/clock.png"}
+                    src={'/img/home/contact/clock.png'}
                     alt="HORRAIRES"
                     width={163}
                     height={185}
@@ -321,42 +333,42 @@ export const Contact = (props : {}) => {
               <div className="relative h-full min-h-[650px] w-[500px] p-5">
                 <Image
                   className="absolute left-5 top-0"
-                  src={"/img/home/contact/contact_nada_2x.png"}
+                  src={'/img/home/contact/contact_nada_2x.png'}
                   alt="CONTACT"
                   width={200}
                   height={300}
                 />
                 <Image
                   className="absolute left-0 top-[140px] z-20"
-                  src={"/img/home/contact/contact_tel_2x.png"}
+                  src={'/img/home/contact/contact_tel_2x.png'}
                   width={250}
                   height={300}
                   alt="CONTACT"
                 />
                 <Image
                   className="absolute -right-16 top-[90px] z-10"
-                  src={"/img/home/contact/contact_panneau_2x.png"}
+                  src={'/img/home/contact/contact_panneau_2x.png'}
                   width={350}
                   height={350}
                   alt="CONTACT"
                 />
                 <Image
                   className="absolute bottom-4 right-10 z-20 rotate-12"
-                  src={"/img/home/contact/contact_phone_2x.png"}
+                  src={'/img/home/contact/contact_phone_2x.png'}
                   width={250}
                   height={300}
                   alt="CONTACT"
                 />
                 <Image
                   className="absolute left-1/2 top-1/3 translate-x-[-50%]"
-                  src={"/img/home/contact/contact_road_2x.png"}
+                  src={'/img/home/contact/contact_road_2x.png'}
                   width={200}
                   height={300}
                   alt="CONTACT"
                 />
                 <Image
                   className="absolute bottom-20 left-0 -rotate-[25deg]"
-                  src={"/img/home/contact/contact_ph_2x.png"}
+                  src={'/img/home/contact/contact_ph_2x.png'}
                   width={200}
                   height={300}
                   alt="CONTACT"
@@ -364,13 +376,15 @@ export const Contact = (props : {}) => {
               </div>
               <div className="h-full w-1/3 space-y-5">
                 <div className="mt-8 flex flex-col items-start justify-center space-y-3">
-                  <h2 className="font-thunder text-6xl text-cream-carmen">Contact</h2>
+                  <h2 className="font-thunder text-6xl text-cream-carmen">
+                    Contact
+                  </h2>
                   <div className="flex flex-col">
                     <h3 className="font-thunder text-xl text-cream-carmen">
                       14 Av. Maurice Hauriou, 31000 Toulouse
                     </h3>
                     <Link
-                      href={"telto:05.61.42.04.95"}
+                      href={'telto:05.61.42.04.95'}
                       className="font-thunder text-xl font-bold text-cream-carmen"
                     >
                       05.61.42.04.95
@@ -378,14 +392,14 @@ export const Contact = (props : {}) => {
                   </div>
                   <div className="flex flex-col">
                     <Link
-                      href={"mailto:chezcarmen@contact.com"}
+                      href={'mailto:chezcarmen@contact.com'}
                       className="font-thunder text-xl text-cream-carmen"
                     >
                       chezcarmen@contact.com
                     </Link>
                     <Link
                       className="font-thunder text-xl font-bold text-cream-carmen"
-                      href={"http://instagram.com/chezcarmentoulouse"}
+                      href={'http://instagram.com/chezcarmentoulouse'}
                       target="_blank"
                     >
                       @chezcarmentoulouse
@@ -395,7 +409,7 @@ export const Contact = (props : {}) => {
                 <div className="relative flex items-center justify-center overflow-hidden">
                   <div className="flex h-auto w-full items-center justify-center">
                     <Image
-                      src={"/img/home/contact/map_top.png"}
+                      src={'/img/home/contact/map_top.png'}
                       width={600}
                       height={300}
                       alt="GOOGLE MAP"
@@ -403,14 +417,14 @@ export const Contact = (props : {}) => {
                     />
 
                     <Image
-                      src={"/img/home/contact/map_ph.png"}
+                      src={'/img/home/contact/map_ph.png'}
                       width={600}
                       height={300}
                       alt="GOOGLE MAP"
                     />
 
                     <Image
-                      src={"/img/home/contact/map_top.png"}
+                      src={'/img/home/contact/map_top.png'}
                       width={600}
                       height={300}
                       alt="GOOGLE MAP"
@@ -419,7 +433,9 @@ export const Contact = (props : {}) => {
                   </div>
                 </div>
                 <div className="w-auto">
-                  <h2 className="font-thunder text-5xl text-cream-carmen">Horaires</h2>
+                  <h2 className="font-thunder text-5xl text-cream-carmen">
+                    Horaires
+                  </h2>
                   <p className="font-thunderLC text-xl text-cream-carmen">
                     Ouvert tous les jours midi et soir sauf dimanche et lundi.
                   </p>
@@ -431,4 +447,4 @@ export const Contact = (props : {}) => {
       </div>
     </div>
   );
-}
+});

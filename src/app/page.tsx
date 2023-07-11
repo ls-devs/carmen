@@ -1,23 +1,26 @@
-import getQueryClient from "@/utils/getQueryClient";
-import {dehydrate, useQuery} from "@tanstack/react-query";
-import Hydrate from "@/utils/hydrateClient";
-import { fetchAccueil, fetchHistoire } from "@/utils/fetchs/fetchs";
-import {HomePage} from "./homepage";
+import {
+  fetchAccueil,
+  fetchFournisseurs,
+  fetchHistoire,
+} from '@/utils/fetchs/fetchs';
+import getQueryClient from '@/utils/getQueryClient';
+import Hydrate from '@/utils/hydrateClient';
+import { dehydrate } from '@tanstack/react-query';
+import { HomePage } from './Homepage';
 
 const Page = async () => {
-
   const queryClient = getQueryClient();
   await queryClient.prefetchQuery(['getHome'], fetchAccueil);
-  await queryClient.prefetchQuery(['getFournisseurs'], fetchAccueil);
+  await queryClient.prefetchQuery(['getFournisseurs'], fetchFournisseurs);
   await queryClient.prefetchQuery(['getHistoire'], fetchHistoire);
 
   const dehydratedState = dehydrate(queryClient);
 
   return (
-      <Hydrate state={dehydratedState}>
-        <HomePage/>
-      </Hydrate>
+    <Hydrate state={dehydratedState}>
+      <HomePage />
+    </Hydrate>
   );
-}
+};
 
 export default Page;

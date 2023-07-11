@@ -1,27 +1,30 @@
-import "./globals.scss";
-import {Inter} from "next/font/google";
-import {Navbar} from "@/components/Global/Navbar";
-import {Footer} from "@/components/Global/Footer";
-import {Main} from "@/components/Global/Main";
-import ReactQueryWrapper from "@/utils/queryProvider";
+import { Footer } from '@/components/Global/Footer';
+import { Main } from '@/components/Global/Main';
+import { Navbar } from '@/components/Global/Navbar';
+import ReactQueryProvider from '@/utils/queryProvider';
+import { Inter } from 'next/font/google';
+import './globals.scss';
 
-const inter = Inter({subsets: ["latin"]});
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: "Chez Carmen",
-  description: "Restaurant des Abattoirs",
+  title: 'Chez Carmen',
+  description: 'Restaurant des Abattoirs',
 };
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
-
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="fr">
       <body className={inter.className}>
-          <ReactQueryWrapper>
-            <Navbar />
-              <Main>{children}</Main>
-            <Footer />
-        </ReactQueryWrapper>
+        <ReactQueryProvider>
+          <Navbar key={'navbar'} />
+          <Main key={'main'}>{children}</Main>
+          <Footer key={'footer'} />
+        </ReactQueryProvider>
       </body>
     </html>
   );
