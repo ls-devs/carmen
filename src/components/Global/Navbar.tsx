@@ -1,9 +1,8 @@
-
-"use client";
-import {block} from "million/react";
-import Image from "next/image";
-import Link from "next/link";
-import React, {useRef, useState} from "react";
+"use client"
+import { block } from 'million/react';
+import Image from 'next/image';
+import Link from 'next/link';
+import React, { useRef, useState } from 'react';
 
 export const Navbar = /* optimize */ block(() => {
   const [loop, setLoop] = useState<number>(0);
@@ -16,7 +15,10 @@ export const Navbar = /* optimize */ block(() => {
     }
   };
 
-  const multipleToggles = (el: SVGElement | HTMLDivElement, classList: string[]) => {
+  const multipleToggles = (
+    el: SVGElement | HTMLDivElement,
+    classList: string[]
+  ) => {
     console.log(el);
     classList.forEach((cl) => {
       console.log(el);
@@ -25,30 +27,49 @@ export const Navbar = /* optimize */ block(() => {
   };
 
   const onMenuClick = () => {
-    multipleToggles(menubarsRefs.current[0], ["!-translate-y-[20px]", "opacity-0"]);
-    multipleToggles(menubarsRefs.current[1], ["-rotate-45", "!translate-y-[0px]"]);
-    multipleToggles(menubarsRefs.current[2], ["rotate-45", "!translate-y-[0px]"]);
+    multipleToggles(menubarsRefs.current[0], [
+      '!-translate-y-[20px]',
+      'opacity-0',
+    ]);
+    multipleToggles(menubarsRefs.current[1], [
+      '-rotate-45',
+      '!translate-y-[0px]',
+    ]);
+    multipleToggles(menubarsRefs.current[2], [
+      'rotate-45',
+      '!translate-y-[0px]',
+    ]);
     menubarsRefs.current.forEach((path) => {
-      (path.lastChild as SVGPathElement).classList.toggle("fill-black-carmen");
+      (path.lastChild as SVGPathElement).classList.toggle('fill-black-carmen');
     });
 
-    (menuBurger.current?.firstChild as HTMLUListElement).classList.toggle("opacity-[1]");
-    bgBurger.current?.classList.toggle("!top-0");
+    (menuBurger.current?.firstChild as HTMLUListElement).classList.toggle(
+      'opacity-[1]'
+    );
+    bgBurger.current?.classList.toggle('!top-0');
     if (loop === 0) {
-      menuBurger.current?.classList.toggle("z-20");
+      menuBurger.current?.classList.toggle('z-20');
       setLoop(1);
     }
 
-    if (!(menuBurger.current?.firstChild as HTMLUListElement).classList.contains("opacity-[1]")) {
-      (menuBurger.current?.firstChild as HTMLUListElement).classList.toggle("!duration-400");
+    if (
+      !(menuBurger.current?.firstChild as HTMLUListElement).classList.contains(
+        'opacity-[1]'
+      )
+    ) {
+      (menuBurger.current?.firstChild as HTMLUListElement).classList.toggle(
+        '!duration-400'
+      );
       setTimeout(() => {
-        (menuBurger.current?.firstChild as HTMLUListElement).classList.toggle("!duration-400");
+        (menuBurger.current?.firstChild as HTMLUListElement).classList.toggle(
+          '!duration-400'
+        );
       }, 500);
     }
 
     setTimeout(() => {
       if (loop === 1) {
-        menuBurger.current?.classList.toggle("z-20");
+        menuBurger.current?.classList.toggle('z-20');
         setLoop(0);
       }
     }, 200);
@@ -56,10 +77,15 @@ export const Navbar = /* optimize */ block(() => {
 
   return (
     <nav className="flex-center relative w-full items-center justify-center p-3 md:max-lg:justify-start md:max-lg:pt-10 lg:px-[70px] xl:px-20">
-      <div ref={bgBurger} className="top-y absolute z-10 h-[100vh] w-full transition-all duration-400 md:hidden">
+      <div
+        ref={bgBurger}
+        className="top-y absolute z-10 h-[100vh] w-full transition-all duration-400 md:hidden"
+      >
         <Image
-          src={"/img/navbar/responsive/bg_menu_768.png"}
+          src={'/img/navbar/responsive/bg_menu_768.png'}
           fill={true}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority
           className="object-cover"
           alt="CARMEN HEADER MENU"
         />
@@ -71,7 +97,10 @@ export const Navbar = /* optimize */ block(() => {
       >
         <ul className="flex h-full flex-col items-center justify-start space-y-2 opacity-0 transition-all duration-1000 ease-in-out">
           <li className="h-auto w-full">
-            <Link className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen" href="la-carte">
+            <Link
+              className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
+              href="la-carte"
+            >
               LA CARTE
               <svg
                 className="h-[20px] w-[70px]"
@@ -89,7 +118,10 @@ export const Navbar = /* optimize */ block(() => {
             </Link>
           </li>
           <li className="h-auto w-full">
-            <Link className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen" href="#">
+            <Link
+              className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
+              href="#"
+            >
               HISTOIRE
               <svg
                 className="h-[20px] w-[70px]"
@@ -107,7 +139,10 @@ export const Navbar = /* optimize */ block(() => {
             </Link>
           </li>
           <li className="h-auto w-full">
-            <Link className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen" href="#">
+            <Link
+              className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
+              href="#"
+            >
               ACTUALITÉS
               <svg
                 className="h-[20px] w-[70px]"
@@ -125,7 +160,10 @@ export const Navbar = /* optimize */ block(() => {
             </Link>
           </li>
           <li className="h-auto w-full">
-            <Link className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen" href="#">
+            <Link
+              className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
+              href="#"
+            >
               CARMEN EN IMAGE
               <svg
                 className="h-[20px] w-[70px]"
@@ -143,7 +181,10 @@ export const Navbar = /* optimize */ block(() => {
             </Link>
           </li>
           <li className="h-auto w-full">
-            <Link className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen" href="#">
+            <Link
+              className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
+              href="#"
+            >
               CONTACT
               <svg
                 className="h-[20px] w-[70px]"
@@ -165,7 +206,12 @@ export const Navbar = /* optimize */ block(() => {
       {/* FLEX MENU BURGER */}
       <div className="z-10 -mt-2 w-1/2 md:max-lg:mt-14 md:max-lg:w-1/2 lg:mt-7 lg:h-full">
         <Link href="/">
-          <Image alt="Carmen Logo" width={300} height={300} src={"/img/logo/carmen_logo_red_4x.png"} />
+          <Image
+            alt="Carmen Logo"
+            width={300}
+            height={300}
+            src={'/img/logo/carmen_logo_red_4x.png'}
+          />
         </Link>
       </div>
       {/* FLEX MENU TABLETTE / DESKTOP */}
@@ -213,7 +259,10 @@ export const Navbar = /* optimize */ block(() => {
       </ul>
       {/* FLEX MENU TABLETTE / DESKTOP */}
 
-      <div onClick={onMenuClick} className="flex-center relative z-10 h-[50px] w-1/2 flex-col md:hidden">
+      <div
+        onClick={onMenuClick}
+        className="flex-center relative z-10 h-[50px] w-1/2 flex-col md:hidden"
+      >
         <svg
           ref={(el) => addToMenubarsRef(el!)}
           fill="none"
@@ -315,16 +364,27 @@ export const Navbar = /* optimize */ block(() => {
       </div>
 
       <Image
-        src={"/img/navbar/responsive/md_header_top.png"}
+        src={'/img/navbar/responsive/md_header_top.png'}
         fill={true}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         alt="Carmen Header Tablette"
         className="!-top-[70px] -z-10 hidden !h-[180px] md:max-lg:flex"
       />
       <div className="absolute left-0 top-0 hidden h-[450px] lg:flex">
-        <Image src={"/img/navbar/header_top_left.png"} width={90} height={400} alt="Carmen Header Tablette" />
+        <Image
+          src={'/img/navbar/header_top_left.png'}
+          width={90}
+          height={400}
+          alt="Carmen Header Tablette"
+        />
       </div>
       <div className="absolute right-0 top-0 hidden h-[100px] lg:flex">
-        <Image src={"/img/navbar/header_top_right.png"} width={400} height={100} alt="Carmen Header Tablette" />
+        <Image
+          src={'/img/navbar/header_top_right.png'}
+          width={400}
+          height={100}
+          alt="Carmen Header Tablette"
+        />
       </div>
     </nav>
   );

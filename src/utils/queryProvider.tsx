@@ -1,19 +1,18 @@
-"use client"
+'use client';
 
-import React, { useState } from "react"
-import {QueryClientProvider, QueryClient} from "@tanstack/react-query"
-import {ReactQueryDevtools} from '@tanstack/react-query-devtools'
+import React, { useState } from 'react';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-const ReactQueryWrapper = ({children}: React.PropsWithChildren) => { 
-  const queryClient = new QueryClient()
-  
+const ReactQueryWrapper = ({ children }: React.PropsWithChildren) => {
+  const [queryClient] = useState(() => new QueryClient());
 
   return (
     <QueryClientProvider client={queryClient}>
       {children}
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-  )
-}
+  );
+};
 
-export default ReactQueryWrapper
+export default ReactQueryWrapper;

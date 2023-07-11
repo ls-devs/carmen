@@ -1,17 +1,16 @@
-"use client"
-import { fetchCarte } from '@/utils/fetchs/fetchs'
-import { useQuery } from '@tanstack/react-query'
-import React from 'react'
-import Image from 'next/image'
+'use client';
+import { useQueryUtils } from '@/hooks/useQueryUtils';
+import { ILaCarte } from '@/types/types';
+import { fetchCarte } from '@/utils/fetchs/fetchs';
+import { block } from 'million/react';
+import Image from 'next/image';
+import React from 'react';
 
-export const LaCarte = (props : {}) => {
-  const {data, isLoading, isFetching, isError} = useQuery({
-    queryKey: ['getCarte'],
-    queryFn: fetchCarte,
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-
-  })
+export const LaCarte = block(() => {
+  const { data, isLoading, isFetching, isError } = useQueryUtils<[ILaCarte]>({
+    qKey: ['getCarte'],
+    qFn: fetchCarte,
+  });
   return (
     <div className="mt-32 flex flex-col">
       <div className="relative flex w-full flex-col">
@@ -36,7 +35,7 @@ export const LaCarte = (props : {}) => {
           <div className="hidden h-auto w-full items-center justify-center md:flex">
             <div className="absolute h-full w-full">
               <Image
-                src={"/img/la_carte/la_carte_ph1_md_2x.png"}
+                src={'/img/la_carte/la_carte_ph1_md_2x.png'}
                 width={450}
                 height={450}
                 alt="LA CARTE"
@@ -44,14 +43,14 @@ export const LaCarte = (props : {}) => {
               />
 
               <Image
-                src={"/img/la_carte/la_carte_couverts_4x.png"}
+                src={'/img/la_carte/la_carte_couverts_4x.png'}
                 width={400}
                 height={400}
                 alt="LA CARTE"
                 className="absolute -right-64 top-1/2 w-[540px] -translate-y-[20%] -rotate-[0deg] lg:-right-72 lg:w-[700px] lg:-translate-y-[20%] 2xl:w-[800px] 2xl:-translate-y-[15%]"
               />
               <Image
-                src={"/img/la_carte/la_carte_fish_2x.png"}
+                src={'/img/la_carte/la_carte_fish_2x.png'}
                 width={400}
                 height={400}
                 alt="LA CARTE"
@@ -215,14 +214,14 @@ export const LaCarte = (props : {}) => {
           <div className="flex h-auto w-full items-center justify-center md:hidden">
             <div className="relative h-[250px] w-[300px]">
               <Image
-                src={"/img/la_carte/la_carte_ph1_2x.png"}
+                src={'/img/la_carte/la_carte_ph1_2x.png'}
                 width={250}
                 height={250}
                 alt="LA CARTE"
                 className="absolute -left-16 top-1/2 -translate-y-[40%] md:hidden"
               />
               <Image
-                src={"/img/la_carte/la_carte_ph1_md_2x.png"}
+                src={'/img/la_carte/la_carte_ph1_md_2x.png'}
                 width={250}
                 height={250}
                 alt="LA CARTE"
@@ -230,7 +229,7 @@ export const LaCarte = (props : {}) => {
               />
 
               <Image
-                src={"/img/la_carte/la_carte_couverts_2x.png"}
+                src={'/img/la_carte/la_carte_couverts_2x.png'}
                 width={200}
                 height={200}
                 alt="LA CARTE"
@@ -416,7 +415,7 @@ export const LaCarte = (props : {}) => {
 
         <div className="absolute bottom-0 -z-[1]">
           <Image
-            src={"/img/la_carte/la_carte_top_2x.png"}
+            src={'/img/la_carte/la_carte_top_2x.png'}
             width={1920}
             height={300}
             alt="A LA CARTE"
@@ -427,7 +426,9 @@ export const LaCarte = (props : {}) => {
 
       <div className="relative flex h-auto w-full flex-col items-center bg-red-carmen md:order-3">
         <div className="mb-8 mt-10 flex w-full flex-col items-center">
-          <h2 className="font-thunder text-5xl text-cream-carmen">À La Carte</h2>
+          <h2 className="font-thunder text-5xl text-cream-carmen">
+            À La Carte
+          </h2>
           <p className="text-md font-thunder text-cream-carmen">
             Terrine de Foie Gras de papi Carmen - 32 €
           </p>
@@ -438,20 +439,30 @@ export const LaCarte = (props : {}) => {
         <div className="flex flex-col">
           <div className="w-full">
             <div className="flex w-full flex-col px-8 py-4">
-              <h3 className="font-thunder text-2xl text-cream-carmen">SALADES COMPOSÉES</h3>
-              <p className="text-md font-thunder text-cream-carmen">Salade niçoise- 9,80 €</p>
-              <p className="text-md font-thunder text-cream-carmen">Salade Gersoise - 9,80 €</p>
+              <h3 className="font-thunder text-2xl text-cream-carmen">
+                SALADES COMPOSÉES
+              </h3>
+              <p className="text-md font-thunder text-cream-carmen">
+                Salade niçoise- 9,80 €
+              </p>
+              <p className="text-md font-thunder text-cream-carmen">
+                Salade Gersoise - 9,80 €
+              </p>
               <p className="text-md font-thunder text-cream-carmen">
                 Salade de Chèvre Chaud cendré au Miel - 11 €
               </p>
               <p className="text-md font-thunder text-cream-carmen">
                 Pot au Feu en Salade au Gros Sel - 12,80 €
               </p>
-              <p className="text-md font-thunder text-cream-carmen">Assiette Gasconne - 14,50€</p>
+              <p className="text-md font-thunder text-cream-carmen">
+                Assiette Gasconne - 14,50€
+              </p>
             </div>
 
             <div className="flex w-full flex-col px-8 py-4">
-              <h3 className="font-thunder text-2xl text-cream-carmen">AGACERIES TRIPIÈRES</h3>
+              <h3 className="font-thunder text-2xl text-cream-carmen">
+                AGACERIES TRIPIÈRES
+              </h3>
               <p className="text-md font-thunder text-cream-carmen">
                 Pansette d'Agneau vin blanc - Tomate - 16,80 €
               </p>
@@ -462,10 +473,13 @@ export const LaCarte = (props : {}) => {
 
             <div className="flex w-full flex-col px-8 py-4">
               <h3 className="font-thunder text-2xl text-cream-carmen">
-                DANS LES FILETS <span dangerouslySetInnerHTML={{__html: "<br/>"}}></span>De chez
-                Carmen
+                DANS LES FILETS{' '}
+                <span dangerouslySetInnerHTML={{ __html: '<br/>' }}></span>De
+                chez Carmen
               </h3>
-              <p className="text-md font-thunder text-cream-carmen">Poisson selon arrivage</p>
+              <p className="text-md font-thunder text-cream-carmen">
+                Poisson selon arrivage
+              </p>
             </div>
           </div>
 
@@ -473,14 +487,14 @@ export const LaCarte = (props : {}) => {
             <div className="flex w-full items-center">
               <div className="relative mt-4 h-[290px] w-[350px] px-4">
                 <Image
-                  src={"/img/la_carte/la_carte_poele_2x.png"}
+                  src={'/img/la_carte/la_carte_poele_2x.png'}
                   width={420}
                   height={420}
                   alt="LA CARTE"
                   className="absolute left-0 top-0"
                 />
                 <Image
-                  src={"/img/la_carte/la_carte_coffee_2x.png"}
+                  src={'/img/la_carte/la_carte_coffee_2x.png'}
                   width={220}
                   height={220}
                   alt="LA CARTE"
@@ -494,16 +508,24 @@ export const LaCarte = (props : {}) => {
           </div>
 
           <div className="mb-52 flex w-full flex-col px-8 pb-4 text-right">
-            <h3 className="font-thunder text-2xl text-cream-carmen">SALADES COMPOSÉES</h3>
-            <p className="text-md font-thunder text-cream-carmen">Salade niçoise- 9,80 €</p>
-            <p className="text-md font-thunder text-cream-carmen">Salade Gersoise - 9,80 €</p>
+            <h3 className="font-thunder text-2xl text-cream-carmen">
+              SALADES COMPOSÉES
+            </h3>
+            <p className="text-md font-thunder text-cream-carmen">
+              Salade niçoise- 9,80 €
+            </p>
+            <p className="text-md font-thunder text-cream-carmen">
+              Salade Gersoise - 9,80 €
+            </p>
             <p className="text-md font-thunder text-cream-carmen">
               Salade de Chèvre Chaud cendré au Miel - 11 €
             </p>
             <p className="text-md font-thunder text-cream-carmen">
               Pot au Feu en Salade au Gros Sel - 12,80 €
             </p>
-            <p className="text-md font-thunder text-cream-carmen">Assiette Gasconne - 14,50€</p>
+            <p className="text-md font-thunder text-cream-carmen">
+              Assiette Gasconne - 14,50€
+            </p>
           </div>
         </div>
       </div>
@@ -511,7 +533,7 @@ export const LaCarte = (props : {}) => {
       <div className="relative flex min-h-[500px] w-full flex-col md:order-4">
         <div className="absolute -top-[10px] -z-[1]">
           <Image
-            src={"/img/la_carte/la_carte_viande_top_2x.png"}
+            src={'/img/la_carte/la_carte_viande_top_2x.png'}
             width={1920}
             height={220}
             alt="LES VIANDES"
@@ -519,7 +541,7 @@ export const LaCarte = (props : {}) => {
         </div>
         <div className="absolute -top-[200px]">
           <Image
-            src={"/img/la_carte/la_carte_viande_taureau_2x.png"}
+            src={'/img/la_carte/la_carte_viande_taureau_2x.png'}
             width={330}
             height={220}
             alt="LES VIANDES"
@@ -529,31 +551,39 @@ export const LaCarte = (props : {}) => {
           LES VIANDES
         </h2>
         <div className="flex flex-col items-center justify-center py-4">
-          <h3 className="font-thunder text-4xl text-red-carmen">LES PLATS MIJOTÉS</h3>
+          <h3 className="font-thunder text-4xl text-red-carmen">
+            LES PLATS MIJOTÉS
+          </h3>
           <p className="text-md font-thunder text-black-carmen">
             Pot au Feu des Abattoirs au gros sel (en hiver) - 25 €
           </p>
           <p className="text-md font-thunder text-black-carmen">
             Daube mitonnée pomme vapeur façon
           </p>
-          <p className="text-md font-thunder text-black-carmen">grand-mère - 23 €</p>
+          <p className="text-md font-thunder text-black-carmen">
+            grand-mère - 23 €
+          </p>
         </div>
 
         <div className="flex flex-col items-center justify-center py-4">
-          <h3 className="font-thunder text-4xl text-red-carmen">LES PLATS MIJOTÉS</h3>
+          <h3 className="font-thunder text-4xl text-red-carmen">
+            LES PLATS MIJOTÉS
+          </h3>
           <p className="text-md font-thunder text-black-carmen">
             Pot au Feu des Abattoirs au gros sel (en hiver) - 25 €
           </p>
           <p className="text-md font-thunder text-black-carmen">
-            Daube mitonnée pomme vapeur façon{" "}
+            Daube mitonnée pomme vapeur façon{' '}
           </p>
-          <p className="text-md font-thunder text-black-carmen">grand-mère - 23 €</p>
+          <p className="text-md font-thunder text-black-carmen">
+            grand-mère - 23 €
+          </p>
         </div>
 
         <div className="flex h-auto w-full flex-col">
           <div className="flex-center flex h-auto w-full">
             <Image
-              src={"/img/la_carte/la_carte_viande_agneau_2x.png"}
+              src={'/img/la_carte/la_carte_viande_agneau_2x.png'}
               width={250}
               height={200}
               alt="L'AGNEAU"
@@ -568,14 +598,16 @@ export const LaCarte = (props : {}) => {
             <p className="text-md font-thunder text-black-carmen">
               Daube mitonnée pomme vapeur façon
             </p>
-            <p className="text-md font-thunder text-black-carmen">grand-mère - 23 €</p>
+            <p className="text-md font-thunder text-black-carmen">
+              grand-mère - 23 €
+            </p>
           </div>
         </div>
 
         <div className="flex h-auto w-full flex-col">
           <div className="flex-center flex h-auto w-full">
             <Image
-              src={"/img/la_carte/la_carte_viande_canard_2x.png"}
+              src={'/img/la_carte/la_carte_viande_canard_2x.png'}
               width={250}
               height={200}
               alt="L'AGNEAU"
@@ -590,10 +622,12 @@ export const LaCarte = (props : {}) => {
             <p className="text-md font-thunder text-black-carmen">
               Daube mitonnée pomme vapeur façon
             </p>
-            <p className="text-md font-thunder text-black-carmen">grand-mère - 23 €</p>
+            <p className="text-md font-thunder text-black-carmen">
+              grand-mère - 23 €
+            </p>
           </div>
         </div>
       </div>
     </div>
   );
-}
+});
