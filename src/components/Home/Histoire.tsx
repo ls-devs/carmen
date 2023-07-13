@@ -4,104 +4,73 @@ import { Button } from '../Button/Button';
 import { fetchHistoire } from '@/utils/fetchs/fetchs';
 import { block } from 'million/react';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
+import { INotreHistoire } from '@/types/types';
 
 export const Histoire = /* optimize */ block(() => {
-  const { data, isLoading, isFetching, isError } = useQueryUtils({
+  const { data, isLoading, isFetching, isError } = useQueryUtils<
+    [INotreHistoire]
+  >({
     qKey: ['getHistoire'],
     qFn: () => fetchHistoire(),
   });
   return (
-    <div className="relative mt-20 flex w-full flex-col items-center justify-center sm:mt-32 lg:mt-64">
-      <Image
-        src={'/img/home/histoire/histoire_top_4x.png'}
-        width={1100}
-        height={300}
-        alt="CARMEN NOTRE HISTOIRE"
-        className="absolute !-top-[120px] w-full object-contain sm:!-top-[200px] md:hidden lg:!-top-[200px]"
-      />
-      <div className="flex flex-col items-center overflow-hidden sm:overflow-visible">
-        <div className="flex items-center sm:ml-10 sm:w-full sm:items-start">
-          <h2 className="z-20 flex flex-col items-center justify-center font-thunder text-6xl text-red-carmen sm:flex-row">
-            Notre{' '}
-            <span className="my-5 text-8xl sm:mx-5 sm:text-6xl">Histoire</span>
-          </h2>
-        </div>
-        <div className="relative mt-14 flex h-auto flex-col sm:-mt-5 sm:ml-5">
-          <h3 className="hidden overflow-hidden p-3 font-thunder text-3xl font-[500] sm:flex sm:p-0">
-            UN ART DE VIVRE
-          </h3>
-          <p className="p-3 font-thunderLC text-lg leading-[21.5px] sm:w-1/2 sm:p-0">
-            Chez Carmen, on ne mange pas seulement. On savoure, on partage, on
-            rencontre, on rit, on aime, on se sent bien, on refait le monde,
-            bref on vit. S'asseoir à une table de Chez Carmen, le "restaurant
-            des abattoirs", c'est plonger dans une ambiance bistrot conviviale
-            où les bons produits faits maison et savourés en bonne compagnie
-            sont un art de vivre. Pièces du boucher, recettes grand-mère et
-            plats "canaille" sont les signatures de cette institution
-            toulousaine, créé en 1956.
-          </p>
-          <span className="absolute -right-4 -top-24 -rotate-12 font-softgank text-8xl text-red-carmen sm:-top-60 sm:left-3/4">
-            1956
-          </span>
-        </div>
-        <div className="justfy-center relative flex h-auto w-full items-center px-2 sm:absolute">
-          <div className="flex-center relative flex h-[300px] w-full justify-center">
-            <div className="absolute -bottom-2 -left-14 h-[230px] w-[230px] sm:-right-16 sm:-top-28 sm:left-auto sm:-z-10 sm:h-[320px] sm:w-[320px]">
-              <Image
-                src={'/img/home/histoire/histoire_screen.png'}
-                alt="NOTRE HISTOIRE"
-                fill={true}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-contain"
+    <div className="mb-44 mt-28 xl:mt-[250px]">
+      <h1 className="jutify-center flex flex-col items-center font-thunder text-4xl text-red-carmen md:ml-[6%] md:w-[400px] md:flex-row md:justify-start md:text-6xl lg:ml-[7.5%] xl:ml-[8.5%]">
+        {data?.[0].acf.title_heading.split(' ')[0]}
+        <span className="text-6xl md:mx-5">
+          {data?.[0].acf.title_heading.split(' ')[1]}
+        </span>
+      </h1>
+      <div className="flex flex-col p-5 md:mb-20 md:flex-row md:justify-around">
+        <div className="w-full md:w-1/2">
+          {data && (
+            <>
+              <div
+                className="font-thunder text-2xl font-semibold text-black-carmen md:text-4xl"
+                dangerouslySetInnerHTML={{
+                  __html: data[0].acf.subtitle_heading,
+                }}
               />
-            </div>
-
-            <div className="absolute -right-24 -top-3 h-[280px] w-[280px] rotate-[20deg] sm:left-1/2 sm:-rotate-0">
-              <Image
-                src={'/img/home/histoire/tony_carmen_histoire.png'}
-                alt="TONY CARMEN"
-                fill={true}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-contain"
+              <div
+                className="font-thunder text-lg text-black-carmen md:text-xl lg:max-w-[600px] xl:max-w-[500px]"
+                dangerouslySetInnerHTML={{ __html: data[0].acf.texte_heading }}
               />
-            </div>
-          </div>
-          <div className="break absolute left-[13%] top-6 flex rotate-12 flex-col flex-wrap items-start justify-start text-start font-softgank text-5xl text-red-carmen sm:-top-10 sm:left-2/4 sm:text-2xl sm:text-black-carmen">
-            <h3>Tony</h3>
-            <h3>CARMEN</h3>
-          </div>
+            </>
+          )}
         </div>
-
-        <div className="flex w-full items-center justify-center sm:justify-start">
-          <p className="p-3 font-thunderLC text-lg leading-[21.5px] sm:ml-5 sm:w-1/2 sm:p-0">
-            Au centre-ville de Toulouse, dans le quartier des Carmes, à deux pas
-            du Palais de Justice, Chez Carmen est un endroit incontournable pour
-            les amateurs de bonne chère, de plats cuisinés avec amour lentement
-            mijotés, et de moments de convivialité.
-          </p>
-        </div>
-        <div className="relative mt-12 flex h-[200px] w-full items-start justify-end">
-          <Button
-            color="red-carmen"
-            text="EN SAVOIR +"
-            textSize="text-xl"
-            width="w-[135px]"
-            height="h-[70px]"
-            classes={['!absolute -left-2 top-0', 'sm:left-[15%]']}
-          />
-          <div className="h-auto w-auto">
+        <div className="flex h-[400px] w-auto items-center justify-center">
+          <div className="relative h-full w-[300px]">
             <Image
-              src={'/img/home/histoire/palais_de_justice.png'}
-              width={160}
-              height={160}
-              alt="PALAIS DE JUSTICE"
-              className="absolute -right-14 top-[15px] rotate-12 sm:-top-[180px] sm:right-32 sm:w-[190px] sm:-rotate-12"
+              src={'/img/notre_histoire/histoire_tony_2x.png'}
+              alt="NOTRE HISTOIRE"
+              width={220}
+              height={220}
+              className="absolute left-1/2 top-1/2 -translate-x-[50%] -translate-y-[50%] lg:w-[600px] xl:-left-16 xl:top-16 xl:min-h-[540px] xl:min-w-[500px]"
             />
+            <Image
+              src={'/img/notre_histoire/histoire_ph1_2x.png'}
+              alt="NOTRE HISTOIRE"
+              width={180}
+              height={180}
+              className="absolute -left-7 top-1/2 -z-[1] -translate-y-[20%] md:-bottom-16 md:top-auto md:z-[1] xl:-left-[300px] xl:right-auto xl:min-w-[250px]"
+            />
+            <Image
+              src={'/img/notre_histoire/histoire_ph2_2x.png'}
+              alt="NOTRE HISTOIRE"
+              width={140}
+              height={140}
+              className="absolute -right-8 top-20 -z-[1] md:-right-16 md:top-3 md:w-[250px] xl:-top-12 xl:min-w-[350px] xl:rotate-[15deg]"
+            />
+            <h2 className="absolute -left-4 top-24 flex flex-col items-start justify-center font-softgank text-3xl text-red-carmen md:left-1 md:top-4 md:rotate-12 md:text-black-carmen xl:-top-32 xl:left-auto xl:right-8 xl:rotate-0 xl:text-5xl">
+              TONY <span>CARMEN</span>
+            </h2>
+            <span className="hidden md:absolute md:-top-5 md:right-16 md:block md:-rotate-12 md:font-softgank md:text-6xl md:text-red-carmen xl:bottom-20 xl:right-0 xl:top-auto xl:rotate-12 xl:text-8xl">
+              1956
+            </span>
+            <span className="hidden md:absolute md:-right-4 md:bottom-36 md:block md:w-[80px] md:-rotate-12 md:font-softgank md:text-xl md:text-black-carmen xl:bottom-0 xl:left-14 xl:w-auto xl:text-4xl">
+              PALAIS DE JUSTICE
+            </span>
           </div>
-          <h3 className="-transform-x-1/2 absolute -top-12 left-1/2 -rotate-12 flex-col font-softgank text-3xl text-red-carmen sm:-right-12 sm:-top-56 sm:left-auto sm:flex sm:text-2xl sm:text-black-carmen">
-            PALAIS
-            <span> DE JUSTICE</span>
-          </h3>
         </div>
       </div>
     </div>

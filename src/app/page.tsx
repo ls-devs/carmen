@@ -2,6 +2,7 @@ import {
   fetchAccueil,
   fetchFournisseurs,
   fetchHistoire,
+  fetchOptions,
 } from '@/utils/fetchs/fetchs';
 import getQueryClient from '@/utils/getQueryClient';
 import Hydrate from '@/utils/hydrateClient';

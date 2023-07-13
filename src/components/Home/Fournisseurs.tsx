@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Button } from '../Button/Button';
 import { block } from 'million/react';
 
-export const Fournisseurs = /* optimize */ block(() => {
+export const Fournisseurs = () => {
   return (
     <div className="relative mb-14 flex flex-col items-center justify-center">
       <div className="mb-2 mt-14">
@@ -114,4 +114,4 @@ export const Fournisseurs = /* optimize */ block(() => {
       />
     </div>
   );
-});
+};

@@ -37,24 +37,24 @@ export const HomePage = /* optimize */ block(() => {
   return (
     <>
       {/* HEADING VIDEO */}
-      <div className="relative flex h-[500px] items-center justify-center md:mt-5 lg:mt-32 lg:mb-36">
+      <div className="relative flex h-[500px] items-center justify-center md:mt-5 lg:mb-36 lg:mt-32">
         <div className="relative flex h-full w-full items-center justify-center bg-cover bg-center bg-no-repeat object-cover">
           <iframe
             width="560"
             height="315"
             src={`${data?.[0].acf.video_url.replace('watch?v=', 'embed/')}`}
             title="YouTube video player"
-            className="relative h-full w-full bg-cover bg-center bg-no-repeat object-cover md:h-[450px] md:w-[90%] md:rounded-3xl lg:w-[900px] lg:h-[550px]"
+            className="relative h-full w-full bg-cover bg-center bg-no-repeat object-cover md:h-[450px] md:w-[90%] md:rounded-3xl lg:h-[550px] lg:w-[900px] xl:h-[700px] xl:w-[80%]"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           ></iframe>
-          <div className="absolute top-0 hidden h-full w-4/5 rotate-[4deg] md:top-5 md:flex md:h-[450px] md:w-[91%] md:rounded-3xl md:border-[1px] md:border-black-carmen lg:h-[550px] lg:w-[900px] lg:-top-5"></div>
+          <div className="absolute top-0 hidden h-full w-4/5 rotate-[4deg] md:top-5 md:flex md:h-[450px] md:w-[91%] md:rounded-3xl md:border-[1px] md:border-black-carmen lg:-top-5 lg:h-[550px] lg:w-[900px] xl:-top-20 xl:h-[700px] xl:w-[80%]" />
           <Image
             src={'/img/home/heading/couverts.png'}
             width={400}
             height={800}
             alt="CHEZ CARMEN"
-            className="hidden md:absolute md:-left-40 md:top-20 md:flex md:rotate-[20deg]"
+            className="hidden md:absolute md:-left-40 md:top-20 md:flex md:rotate-[20deg] lg:-left-28 lg:-top-8 lg:max-h-[600px] lg:w-[400px] lg:rotate-[10deg] xl:h-[800px] xl:max-h-[800px] xl:w-[600px]"
           />
           <div className="hidden md:absolute md:right-0 md:top-0 md:flex md:h-full md:w-[250px]">
             <Image
@@ -62,14 +62,14 @@ export const HomePage = /* optimize */ block(() => {
               width={140}
               height={140}
               alt="CHEZ CARMEN"
-              className="hidden md:absolute md:-right-2 md:top-0 md:flex"
+              className="hidden md:absolute md:-right-2 md:top-0 md:flex lg:-top-24 lg:w-[350px] xl:-top-36 xl:max-w-[300px]"
             />
             <Image
-              src={'/img/home/heading/heading_bot_right_ph.png'}
+              src={'/img/home/heading/heading_bot_right_ph_2x.png'}
               width={90}
               height={90}
               alt="CHEZ CARMEN"
-              className="hidden md:absolute md:-right-6 md:top-40 md:flex"
+              className="hidden md:absolute md:-right-6 md:top-40 md:flex lg:w-[200px] xl:-right-20 xl:w-[350px] xl:max-w-[450px]"
             />
           </div>
         </div>
@@ -99,6 +99,13 @@ export const HomePage = /* optimize */ block(() => {
             </defs>
           </svg>
         </div>
+        <Image
+          src={'/img/home/histoire/histoire_top_3x.png'}
+          width={1920}
+          height={300}
+          className="pointer-events-none absolute -bottom-5 md:hidden"
+          alt="Notre Histoire"
+        />
       </div>
       {/* HEADING VIDEO */}
 
@@ -122,7 +129,7 @@ export const HomePage = /* optimize */ block(() => {
                 autoPlay
                 muted
                 poster="/img/home/heading/heading_video_thumbnail.png"
-                className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat object-cover px-5"
+                className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat object-cover px-5 lg:h-[450px] xl:h-[650px]"
                 src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
               ></video>
               <h3 className="absolute -top-4 left-0 -rotate-6 font-softgank text-2xl text-cream-carmen sm:-top-16 sm:left-36 sm:z-10 sm:rotate-6 sm:text-4xl">
@@ -168,7 +175,7 @@ export const HomePage = /* optimize */ block(() => {
               VIDÉOS
             </h2>
             {screenWidth >= 640 && (
-              <p className="px-5 font-thunderLC text-cream-carmen sm:flex sm:px-0 sm:pr-5">
+              <p className="px-5 font-thunderLC text-cream-carmen sm:flex sm:px-0 sm:pr-5 lg:text-lg xl:text-xl">
                 Elijah Craig, prêtre baptiste en Virginie, fonde sa distillerie
                 au Kentucky, comté de Scott en 1789. Il est considéré comme le
                 père du bourbon tel que nous le connaissons : un « mash bill »

@@ -1,12 +1,18 @@
 'use client';
-import { block } from 'million/react';
-import Image from 'next/image';
+import { useQueryUtils } from '@/hooks/useQueryUtils';
+import { IOptions } from '@/types/types';
+import { fetchOptions } from '@/utils/fetchs/fetchs';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-
-export const Footer = /* optimize */ block(() => {
+import Image from 'next/image';
+import { block } from 'million/react';
+const DataFooter = /* optimize */ block(() => {
   const path = usePathname();
   const [route, setRoute] = useState<string>('');
+  const { data, isLoading, isFetching, isError } = useQueryUtils<IOptions>({
+    qKey: ['getOptions'],
+    qFn: () => fetchOptions(),
+  });
 
   useEffect(() => {
     setRoute(path);
@@ -22,9 +28,12 @@ export const Footer = /* optimize */ block(() => {
       <div className="flex h-full w-full flex-col items-center justify-center space-y-2 p-3 min-[425px]:flex-row md:my-12 md:items-center md:justify-between">
         <div className="flex-center relative mt-20 h-full w-full min-[425px]:-mt-3 min-[425px]:w-9/12 min-[575px]:w-4/6 md:-mt-4 md:w-1/3 lg:mt-4 xl:mt-6 2xl:mt-8">
           <Image
-            src={`/img/logo/carmen_logo_${
-              route === '/actualites' || route === '/la-carte' ? 'cream' : 'red'
-            }_4x.png`}
+            src={`${
+              (route === '/actualites' && data) ||
+              (route === '/la-carte' && data)
+                ? data.acf.logo_carmen_creme
+                : data?.acf.logo_carmen_red
+            }`}
             width={300}
             height={300}
             alt="Carmen Logo Footer"
@@ -37,7 +46,7 @@ export const Footer = /* optimize */ block(() => {
               : 'text-red-carmen'
           } min-[425px]:top-4 md:left-1/2 md:top-16 md:w-1/3 md:-translate-x-1/2 md:text-center md:text-2xl xl:text-3xl`}
         >
-          RÉSERVATION : <span className="font-normal">05 61 42 04 95</span>
+          RÉSERVATION : <span className="font-normal">{data?.acf.tel}</span>
         </h3>
         <div
           className={`m-7 flex w-full flex-col items-center justify-center font-thunder ${
@@ -124,10 +133,10 @@ export const Footer = /* optimize */ block(() => {
             </svg>
           </div>
           <h3 className="text-end text-lg md:text-xl xl:text-3xl">
-            14 Av. Maurice Hauriou, 31000 Toulouse
+            {data?.acf.address}
           </h3>
           <h3 className="hidden text-end text-2xl lg:flex">
-            chezcarmen@contact.com
+            {data?.acf.contact_mail}
           </h3>
         </div>
         <div
@@ -153,3 +162,5 @@ export const Footer = /* optimize */ block(() => {
     </footer>
   );
 });
+
+export default DataFooter;

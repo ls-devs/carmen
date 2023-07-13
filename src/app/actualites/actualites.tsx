@@ -1,17 +1,17 @@
-'use client';
-import { useQueryUtils } from '@/hooks/useQueryUtils';
-import { IActualites } from '@/types/types';
-import { fetchActualites } from '@/utils/fetchs/fetchs';
-import { block } from 'million/react';
-import Image from 'next/image';
-import React from 'react';
+"use client";
+import { useQueryUtils } from "@/hooks/useQueryUtils";
+import { IActualites } from "@/types/types";
+import { fetchActualites } from "@/utils/fetchs/fetchs";
+import { block } from "million/react";
+import Image from "next/image";
+import React from "react";
 
 export const Actualites = /* optimize */ block(() => {
   const { data, isLoading, isFetching, isError } = useQueryUtils<IActualites[]>(
     {
-      qKey: ['getActualites'],
+      qKey: ["getActualites"],
       qFn: () => fetchActualites(),
-    }
+    },
   );
 
   return (
@@ -23,7 +23,7 @@ export const Actualites = /* optimize */ block(() => {
         <div className="relative flex flex-col items-center justify-center bg-red-carmen">
           <div className="absolute -top-20 w-full">
             <Image
-              src={'/img/actualites/actualites_top_sep_2x.png'}
+              src={"/img/actualites/actualites_top_sep_2x.png"}
               alt="ACTUALITES"
               width={300}
               height={300}
@@ -33,7 +33,7 @@ export const Actualites = /* optimize */ block(() => {
 
           <div className="absolute top-0 h-auto w-full">
             <Image
-              src={'/img/actualites/actualites_cadran_2x.png'}
+              src={"/img/actualites/actualites_cadran_2x.png"}
               alt="ACTUALITES"
               width={300}
               height={300}
@@ -59,7 +59,7 @@ export const Actualites = /* optimize */ block(() => {
           </p>
           <div className="h-auto w-full">
             <Image
-              src={'/img/actualites/actualites_ph_2x.png'}
+              src={"/img/actualites/actualites_ph_2x.png"}
               alt="ACTUALITES"
               width={300}
               height={300}
@@ -69,7 +69,7 @@ export const Actualites = /* optimize */ block(() => {
 
           <div className="h-auto w-full">
             <Image
-              src={'/img/actualites/actualites_paper_2x.png'}
+              src={"/img/actualites/actualites_paper_2x.png"}
               alt="ACTUALITES"
               width={300}
               height={300}
@@ -80,7 +80,7 @@ export const Actualites = /* optimize */ block(() => {
           <div className="flex flex-col">
             <div className="flex flex-col space-y-2 p-8">
               <Image
-                src={'/img/actualites/actualites_list_ph_2x.png'}
+                src={"/img/actualites/actualites_list_ph_2x.png"}
                 alt="ACTUALITES"
                 width={300}
                 height={300}
@@ -98,7 +98,7 @@ export const Actualites = /* optimize */ block(() => {
             </div>
             <div className="flex flex-col space-y-2 p-8">
               <Image
-                src={'/img/actualites/actualites_list_ph_2x.png'}
+                src={"/img/actualites/actualites_list_ph_2x.png"}
                 alt="ACTUALITES"
                 width={300}
                 height={300}
@@ -121,7 +121,7 @@ export const Actualites = /* optimize */ block(() => {
       <div className="relative mb-28 mt-14 flex flex-col">
         <div className="absolute -top-20 w-full">
           <Image
-            src={'/img/actualites/souvenirs_top_sep_2x.png'}
+            src={"/img/actualites/souvenirs_top_sep_2x.png"}
             alt="ACTUALITES"
             width={300}
             height={300}
@@ -135,7 +135,7 @@ export const Actualites = /* optimize */ block(() => {
         <div className="flex items-center justify-center">
           <div className="m-4 flex w-[150px] flex-col items-center justify-center">
             <Image
-              src={'/img/actualites/souvenir_ph_2x.png'}
+              src={"/img/actualites/souvenir_ph_2x.png"}
               alt="SOUVENIR"
               width={300}
               height={300}
@@ -156,7 +156,7 @@ export const Actualites = /* optimize */ block(() => {
           </div>
           <div className="m-4 flex w-[150px] flex-col items-center justify-center">
             <Image
-              src={'/img/actualites/souvenir_ph_2x.png'}
+              src={"/img/actualites/souvenir_ph_2x.png"}
               alt="SOUVENIR"
               width={300}
               height={300}

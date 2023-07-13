@@ -100,11 +100,46 @@ export type IGaleriePhoto = IWPDefault & {
 
 export type ILaCarte = {
   acf: {
-    menu: [
+    menus: [
       {
         title: string;
         price: string;
         description: string;
+        note: string;
+      },
+    ];
+    plats: [
+      {
+        title: string;
+        plats: string;
+      },
+    ];
+    plats_mis_en_avant: [
+      {
+        title: string;
+        price: string;
+      },
+    ];
+    a_la_carte: [
+      {
+        title: string;
+        plats: [
+          {
+            title: string;
+            price: string;
+          },
+        ];
+      },
+    ];
+    les_viandes: [
+      {
+        title: string;
+        plats: [
+          {
+            name: string;
+            price: string;
+          },
+        ];
       },
     ];
   };
@@ -113,12 +148,35 @@ export type ILaCarte = {
 export type INotreHistoire = IWPDefault & {
   acf: {
     title_heading: string;
-    text_heading: string;
+    subtitle_heading: string;
+    texte_heading: string;
     title_second: string;
-    chez_carmen_content: string[];
-    signature_chez_carmen: string;
+    chez_carmen_content: [
+      {
+        date: string;
+        text: string;
+        little_word: string;
+        images: string | boolean;
+      },
+    ];
+    signature_chez_carmen: [
+      {
+        images: [
+          {
+            image: string;
+          },
+        ];
+      },
+    ];
     titre_bascule: string;
-    content_bascule: string[];
+    content_bascule: [
+      {
+        date: string;
+        text: string;
+        little_word: string;
+        images: string | boolean;
+      },
+    ];
   };
 };
 
@@ -143,5 +201,15 @@ export type IFournisseurs = IWPDefault & {
     name: string;
     description: string;
     logo: string;
+  };
+};
+
+export type IOptions = {
+  acf: {
+    address: string;
+    contact_mail: string;
+    logo_carmen_red: string;
+    logo_carmen_creme: string;
+    tel: string;
   };
 };

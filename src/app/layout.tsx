@@ -1,6 +1,6 @@
-import { Footer } from '@/components/Global/Footer';
+import { Footer } from '@/components/Global/Footer/Footer';
 import { Main } from '@/components/Global/Main';
-import { Navbar } from '@/components/Global/Navbar';
+import { Navbar } from '@/components/Global/Navbar/Navbar';
 import ReactQueryProvider from '@/utils/queryProvider';
 import { Inter } from 'next/font/google';
 import './globals.scss';
