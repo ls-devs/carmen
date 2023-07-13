@@ -1,10 +1,13 @@
-"use client"
-import { block } from 'million/react';
-import Image from 'next/image';
+'use client';
+import { useQueryUtils } from '@/hooks/useQueryUtils';
+import { IOptions } from '@/types/types';
+import { fetchOptions } from '@/utils/fetchs/fetchs';
 import Link from 'next/link';
 import React, { useRef, useState } from 'react';
+import Image from 'next/image';
+import { block } from 'million/react';
 
-export const Navbar = /* optimize */ block(() => {
+export const DataNavbar = /* optimize */ block(() => {
   const [loop, setLoop] = useState<number>(0);
   const menubarsRefs = useRef<SVGElement[]>([]);
   const menuBurger = useRef<HTMLDivElement>(null);
@@ -14,6 +17,11 @@ export const Navbar = /* optimize */ block(() => {
       menubarsRefs.current.push(el);
     }
   };
+
+  const { data, isLoading, isFetching, isError } = useQueryUtils<IOptions>({
+    qKey: ['getOptions'],
+    qFn: () => fetchOptions(),
+  });
 
   const multipleToggles = (
     el: SVGElement | HTMLDivElement,
@@ -325,7 +333,7 @@ export const Navbar = /* optimize */ block(() => {
               fill="#780000"
             ></path>
           </svg>
-          05 61 42 04 95
+          {data?.acf.tel}
         </Link>
         <div className="block max-[767px]:hidden  md:max-lg:-mt-1">
           <div className="flex-center space-x-3">
@@ -389,3 +397,4 @@ export const Navbar = /* optimize */ block(() => {
     </nav>
   );
 });
+export default DataNavbar;

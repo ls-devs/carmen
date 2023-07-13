@@ -1,3 +1,4 @@
+'use client';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { INotreHistoire } from '@/types/types';
 import { fetchHistoire } from '@/utils/fetchs/fetchs';
@@ -5,7 +6,7 @@ import { block } from 'million/react';
 import Image from 'next/image';
 import React from 'react';
 
-export const NotreHistoire = block(() => {
+export const NotreHistoire = /* optimize */ block(() => {
   const { data, isLoading, isFetching, isError } = useQueryUtils<
     [INotreHistoire]
   >({
@@ -16,27 +17,29 @@ export const NotreHistoire = block(() => {
   return (
     <div className="mt-20">
       <h1 className="jutify-center flex flex-col items-center font-thunder text-4xl text-red-carmen md:ml-[6%] md:w-[400px] md:flex-row md:justify-start md:text-6xl lg:ml-[7.5%] xl:ml-[8.5%]">
-        Notre <span className="text-6xl md:mx-5">Histoire</span>
+        {data?.[0].acf.title_heading.split(' ')[0]}
+        <span className="text-6xl md:mx-5">
+          {data?.[0].acf.title_heading.split(' ')[1]}
+        </span>
       </h1>
       <div className="flex flex-col p-5 md:mb-20 md:flex-row md:justify-around">
         <div className="w-full md:w-1/2">
-          <h2 className="font-thunder text-2xl font-semibold text-black-carmen md:text-4xl">
-            UN ART DE VIVRE
-          </h2>
-          <p className="font-thunder text-lg text-black-carmen md:text-xl lg:max-w-[600px] xl:max-w-[500px]">
-            Chez Carmen, on ne mange pas seulement. On savoure, on partage, on
-            rencontre, on rit, on aime, on se sent bien, on refait le monde,
-            bref on vit. S'asseoir à une table de Chez Carmen, le "restaurant
-            des abattoirs", c'est plonger dans une ambiance bistrot conviviale
-            où les bons produits faits maison et savourés en bonne compagnie
-            sont un art de vivre. Pièces du boucher, recettes grand-mère et
-            plats "canaille" sont les signatures de cette institution
-            toulousaine, créé en 1956. Au centre-ville de Toulouse, dans le
-            quartier des Carmes, à deux pas du Palais de Justice, Chez Carmen
-            est un endroit incontournable pour les amateurs de bonne chère, de
-            plats cuisinés avec amour lentement mijotés, et de moments de
-            convivialité.
-          </p>
+          {data && (
+            <>
+              <div
+                className="font-thunder text-2xl font-semibold text-black-carmen md:text-4xl"
+                dangerouslySetInnerHTML={{
+                  __html: data?.[0].acf.subtitle_heading,
+                }}
+              />
+              <div
+                className="font-thunder text-lg text-black-carmen md:text-xl lg:max-w-[600px] xl:max-w-[500px]"
+                dangerouslySetInnerHTML={{
+                  __html: data?.[0].acf.texte_heading,
+                }}
+              />
+            </>
+          )}
         </div>
         <div className="flex h-[400px] w-auto items-center justify-center">
           <div className="relative h-full w-[300px]">
@@ -74,9 +77,12 @@ export const NotreHistoire = block(() => {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center">
-        <h2 className="mb-10 w-full text-center font-thunder text-5xl text-red-carmen">
-          Chez Carmen
-        </h2>
+        {data && (
+          <h2
+            className="mb-10 w-full text-center font-thunder text-5xl text-red-carmen"
+            dangerouslySetInnerHTML={{ __html: data?.[0].acf.title_second }}
+          />
+        )}
         <div className="flex flex-col items-center justify-center md:flex-row xl:w-3/4 xl:px-14">
           <div className="h-auto w-full">
             <div className="my-10 flex h-[250px] items-center justify-center">
@@ -340,7 +346,7 @@ export const NotreHistoire = block(() => {
           alt="LA BASCULE"
           width={1920}
           height={300}
-          className="absolute -top-[80px] min-[430px]:-top-[110px] min-[600px]:-top-[130px] -z-[1] w-full sm:!-top-[140px] md:!-top-[170px] lg:!-top-[200px] xl:!-top-[240px]"
+          className="absolute -top-[80px] -z-[1] w-full min-[430px]:-top-[110px] min-[600px]:-top-[130px] sm:!-top-[140px] md:!-top-[170px] lg:!-top-[200px] xl:!-top-[240px]"
         />
         <div className="flex h-auto w-full flex-col lg:items-center">
           <h2 className="mt-8 flex flex-col p-8 font-thunder text-6xl text-cream-carmen lg:w-4/5 lg:flex-row">
