@@ -2,7 +2,7 @@ import { fetchAccueil } from '@/utils/fetchs/fetchs';
 import getQueryClient from '@/utils/getQueryClient';
 import Hydrate from '@/utils/hydrateClient';
 import { dehydrate } from '@tanstack/react-query';
-import { Actualites } from './Actualites';
+import { Actualites } from './actualites';
 
 const Page = async () => {
   const queryClient = getQueryClient();

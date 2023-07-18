@@ -1,5 +1,6 @@
 import {
   fetchAccueil,
+  fetchActualites,
   fetchFournisseurs,
   fetchHistoire,
   fetchOptions,
@@ -7,13 +8,16 @@ import {
 import getQueryClient from '@/utils/getQueryClient';
 import Hydrate from '@/utils/hydrateClient';
 import { dehydrate } from '@tanstack/react-query';
-import { HomePage } from './Homepage';
+import { HomePage } from './homepage';
 
 const Page = async () => {
   const queryClient = getQueryClient();
-  await queryClient.prefetchQuery(['getHome'], fetchAccueil);
-  await queryClient.prefetchQuery(['getFournisseurs'], fetchFournisseurs);
-  await queryClient.prefetchQuery(['getHistoire'], fetchHistoire);
+  await queryClient.prefetchQuery(['getHome'], () => fetchAccueil());
+  await queryClient.prefetchQuery(['getFournisseurs'], () =>
+    fetchFournisseurs()
+  );
+  await queryClient.prefetchQuery(['getHistoire'], () => fetchHistoire());
+  await queryClient.prefetchQuery(['getActualites'], () => fetchActualites());
 
   const dehydratedState = dehydrate(queryClient);
 

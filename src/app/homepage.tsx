@@ -3,15 +3,15 @@ import { Button } from '@/components/Button/Button';
 import { Fournisseurs } from '@/components/Home/Fournisseurs';
 import { Histoire } from '@/components/Home/Histoire';
 import { Actualite } from '@/components/Home/Actualites';
-import { fetchAccueil } from '@/utils/fetchs/fetchs';
+import { fetchAccueil, fetchActualites } from '@/utils/fetchs/fetchs';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { IHomePage } from '@/types/types';
+import { IActualites, IHomePage } from '@/types/types';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
-import { block } from 'million/react';
+import { For } from 'million/react';
 
-export const HomePage = /* optimize */ block(() => {
+export const HomePage = () => {
   const items = useRef<HTMLDivElement[]>([]);
   const addToItems = (item: HTMLDivElement) => {
     if (!items.current.includes(item)) items.current.push(item);
@@ -20,6 +20,15 @@ export const HomePage = /* optimize */ block(() => {
   const { data, isLoading, isFetching, isError } = useQueryUtils<IHomePage[]>({
     qKey: ['getHome'],
     qFn: () => fetchAccueil(),
+  });
+  const {
+    data: dataA,
+    isLoading: isLoadingA,
+    isFetching: isFetchingA,
+    isError: isErrorA,
+  } = useQueryUtils<IActualites[]>({
+    qKey: ['getActualites'],
+    qFn: () => fetchActualites(),
   });
 
   useEffect(() => {
@@ -251,18 +260,21 @@ export const HomePage = /* optimize */ block(() => {
           height={400}
         />
         <div className="relative flex h-[640px] w-full items-center justify-center sm:mt-12 sm:h-[520px] sm:items-start">
-          <Actualite
-            key={1}
-            position={0}
-            screenWidth={screenWidth}
-            addToItems={addToItems}
-          />
-          <Actualite
-            key={0}
-            position={1}
-            screenWidth={screenWidth}
-            addToItems={addToItems}
-          />
+          {dataA && (
+            <For each={dataA}>
+              {(actu, idx) => (
+                <Actualite
+                  key={actu.id}
+                  position={idx}
+                  screenWidth={screenWidth}
+                  addToItems={addToItems}
+                  title={actu.acf.title}
+                  description={actu.acf.description}
+                  thumbnail={actu.acf.thumbnail}
+                />
+              )}
+            </For>
+          )}
         </div>
         <div className="mt-24 hidden w-full items-center justify-center sm:flex">
           <Button
@@ -349,7 +361,7 @@ export const HomePage = /* optimize */ block(() => {
             </div>
           </>
         )}
-        {screenWidth >= 640 && screenWidth <= 1024 && (
+        {screenWidth >= 640 && (
           <div className="hidden grid-cols-3 grid-rows-2 gap-2 p-6 sm:grid">
             <div className="relative row-span-2 flex h-full w-full flex-col">
               <Image
@@ -579,7 +591,7 @@ export const HomePage = /* optimize */ block(() => {
             </div>
           </>
         )}
-        {screenWidth >= 640 && screenWidth < 1024 && (
+        {screenWidth >= 640 && (
           <>
             <div className="relative h-full min-h-[650px] w-[500px] p-5">
               <Image
@@ -699,4 +711,4 @@ export const HomePage = /* optimize */ block(() => {
       {/* CONTACT */}
     </>
   );
-});
+};

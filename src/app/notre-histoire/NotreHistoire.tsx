@@ -6,7 +6,7 @@ import { For, block } from 'million/react';
 import Image from 'next/image';
 import React from 'react';
 
-export const NotreHistoire = block(() => {
+export const NotreHistoire = /* optimize */ block(() => {
   const { data, isLoading, isFetching, isError } = useQueryUtils<
     [INotreHistoire]
   >({

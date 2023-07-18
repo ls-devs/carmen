@@ -211,5 +211,11 @@ export type IOptions = {
     logo_carmen_red: string;
     logo_carmen_creme: string;
     tel: string;
+    medias: [
+      {
+        name: string;
+        link: string;
+      },
+    ];
   };
 };

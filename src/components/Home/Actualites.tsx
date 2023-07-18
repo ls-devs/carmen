@@ -1,17 +1,24 @@
-import { block } from "million/react";
-import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import { block } from 'million/react';
+import Image from 'next/image';
+import React, { useEffect, useRef, useState } from 'react';
 
 type ActualiteProps = {
   addToItems: (item: HTMLDivElement) => void;
   screenWidth: number;
   position: number;
+  title: string;
+  description: string;
+  thumbnail: string;
+  image?: string | boolean;
 };
-
 export const Actualite: React.FC<ActualiteProps> = ({
   addToItems,
   screenWidth,
   position,
+  title,
+  description,
+  thumbnail,
+  image,
 }) => {
   const myRef = useRef<HTMLDivElement>(null);
   const [myPosition, setMyPosition] = useState<number>(0);
@@ -35,7 +42,7 @@ export const Actualite: React.FC<ActualiteProps> = ({
       style={{ left: `${myPosition}px` }}
     >
       <Image
-        src={"/img/home/actualites/actualites_placeholder_img.png"}
+        src={`${thumbnail}`}
         alt="ACUTALITES PLACEHOLDER"
         width={250}
         height={250}
@@ -43,15 +50,12 @@ export const Actualite: React.FC<ActualiteProps> = ({
       />
       <div className="flex w-full flex-col p-4 sm:p-6">
         <h3 className="font-thunder text-xl text-cream-carmen sm:text-2xl">
-          UN ART DE VIVRE
+          {title}
         </h3>
-        <p className="font-thunderLC text-sm text-cream-carmen sm:text-lg">
-          Chez Carmen, on ne mange pas seulement. On savoure, on partage, on
-          rencontre, on rit, on aime, on se sent bien, on refait le monde, bref
-          on vit. S'asseoir à une table de Chez Carmen, le "restaurant des
-          abattoirs", c'est plonger dans une ambiance bistrot conviviale où les
-          bons produits faits maison
-        </p>
+        <div
+          className="font-thunderLC text-sm text-cream-carmen sm:text-lg"
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
       </div>
     </div>
   );
