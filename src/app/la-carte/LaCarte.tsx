@@ -238,9 +238,9 @@ export const LaCarte = /* optimize */ block(() => {
                           </h3>
                         )}
                         <For each={plat.plats}>
-                          {(plat, idx) => (
+                          {(plats, idx) => (
                             <p className="text-md font-thunder text-cream-carmen lg:text-2xl">
-                              {plat.title} - {plat.price}€
+                              {plats.title} - {plats.price}€
                             </p>
                           )}
                         </For>
@@ -288,9 +288,9 @@ export const LaCarte = /* optimize */ block(() => {
                         </h3>
                       )}
                       <For each={plat.plats}>
-                        {(plat, idx) => (
+                        {(plats, idx) => (
                           <p className="text-md font-thunder text-cream-carmen lg:text-2xl">
-                            {plat.title} - {plat.price}€
+                            {plats.title} - {plats.price}€
                           </p>
                         )}
                       </For>
@@ -400,7 +400,7 @@ export const LaCarte = /* optimize */ block(() => {
                     <For each={data[0].acf.les_viandes[idx].plats}>
                       {(plat, idx) => (
                         <p className="text-md font-thunder text-black-carmen">
-                          {plat.name} - {plat.price}€
+                          {plat.name} - {plat.price}
                         </p>
                       )}
                     </For>
@@ -410,6 +410,31 @@ export const LaCarte = /* optimize */ block(() => {
             }
           </For>
         )}
+
+        <div className="flex h-auto w-full flex-col">
+          <div className="flex-center flex h-auto w-full lg:absolute lg:bottom-0 lg:right-0 lg:w-auto">
+            <Image
+              src={'/img/la_carte/la_carte_viande_canard_2x.png'}
+              width={250}
+              height={200}
+              alt="L'AGNEAU"
+              className="lg:w-[400px]"
+            />
+          </div>
+
+          <div className="flex flex-col items-center justify-center py-4">
+            <h3 className="font-thunder text-4xl text-red-carmen">LE CANARD</h3>
+            <p className="text-md font-thunder text-black-carmen">
+              Pot au Feu des Abattoirs au gros sel (en hiver) - 25 €
+            </p>
+            <p className="text-md font-thunder text-black-carmen">
+              Daube mitonnée pomme vapeur façon
+            </p>
+            <p className="text-md font-thunder text-black-carmen">
+              grand-mère - 23 €
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

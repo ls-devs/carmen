@@ -2,8 +2,17 @@ import React from 'react';
 import Image from 'next/image';
 import { Button } from '../Button/Button';
 import { block } from 'million/react';
+import { useQueryUtils } from '@/hooks/useQueryUtils';
+import { IFournisseurs } from '@/types/types';
+import { fetchFournisseurs } from '@/utils/fetchs/fetchs';
 
-export const Fournisseurs = () => {
+export const Fournisseurs = /* optimize */ block(() => {
+  const { data, isLoading, isFetching, isError } = useQueryUtils<
+    IFournisseurs[]
+  >({
+    qKey: ['getFournisseurs'],
+    qFn: () => fetchFournisseurs(),
+  });
   return (
     <div className="relative mb-14 flex flex-col items-center justify-center">
       <div className="mb-2 mt-14">
@@ -114,4 +123,4 @@ export const Fournisseurs = () => {
       />
     </div>
   );
-};
+});
