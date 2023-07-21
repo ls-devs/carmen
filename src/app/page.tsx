@@ -1,25 +1,20 @@
 import {
   fetchAccueil,
-  fetchActualites,
   fetchFournisseurs,
   fetchHistoire,
-  fetchOptions,
 } from '@/utils/fetchs/fetchs';
-import getQueryClient from '@/utils/getQueryClient';
 import Hydrate from '@/utils/hydrateClient';
-import { dehydrate } from '@tanstack/react-query';
 import { HomePage } from './homepage';
+import { block } from 'million/react';
+import { useDehydratedState } from '@/hooks/useDehydratedState';
 
-const Page = async () => {
-  const queryClient = getQueryClient();
-  await queryClient.prefetchQuery(['getHome'], () => fetchAccueil());
-  await queryClient.prefetchQuery(['getFournisseurs'], () =>
-    fetchFournisseurs()
-  );
-  await queryClient.prefetchQuery(['getHistoire'], () => fetchHistoire());
-  await queryClient.prefetchQuery(['getActualites'], () => fetchActualites());
-
-  const dehydratedState = dehydrate(queryClient);
+const Page = () => {
+  const dehydratedState = useDehydratedState([
+    { qKey: 'getHome', qFn: () => fetchAccueil() },
+    { qKey: 'getFournisseurs', qFn: () => fetchFournisseurs() },
+    { qKey: 'getHistoire', qFn: () => fetchHistoire() },
+    { qKey: 'getActualites', qFn: () => fetchAccueil() },
+  ]);
 
   return (
     <Hydrate state={dehydratedState}>

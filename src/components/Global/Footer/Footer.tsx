@@ -11,7 +11,7 @@ import React, { useEffect, useState } from 'react';
 export const Footer = /* optimize */ block(() => {
   const path = usePathname();
   const [route, setRoute] = useState<string>('');
-  const { data, isLoading, isFetching, isError } = useQueryUtils<IOptions>({
+  const { data } = useQueryUtils<IOptions>({
     qKey: ['getOptions'],
     qFn: () => fetchOptions(),
   });
@@ -29,8 +29,8 @@ export const Footer = /* optimize */ block(() => {
     >
       <div className="flex h-full w-full flex-col items-center justify-center space-y-2 p-3 min-[425px]:flex-row md:my-12 md:items-center md:justify-between">
         <div className="flex-center relative mt-20 h-full w-full min-[425px]:-mt-3 min-[425px]:w-9/12 min-[575px]:w-4/6 md:-mt-4 md:w-1/3 lg:mt-4 xl:mt-6 2xl:mt-8">
-          {data && (
-            <Link href={'/'}>
+          <Link href={'/'}>
+            {data && (
               <Image
                 src={`${
                   (route === '/actualites' && data) ||
@@ -42,8 +42,8 @@ export const Footer = /* optimize */ block(() => {
                 height={300}
                 alt="Carmen Logo Footer"
               />
-            </Link>
-          )}
+            )}
+          </Link>
         </div>
         <h3
           className={`absolute top-7 font-thunder text-2xl font-bold ${

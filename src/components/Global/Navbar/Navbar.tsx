@@ -5,7 +5,9 @@ import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { IOptions } from '@/types/types';
 import Link from 'next/link';
 import Image from 'next/image';
-import { For, block } from 'million/react';
+import { For } from 'million/react';
+import { fetchGalerie } from '@/utils/fetchs/fetchs';
+import { QueryClient } from '@tanstack/react-query';
 
 export const Navbar = () => {
   const [loop, setLoop] = useState<number>(0);
@@ -18,10 +20,15 @@ export const Navbar = () => {
     }
   };
 
-  const { data, isLoading, isFetching, isError } = useQueryUtils<IOptions>({
+  const { data } = useQueryUtils<IOptions>({
     qKey: ['getOptions'],
     qFn: () => fetchOptions(),
   });
+
+  const qClient = new QueryClient();
+  const prefetchOnLinks = async (qKey: string, qFn: () => void) => {
+    await qClient.prefetchQuery({ queryKey: [`${qKey}`], queryFn: () => qFn });
+  };
 
   const multipleToggles = (
     el: SVGElement | HTMLDivElement,
@@ -167,8 +174,15 @@ export const Navbar = () => {
           </li>
           <li className="h-auto w-full">
             <Link
+              onMouseEnter={async () => {
+                await qClient.prefetchQuery({
+                  queryKey: ['getGalerie'],
+                  queryFn: () => fetchGalerie(),
+                  staleTime: 1800000,
+                });
+              }}
               className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
-              href="#"
+              href="carmen-en-image"
             >
               CARMEN EN IMAGE
               <svg
@@ -248,8 +262,15 @@ export const Navbar = () => {
         </li>
         <li className="h-auto">
           <Link
+            onMouseEnter={async () => {
+              await qClient.prefetchQuery({
+                queryKey: ['getGalerie'],
+                queryFn: () => fetchGalerie(),
+                staleTime: 1800000,
+              });
+            }}
             className="flex-center mt-6 flex-col px-1 font-thunder text-2xl text-red-carmen md:mt-8 min-[768px]:max-[800px]:text-lg lg:mt-0 lg:text-xl min-[1024px]:max-[1040px]:text-lg xl:text-2xl 2xl:text-3xl "
-            href="#"
+            href="carmen-en-image"
           >
             CARMEN EN IMAGE
           </Link>
@@ -336,8 +357,8 @@ export const Navbar = () => {
         <div className="block max-[767px]:hidden  md:max-lg:-mt-1">
           <div className="flex-center space-x-3">
             {data && (
-              <For each={data?.acf.medias}>
-                {(rs, idx) => {
+              <For each={data!.acf.medias}>
+                {(rs, _idx) => {
                   if (rs.name.toString().toLowerCase() === 'facebook') {
                     return (
                       <Link passHref href={`${rs.link}`} target="_blank">
@@ -358,6 +379,12 @@ export const Navbar = () => {
                       </Link>
                     );
                   }
+                }}
+              </For>
+            )}
+            {data && (
+              <For each={data!.acf.medias}>
+                {(rs, _idx) => {
                   if (rs.name.toString().toLowerCase() === 'instagram') {
                     return (
                       <Link passHref href={`${rs.link}`} target="_blank">

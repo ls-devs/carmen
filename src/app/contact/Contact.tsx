@@ -1,3 +1,4 @@
+'use client'
 import { Button } from "@/components/Button/Button";
 import { fetchOptions } from "@/utils/fetchs/fetchs";
 import { useQuery } from "@tanstack/react-query";
@@ -14,6 +15,7 @@ export const Contact = block(() => {
     watch,
     formState: { errors },
   } = useForm();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onSubmit = (data: any) => console.log(data);
   const [screenWidth, setScreenWidth] = useState<number>(0);
 

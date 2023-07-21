@@ -7,7 +7,7 @@ import Image from 'next/image';
 import React from 'react';
 
 export const LaCarte = /* optimize */ block(() => {
-  const { data, isLoading, isFetching, isError } = useQueryUtils<[ILaCarte]>({
+  const { data } = useQueryUtils<[ILaCarte]>({
     qKey: ['getCarte'],
     qFn: fetchCarte,
   });
@@ -64,10 +64,10 @@ export const LaCarte = /* optimize */ block(() => {
           </div>
 
           <div className="lg:ml-32">
-            {data && (
-              <For each={data[0].acf.plats}>
-                {(carte, idx) => (
-                  <div className="flex flex-col px-8 py-4 md:ml-4">
+            {data &&
+              data[0].acf.plats.map((carte, idx) => {
+                return (
+                  <div key={idx} className="flex flex-col px-8 py-4 md:ml-4">
                     <h3 className="relative mb-4 font-thunder text-2xl text-red-carmen md:text-4xl lg:text-6xl">
                       {carte.title}
                       <svg
@@ -89,9 +89,8 @@ export const LaCarte = /* optimize */ block(() => {
                       dangerouslySetInnerHTML={{ __html: carte.plats }}
                     />
                   </div>
-                )}
-              </For>
-            )}
+                );
+              })}
           </div>
           <div className="flex h-auto w-full items-center justify-center md:hidden">
             <div className="relative h-[250px] w-[300px]">
@@ -124,10 +123,10 @@ export const LaCarte = /* optimize */ block(() => {
           </div>
         </div>
         <div className="mb-24 flex w-full flex-col items-center space-y-2 md:relative md:order-1 md:flex-row md:flex-wrap md:items-start md:justify-center md:space-y-0">
-          {data && (
-            <For each={data?.[0].acf.menus}>
-              {(menu, idx) => (
-                <div className="flex flex-row">
+          {data &&
+            data[0].acf.menus.map((menu, idx) => {
+              return (
+                <div key={idx} className="flex flex-row">
                   <div className="md:min-w:[220px] p-2 md:mx-4 md:min-h-[220px] md:min-w-[300px] md:max-w-[220px] lg:max-w-[300px]">
                     <h2 className="text-center font-thunder text-4xl text-red-carmen lg:text-5xl">
                       {menu.title}
@@ -150,7 +149,10 @@ export const LaCarte = /* optimize */ block(() => {
                     </div>
                   </div>
                   {idx !== data[0].acf.menus.length - 1 && (
-                    <div className="hidden h-[200px] items-center justify-center lg:flex">
+                    <div
+                      key={`${idx}_svg`}
+                      className="hidden h-[200px] items-center justify-center lg:flex"
+                    >
                       <svg
                         className="h-full"
                         width="40"
@@ -174,9 +176,8 @@ export const LaCarte = /* optimize */ block(() => {
                     </div>
                   )}
                 </div>
-              )}
-            </For>
-          )}
+              );
+            })}
 
           <div className="hidden md:flex md:h-auto md:w-full md:items-center md:justify-center lg:!mt-14">
             <svg
@@ -213,42 +214,49 @@ export const LaCarte = /* optimize */ block(() => {
         </div>
         <div className="flex flex-col lg:w-[90%] xl:w-[75%]">
           <div className="mb-8 w-full items-center justify-center text-center">
-            {data && (
-              <For each={data?.[0].acf.plats_mis_en_avant}>
-                {(plat, idx) => (
-                  <p className="text-md font-thunder text-cream-carmen lg:text-2xl">
+            {data &&
+              data[0].acf.plats_mis_en_avant.map((plat, idx) => {
+                return (
+                  <p
+                    key={idx}
+                    className="text-md font-thunder text-cream-carmen lg:text-2xl"
+                  >
                     {plat.title} - {plat.price}€
                   </p>
-                )}
-              </For>
-            )}
+                );
+              })}
           </div>
 
           <div className="flex flex-col md:flex-row">
             <div className="w-full md:order-2">
-              {data && (
-                <For each={data?.[0].acf.a_la_carte}>
-                  {(plat, idx) =>
+              {data &&
+                data[0].acf.a_la_carte.map((plat, idx) => {
+                  return (
                     idx > 0 &&
                     idx <= 3 && (
-                      <div className="flex w-full flex-col px-8 py-4">
+                      <div
+                        key={`${plat.title}_idx`}
+                        className="flex w-full flex-col px-8 py-4"
+                      >
                         {plat.title && (
                           <h3 className="font-thunder text-2xl text-cream-carmen lg:text-2xl">
                             {plat.title}
                           </h3>
                         )}
-                        <For each={plat.plats}>
-                          {(plats, idx) => (
-                            <p className="text-md font-thunder text-cream-carmen lg:text-2xl">
+                        {plat.plats.map((plats, idx) => {
+                          return (
+                            <p
+                              key={`${plats.title}_${idx}`}
+                              className="text-md font-thunder text-cream-carmen lg:text-2xl"
+                            >
                               {plats.title} - {plats.price}€
                             </p>
-                          )}
-                        </For>
+                          );
+                        })}
                       </div>
                     )
-                  }
-                </For>
-              )}
+                  );
+                })}
             </div>
 
             <div className="flex w-full items-center justify-center md:order-1">
@@ -277,28 +285,33 @@ export const LaCarte = /* optimize */ block(() => {
           </div>
 
           <div className="flex w-full flex-col px-8 pb-4 text-right md:flex-row md:justify-between lg:text-left">
-            {data && (
-              <For each={data?.[0].acf.a_la_carte}>
-                {(plat, idx) =>
+            {data &&
+              data[0].acf.a_la_carte.map((plat, idx) => {
+                return (
                   idx > 3 && (
-                    <div className="flex w-full flex-col px-8 py-4">
+                    <div
+                      key={`${plat.title}_idx`}
+                      className="flex w-full flex-col px-8 py-4"
+                    >
                       {plat.title && (
                         <h3 className="font-thunder text-2xl text-cream-carmen lg:text-2xl">
                           {plat.title}
                         </h3>
                       )}
-                      <For each={plat.plats}>
-                        {(plats, idx) => (
-                          <p className="text-md font-thunder text-cream-carmen lg:text-2xl">
+                      {plat.plats.map((plats, idx) => {
+                        return (
+                          <p
+                            key={`${plats.price}_${idx}`}
+                            className="text-md font-thunder text-cream-carmen lg:text-2xl"
+                          >
                             {plats.title} - {plats.price}€
                           </p>
-                        )}
-                      </For>
+                        );
+                      })}
                     </div>
                   )
-                }
-              </For>
-            )}
+                );
+              })}
 
             <Image
               src={'/img/la_carte/la_carte_viande_taureau_2x.png'}
@@ -323,33 +336,41 @@ export const LaCarte = /* optimize */ block(() => {
         <h2 className="mb-16 mt-32 text-center font-thunder text-5xl text-red-carmen md:mt-48 lg:mt-52 lg:text-6xl">
           LES VIANDES
         </h2>
-        {data && (
-          <For each={data?.[0].acf.les_viandes}>
-            {(viandes, idx) =>
+        {data &&
+          data[0].acf.les_viandes.map((viandes, idx) => {
+            return (
               viandes.title !== "L'AGNEAU" &&
               viandes.title !== 'LE CANARD' && (
-                <div className="flex flex-col items-center justify-center py-4">
+                <div
+                  key={`${viandes.title}_${idx}`}
+                  className="flex flex-col items-center justify-center py-4"
+                >
                   <h3 className="font-thunder text-4xl text-red-carmen lg:text-5xl">
                     {viandes.title}
                   </h3>
-                  <For each={data[0].acf.les_viandes[idx].plats}>
-                    {(plat, idx) => (
-                      <p className="text-md font-thunder text-black-carmen lg:text-xl">
+                  {data[0].acf.les_viandes[idx].plats.map((plat, idx) => {
+                    return (
+                      <p
+                        key={`${plat.name}_{idx}`}
+                        className="text-md font-thunder text-black-carmen lg:text-xl"
+                      >
                         {plat.name} - {plat.price}€
                       </p>
-                    )}
-                  </For>
+                    );
+                  })}
                 </div>
               )
-            }
-          </For>
-        )}
+            );
+          })}
 
-        {data && (
-          <For each={data[0].acf.les_viandes}>
-            {(viandes, idx) =>
+        {data &&
+          data[0].acf.les_viandes.map((viandes, idx) => {
+            return (
               viandes.title === "L'AGNEAU" && (
-                <div className="flex h-auto w-full flex-col">
+                <div
+                  key={`${viandes.title}_${idx}`}
+                  className="flex h-auto w-full flex-col"
+                >
                   <div className="flex-center flex h-auto w-full lg:absolute lg:bottom-0 lg:left-0 lg:w-auto">
                     <Image
                       src={'/img/la_carte/la_carte_viande_agneau_2x.png'}
@@ -364,25 +385,30 @@ export const LaCarte = /* optimize */ block(() => {
                     <h3 className="font-thunder text-4xl text-red-carmen">
                       {viandes.title}
                     </h3>
-                    <For each={data[0].acf.les_viandes[idx].plats}>
-                      {(plat, idx) => (
-                        <p className="text-md font-thunder text-black-carmen">
+                    {data[0].acf.les_viandes[idx].plats.map((plat, idx) => {
+                      return (
+                        <p
+                          key={`${plat.price}_${idx}`}
+                          className="text-md font-thunder text-black-carmen"
+                        >
                           {plat.name} - {plat.price}€
                         </p>
-                      )}
-                    </For>
+                      );
+                    })}
                   </div>
                 </div>
               )
-            }
-          </For>
-        )}
+            );
+          })}
 
-        {data && (
-          <For each={data[0].acf.les_viandes}>
-            {(viandes, idx) =>
+        {data &&
+          data[0].acf.les_viandes.map((viandes, idx) => {
+            return (
               viandes.title === 'LE CANARD' && (
-                <div className="flex h-auto w-full flex-col">
+                <div
+                  key={`${viandes.title}_${idx}`}
+                  className="flex h-auto w-full flex-col"
+                >
                   <div className="flex-center flex h-auto w-full lg:absolute lg:bottom-0 lg:right-0 lg:w-auto">
                     <Image
                       src={'/img/la_carte/la_carte_viande_canard_2x.png'}
@@ -397,19 +423,21 @@ export const LaCarte = /* optimize */ block(() => {
                     <h3 className="font-thunder text-4xl text-red-carmen">
                       {viandes.title}
                     </h3>
-                    <For each={data[0].acf.les_viandes[idx].plats}>
-                      {(plat, idx) => (
-                        <p className="text-md font-thunder text-black-carmen">
+                    {data[0].acf.les_viandes[idx].plats.map((plat, idx) => {
+                      return (
+                        <p
+                          key={`${plat.name}_${idx}`}
+                          className="text-md font-thunder text-black-carmen"
+                        >
                           {plat.name} - {plat.price}
                         </p>
-                      )}
-                    </For>
+                      );
+                    })}
                   </div>
                 </div>
               )
-            }
-          </For>
-        )}
+            );
+          })}
 
         <div className="flex h-auto w-full flex-col">
           <div className="flex-center flex h-auto w-full lg:absolute lg:bottom-0 lg:right-0 lg:w-auto">

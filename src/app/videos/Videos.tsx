@@ -1,3 +1,4 @@
+'use client'
 import { Button } from "@/components/Button/Button";
 import { useQueryUtils } from "@/hooks/useQueryUtils";
 import { IVideos } from "@/types/types";
