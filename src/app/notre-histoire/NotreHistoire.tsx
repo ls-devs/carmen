@@ -76,10 +76,10 @@ export const NotreHistoire = /* optimize */ block(() => {
       </div>
       <div className="flex flex-col items-center justify-center">
         {data && (
-        <h2
-          className="mb-10 w-full text-center font-thunder text-5xl text-red-carmen"
-          dangerouslySetInnerHTML={{ __html: data?.[0].acf.title_second }}
-        />
+          <h2
+            className="mb-10 w-full text-center font-thunder text-5xl text-red-carmen"
+            dangerouslySetInnerHTML={{ __html: data?.[0].acf.title_second }}
+          />
         )}
         {data && (
           <For each={data?.[0].acf.chez_carmen_content}>

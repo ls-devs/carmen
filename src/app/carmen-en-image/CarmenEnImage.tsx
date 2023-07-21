@@ -8,7 +8,7 @@ import Image from 'next/image';
 import React, { ReactElement, useCallback, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-export const CarmenEnImage = /* optimize */ block(() => {
+export const CarmenEnImage = () => {
   const [screenWidth, setScreenWidth] = useState<number>(0);
   const [gridItems, setGridItems] = useState<ReactElement<HTMLDivElement>[][]>(
     []
@@ -327,4 +327,4 @@ export const CarmenEnImage = /* optimize */ block(() => {
       </section>
     </div>
   );
-});
+};

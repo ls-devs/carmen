@@ -1,5 +1,5 @@
 'use client';
-import { fetchOptions } from '@/utils/fetchs/fetchs';
+import { fetchCarte, fetchHistoire, fetchOptions } from '@/utils/fetchs/fetchs';
 import React, { useRef, useState } from 'react';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { IOptions } from '@/types/types';
@@ -111,6 +111,13 @@ export const Navbar = () => {
         <ul className="flex h-full flex-col items-center justify-start space-y-2 opacity-0 transition-all duration-1000 ease-in-out">
           <li className="h-auto w-full">
             <Link
+              onMouseEnter={async () => {
+                await qClient.prefetchQuery({
+                  queryKey: ['getCarte'],
+                  queryFn: () => fetchCarte(),
+                  staleTime: 1800000,
+                });
+              }}
               className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
               href="la-carte"
             >
@@ -132,8 +139,15 @@ export const Navbar = () => {
           </li>
           <li className="h-auto w-full">
             <Link
+              onMouseEnter={async () => {
+                await qClient.prefetchQuery({
+                  queryKey: ['getHistoire'],
+                  queryFn: () => fetchHistoire(),
+                  staleTime: 1800000,
+                });
+              }}
               className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
-              href="#"
+              href="notre-histoire"
             >
               HISTOIRE
               <svg
@@ -238,6 +252,13 @@ export const Navbar = () => {
       <ul className="flex-center mt-16 h-full w-full space-x-5 max-[767px]:hidden">
         <li className="h-auto ">
           <Link
+            onMouseEnter={async () => {
+              await qClient.prefetchQuery({
+                queryKey: ['getCarte'],
+                queryFn: () => fetchCarte(),
+                staleTime: 1800000,
+              });
+            }}
             className="flex-center mt-6 flex-col px-1 font-thunder text-2xl text-red-carmen md:mt-8 min-[768px]:max-[800px]:text-lg lg:mt-0 lg:text-xl min-[1024px]:max-[1040px]:text-lg xl:text-2xl 2xl:text-3xl"
             href="la-carte"
           >
@@ -246,8 +267,15 @@ export const Navbar = () => {
         </li>
         <li className="h-auto ">
           <Link
+            onMouseEnter={async () => {
+              await qClient.prefetchQuery({
+                queryKey: ['getHistoire'],
+                queryFn: () => fetchHistoire(),
+                staleTime: 1800000,
+              });
+            }}
             className="flex-center mt-6 flex-col px-1 font-thunder text-2xl text-red-carmen md:mt-8 min-[768px]:max-[800px]:text-lg lg:mt-0 lg:text-xl min-[1024px]:max-[1040px]:text-lg xl:text-2xl 2xl:text-3xl"
-            href="#"
+            href="notre-histoire"
           >
             HISTOIRE
           </Link>
