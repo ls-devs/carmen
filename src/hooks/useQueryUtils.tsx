@@ -14,7 +14,8 @@ export const useQueryUtils = <T,>({
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
     refetchOnMount: false,
-    refetchInterval: 3600000,
+    refetchInterval: 1800000,
+    staleTime: 1800000,
   });
 
   return { data, isLoading, isFetching, isError };

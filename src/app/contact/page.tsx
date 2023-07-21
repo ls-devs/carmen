@@ -1,13 +1,16 @@
 import { fetchCarte } from '@/utils/fetchs/fetchs';
-import getQueryClient from '@/utils/getQueryClient';
-import { Hydrate, dehydrate } from '@tanstack/react-query';
+import { Hydrate } from '@tanstack/react-query';
 import React from 'react';
 import { Contact } from './Contact';
+import { useDehydratedState } from '@/hooks/useDehydratedState';
 
-const Page = async () => {
-  const queryClient = getQueryClient();
-  await queryClient.prefetchQuery(['getOptions'], fetchCarte);
-  const dehydratedState = dehydrate(queryClient);
+const Page = () => {
+  const dehydratedState = useDehydratedState([
+    {
+      qKey: 'getOptions',
+      qFn: () => fetchCarte(),
+    },
+  ]);
 
   return (
     <Hydrate state={dehydratedState}>

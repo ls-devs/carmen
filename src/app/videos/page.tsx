@@ -1,13 +1,15 @@
-import { fetchVidéos } from "@/utils/fetchs/fetchs";
-import getQueryClient from "@/utils/getQueryClient";
-import Hydrate from "@/utils/hydrateClient";
-import { dehydrate } from "@tanstack/react-query";
-import { Videos } from "./Videos";
+import { fetchVidéos as fetchVideos } from '@/utils/fetchs/fetchs';
+import Hydrate from '@/utils/hydrateClient';
+import { Videos } from './Videos';
+import { useDehydratedState } from '@/hooks/useDehydratedState';
 
 const VideosPage = () => {
-  const queryClient = getQueryClient();
-  queryClient.prefetchQuery(["getVideos"], () => fetchVidéos());
-  const dehydrateState = dehydrate(queryClient);
+  const dehydrateState = useDehydratedState([
+    {
+      qKey: 'getVideos',
+      qFn: () => fetchVideos(),
+    },
+  ]);
   return (
     <Hydrate state={dehydrateState}>
       <Videos />

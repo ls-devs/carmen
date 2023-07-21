@@ -94,7 +94,13 @@ export type IHomePage = IWPDefault & {
 
 export type IGaleriePhoto = IWPDefault & {
   acf: {
-    images: string[];
+    images: [
+      {
+        image: string;
+        titre: string;
+        description: string;
+      },
+    ];
   };
 };
 

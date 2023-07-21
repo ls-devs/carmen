@@ -47,15 +47,28 @@ export const fetchFournisseurs = async () => {
 
 export const fetchPolicies = async () => {
   const req = await fetch(
-    `${process.env.CARMEN_BASE_URL}/pages?search="Politique de confidentialité"`,
+    `${process.env.NEXT_PUBLIC_CARMEN_BASE_URL}/pages?search="Politique de confidentialité"`,
     { next: { revalidate: 60 } }
   );
   return req.json();
 };
 
 export const fetchVidéos = async () => {
-  const req = await fetch(`${process.env.CARMEN_BASE_URL}/les_videos"`, {
-    next: { revalidate: 60 },
-  });
+  const req = await fetch(
+    `${process.env.NEXT_PUBLIC_CARMEN_BASE_URL}/les_videos"`,
+    {
+      next: { revalidate: 60 },
+    }
+  );
+  return req.json();
+};
+
+export const fetchGalerie = async () => {
+  const req = await fetch(
+    `${process.env.NEXT_PUBLIC_CARMEN_BASE_URL}/pages?search=Galerie Photo`,
+    {
+      next: { revalidate: 60 },
+    }
+  );
   return req.json();
 };

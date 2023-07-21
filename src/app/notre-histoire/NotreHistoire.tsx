@@ -7,40 +7,38 @@ import Image from 'next/image';
 import React from 'react';
 
 export const NotreHistoire = /* optimize */ block(() => {
-  const { data, isLoading, isFetching, isError } = useQueryUtils<
-    [INotreHistoire]
-  >({
+  const { data } = useQueryUtils<[INotreHistoire]>({
     qKey: ['getHistoire'],
-    qFn: fetchHistoire,
+    qFn: () => fetchHistoire(),
   });
 
   return (
     <div className="mt-20">
-      <h1 className="jutify-center flex flex-col items-center font-thunder text-4xl text-red-carmen md:ml-[6%] md:w-[400px] md:flex-row md:justify-start md:text-6xl lg:ml-[7.5%] xl:ml-[8.5%]">
-        {data?.[0].acf.title_heading.split(' ')[0]}
-        <span className="text-6xl md:mx-5">
-          {data?.[0].acf.title_heading.split(' ')[1]}
-        </span>
-      </h1>
+      {data && (
+        <h1 className="jutify-center flex flex-col items-center font-thunder text-4xl text-red-carmen md:ml-[6%] md:w-[400px] md:flex-row md:justify-start md:text-6xl lg:ml-[7.5%] xl:ml-[8.5%]">
+          {data?.[0].acf.title_heading.split(' ')[0]}
+          <span className="text-6xl md:mx-5">
+            {data?.[0].acf.title_heading.split(' ')[1]}
+          </span>
+        </h1>
+      )}
       <div className="flex flex-col p-5 md:mb-20 md:flex-row md:justify-around">
-        <div className="w-full md:w-1/2">
-          {data && (
-            <>
-              <div
-                className="font-thunder text-2xl font-semibold text-black-carmen md:text-4xl"
-                dangerouslySetInnerHTML={{
-                  __html: data?.[0].acf.subtitle_heading,
-                }}
-              />
-              <div
-                className="font-thunder text-lg text-black-carmen md:text-xl lg:max-w-[600px] xl:max-w-[500px]"
-                dangerouslySetInnerHTML={{
-                  __html: data?.[0].acf.texte_heading,
-                }}
-              />
-            </>
-          )}
-        </div>
+        {data && (
+          <div className="w-full md:w-1/2">
+            <div
+              className="font-thunder text-2xl font-semibold text-black-carmen md:text-4xl"
+              dangerouslySetInnerHTML={{
+                __html: data?.[0].acf.subtitle_heading,
+              }}
+            />
+            <div
+              className="font-thunder text-lg text-black-carmen md:text-xl lg:max-w-[600px] xl:max-w-[500px]"
+              dangerouslySetInnerHTML={{
+                __html: data?.[0].acf.texte_heading,
+              }}
+            />
+          </div>
+        )}
         <div className="flex h-[400px] w-auto items-center justify-center">
           <div className="relative h-full w-[300px]">
             <Image
@@ -78,10 +76,10 @@ export const NotreHistoire = /* optimize */ block(() => {
       </div>
       <div className="flex flex-col items-center justify-center">
         {data && (
-          <h2
-            className="mb-10 w-full text-center font-thunder text-5xl text-red-carmen"
-            dangerouslySetInnerHTML={{ __html: data?.[0].acf.title_second }}
-          />
+        <h2
+          className="mb-10 w-full text-center font-thunder text-5xl text-red-carmen"
+          dangerouslySetInnerHTML={{ __html: data?.[0].acf.title_second }}
+        />
         )}
         {data && (
           <For each={data?.[0].acf.chez_carmen_content}>
