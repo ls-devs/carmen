@@ -1,11 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
 import { fetchHistoire } from '@/utils/fetchs/fetchs';
-import { block } from 'million/react';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { INotreHistoire } from '@/types/types';
 
-export const Histoire = /* optimize */ block(() => {
+export const Histoire = () => {
   const { data } = useQueryUtils<[INotreHistoire]>({
     qKey: ['getHistoire'],
     qFn: () => fetchHistoire(),
@@ -71,4 +70,4 @@ export const Histoire = /* optimize */ block(() => {
       </div>
     </div>
   );
-});
+};

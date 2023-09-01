@@ -19,6 +19,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
+      <meta property="og:title" content="Chez Carmen" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="http://www.chezcarmen.fr" />
+      <meta
+        property="og:image"
+        content="https://champcaine.com/img/champcain_logo.png"
+      />
+      <meta property="og:locale" content="en_US" />
+      <meta property="og:description" content="Chez Carmen" />
+
       <body className={inter.className}>
         <ReactQueryProvider>
           <Navbar key={'navbar'} />

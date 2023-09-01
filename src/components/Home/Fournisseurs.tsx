@@ -1,12 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import { Button } from '../Button/Button';
-import { block } from 'million/react';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { IFournisseurs } from '@/types/types';
 import { fetchFournisseurs } from '@/utils/fetchs/fetchs';
 
-export const Fournisseurs = /* optimize */ block(() => {
+export const Fournisseurs = () => {
   const { data, isLoading, isFetching, isError } = useQueryUtils<
     IFournisseurs[]
   >({
@@ -14,21 +13,32 @@ export const Fournisseurs = /* optimize */ block(() => {
     qFn: () => fetchFournisseurs(),
   });
   return (
-    <div className="relative mb-14 flex flex-col items-center justify-center">
-      <div className="mb-2 mt-14">
+    <div className="relative mb-14 flex flex-col items-center justify-center md:relative md:min-h-[900px] lg:mb-28 xl:min-h-[1200px]">
+      <div className="mb-2 mt-14 md:mt-20">
         <h2 className="flex flex-col items-center justify-center font-thunderLC text-5xl font-bold text-red-carmen">
           <span className="font-thunder font-light">Nos</span>
           FOURNISSEURS
         </h2>
       </div>
       <div className="flex w-full flex-col items-center justify-center">
-        <div className="my-4 flex w-full items-center justify-between px-2">
+        <div className="hidden md:absolute md:left-0 md:flex md:h-2/3 md:w-[220px] xl:w-[15%]">
+          <Image
+            src={'/img/home/fournisseurs/fournisseurs_placeholder.png'}
+            alt="FOURNISSEURS PLACEHOLDER"
+            width={300}
+            height={300}
+            className="h-full w-full object-cover"
+          />
+        </div>
+
+        <div className="my-4 flex w-full items-center justify-between px-2 md:justify-center">
           <svg
             fill="none"
             height="23"
             viewBox="0 0 64 23"
             width="64"
             xmlns="http://www.w3.org/2000/svg"
+            className="md:hidden"
           >
             <g clipPath="url(#clip0_1016_162)">
               <path
@@ -62,6 +72,7 @@ export const Fournisseurs = /* optimize */ block(() => {
           </div>
 
           <svg
+            className="md:hidden"
             fill="none"
             height="23"
             viewBox="0 0 64 23"
@@ -91,17 +102,18 @@ export const Fournisseurs = /* optimize */ block(() => {
           </svg>
         </div>
         <div className="mt-2 flex items-center justify-center">
-          <p className="mt-2 px-2 text-center font-thunderLC text-lg">
+          <p className="mt-2 w-1/2 px-2 text-center font-thunderLC text-lg lg:text-4xl">
             Retrouvez les produits de l'Épicerie Canaille à Toulouse Bientôt
             L'Épicerie Canaille sur le web !
           </p>
         </div>
-        <div className="m-4">
+        <div className="m-4 lg:flex lg:w-full lg:items-center lg:justify-center">
           <Image
             src={'/img/home/fournisseurs/fournisseurs_placeholder.png'}
             alt="FOURNISSEURS PLACEHOLDER"
             width={300}
             height={300}
+            className="lg:w-[400px] xl:w-[500px]"
           />
         </div>
         <div className="my-4">
@@ -111,6 +123,25 @@ export const Fournisseurs = /* optimize */ block(() => {
             textSize="text-xl"
             width="w-[135px]"
             height="h-[70px]"
+          />
+        </div>
+
+        <div className="hidden md:absolute md:right-0 md:top-24 md:flex md:h-2/5 md:w-[220px] xl:top-48 xl:w-[15%]">
+          <Image
+            src={'/img/home/fournisseurs/fournisseurs_placeholder.png'}
+            alt="FOURNISSEURS PLACEHOLDER"
+            width={300}
+            height={300}
+            className="w-full object-cover"
+          />
+        </div>
+        <div className="hidden md:absolute md:bottom-0 md:right-0 md:flex md:h-2/5 md:w-1/5 lg:bottom-16 lg:h-[30%] lg:w-[28%]">
+          <Image
+            src={'/img/home/fournisseurs/fournisseurs_placeholder.png'}
+            alt="FOURNISSEURS PLACEHOLDER"
+            width={300}
+            height={300}
+            className="w-full object-cover"
           />
         </div>
       </div>
@@ -123,4 +154,4 @@ export const Fournisseurs = /* optimize */ block(() => {
       />
     </div>
   );
-});
+};

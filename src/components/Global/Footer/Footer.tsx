@@ -2,13 +2,12 @@
 import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { IOptions } from '@/types/types';
 import { fetchOptions } from '@/utils/fetchs/fetchs';
-import { block } from 'million/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
-export const Footer = /* optimize */ block(() => {
+export const Footer = () => {
   const path = usePathname();
   const [route, setRoute] = useState<string>('');
   const { data } = useQueryUtils<IOptions>({
@@ -166,4 +165,4 @@ export const Footer = /* optimize */ block(() => {
       />
     </footer>
   );
-});
+};

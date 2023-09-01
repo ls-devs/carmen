@@ -9,7 +9,6 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { IActualites, IHomePage } from '@/types/types';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
-import { For } from 'million/react';
 
 export const HomePage = () => {
   const items = useRef<HTMLDivElement[]>([]);
@@ -17,16 +16,11 @@ export const HomePage = () => {
     if (!items.current.includes(item)) items.current.push(item);
   };
   const [screenWidth, setScreenWidth] = useState<number>(0);
-  const { data, isLoading, isFetching, isError } = useQueryUtils<IHomePage[]>({
+  const { data } = useQueryUtils<IHomePage[]>({
     qKey: ['getHome'],
     qFn: () => fetchAccueil(),
   });
-  const {
-    data: dataA,
-    isLoading: isLoadingA,
-    isFetching: isFetchingA,
-    isError: isErrorA,
-  } = useQueryUtils<IActualites[]>({
+  const { data: dataA } = useQueryUtils<IActualites[]>({
     qKey: ['getActualites'],
     qFn: () => fetchActualites(),
   });
@@ -246,10 +240,10 @@ export const HomePage = () => {
       <Fournisseurs />
 
       {/* LES ACTUALITES CARMEN */}
-      <div className="relative bg-red-carmen">
-        <div className="h-[40px]"></div>
+      <div className="relative bg-red-carmen xl:flex xl:flex-col xl:items-center xl:justify-center">
+        <div className="h-[40px] md:h-[100px]"></div>
         <h2 className="flex flex-col items-center justify-center font-thunder text-5xl font-extralight text-cream-carmen">
-          Les actualités{' '}
+          Les actualités
           <span className="font-thunderLC font-bold">Carmen</span>
         </h2>
         <Image
@@ -260,21 +254,19 @@ export const HomePage = () => {
           height={400}
         />
         <div className="relative flex h-[640px] w-full items-center justify-center sm:mt-12 sm:h-[520px] sm:items-start">
-          {dataA && (
-            <For each={dataA}>
-              {(actu, idx) => (
-                <Actualite
-                  key={actu.id}
-                  position={idx}
-                  screenWidth={screenWidth}
-                  addToItems={addToItems}
-                  title={actu.acf.title}
-                  description={actu.acf.description}
-                  thumbnail={actu.acf.thumbnail}
-                />
-              )}
-            </For>
-          )}
+          {dataA?.map((actu, idx) => {
+            return (
+              <Actualite
+                key={actu.id}
+                position={idx}
+                screenWidth={screenWidth}
+                addToItems={addToItems}
+                title={actu.acf.title}
+                description={actu.acf.description}
+                thumbnail={actu.acf.thumbnail}
+              />
+            );
+          })}
         </div>
         <div className="mt-24 hidden w-full items-center justify-center sm:flex">
           <Button

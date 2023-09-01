@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// type QueryType<T> = T extends any[] ? [T] : T;
 import { useQuery } from '@tanstack/react-query';
 export const useQueryUtils = <T,>({
   qKey,
@@ -11,9 +10,9 @@ export const useQueryUtils = <T,>({
   const { data, isLoading, isFetching, isError } = useQuery<T>({
     queryKey: qKey,
     queryFn: () => qFn(),
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-    refetchOnMount: false,
+    refetchOnWindowFocus: true,
+    refetchOnReconnect: true,
+    refetchOnMount: true,
     refetchInterval: 1800000,
     staleTime: 1800000,
   });
