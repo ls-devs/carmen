@@ -1,14 +1,13 @@
-'use client'
-import { Button } from "@/components/Button/Button";
-import { fetchOptions } from "@/utils/fetchs/fetchs";
-import { useQuery } from "@tanstack/react-query";
-import { block } from "million/react";
-import Image from "next/image";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+'use client';
+import { Button } from '@/components/Button/Button';
+import { fetchOptions } from '@/utils/fetchs/fetchs';
+import { useQuery } from '@tanstack/react-query';
+import Image from 'next/image';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
-export const Contact = block(() => {
+export const Contact = () => {
   const {
     register,
     handleSubmit,
@@ -31,13 +30,6 @@ export const Contact = block(() => {
     };
   }, []);
 
-  const { data, isLoading, isFetching, isError } = useQuery({
-    queryKey: ["getOptions"],
-    queryFn: fetchOptions,
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-  });
-
   return (
     <div className="mt-[120px] flex flex-col">
       <div className="flex flex-col">
@@ -50,7 +42,7 @@ export const Contact = block(() => {
               <h2 className="font-thunder text-2xl text-red-carmen">
                 Formulaire
               </h2>
-              <p className="text-center font-thunderLC text-lg text-red-carmen">
+              <p className="px-8 text-center font-thunderLC text-lg text-red-carmen md:w-1/2">
                 Une question, un commentaire, une suggestion ou une demande
                 particulière ? N'hésitez pas à nous envoyer un mail via le
                 formulaire ci-dessous, nous y répondrons dès que possible.
@@ -63,21 +55,21 @@ export const Contact = block(() => {
                 </p>
                 <Image
                   className="absolute -bottom-12 left-0 z-[3]"
-                  src={"/img/contact/pen_2x.png"}
+                  src={'/img/contact/pen_2x.png'}
                   alt="CONTACT"
                   width={250}
                   height={200}
                 />
                 <Image
                   className="absolute -right-5 -top-10 z-[3]"
-                  src={"/img/contact/paperclip_2x.png"}
+                  src={'/img/contact/paperclip_2x.png'}
                   alt="CONTACT"
                   width={200}
                   height={200}
                 />
                 <Image
                   className="absolute left-1/2 top-1/2 ml-8 -translate-x-1/2 -translate-y-1/2"
-                  src={"/img/contact/contact_ph_2x.png"}
+                  src={'/img/contact/contact_ph_2x.png'}
                   alt="CONTACT"
                   width={250}
                   height={200}
@@ -86,45 +78,106 @@ export const Contact = block(() => {
             </div>
           </div>
           <div className="order-3 flex w-full flex-col">
-            <div className="item-center flex flex-col justify-center px-8 pt-8">
-              <div className="flex w-full flex-col items-start">
+            <div className="item-center flex flex-col justify-center px-8 pt-8 md:px-16">
+              <div className="relative mb-4 flex w-full items-start">
                 <label
                   htmlFor="NOM"
                   className="font-thunder text-xl font-semibold text-red-carmen"
                 >
                   NOM*
                 </label>
-                <input type="text" />
+                <input type="text" className="ml-2 w-full" />
+                <div className="absolute -bottom-2 left-0 h-[10px] w-full">
+                  <Image
+                    src={'/img/contact/underline_cream_4x.png'}
+                    height={100}
+                    width={100}
+                    alt="NOM"
+                    className="w-full"
+                  />
+                </div>
               </div>
-              <div className="flex w-full flex-col items-start">
+              <div className="relative mb-4 flex w-full items-start">
                 <label
                   htmlFor="E-MAIL"
-                  className="font-thunder text-xl font-semibold text-red-carmen"
+                  className="w-[60px] font-thunder text-xl font-semibold text-red-carmen"
                 >
                   E-MAIL*
                 </label>
-                <input type="text" />
+                <input type="text" className="ml-2 w-full" />
+                <div className="absolute -bottom-2 left-0 h-[10px] w-full">
+                  <Image
+                    src={'/img/contact/underline_cream_4x.png'}
+                    height={100}
+                    width={100}
+                    alt="NOM"
+                    className="w-full"
+                  />
+                </div>
               </div>
-              <div className="flex w-full flex-col items-start">
+              <div className="relative mb-4 flex w-full items-start">
                 <label
                   htmlFor="PRENOM"
                   className="font-thunder text-xl font-semibold text-red-carmen"
                 >
                   PRENOM*
                 </label>
-                <input type="text" />
+                <input type="text" className="ml-2 w-full" />
+                <div className="absolute -bottom-2 left-0 h-[10px] w-full">
+                  <Image
+                    src={'/img/contact/underline_cream_4x.png'}
+                    height={100}
+                    width={100}
+                    alt="NOM"
+                    className="w-full"
+                  />
+                </div>
               </div>
-              <div className="flex w-full flex-col items-start">
+              <div className="relative mb-4 flex w-full items-start">
                 <label
                   htmlFor="TEL"
-                  className="font-thunder text-xl font-semibold text-red-carmen"
+                  className="w-[65px] font-thunder text-xl font-semibold text-red-carmen md:w-[180px]"
                 >
                   NUMÉRO DE TÉLÉPHONE*
                 </label>
-                <input type="text" />
+                <input
+                  type="text"
+                  className="ml-4 flex h-full w-full pt-[30px] md:pt-0"
+                />
+                <div className="absolute -bottom-2 left-0 h-[10px] w-full">
+                  <Image
+                    src={'/img/contact/underline_cream_4x.png'}
+                    height={100}
+                    width={100}
+                    alt="NOM"
+                    className="w-full"
+                  />
+                </div>
               </div>
             </div>
-            <div className="mt-5 flex flex-col items-center justify-center bg-red-carmen p-8">
+            <div className="mt-5 flex flex-col items-center justify-center bg-red-carmen p-8 md:px-24">
+              <div className="relative mb-4 flex w-full items-start">
+                <label
+                  htmlFor="TEL"
+                  className="w-[85px] font-thunder text-xl font-semibold text-cream-carmen md:w-[110px]"
+                >
+                  OBJET DU MAIL*
+                </label>
+                <input
+                  type="text"
+                  className="ml-4 flex h-full w-full pt-[30px] md:pt-1"
+                />
+                <div className="absolute -bottom-2 left-0 h-[10px] w-full">
+                  <Image
+                    src={'/img/contact/contact_underline_cream.png'}
+                    height={100}
+                    width={100}
+                    alt="NOM"
+                    className="w-full"
+                  />
+                </div>
+              </div>
+
               <div className="flex w-full flex-col items-start">
                 <label
                   htmlFor="OBJECT"
@@ -133,7 +186,13 @@ export const Contact = block(() => {
                   MESSAGE*
                 </label>
 
-                <textarea name="MESSAGE" id="" cols={30} rows={10} />
+                <textarea
+                  name="MESSAGE"
+                  id=""
+                  cols={30}
+                  rows={10}
+                  className="w-full"
+                />
               </div>
               <Button
                 color="cream-carmen"
@@ -152,7 +211,7 @@ export const Contact = block(() => {
           <div className="flex items-start justify-start space-x-3 p-4">
             <div className="flex w-[150px] min-w-[150px] flex-col">
               <Image
-                src={"/img/contact/contact_rs_ph_2x.png"}
+                src={'/img/contact/contact_rs_ph_2x.png'}
                 alt="RÉSEAUX SOCIAUX"
                 width={220}
                 height={220}
@@ -163,7 +222,7 @@ export const Contact = block(() => {
             </div>
             <div className="flex w-[150px] min-w-[150px] flex-col">
               <Image
-                src={"/img/contact/contact_rs_ph_2x.png"}
+                src={'/img/contact/contact_rs_ph_2x.png'}
                 alt="RÉSEAUX SOCIAUX"
                 width={220}
                 height={220}
@@ -174,7 +233,7 @@ export const Contact = block(() => {
             </div>
             <div className="flex w-[150px] min-w-[150px] flex-col">
               <Image
-                src={"/img/contact/contact_rs_ph_2x.png"}
+                src={'/img/contact/contact_rs_ph_2x.png'}
                 alt="RÉSEAUX SOCIAUX"
                 width={220}
                 height={220}
@@ -201,13 +260,13 @@ export const Contact = block(() => {
                     </h3>
                     <Link
                       className="text-sm text-cream-carmen"
-                      href={"mailto:chezcarmen@contact.com"}
+                      href={'mailto:chezcarmen@contact.com'}
                     >
                       chezcarmen@contact.com
                     </Link>
                     <Link
                       className="font-bold text-cream-carmen"
-                      href={"http://instagram.com/chezcarmentoulouse"}
+                      href={'http://instagram.com/chezcarmentoulouse'}
                       target="_blank"
                     >
                       @chezcarmentoulouse
@@ -218,7 +277,7 @@ export const Contact = block(() => {
                   <div className="relative mt-14 flex justify-start">
                     <Link
                       className="ml-6 font-thunder text-2xl text-cream-carmen"
-                      href={"telto:05 61 42 04 95"}
+                      href={'telto:05 61 42 04 95'}
                     >
                       05 61 42 04 95
                       <svg
@@ -241,14 +300,14 @@ export const Contact = block(() => {
                 <div className="mt-8 flex h-auto w-full items-center justify-center">
                   <div className="relative flex h-[250px] w-[300px]">
                     <Image
-                      src={"/img/home/contact/contact_nada_2x.png"}
+                      src={'/img/home/contact/contact_nada_2x.png'}
                       width={174}
                       height={217}
                       alt="CONTACT"
                       className="absolute -top-20 right-0"
                     />
                     <Image
-                      src={"/img/home/contact/contact_ph_2x.png"}
+                      src={'/img/home/contact/contact_ph_2x.png'}
                       width={180}
                       height={27}
                       alt="CONTACT"
@@ -256,14 +315,14 @@ export const Contact = block(() => {
                     />
 
                     <Image
-                      src={"/img/home/contact/contact_tel_2x.png"}
+                      src={'/img/home/contact/contact_tel_2x.png'}
                       width={130}
                       height={50}
                       alt="CONTACT"
                       className="absolute left-[25%] z-[18]"
                     />
                     <Image
-                      src={"/img/home/contact/contact_phone_2x.png"}
+                      src={'/img/home/contact/contact_phone_2x.png'}
                       width={250}
                       height={70}
                       alt="CONTACT"
@@ -274,7 +333,7 @@ export const Contact = block(() => {
                 <div className="relative flex items-center justify-center overflow-hidden">
                   <div className="flex h-auto w-full items-center justify-center">
                     <Image
-                      src={"/img/home/contact/map_top.png"}
+                      src={'/img/home/contact/map_top.png'}
                       width={600}
                       height={300}
                       alt="GOOGLE MAP"
@@ -282,14 +341,14 @@ export const Contact = block(() => {
                     />
 
                     <Image
-                      src={"/img/home/contact/map_ph.png"}
+                      src={'/img/home/contact/map_ph.png'}
                       width={600}
                       height={300}
                       alt="GOOGLE MAP"
                     />
 
                     <Image
-                      src={"/img/home/contact/map_top.png"}
+                      src={'/img/home/contact/map_top.png'}
                       width={600}
                       height={300}
                       alt="GOOGLE MAP"
@@ -309,14 +368,14 @@ export const Contact = block(() => {
                 </div>
                 <div className="relative h-[220px] w-full">
                   <Image
-                    src={"/img/home/contact/horraires_ph.png"}
+                    src={'/img/home/contact/horraires_ph.png'}
                     alt="HORRAIRES"
                     width={111}
                     height={128}
                     className="absolute !-right-5 -top-12 object-contain"
                   />
                   <Image
-                    src={"/img/home/contact/clock.png"}
+                    src={'/img/home/contact/clock.png'}
                     alt="HORRAIRES"
                     width={163}
                     height={185}
@@ -330,47 +389,47 @@ export const Contact = block(() => {
               </div>
             </>
           )}
-          {screenWidth >= 640 && screenWidth < 1024 && (
+          {screenWidth >= 640 && (
             <>
               <div className="relative h-full min-h-[650px] w-[500px] p-5">
                 <Image
                   className="absolute left-5 top-0"
-                  src={"/img/home/contact/contact_nada_2x.png"}
+                  src={'/img/home/contact/contact_nada_2x.png'}
                   alt="CONTACT"
                   width={200}
                   height={300}
                 />
                 <Image
                   className="absolute left-0 top-[140px] z-20"
-                  src={"/img/home/contact/contact_tel_2x.png"}
+                  src={'/img/home/contact/contact_tel_2x.png'}
                   width={250}
                   height={300}
                   alt="CONTACT"
                 />
                 <Image
                   className="absolute -right-16 top-[90px] z-10"
-                  src={"/img/home/contact/contact_panneau_2x.png"}
+                  src={'/img/home/contact/contact_panneau_2x.png'}
                   width={350}
                   height={350}
                   alt="CONTACT"
                 />
                 <Image
                   className="absolute bottom-4 right-10 z-20 rotate-12"
-                  src={"/img/home/contact/contact_phone_2x.png"}
+                  src={'/img/home/contact/contact_phone_2x.png'}
                   width={250}
                   height={300}
                   alt="CONTACT"
                 />
                 <Image
                   className="absolute left-1/2 top-1/3 translate-x-[-50%]"
-                  src={"/img/home/contact/contact_road_2x.png"}
+                  src={'/img/home/contact/contact_road_2x.png'}
                   width={200}
                   height={300}
                   alt="CONTACT"
                 />
                 <Image
                   className="absolute bottom-20 left-0 -rotate-[25deg]"
-                  src={"/img/home/contact/contact_ph_2x.png"}
+                  src={'/img/home/contact/contact_ph_2x.png'}
                   width={200}
                   height={300}
                   alt="CONTACT"
@@ -386,7 +445,7 @@ export const Contact = block(() => {
                       14 Av. Maurice Hauriou, 31000 Toulouse
                     </h3>
                     <Link
-                      href={"telto:05.61.42.04.95"}
+                      href={'telto:05.61.42.04.95'}
                       className="font-thunder text-xl font-bold text-cream-carmen"
                     >
                       05.61.42.04.95
@@ -394,14 +453,14 @@ export const Contact = block(() => {
                   </div>
                   <div className="flex flex-col">
                     <Link
-                      href={"mailto:chezcarmen@contact.com"}
+                      href={'mailto:chezcarmen@contact.com'}
                       className="font-thunder text-xl text-cream-carmen"
                     >
                       chezcarmen@contact.com
                     </Link>
                     <Link
                       className="font-thunder text-xl font-bold text-cream-carmen"
-                      href={"http://instagram.com/chezcarmentoulouse"}
+                      href={'http://instagram.com/chezcarmentoulouse'}
                       target="_blank"
                     >
                       @chezcarmentoulouse
@@ -411,7 +470,7 @@ export const Contact = block(() => {
                 <div className="relative flex items-center justify-center overflow-hidden">
                   <div className="flex h-auto w-full items-center justify-center">
                     <Image
-                      src={"/img/home/contact/map_top.png"}
+                      src={'/img/home/contact/map_top.png'}
                       width={600}
                       height={300}
                       alt="GOOGLE MAP"
@@ -419,14 +478,14 @@ export const Contact = block(() => {
                     />
 
                     <Image
-                      src={"/img/home/contact/map_ph.png"}
+                      src={'/img/home/contact/map_ph.png'}
                       width={600}
                       height={300}
                       alt="GOOGLE MAP"
                     />
 
                     <Image
-                      src={"/img/home/contact/map_top.png"}
+                      src={'/img/home/contact/map_top.png'}
                       width={600}
                       height={300}
                       alt="GOOGLE MAP"
@@ -449,4 +508,4 @@ export const Contact = block(() => {
       </div>
     </div>
   );
-});
+};

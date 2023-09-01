@@ -2,11 +2,10 @@
 import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { IActualites } from '@/types/types';
 import { fetchActualites } from '@/utils/fetchs/fetchs';
-import { block } from 'million/react';
 import Image from 'next/image';
 import React from 'react';
 
-export const Actualites = /* optimize */ block(() => {
+export const Actualites = () => {
   const { data } = useQueryUtils<IActualites[]>({
     qKey: ['getActualites'],
     qFn: () => fetchActualites(),
@@ -177,4 +176,4 @@ export const Actualites = /* optimize */ block(() => {
       </div>
     </div>
   );
-});
+};

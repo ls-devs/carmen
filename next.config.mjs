@@ -1,8 +1,8 @@
-import million from 'million/compiler';
-/** @type {import('next').NextConfig} */
+// import million from 'million/compiler';
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -18,4 +18,5 @@ const nextConfig = {
   },
 };
 
-export default million.next(nextConfig);
+// export default million.next(nextConfig, { auto: { rsc: true } });
+export default nextConfig;

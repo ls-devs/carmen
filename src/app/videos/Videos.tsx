@@ -1,15 +1,14 @@
-'use client'
-import { Button } from "@/components/Button/Button";
-import { useQueryUtils } from "@/hooks/useQueryUtils";
-import { IVideos } from "@/types/types";
-import { fetchVidéos } from "@/utils/fetchs/fetchs";
-import { block } from "million/react";
-import Image from "next/image";
-import React from "react";
+'use client';
+import { Button } from '@/components/Button/Button';
+import { useQueryUtils } from '@/hooks/useQueryUtils';
+import { IVideos } from '@/types/types';
+import { fetchVidéos } from '@/utils/fetchs/fetchs';
+import Image from 'next/image';
+import React from 'react';
 
-export const Videos = block(() => {
+export const Videos = () => {
   const { data, isLoading, isFetching, isError } = useQueryUtils<IVideos[]>({
-    qKey: ["getVideos"],
+    qKey: ['getVideos'],
     qFn: () => fetchVidéos(),
   });
 
@@ -73,7 +72,7 @@ export const Videos = block(() => {
               </svg>
             </h3>
             <Image
-              src={"/img/videos/videos_paper_top_2x.png"}
+              src={'/img/videos/videos_paper_top_2x.png'}
               width={450}
               height={450}
               alt="FROMAGE BETTY"
@@ -112,7 +111,7 @@ export const Videos = block(() => {
         </div>
         <div className="mt-12 flex h-auto w-full flex-col items-center justify-center space-y-14">
           <Image
-            src={"/img/videos/videos_ph1_2x.png"}
+            src={'/img/videos/videos_ph1_2x.png'}
             width={330}
             height={330}
             alt="FROMAGE BETTY"
@@ -134,7 +133,7 @@ export const Videos = block(() => {
       <div className="flex w-full bg-cream-carmen">
         <div className="-mt-12 min-w-[120px] max-w-[120px] px-2">
           <Image
-            src={"/img/videos/videos_ph1_2x.png"}
+            src={'/img/videos/videos_ph1_2x.png'}
             alt="TUTO 1"
             width={330}
             height={330}
@@ -142,7 +141,7 @@ export const Videos = block(() => {
         </div>
         <div className="min-w-[120px] max-w-[120px] px-2">
           <Image
-            src={"/img/videos/videos_ph1_2x.png"}
+            src={'/img/videos/videos_ph1_2x.png'}
             alt="TUTO 1"
             width={330}
             height={330}
@@ -151,7 +150,7 @@ export const Videos = block(() => {
 
         <div className="min-w-[120px] max-w-[120px] px-2">
           <Image
-            src={"/img/videos/videos_ph1_2x.png"}
+            src={'/img/videos/videos_ph1_2x.png'}
             alt="TUTO 1"
             width={330}
             height={330}
@@ -160,4 +159,4 @@ export const Videos = block(() => {
       </div>
     </div>
   );
-});
+};

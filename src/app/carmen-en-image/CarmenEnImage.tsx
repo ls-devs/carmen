@@ -3,7 +3,6 @@ import { Button } from '@/components/Button/Button';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { IGaleriePhoto } from '@/types/types';
 import { fetchGalerie } from '@/utils/fetchs/fetchs';
-import { For, block } from 'million/react';
 import Image from 'next/image';
 import React, { ReactElement, useCallback, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
@@ -24,9 +23,7 @@ export const CarmenEnImage = () => {
     };
   }, []);
 
-  const { data, isLoading, isFetching, isError } = useQueryUtils<
-    [IGaleriePhoto]
-  >({
+  const { data } = useQueryUtils<[IGaleriePhoto]>({
     qKey: ['getGalerie'],
     qFn: () => fetchGalerie(),
   });
@@ -62,7 +59,7 @@ export const CarmenEnImage = () => {
               width={150}
               height={150}
               alt={`${photo.titre}`}
-              className="absolute left-1/2 top-1/2 h-full w-full -translate-x-[50%] -translate-y-[50%] object-cover object-cover md:left-0 md:top-0 md:col-span-2 md:h-3/4 md:w-full md:translate-x-0 md:translate-y-0"
+              className="absolute left-1/2 top-1/2 h-full w-full -translate-x-[50%] -translate-y-[50%] object-cover md:left-0 md:top-0 md:col-span-2 md:h-3/4 md:w-full md:translate-x-0 md:translate-y-0"
             />
           </div>
         );
@@ -163,8 +160,7 @@ export const CarmenEnImage = () => {
         </h1>
       </div>
       <section className="relative mb-40 flex flex-col items-center justify-center">
-        {/*
-        {gridItems.map((row, idx) => {
+        {gridItems?.map((row, idx) => {
           return (
             <div
               key={`row_${idx}`}
@@ -172,29 +168,12 @@ export const CarmenEnImage = () => {
                 idx >= 1 && 'dynamic_grid'
               } grid h-auto auto-rows-fr gap-4 px-4 md:px-20`}
             >
-              {row.map((items, idx) => {
+              {row.map((items, _idx) => {
                 return items;
               })}
             </div>
           );
-        })} */}
-
-        <For each={gridItems}>
-          {(row, idx) => {
-            return (
-              <div
-                key={`row_${idx}`}
-                className={`galerie_grid ${
-                  idx >= 1 && 'dynamic_grid'
-                } grid h-auto auto-rows-fr gap-4 px-4 md:px-20`}
-              >
-                {row.map((items, idx) => {
-                  return items;
-                })}
-              </div>
-            );
-          }}
-        </For>
+        })}
 
         <div className="absolute bottom-0 flex w-full items-center justify-center">
           <Button

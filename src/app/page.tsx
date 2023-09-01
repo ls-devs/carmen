@@ -5,7 +5,6 @@ import {
 } from '@/utils/fetchs/fetchs';
 import Hydrate from '@/utils/hydrateClient';
 import { HomePage } from './homepage';
-import { block } from 'million/react';
 import { useDehydratedState } from '@/hooks/useDehydratedState';
 
 const Page = () => {
