@@ -225,3 +225,12 @@ export type IOptions = {
     ];
   };
 };
+
+export type Inputs = {
+  NOM: string;
+  EMAIL: string;
+  PRENOM: string;
+  TEL: string;
+  OBJECT: string;
+  MESSAGE: string;
+};

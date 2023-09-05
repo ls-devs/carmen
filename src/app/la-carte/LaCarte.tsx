@@ -320,7 +320,7 @@ export const LaCarte = () => {
       </div>
 
       <div className="relative flex min-h-[500px] w-full flex-col md:order-4">
-        <div className="absolute -top-[10px] -z-[1]">
+        <div className="absolute -top-[10px] -z-[1] lg:h-[450px]">
           <Image
             src={'/img/la_carte/la_carte_viande_top_2x.png'}
             width={1920}
@@ -328,7 +328,7 @@ export const LaCarte = () => {
             alt="LES VIANDES"
           />
         </div>
-        <h2 className="mb-16 mt-32 text-center font-thunder text-5xl text-red-carmen md:mt-48 lg:mt-52 lg:text-6xl">
+        <h2 className="mb-16 mt-32 text-center font-thunder text-5xl text-red-carmen md:mt-48 lg:mt-96 lg:text-6xl">
           LES VIANDES
         </h2>
         {data?.[0].acf.les_viandes.map((viandes, idx) => {

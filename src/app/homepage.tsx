@@ -123,7 +123,7 @@ export const HomePage = () => {
           alt="VIDEOS"
           width={1100}
           height={300}
-          className="absolute !-top-[55px] -z-[1] w-full sm:!-top-[70px] md:!-top-[120px] lg:!-top-[150px]"
+          className="absolute !-top-[55px] -z-[1] w-full sm:!-top-[70px] md:!-top-[120px] lg:!-top-[150px] xl:!-top-[200px]"
         />
         <div className="flex h-full w-full flex-col items-center justify-center sm:mt-20 sm:items-start sm:justify-start">
           <div className="relative order-2 mt-8 h-auto w-full sm:mt-0 sm:w-[60%] sm:px-5">
@@ -287,7 +287,7 @@ export const HomePage = () => {
         <Image
           src={'/img/home/actualites/actualites_bot_4x.png'}
           alt="ACUTALITES"
-          className="absolute !-bottom-[25px] w-full object-contain sm:!-bottom-[50px] lg:!-bottom-[80px]"
+          className="absolute !-bottom-[25px] z-[-1] w-full object-contain sm:!-bottom-[50px] lg:!-bottom-[80px] xl:!-bottom-[120px]"
           width={1100}
           height={300}
         />
@@ -295,7 +295,7 @@ export const HomePage = () => {
       {/* LES ACTUALITES CARMEN */}
 
       {/* GALERIE PHOTO */}
-      <div className="relative mt-20">
+      <div className="relative mt-32">
         <div className="mb-4 flex w-full items-center justify-center pl-6 sm:justify-start">
           <h2 className="font-thunder text-6xl text-red-carmen">
             Galerie Photo
@@ -426,6 +426,7 @@ export const HomePage = () => {
             textSize="text-xl"
             width="w-[135px]"
             height="h-[70px]"
+            classes={["lg:mb-20"]}
           />
         </div>
         <Image

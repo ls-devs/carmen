@@ -1,4 +1,6 @@
-import React from 'react';
+import { Inputs } from '@/types/types';
+import React, { BaseSyntheticEvent } from 'react';
+import { SubmitHandler } from 'react-hook-form';
 
 type ButtonProps = {
   color: string;
@@ -7,6 +9,10 @@ type ButtonProps = {
   classes?: string[];
   width?: string;
   height?: string;
+  onSubmit?: (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    e?: BaseSyntheticEvent<object, any, any> | undefined
+  ) => Promise<void>;
 };
 
 export const Button: React.FC<ButtonProps> = ({
@@ -16,9 +22,11 @@ export const Button: React.FC<ButtonProps> = ({
   classes,
   height,
   width,
+  onSubmit,
 }) => {
   return (
     <button
+      onClick={onSubmit ? () => onSubmit() : () => {}}
       className={`flex ${height ? height : 'h-[83px]'} ${
         width ? width : 'w-[160px]'
       } cursor-pointer items-center justify-center font-thunder ${

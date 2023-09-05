@@ -5,7 +5,6 @@ import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { IOptions } from '@/types/types';
 import Link from 'next/link';
 import Image from 'next/image';
-import { For } from 'million/react';
 import { fetchGalerie } from '@/utils/fetchs/fetchs';
 import { QueryClient } from '@tanstack/react-query';
 
@@ -217,7 +216,7 @@ export const Navbar = () => {
           <li className="h-auto w-full">
             <Link
               className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
-              href="#"
+              href="/contact"
             >
               CONTACT
               <svg
@@ -306,7 +305,7 @@ export const Navbar = () => {
         <li className="h-auto ">
           <Link
             className="flex-center lg:text-xp mt-6 flex-col px-1 font-thunder text-2xl text-red-carmen md:mt-8 min-[768px]:max-[800px]:text-lg lg:mt-0 lg:text-xl min-[1024px]:max-[1040px]:text-lg xl:text-2xl 2xl:text-3xl "
-            href="#"
+            href="/contact"
           >
             CONTACT
           </Link>

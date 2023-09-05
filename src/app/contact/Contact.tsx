@@ -1,22 +1,20 @@
 'use client';
 import { Button } from '@/components/Button/Button';
-import { fetchOptions } from '@/utils/fetchs/fetchs';
-import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 export const Contact = () => {
+  const [screenWidth, setScreenWidth] = useState<number>(0);
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onSubmit = (data: any) => console.log(data);
-  const [screenWidth, setScreenWidth] = useState<number>(0);
+  } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
   useEffect(() => {
     const myObserver = new ResizeObserver((_entries) => {
@@ -37,24 +35,24 @@ export const Contact = () => {
           Contact
         </h1>
         <div className="flex flex-col items-center justify-center">
-          <div className="flex flex-col">
-            <div className="order-2 flex w-full flex-col items-center justify-center">
-              <h2 className="font-thunder text-2xl text-red-carmen">
+          <div className="flex flex-col md:w-4/5 md:flex-row">
+            <div className="order-2 flex w-full flex-col items-center justify-center md:order-1">
+              <h2 className="font-thunder text-2xl text-red-carmen md:w-full md:px-8 md:text-left md:text-4xl">
                 Formulaire
               </h2>
-              <p className="px-8 text-center font-thunderLC text-lg text-red-carmen md:w-1/2">
+              <p className="px-8 text-center font-thunderLC text-lg text-red-carmen md:text-left md:text-xl">
                 Une question, un commentaire, une suggestion ou une demande
                 particulière ? N'hésitez pas à nous envoyer un mail via le
                 formulaire ci-dessous, nous y répondrons dès que possible.
               </p>
             </div>
-            <div className="flex w-full items-center justify-center">
+            <div className="flex w-full items-center justify-center md:order-2">
               <div className="relative order-1 h-[300px] w-[350px]">
                 <p className="absolute left-4 top-8 z-[3] -rotate-12 font-softgank text-5xl text-red-carmen">
                   QUESTION ?
                 </p>
                 <Image
-                  className="absolute -bottom-12 left-0 z-[3]"
+                  className="absolute -bottom-12 left-0 z-[3] xl:w-[800px]"
                   src={'/img/contact/pen_2x.png'}
                   alt="CONTACT"
                   width={250}
@@ -78,7 +76,7 @@ export const Contact = () => {
             </div>
           </div>
           <div className="order-3 flex w-full flex-col">
-            <div className="item-center flex flex-col justify-center px-8 pt-8 md:px-16">
+            <div className="item-center relative mb-44 flex flex-col justify-center px-8 pt-8 md:px-16">
               <div className="relative mb-4 flex w-full items-start">
                 <label
                   htmlFor="NOM"
@@ -86,14 +84,17 @@ export const Contact = () => {
                 >
                   NOM*
                 </label>
-                <input type="text" className="ml-2 w-full" />
+                <input
+                  type="text"
+                  className="ml-2 w-full"
+                  {...register('NOM')}
+                />
                 <div className="absolute -bottom-2 left-0 h-[10px] w-full">
                   <Image
-                    src={'/img/contact/underline_cream_4x.png'}
+                    src={'/img/contact/contact_underline_4x.png'}
                     height={100}
-                    width={100}
+                    width={1900}
                     alt="NOM"
-                    className="w-full"
                   />
                 </div>
               </div>
@@ -104,14 +105,17 @@ export const Contact = () => {
                 >
                   E-MAIL*
                 </label>
-                <input type="text" className="ml-2 w-full" />
+                <input
+                  type="text"
+                  className="ml-2 w-full"
+                  {...register('EMAIL')}
+                />
                 <div className="absolute -bottom-2 left-0 h-[10px] w-full">
                   <Image
-                    src={'/img/contact/underline_cream_4x.png'}
+                    src={'/img/contact/contact_underline_4x.png'}
                     height={100}
-                    width={100}
+                    width={1900}
                     alt="NOM"
-                    className="w-full"
                   />
                 </div>
               </div>
@@ -122,14 +126,17 @@ export const Contact = () => {
                 >
                   PRENOM*
                 </label>
-                <input type="text" className="ml-2 w-full" />
+                <input
+                  type="text"
+                  className="ml-2 w-full"
+                  {...register('PRENOM')}
+                />
                 <div className="absolute -bottom-2 left-0 h-[10px] w-full">
                   <Image
-                    src={'/img/contact/underline_cream_4x.png'}
+                    src={'/img/contact/contact_underline_4x.png'}
                     height={100}
-                    width={100}
+                    width={1900}
                     alt="NOM"
-                    className="w-full"
                   />
                 </div>
               </div>
@@ -143,37 +150,45 @@ export const Contact = () => {
                 <input
                   type="text"
                   className="ml-4 flex h-full w-full pt-[30px] md:pt-0"
+                  {...register('TEL')}
                 />
                 <div className="absolute -bottom-2 left-0 h-[10px] w-full">
                   <Image
-                    src={'/img/contact/underline_cream_4x.png'}
+                    src={'/img/contact/contact_underline_4x.png'}
                     height={100}
-                    width={100}
+                    width={1900}
                     alt="NOM"
-                    className="w-full"
                   />
                 </div>
               </div>
             </div>
-            <div className="mt-5 flex flex-col items-center justify-center bg-red-carmen p-8 md:px-24">
-              <div className="relative mb-4 flex w-full items-start">
+            <div className="relative flex flex-col items-center justify-center bg-red-carmen p-8 md:px-24">
+              <Image
+                src={'/img/contact/formulaire_sep_top_4x.png'}
+                alt="CONTACT"
+                width={1920}
+                height={300}
+                className="absolute -top-[60px] -z-[1] w-full md:-top-[90px] lg:-top-[120px] xl:-top-[180px]"
+              />
+
+              <div className="relative mb-4 flex w-full items-end">
                 <label
                   htmlFor="TEL"
-                  className="w-[85px] font-thunder text-xl font-semibold text-cream-carmen md:w-[110px]"
+                  className="w-[165px] font-thunder text-xl font-semibold text-cream-carmen md:w-[110px]"
                 >
                   OBJET DU MAIL*
                 </label>
                 <input
                   type="text"
-                  className="ml-4 flex h-full w-full pt-[30px] md:pt-1"
+                  className="mb-1 flex h-full w-full pt-[30px] font-thunder text-xl font-bold tracking-widest text-cream-carmen md:pt-1"
+                  {...register('OBJECT')}
                 />
                 <div className="absolute -bottom-2 left-0 h-[10px] w-full">
                   <Image
-                    src={'/img/contact/contact_underline_cream.png'}
+                    src={'/img/contact/underline_cream_4x.png'}
                     height={100}
-                    width={100}
+                    width={1900}
                     alt="NOM"
-                    className="w-full"
                   />
                 </div>
               </div>
@@ -187,11 +202,11 @@ export const Contact = () => {
                 </label>
 
                 <textarea
-                  name="MESSAGE"
                   id=""
                   cols={30}
                   rows={10}
-                  className="w-full"
+                  className="w-full font-thunder text-xl font-bold tracking-widest text-cream-carmen"
+                  {...register('MESSAGE')}
                 />
               </div>
               <Button
@@ -200,15 +215,24 @@ export const Contact = () => {
                 textSize="text-xl"
                 width="w-[165px]"
                 height="h-[70px]"
+                onSubmit={handleSubmit(onSubmit)}
               />
             </div>
           </div>
         </div>
-        <div className="mb-8 mt-16">
-          <h3 className="flex flex-col p-4 font-thunder text-6xl text-red-carmen">
+        <div className="relative mb-20 mt-16 xl:mb-[200px] xl:flex xl:flex-col xl:justify-center">
+          <Image
+            src={'/img/contact/contact_socials_sep_top_4x.png'}
+            alt="CONTACT"
+            width={1920}
+            height={300}
+            className="absolute -top-[110px] -z-[1] w-full md:-top-[150px] lg:-top-[250px] xl:-top-[280px]"
+          />
+
+          <h3 className="mt-20 flex flex-col p-4 font-thunder text-6xl text-red-carmen md:mt-48 lg:mt-[220px] xl:mt-[220px] 2xl:mt-[320px]">
             Réseau <span>Sociaux</span>
           </h3>
-          <div className="flex items-start justify-start space-x-3 p-4">
+          <div className="flex items-start justify-start space-x-3 p-4 lg:mb-[100px]">
             <div className="flex w-[150px] min-w-[150px] flex-col">
               <Image
                 src={'/img/contact/contact_rs_ph_2x.png'}
@@ -245,7 +269,14 @@ export const Contact = () => {
           </div>
         </div>
         {/* CONTACT */}
-        <div className="relative h-auto w-full overflow-hidden bg-red-carmen sm:flex sm:justify-center">
+        <div className="relative h-auto w-full bg-red-carmen sm:flex sm:justify-center">
+          <Image
+            src={'/img/contact/contact_socials_bot_4x.png'}
+            alt="CONTACT"
+            width={1920}
+            height={400}
+            className="absolute -top-[40px] -z-[1]  w-full min-[420px]:-top-[80px] md:-top-[100px] lg:-top-[140px] xl:-top-[220px]"
+          />
           {screenWidth < 640 && (
             <>
               <div className="mt-12 flex w-full flex-col">

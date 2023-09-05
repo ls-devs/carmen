@@ -14,7 +14,7 @@ const GaleriePage = () => {
 
   return (
     <Hydrate state={dehydratedClient}>
-      <CarmenEnImage />;
+      <CarmenEnImage />
     </Hydrate>
   );
 };
