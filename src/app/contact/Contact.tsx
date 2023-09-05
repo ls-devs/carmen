@@ -1,5 +1,6 @@
 'use client';
 import { Button } from '@/components/Button/Button';
+import { Inputs } from '@/types/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
