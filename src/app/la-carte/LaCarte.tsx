@@ -228,8 +228,7 @@ export const LaCarte = () => {
             <div className="w-full md:order-2">
               {data?.[0].acf.a_la_carte.map((plat, idx) => {
                 return (
-                  idx > 0 &&
-                  idx <= 3 && (
+                  idx < 3 && (
                     <div
                       key={`${plat.title}_idx`}
                       className="flex w-full flex-col px-8 py-4"
@@ -280,10 +279,10 @@ export const LaCarte = () => {
             </div>
           </div>
 
-          <div className="flex w-full flex-col px-8 pb-4 text-right md:flex-row md:justify-between lg:text-left">
+          <div className="flex w-full flex-col px-8 pb-4 text-right md:justify-between lg:text-left">
             {data?.[0].acf.a_la_carte.map((plat, idx) => {
               return (
-                idx > 3 && (
+                idx >=3 && (
                   <div
                     key={`${plat.title}_idx`}
                     className="flex w-full flex-col px-8 py-4"

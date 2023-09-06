@@ -1,21 +1,150 @@
 'use client';
 import { Button } from '@/components/Button/Button';
-import { Inputs } from '@/types/types';
+import { useQueryUtils } from '@/hooks/useQueryUtils';
+import { IOptions, Inputs } from '@/types/types';
+import { fetchOptions } from '@/utils/fetchs/fetchs';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { BaseSyntheticEvent, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 export const Contact = () => {
   const [screenWidth, setScreenWidth] = useState<number>(0);
+  const [toEmail, setToEmail] = useState<string>('');
+
+  const { data } = useQueryUtils<IOptions>({
+    qKey: ['getActualites'],
+    qFn: () => fetchOptions(),
+  });
+
+  useEffect(() => {
+    setToEmail(data!.acf.contact_mail);
+  }, [data]);
+
+  const sendEmail = async (
+    data: Inputs,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    e: React.BaseSyntheticEvent<object, any, any> | undefined
+  ) => {
+    if (!data.NOM) {
+      return toast.error(`Veuillez renseigner un nom`, {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+      });
+    }
+    if (
+      !data.EMAIL.toLocaleLowerCase().match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      )
+    ) {
+      return toast.error(`Adresse email invalide`, {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+      });
+    }
+    if (!data.PRENOM) {
+      return toast.error(`Veuillez renseigner votre prénom`, {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+      });
+    }
+    if (!data.TEL) {
+      return toast.error(`Veuillez renseigner un numéro de téléphone`, {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+      });
+    }
+    if (!data.OBJECT) {
+      return toast.error(`Le message n'a pas d'objet`, {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+      });
+    }
+    if (!data.MESSAGE) {
+      return toast.error(`Veuillez écrire un message`, {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+      });
+    }
+
+    try {
+      await fetch(
+        `http://localhost/carmen/wp-admin/admin-ajax.php?action=mail_before_submit&toemail=${toEmail}&message=Email de : ${data.NOM} ${data.PRENOM}<br>Email de contact : ${data.EMAIL}<br>Téléphone: ${data.TEL}<br>Objet : ${data.OBJECT}<br>Contenu du message : ${data.MESSAGE}<br>`
+      );
+    } catch (error) {
+      return toast.error(`Oups ! Quelque chose s'est mal passé !`, {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+      });
+    }
+    reset(
+      {
+        NOM: '',
+        PRENOM: '',
+        EMAIL: '',
+        TEL: '',
+        OBJECT: '',
+        MESSAGE: '',
+      },
+      { keepValues: false }
+    );
+    return toast.success('Votre email à bien été envoyé !', {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+    });
+  };
 
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data, e) => {
+    sendEmail(data, e);
+  };
 
   useEffect(() => {
     const myObserver = new ResizeObserver((_entries) => {
@@ -31,6 +160,7 @@ export const Contact = () => {
 
   return (
     <div className="mt-[120px] flex flex-col">
+      <ToastContainer />
       <div className="flex flex-col">
         <h1 className="mb-5 text-center font-thunder text-6xl text-red-carmen">
           Contact
