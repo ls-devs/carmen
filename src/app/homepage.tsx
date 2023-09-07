@@ -263,6 +263,7 @@ export const HomePage = () => {
                 addToItems={addToItems}
                 title={actu.acf.title}
                 description={actu.acf.description}
+                intro_actu={actu.acf.intro_actu}
                 thumbnail={actu.acf.thumbnail}
               />
             );

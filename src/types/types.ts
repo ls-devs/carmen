@@ -192,6 +192,7 @@ export type IActualites = IWPDefault & {
     description: string;
     thumbnail: string;
     image: string | boolean;
+    intro_actu: string;
   };
 };
 

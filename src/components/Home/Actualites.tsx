@@ -9,6 +9,7 @@ type ActualiteProps = {
   description: string;
   thumbnail: string;
   image?: string | boolean;
+  intro_actu: string;
 };
 export const Actualite: React.FC<ActualiteProps> = ({
   addToItems,
@@ -17,6 +18,7 @@ export const Actualite: React.FC<ActualiteProps> = ({
   title,
   description,
   thumbnail,
+  intro_actu,
   image,
 }) => {
   const myRef = useRef<HTMLDivElement>(null);
@@ -51,9 +53,10 @@ export const Actualite: React.FC<ActualiteProps> = ({
         <h3 className="font-thunder text-xl text-cream-carmen sm:text-2xl">
           {title}
         </h3>
+
         <div
           className="font-thunderLC text-sm text-cream-carmen sm:text-lg"
-          dangerouslySetInnerHTML={{ __html: description }}
+          dangerouslySetInnerHTML={{ __html: intro_actu }}
         />
       </div>
     </div>
