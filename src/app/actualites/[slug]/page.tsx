@@ -19,6 +19,8 @@ export default function Page({ params }: { params: { slug: string } }) {
     qFn: () => fetchActualites(),
   });
 
+  console.log(unslugify(params.slug));
+
   data?.forEach((actu) => {
     if (actu.acf.title === unslugify(params.slug)) {
       console.log(actu);
