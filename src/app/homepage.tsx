@@ -130,23 +130,7 @@ export const HomePage = () => {
           </div>
         );
       }
-      if (imgIdx === 6) {
-        dataGrid.push(
-          <div
-            key={uuidv4()}
-            className={`relative col-span-2  md:row-auto lg:col-start-3 lg:row-start-3`}
-          >
-            <Image
-              src={`${photo.image}`}
-              width={200}
-              height={200}
-              alt={`${photo.titre}`}
-              className="absolute right-0 h-full w-full object-cover md:top-1/2 md:w-3/4 md:-translate-y-[50%] lg:top-0 lg:h-3/4 lg:w-full"
-            />
-          </div>
-        );
-      }
-      if (imgIdx >= 6) {
+      if (imgIdx <= 5) {
         dataGridWrapper.push(dataGrid);
         dataGrid = [];
       } else {
@@ -440,6 +424,7 @@ export const HomePage = () => {
         </div>
         <section className="relative mb-40 flex flex-col items-center justify-center">
           {gridItems?.map((row, idx) => {
+            console.log(row);
             return (
               <div
                 key={`row_${idx}`}
@@ -448,6 +433,7 @@ export const HomePage = () => {
                 } grid h-auto auto-rows-fr gap-4 px-4 md:px-20`}
               >
                 {row.map((items, _idx) => {
+                  console.log(items);
                   return items;
                 })}
               </div>
