@@ -8,12 +8,6 @@ import slugify from 'slugify';
 
 export default function Page({ params }: { params: { slug: string } }) {
   const [myActu, setMyActu] = useState<IActualites>();
-  const unslugify = (slug: string) => {
-    const result = slug.replace(/\-/g, ' ');
-    return result.replace(/\w\S*/g, (txt) => {
-      return txt;
-    });
-  };
 
   const { data } = useQueryUtils<IActualites[]>({
     qKey: ['getActualites'],
@@ -26,16 +20,7 @@ export default function Page({ params }: { params: { slug: string } }) {
     }
   });
 
-  return (
-    <div>
-      {myActu?.acf.image && (
-        <Image
-          src={myActu?.acf.image.toString()}
-          alt={`${myActu?.acf.title}`}
-          width={100}
-          height={100}
-        />
-      )}
-    </div>
-  );
+  console.log(myActu);
+
+  return <div></div>;
 }
