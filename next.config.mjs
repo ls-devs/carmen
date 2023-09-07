@@ -14,6 +14,10 @@ const nextConfig = {
         hostname: 'localhost',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'wpcarmen.wasabi-artwork.com',
+      },
     ],
   },
 };
