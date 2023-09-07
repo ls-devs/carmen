@@ -21,7 +21,9 @@ export default function Page({ params }: { params: { slug: string } }) {
   });
 
   data?.forEach((actu) => {
-    console.log(slugify(actu.acf.title) === params.slug);
+    if (slugify(actu.acf.title) === params.slug) {
+      setMyActu(actu);
+    }
   });
 
   return (
