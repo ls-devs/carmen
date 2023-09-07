@@ -1,6 +1,6 @@
 'use client';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
-import { IActualites, MyActualite } from '@/types/types';
+import { IActualites } from '@/types/types';
 import { fetchActualites } from '@/utils/fetchs/fetchs';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -20,7 +20,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   });
 
   data?.forEach((actu) => {
-    if (actu.acf.title === unslugify(actu.acf.title)) {
+    if (actu.acf.title === unslugify(params.slug)) {
       console.log(actu);
     }
   });
