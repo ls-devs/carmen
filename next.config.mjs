@@ -18,6 +18,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'wpcarmen.wasabi-artwork.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'chezcarmen.wasabi-artwork.com',
+      },
     ],
   },
 };
