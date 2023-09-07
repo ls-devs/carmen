@@ -28,7 +28,11 @@ export default function RootLayout({
       />
       <meta property="og:locale" content="en_US" />
       <meta property="og:description" content="Chez Carmen" />
-      <link rel="icon" href="../../public/img/favicon.png" sizes="any" />
+      <link
+        rel="icon"
+        href="/img/favicon.png"
+        sizes="any"
+      />
 
       <body className={inter.className}>
         <ReactQueryProvider>
