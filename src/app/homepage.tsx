@@ -146,7 +146,7 @@ export const HomePage = () => {
           </div>
         );
       }
-      if (reserverdIdx === dataG[0].acf.images.length - 1 || imgIdx >= 6) {
+      if (imgIdx >= 6) {
         dataGridWrapper.push(dataGrid);
         dataGrid = [];
       } else {
