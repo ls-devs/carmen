@@ -17,6 +17,7 @@ import { IActualites, IGaleriePhoto, IHomePage } from '@/types/types';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
 
 export const HomePage = () => {
+  const videoHomeRef = useRef<HTMLVideoElement>(null);
   const [gridItems, setGridItems] = useState<ReactElement<HTMLDivElement>[][]>(
     []
   );
@@ -169,6 +170,7 @@ export const HomePage = () => {
 
     myObserver.observe(document.body);
 
+    videoHomeRef.current?.play();
     return () => {
       myObserver.unobserve(document.body);
     };
@@ -180,15 +182,15 @@ export const HomePage = () => {
       <div className="relative flex h-[500px] items-center justify-center md:mt-5 lg:mb-36 lg:mt-32">
         <div className="relative flex h-full w-full items-center justify-center bg-cover bg-center bg-no-repeat object-cover">
           <video
+            ref={videoHomeRef}
             width="560"
             height="315"
             src={`${data?.[0].acf.video_url}`}
             title="YouTube video player"
             className="relative h-full w-full bg-cover bg-center bg-no-repeat object-cover md:h-[450px] md:w-[90%] md:rounded-3xl lg:h-[550px] lg:w-[900px] xl:h-[700px] xl:w-[80%]"
             loop
-            playsInline
-            autoPlay={true}
-            muted={true}
+            autoPlay
+            muted
           >
             <source src={`${data?.[0].acf.video_url}`} type="video/mp4" />
           </video>
