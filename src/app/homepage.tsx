@@ -20,8 +20,8 @@ export const HomePage = () => {
   const [gridItems, setGridItems] = useState<ReactElement<HTMLDivElement>[][]>(
     []
   );
-  const items = useRef<HTMLDivElement[]>([]);
-  const addToItems = (item: HTMLDivElement) => {
+  const items = useRef<HTMLAnchorElement[]>([]);
+  const addToItems = (item: HTMLAnchorElement) => {
     if (!items.current.includes(item)) items.current.push(item);
   };
   const [screenWidth, setScreenWidth] = useState<number>(0);

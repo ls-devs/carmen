@@ -1,8 +1,10 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
+import slugify from 'slugify';
 
 type ActualiteProps = {
-  addToItems: (item: HTMLDivElement) => void;
+  addToItems: (item: HTMLAnchorElement) => void;
   screenWidth: number;
   position: number;
   title: string;
@@ -21,7 +23,7 @@ export const Actualite: React.FC<ActualiteProps> = ({
   intro_actu,
   image,
 }) => {
-  const myRef = useRef<HTMLDivElement>(null);
+  const myRef = useRef<HTMLAnchorElement>(null);
   const [myPosition, setMyPosition] = useState<number>(0);
 
   useEffect(() => {
@@ -37,7 +39,8 @@ export const Actualite: React.FC<ActualiteProps> = ({
   }, [addToItems]);
 
   return (
-    <div
+    <Link
+      href={`actualites/${slugify(title)}`}
       ref={myRef}
       className={`absolute h-auto w-[250px] sm:h-[350px] sm:w-[520px]`}
       style={{ left: `${myPosition}px` }}
@@ -59,6 +62,6 @@ export const Actualite: React.FC<ActualiteProps> = ({
           dangerouslySetInnerHTML={{ __html: intro_actu }}
         />
       </div>
-    </div>
+    </Link>
   );
 };
