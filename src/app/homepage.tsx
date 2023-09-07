@@ -147,8 +147,6 @@ export const HomePage = () => {
         );
       }
       if (reserverdIdx === dataG[0].acf.images.length - 1 || imgIdx >= 6) {
-        reserverdIdx++;
-        imgIdx = 0;
         dataGridWrapper.push(dataGrid);
         dataGrid = [];
       } else {
@@ -442,19 +440,18 @@ export const HomePage = () => {
         </div>
         <section className="relative mb-40 flex flex-col items-center justify-center">
           {gridItems?.map((row, idx) => {
-            if (idx < 6)
-              return (
-                <div
-                  key={`row_${idx}`}
-                  className={`galerie_grid ${
-                    idx >= 1 && 'dynamic_grid'
-                  } grid h-auto auto-rows-fr gap-4 px-4 md:px-20`}
-                >
-                  {row.map((items, _idx) => {
-                    return items;
-                  })}
-                </div>
-              );
+            return (
+              <div
+                key={`row_${idx}`}
+                className={`galerie_grid ${
+                  idx >= 1 && 'dynamic_grid'
+                } grid h-auto auto-rows-fr gap-4 px-4 md:px-20`}
+              >
+                {row.map((items, _idx) => {
+                  return items;
+                })}
+              </div>
+            );
           })}
 
           <div className="absolute bottom-0 flex w-full items-center justify-center">
