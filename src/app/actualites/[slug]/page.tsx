@@ -14,10 +14,9 @@ const Page = ({ params }: { params: { slug: string } }) => {
     qFn: () => fetchActualites(),
   });
 
-  data?.forEach((actu) => {
-    console.log(actu);
+  data?.map((actu) => {
     if (slugify(actu.acf.title) === params.slug) {
-      console.log('ok', actu);
+      setMyActu(actu);
     }
   });
 
