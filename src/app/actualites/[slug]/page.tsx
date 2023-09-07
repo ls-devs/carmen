@@ -7,10 +7,13 @@ import { useState } from 'react';
 
 export default function Page({ params }: { params: { slug: string } }) {
   const [myActu, setMyActu] = useState<IActualites>();
-  const unslugify = (slug: string) =>
-    slug
-      .replace(/\-/g, ' ')
-      .replace(/\w\S*/g, (text) => text.slice(1).toLowerCase());
+  const unslugify = (slug: string) => {
+    const result = slug.replace(/\-/g, ' ');
+    return result.replace(/\w\S*/g, (txt) => {
+      return txt;
+    });
+  };
+
   const { data } = useQueryUtils<IActualites[]>({
     qKey: ['getActualites'],
     qFn: () => fetchActualites(),
