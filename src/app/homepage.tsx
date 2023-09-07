@@ -216,7 +216,7 @@ export const HomePage = () => {
             />
           </div>
         </div>
-        <div className="absolute -bottom-10 z-[9] flex w-full items-center justify-center sm:-bottom-0 md:-bottom-6 lg:-bottom-24">
+        <div className="absolute -bottom-10 z-[9] flex w-full items-center justify-center sm:-bottom-0 md:-bottom-6 lg:-bottom-44">
           <svg
             className="h-[70px] w-[70px]"
             fill="none"
@@ -387,7 +387,7 @@ export const HomePage = () => {
           <span className="font-thunderLC font-bold">Carmen</span>
         </h2>
         <Image
-          src={'/img/home/actualites/acutalités_top.png'}
+          src={'/img/home/actualites/actualites_top_sep_2x.png'}
           alt="ACUTALITES"
           className="sm:!-!top-[70px] absolute !-top-[35px] w-full object-contain lg:!-top-[120px]"
           width={1100}
