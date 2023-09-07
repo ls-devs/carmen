@@ -21,7 +21,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   data?.forEach((actu) => {
     if (actu.acf.title === unslugify(actu.acf.title)) {
-      setMyActu(actu);
+      console.log(actu);
     }
   });
 
