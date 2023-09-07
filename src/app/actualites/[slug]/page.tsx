@@ -26,7 +26,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
       {myActu?.acf && (
         <>
           <Image
-            src={myActu!.acf.image.toString()}
+            src={myActu!.acf.thumbnail}
             alt={myActu!.acf.title.toString()}
             width={200}
             height={200}
