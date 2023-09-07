@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
+import slugify from 'slugify';
 
 type ActualiteProps = {
   addToItems: (item: HTMLAnchorElement) => void;
@@ -36,14 +37,6 @@ export const Actualite: React.FC<ActualiteProps> = ({
   useEffect(() => {
     if (myRef.current) addToItems(myRef.current);
   }, [addToItems]);
-
-  const slugify = (str: string) =>
-    str
-      .toLowerCase()
-      .trim()
-      .replace(/[^\w\s-]/g, '')
-      .replace(/[\s_-]+/g, '-')
-      .replace(/^-+|-+$/g, '');
 
   return (
     <Link

@@ -7,13 +7,6 @@ import { useState } from 'react';
 
 export default function Page({ params }: { params: { slug: string } }) {
   const [myActu, setMyActu] = useState<IActualites>();
-  const slugify = (str: string) =>
-    str
-      .toLowerCase()
-      .trim()
-      .replace(/[^\w\s-]/g, '')
-      .replace(/[\s_-]+/g, '-')
-      .replace(/^-+|-+$/g, '');
   const unslugify = (slug: string) =>
     slug
       .replace(/\-/g, ' ')
@@ -27,6 +20,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   });
 
   data?.forEach((actu) => {
+    console.log(actu.acf.title);
     if (actu.acf.title.includes(unslugify(params.slug))) {
       console.log(actu);
     }
