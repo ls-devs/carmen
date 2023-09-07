@@ -21,7 +21,17 @@ const Page = ({ params }: { params: { slug: string } }) => {
     });
   }, [data, params.slug]);
 
-  return <div>{myActu?.acf.description}</div>;
+  return (
+    <div className="mt-44 flex flex-col md:flex-row">
+      <Image
+        src={myActu!.acf.image.toString()}
+        alt={myActu!.acf.title.toString()}
+        width={200}
+        height={200}
+      />
+      <p dangerouslySetInnerHTML={{ __html: myActu!.acf.description }}></p>
+    </div>
+  );
 };
 
 export default Page;
