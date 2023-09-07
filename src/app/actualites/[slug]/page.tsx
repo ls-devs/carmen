@@ -4,6 +4,7 @@ import { IActualites } from '@/types/types';
 import { fetchActualites } from '@/utils/fetchs/fetchs';
 import Image from 'next/image';
 import { useState } from 'react';
+import slugify from 'slugify';
 
 export default function Page({ params }: { params: { slug: string } }) {
   const [myActu, setMyActu] = useState<IActualites>();
@@ -20,7 +21,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   });
 
   data?.forEach((actu) => {
-    console.log(actu.acf.title.includes(unslugify(params.slug)));
+    console.log(slugify(actu.acf.title) === params.slug);
   });
 
   return (
