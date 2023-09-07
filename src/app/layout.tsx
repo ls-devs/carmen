@@ -24,11 +24,11 @@ export default function RootLayout({
       <meta property="og:url" content="http://www.chezcarmen.fr" />
       <meta
         property="og:image"
-        content="https://champcaine.com/img/champcain_logo.png"
+        content="https://wpcarmen.wasabi-artwork.com/wp-content/uploads/2023/07/carmen_logo_red_4x-300x115.png"
       />
       <meta property="og:locale" content="en_US" />
       <meta property="og:description" content="Chez Carmen" />
-      <link rel="icon" href="/img/favicon.png" sizes="any" />
+      <link rel="icon" href="../../public/img/favicon.png" sizes="any" />
 
       <body className={inter.className}>
         <ReactQueryProvider>
