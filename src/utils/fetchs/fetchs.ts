@@ -55,7 +55,7 @@ export const fetchPolicies = async () => {
 
 export const fetchVidéos = async () => {
   const req = await fetch(
-    `${process.env.NEXT_PUBLIC_CARMEN_BASE_URL}/les_videos"`,
+    `${process.env.NEXT_PUBLIC_CARMEN_BASE_URL}/les_videos`,
     {
       next: { revalidate: 60 },
     }
