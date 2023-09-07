@@ -42,16 +42,15 @@ export const HomePage = () => {
       {/* HEADING VIDEO */}
       <div className="relative flex h-[500px] items-center justify-center md:mt-5 lg:mb-36 lg:mt-32">
         <div className="relative flex h-full w-full items-center justify-center bg-cover bg-center bg-no-repeat object-cover">
-          {data?.[0].acf.video_url && (
-            <video
-              width="560"
-              height="315"
-              title="YouTube video player"
-              className="relative h-full w-full bg-cover bg-center bg-no-repeat object-cover md:h-[450px] md:w-[90%] md:rounded-3xl lg:h-[550px] lg:w-[900px] xl:h-[700px] xl:w-[80%]"
-            >
-              <source src={`${data?.[0].acf.video_url}`} type="video/mp4" />
-            </video>
-          )}
+          <iframe
+            width="560"
+            height="315"
+            src={`${data?.[0].acf.video_url}`}
+            title="YouTube video player"
+            className="relative h-full w-full bg-cover bg-center bg-no-repeat object-cover md:h-[450px] md:w-[90%] md:rounded-3xl lg:h-[550px] lg:w-[900px] xl:h-[700px] xl:w-[80%]"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
           <div className="absolute top-0 hidden h-full w-4/5 rotate-[4deg] md:top-5 md:flex md:h-[450px] md:w-[91%] md:rounded-3xl md:border-[1px] md:border-black-carmen lg:-top-5 lg:h-[550px] lg:w-[900px] xl:-top-20 xl:h-[700px] xl:w-[80%]" />
           <Image
             src={'/img/home/heading/couverts.png'}
@@ -428,7 +427,7 @@ export const HomePage = () => {
             textSize="text-xl"
             width="w-[135px]"
             height="h-[70px]"
-            classes={['lg:mb-20']}
+            classes={["lg:mb-20"]}
           />
         </div>
         <Image
