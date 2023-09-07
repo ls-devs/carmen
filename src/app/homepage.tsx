@@ -52,7 +52,7 @@ export const HomePage = () => {
     dataV?.forEach((vid, idx) => {
       if (idx === 0) setVideosPres(vid);
     });
-  });
+  }, [dataV]);
 
   const FillGrid = useCallback(() => {
     let imgIdx: number = 0;
