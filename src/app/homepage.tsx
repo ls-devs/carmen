@@ -146,7 +146,7 @@ export const HomePage = () => {
           </div>
         );
       }
-      if (imgIdx >= 6) {
+      if (imgIdx === 6) {
         reserverdIdx++;
         dataGridWrapper.push(dataGrid);
         dataGrid = [];
