@@ -1,26 +1,21 @@
-'use client';
-import { useQueryUtils } from '@/hooks/useQueryUtils';
-import { IActualites } from '@/types/types';
-import { fetchActualites } from '@/utils/fetchs/fetchs';
-import Image from 'next/image';
-import { useState } from 'react';
-import slugify from 'slugify';
+import { fetchAccueil, fetchActualites } from '@/utils/fetchs/fetchs';
+import Hydrate from '@/utils/hydrateClient';
+import { Actualites } from './actualites';
+import { useDehydratedState } from '@/hooks/useDehydratedState';
 
-export default function Page({ params }: { params: { slug: string } }) {
-  const [myActu, setMyActu] = useState<IActualites>();
+const Page = () => {
+  const dehydratedState = useDehydratedState([
+    {
+      qKey: 'getActualites',
+      qFn: () => fetchActualites(),
+    },
+  ]);
 
-  const { data } = useQueryUtils<IActualites[]>({
-    qKey: ['getActualites'],
-    qFn: () => fetchActualites(),
-  });
+  return (
+    <Hydrate state={dehydratedState}>
+      <Actualites />
+    </Hydrate>
+  );
+};
 
-  data?.forEach((actu) => {
-    if (slugify(actu.acf.title) === params.slug) {
-      setMyActu(actu);
-    }
-  });
-
-  console.log(myActu);
-
-  return <div></div>;
-}
+export default Page;
