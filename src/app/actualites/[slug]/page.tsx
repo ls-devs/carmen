@@ -20,7 +20,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   });
 
   data?.forEach((actu) => {
-    console.log(actu.acf.title == unslugify(params.slug));
+    console.log(actu.acf.title, unslugify(params.slug));
   });
 
   return (
