@@ -8,8 +8,9 @@ import './globals.scss';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Chez Carmen',
-  description: 'Restaurant des Abattoirs',
+  title: 'Chez Carmen - Restaurant des Abattoirs',
+  description:
+    "Entre plats canaille et pièces du boucher, retrouvez l'ambiance bistrot et la cuisine généreuse de cette institution toulousaine créée en 1956.",
 };
 
 export default function RootLayout({
@@ -28,11 +29,7 @@ export default function RootLayout({
       />
       <meta property="og:locale" content="en_US" />
       <meta property="og:description" content="Chez Carmen" />
-      <link
-        rel="icon"
-        href="/img/favicon.png"
-        sizes="any"
-      />
+      <link rel="icon" href="/img/favicon.png" sizes="any" />
 
       <body className={inter.className}>
         <ReactQueryProvider>
