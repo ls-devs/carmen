@@ -9,11 +9,12 @@ import {
   fetchAccueil,
   fetchActualites,
   fetchGalerie,
+  fetchVidéos,
 } from '@/utils/fetchs/fetchs';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ReactElement, useCallback, useEffect, useRef, useState } from 'react';
-import { IActualites, IGaleriePhoto, IHomePage } from '@/types/types';
+import { IActualites, IGaleriePhoto, IHomePage, IVideos } from '@/types/types';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
 
 export const HomePage = () => {
@@ -30,6 +31,12 @@ export const HomePage = () => {
     qKey: ['getHome'],
     qFn: () => fetchAccueil(),
   });
+
+  const { data: dataV } = useQueryUtils<IVideos[]>({
+    qKey: ['getVideos'],
+    qFn: () => fetchVidéos(),
+  });
+
   const { data: dataA } = useQueryUtils<IActualites[]>({
     qKey: ['getActualites'],
     qFn: () => fetchActualites(),
@@ -277,7 +284,8 @@ export const HomePage = () => {
                 muted
                 poster="/img/home/heading/heading_video_thumbnail.png"
                 className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat object-cover px-5 lg:h-[450px] xl:h-[650px]"
-                src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                src={`{dataV?.[0].acf.url}`}
+                playsInline
               ></video>
               <h3 className="absolute -top-4 left-0 -rotate-6 font-softgank text-2xl text-cream-carmen sm:-top-16 sm:left-36 sm:z-10 sm:rotate-6 sm:text-4xl">
                 VIDÉOS
@@ -443,7 +451,7 @@ export const HomePage = () => {
 
       <div className="relative flex flex-col">
         <div className="mb-8 mt-20 flex items-center justify-start">
-          <h1 className="ml-20 font-thunder text-5xl text-red-carmen md:ml-20 md:text-7xl lg:ml-72 lg:text-8xl">
+          <h1 className="ml-20 font-thunder text-5xl text-red-carmen md:ml-20 md:text-7xl lg:ml-72 lg:text-8xl xl:mt-72">
             Galerie Photos
           </h1>
         </div>
