@@ -21,7 +21,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
     });
   }, [data, params.slug]);
 
-  return <div></div>;
+  return <div>{myActu?.acf.description}</div>;
 };
 
 export default Page;
