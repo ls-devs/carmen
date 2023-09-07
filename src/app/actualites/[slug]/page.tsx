@@ -18,7 +18,6 @@ const Page = ({ params }: { params: { slug: string } }) => {
     console.log(actu);
     if (slugify(actu.acf.title) === params.slug) {
       console.log('ok', actu);
-      setMyActu(actu);
     }
   });
 
