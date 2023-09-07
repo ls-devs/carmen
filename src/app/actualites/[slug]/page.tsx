@@ -22,7 +22,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
   }, [data, params.slug]);
 
   return (
-    <div className="mt-44 flex flex-col md:flex-row">
+    <div className="mt-44 flex flex-col items-center justify-center bg-red-carmen md:flex-row">
       {myActu?.acf && (
         <>
           <Image
@@ -30,8 +30,12 @@ const Page = ({ params }: { params: { slug: string } }) => {
             alt={myActu!.acf.title.toString()}
             width={200}
             height={200}
+            className="h-full w-full object-cover p-8 md:max-w-[300px] md:max-h-[300px] lg:max-w-[500px] lg:max-h-[500px]"
           />
-          <p dangerouslySetInnerHTML={{ __html: myActu!.acf.description }}></p>
+          <p
+            className="p-8 font-thunder text-cream-carmen md:text-xl"
+            dangerouslySetInnerHTML={{ __html: myActu!.acf.description }}
+          ></p>
         </>
       )}
     </div>
