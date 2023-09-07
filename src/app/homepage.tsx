@@ -49,9 +49,7 @@ export const HomePage = () => {
   });
 
   useEffect(() => {
-    dataV?.map((vid, idx) => {
-      if (idx === 0) setVideosPres(vid);
-    });
+    console.log(dataV);
   }, [dataV]);
 
   const FillGrid = useCallback(() => {
@@ -286,7 +284,7 @@ export const HomePage = () => {
         <div className="flex h-full w-full flex-col items-center justify-center sm:mt-20 sm:items-start sm:justify-start">
           <div className="relative order-2 mt-8 h-auto w-full sm:mt-0 sm:w-[60%] sm:px-5">
             <div className="relative mb-14">
-              {videosPres?.acf && (
+              {videosPres?.acf.url && (
                 <video
                   autoPlay
                   muted
