@@ -19,6 +19,7 @@ import { useQueryUtils } from '@/hooks/useQueryUtils';
 
 export const HomePage = () => {
   const videoHomeRef = useRef<HTMLVideoElement>(null);
+  const [videosPres, setVideosPres] = useState<IVideos>();
   const [gridItems, setGridItems] = useState<ReactElement<HTMLDivElement>[][]>(
     []
   );
@@ -45,6 +46,12 @@ export const HomePage = () => {
   const { data: dataG } = useQueryUtils<[IGaleriePhoto]>({
     qKey: ['getGalerie'],
     qFn: () => fetchGalerie(),
+  });
+
+  useEffect(() => {
+    dataV?.forEach((vid, idx) => {
+      if (idx === 0) setVideosPres(vid);
+    });
   });
 
   const FillGrid = useCallback(() => {
@@ -284,7 +291,7 @@ export const HomePage = () => {
                 muted
                 poster="/img/home/heading/heading_video_thumbnail.png"
                 className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat object-cover px-5 lg:h-[450px] xl:h-[650px]"
-                src={`${dataV?.[0].acf.url}`}
+                src={`${videosPres!.acf.url}`}
                 playsInline
               ></video>
               <h3 className="absolute -top-4 left-0 -rotate-6 font-softgank text-2xl text-cream-carmen sm:-top-16 sm:left-36 sm:z-10 sm:rotate-6 sm:text-4xl">
