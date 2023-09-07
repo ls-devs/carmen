@@ -3,7 +3,7 @@ import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { IActualites } from '@/types/types';
 import { fetchActualites } from '@/utils/fetchs/fetchs';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import slugify from 'slugify';
 
 export const Actualites = ({ params }: { params?: { slug: string } }) => {
@@ -20,7 +20,9 @@ export const Actualites = ({ params }: { params?: { slug: string } }) => {
     }
   });
 
-  console.log(myActu);
+  useEffect(() => {
+    console.log(myActu);
+  }, [myActu]);
 
   return <div></div>;
 };
