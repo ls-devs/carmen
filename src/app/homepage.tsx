@@ -387,7 +387,7 @@ export const HomePage = () => {
           <span className="font-thunderLC font-bold">Carmen</span>
         </h2>
         <Image
-          src={'/img/home/actualites/actualites_top_4x.png'}
+          src={'/img/home/actualites/actualites_top.png'}
           alt="ACUTALITES"
           className="sm:!-!top-[70px] absolute !-top-[35px] w-full object-contain lg:!-top-[120px]"
           width={1100}
