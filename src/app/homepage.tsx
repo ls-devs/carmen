@@ -478,7 +478,7 @@ export const HomePage = () => {
             alt="VIDEOS"
             width={1100}
             height={300}
-            className="absolute !-top-[55px] -z-[1] w-full sm:!-top-[70px] md:!-top-[120px] lg:!-top-[150px]"
+            className="absolute !-top-[55px] -z-[1] w-full sm:!-top-[70px] md:!-top-[120px] lg:!-top-[150px] xl:!-top-[240px]"
           />
           <div className="flex h-full w-full flex-col items-center justify-center sm:mt-20 sm:items-start sm:justify-start">
             <div className="relative order-2 mt-8 h-auto w-full sm:mt-0 sm:w-[60%] sm:px-5">
@@ -487,7 +487,7 @@ export const HomePage = () => {
                   autoPlay
                   muted
                   poster="/img/home/heading/heading_video_thumbnail.png"
-                  className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat object-cover px-5"
+                  className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat object-cover px-5 lg:h-[600px]"
                   src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
                 ></video>
                 <h3 className="absolute -top-4 left-0 -rotate-6 font-softgank text-2xl text-cream-carmen sm:-top-16 sm:left-36 sm:z-10 sm:rotate-6 sm:text-4xl">
