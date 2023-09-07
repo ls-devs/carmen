@@ -2,6 +2,7 @@ import {
   fetchAccueil,
   fetchFournisseurs,
   fetchHistoire,
+  fetchVidéos,
 } from '@/utils/fetchs/fetchs';
 import Hydrate from '@/utils/hydrateClient';
 import { HomePage } from './homepage';
@@ -13,6 +14,7 @@ const Page = () => {
     { qKey: 'getFournisseurs', qFn: () => fetchFournisseurs() },
     { qKey: 'getHistoire', qFn: () => fetchHistoire() },
     { qKey: 'getActualites', qFn: () => fetchAccueil() },
+    { qKey: 'getVideos', qFn: () => fetchVidéos() },
   ]);
 
   return (
