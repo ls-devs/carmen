@@ -19,11 +19,9 @@ export default function Page({ params }: { params: { slug: string } }) {
     qFn: () => fetchActualites(),
   });
 
-  console.log(unslugify(params.slug));
-
   data?.forEach((actu) => {
     console.log(actu.acf.title);
-    if (actu.acf.title === unslugify(params.slug)) {
+    if (actu.acf.title.includes(unslugify(params.slug))) {
       console.log(actu);
     }
   });
