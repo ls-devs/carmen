@@ -15,15 +15,12 @@ export const Actualites = ({ params }: { params?: { slug: string } }) => {
   });
 
   data?.forEach((actu) => {
+    console.log(actu);
     if (slugify(actu.acf.title) === params?.slug) {
       console.log('ok', actu);
       setMyActu(actu);
     }
   });
-
-  useEffect(() => {
-    console.log(myActu);
-  }, [myActu]);
 
   return <div></div>;
 };
