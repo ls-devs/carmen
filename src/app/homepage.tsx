@@ -49,7 +49,7 @@ export const HomePage = () => {
   });
 
   useEffect(() => {
-    dataV?.forEach((vid, idx) => {
+    dataV?.map((vid, idx) => {
       if (idx === 0) setVideosPres(vid);
     });
   }, [dataV]);
