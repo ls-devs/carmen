@@ -185,10 +185,10 @@ export const HomePage = () => {
             src={`${data?.[0].acf.video_url}`}
             title="YouTube video player"
             className="relative h-full w-full bg-cover bg-center bg-no-repeat object-cover md:h-[450px] md:w-[90%] md:rounded-3xl lg:h-[550px] lg:w-[900px] xl:h-[700px] xl:w-[80%]"
-            autoPlay
             loop
             playsInline
-            muted
+            autoPlay={true}
+            muted={true}
           >
             <source src={`${data?.[0].acf.video_url}`} type="video/mp4" />
           </video>

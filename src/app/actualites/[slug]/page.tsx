@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import slugify from 'slugify';
 
-const Page = ({ params }: { params?: { slug: string } }) => {
+const Page = ({ params }: { params: { slug: string } }) => {
   const [myActu, setMyActu] = useState<IActualites>();
 
   const { data } = useQueryUtils<IActualites[]>({
@@ -16,7 +16,7 @@ const Page = ({ params }: { params?: { slug: string } }) => {
 
   data?.forEach((actu) => {
     console.log(actu);
-    if (slugify(actu.acf.title) === params?.slug) {
+    if (slugify(actu.acf.title) === params.slug) {
       console.log('ok', actu);
       setMyActu(actu);
     }
