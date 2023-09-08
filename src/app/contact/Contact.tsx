@@ -20,7 +20,9 @@ export const Contact = () => {
   });
 
   useEffect(() => {
-    setToEmail(data!.acf.contact_mail);
+    if (data) {
+      setToEmail(data.acf.contact_mail);
+    }
   }, [data]);
 
   const sendEmail = async (
