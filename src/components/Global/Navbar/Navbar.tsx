@@ -101,7 +101,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="flex-center relative w-full items-center justify-center p-3 md:max-lg:justify-start md:max-lg:pt-10 lg:px-[70px] xl:px-20">
+    <nav className="flex-center relative top-0 z-[10] w-full items-center justify-center p-3 max-[768px]:sticky md:max-lg:justify-start md:max-lg:pt-10 lg:px-[70px] xl:px-20">
       <div
         ref={bgBurger}
         className="top-y absolute z-10 h-[100vh] w-full transition-all duration-400 md:hidden"
