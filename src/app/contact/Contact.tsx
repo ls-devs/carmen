@@ -104,10 +104,10 @@ export const Contact = () => {
     try {
       await fetch(
         `${process.env.NEXT_PUBLIC_CARMEN_ADMIN_AJAX}?action=mail_before_submit&toemail=${toEmail}&message=
-         Email de : ${data.NOM} ${data.PRENOM}\r\n 
-         Email de contact : ${data.EMAIL}\r\n 
-         Téléphone: ${data.TEL}\r\n 
-         Objet : ${data.OBJECT}\r\n 
+         Email de : ${data.NOM} ${data.PRENOM}<br>
+         Email de contact : ${data.EMAIL}<br>
+         Téléphone: ${data.TEL}<br>
+         Objet : ${data.OBJECT}<br> 
          Contenu du message : ${data.MESSAGE}`
       );
     } catch (error) {
