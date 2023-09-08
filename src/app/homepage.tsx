@@ -396,7 +396,7 @@ export const HomePage = () => {
       </div>
       {/* VIDEOS */}
 
-      <Fournisseurs />
+      {/* <Fournisseurs /> */}
 
       {/* LES ACTUALITES CARMEN */}
       <div className="relative bg-red-carmen xl:flex xl:flex-col xl:items-center xl:justify-center">
@@ -408,7 +408,7 @@ export const HomePage = () => {
         <Image
           src={'/img/home/actualites/actualites_top.png'}
           alt="ACUTALITES"
-          className="sm:!-!top-[70px] absolute !-top-[35px] w-full object-contain lg:!-top-[120px]"
+          className="hidden sm:!-!top-[70px] absolute !-top-[35px] w-full object-contain lg:!-top-[120px]"
           width={1100}
           height={400}
         />

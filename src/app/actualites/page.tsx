@@ -1,4 +1,4 @@
-import { fetchAccueil } from '@/utils/fetchs/fetchs';
+import { fetchActualites } from '@/utils/fetchs/fetchs';
 import Hydrate from '@/utils/hydrateClient';
 import { Actualites } from './actualites';
 import { useDehydratedState } from '@/hooks/useDehydratedState';
@@ -6,8 +6,8 @@ import { useDehydratedState } from '@/hooks/useDehydratedState';
 const Page = () => {
   const dehydratedState = useDehydratedState([
     {
-      qKey: 'getHome',
-      qFn: () => fetchAccueil(),
+      qKey: 'getActualites',
+      qFn: () => fetchActualites(),
     },
   ]);
 

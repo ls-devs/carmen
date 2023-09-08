@@ -1,5 +1,10 @@
 'use client';
-import { fetchCarte, fetchHistoire, fetchOptions } from '@/utils/fetchs/fetchs';
+import {
+  fetchActualites,
+  fetchCarte,
+  fetchHistoire,
+  fetchOptions,
+} from '@/utils/fetchs/fetchs';
 import React, { useRef, useState } from 'react';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { IOptions } from '@/types/types';
@@ -36,6 +41,10 @@ export const Navbar = () => {
     classList.forEach((cl) => {
       el.classList.toggle(cl);
     });
+  };
+
+  const onClickLink = () => {
+    bgBurger.current?.classList.toggle('!top-0');
   };
 
   const onMenuClick = () => {
@@ -110,6 +119,7 @@ export const Navbar = () => {
         <ul className="flex h-full flex-col items-center justify-start space-y-2 opacity-0 transition-all duration-1000 ease-in-out">
           <li className="h-auto w-full">
             <Link
+              onClick={() => onMenuClick()}
               onMouseEnter={async () => {
                 await qClient.prefetchQuery({
                   queryKey: ['getCarte'],
@@ -138,6 +148,7 @@ export const Navbar = () => {
           </li>
           <li className="h-auto w-full">
             <Link
+              onClick={() => onMenuClick()}
               onMouseEnter={async () => {
                 await qClient.prefetchQuery({
                   queryKey: ['getHistoire'],
@@ -164,10 +175,18 @@ export const Navbar = () => {
               </svg>
             </Link>
           </li>
-          <li className="h-auto w-full">
+          <li className="hidden h-auto w-full">
             <Link
               className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
               href="#"
+              onClick={() => onMenuClick()}
+              onMouseEnter={async () => {
+                await qClient.prefetchQuery({
+                  queryKey: ['getActualites'],
+                  queryFn: () => fetchActualites(),
+                  staleTime: 1800000,
+                });
+              }}
             >
               ACTUALITÉS
               <svg
@@ -187,6 +206,7 @@ export const Navbar = () => {
           </li>
           <li className="h-auto w-full">
             <Link
+              onClick={() => onMenuClick()}
               onMouseEnter={async () => {
                 await qClient.prefetchQuery({
                   queryKey: ['getGalerie'],
@@ -217,6 +237,7 @@ export const Navbar = () => {
             <Link
               className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
               href="/contact"
+              onClick={() => onMenuClick()}
             >
               CONTACT
               <svg
@@ -279,7 +300,7 @@ export const Navbar = () => {
             HISTOIRE
           </Link>
         </li>
-        <li className="h-auto ">
+        <li className="hidden h-auto">
           <Link
             className="flex-center mt-6 flex-col px-1 font-thunder text-2xl text-red-carmen md:mt-8 min-[768px]:max-[800px]:text-lg lg:mt-0 lg:text-xl min-[1024px]:max-[1040px]:text-lg xl:text-2xl 2xl:text-3xl"
             href="#"
@@ -289,6 +310,7 @@ export const Navbar = () => {
         </li>
         <li className="h-auto">
           <Link
+            onClick={() => onMenuClick()}
             onMouseEnter={async () => {
               await qClient.prefetchQuery({
                 queryKey: ['getGalerie'],
@@ -304,6 +326,14 @@ export const Navbar = () => {
         </li>
         <li className="h-auto ">
           <Link
+            onClick={() => onMenuClick()}
+            onMouseEnter={async () => {
+              await qClient.prefetchQuery({
+                queryKey: ['getOptions'],
+                queryFn: () => fetchOptions(),
+                staleTime: 1800000,
+              });
+            }}
             className="flex-center lg:text-xp mt-6 flex-col px-1 font-thunder text-2xl text-red-carmen md:mt-8 min-[768px]:max-[800px]:text-lg lg:mt-0 lg:text-xl min-[1024px]:max-[1040px]:text-lg xl:text-2xl 2xl:text-3xl "
             href="/contact"
           >

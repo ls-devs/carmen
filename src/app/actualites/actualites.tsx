@@ -18,13 +18,14 @@ export const Actualites = () => {
           Actualités
         </h1>
         <div className="relative flex flex-col items-center justify-center bg-red-carmen">
-          <div className="absolute -top-20 w-full">
+          <div className="absolute -top-[25px] min-[400px]:-top-[30px] min-[515px]:-top-[40px] min-[615px]:-top-[50px] min-[700px]:-top-[60px] min-[850px]:-top-[70px] -z-[1] w-full">
             <Image
-              src={'/img/actualites/actualites_top_sep_2x.png'}
+              src={'/img/actualites/actualites_top.png'}
               alt="ACTUALITES"
               width={300}
-              height={300}
+              height={500}
               className="w-full"
+
             />
           </div>
 
