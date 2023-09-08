@@ -64,7 +64,6 @@ export const LaCarte = () => {
 
           <div className="lg:ml-32">
             {data?.[0].acf.plats.map((carte, idx) => {
-              console.log(data?.[0].acf.plats);
               return (
                 <div key={idx} className="flex flex-col px-8 py-4 md:ml-4">
                   <h3 className="relative mb-4 font-thunder text-2xl text-red-carmen md:text-4xl lg:text-6xl">

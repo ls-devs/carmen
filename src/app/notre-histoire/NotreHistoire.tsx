@@ -12,8 +12,6 @@ export const NotreHistoire = () => {
     qFn: () => fetchHistoire(),
   });
 
-  console.log(Parser().parse(data?.[0].acf.subtitle_heading));
-
   return (
     <div className="mt-20">
       <h1 className="jutify-center flex flex-col items-center font-thunder text-4xl text-red-carmen md:ml-[6%] md:w-[400px] md:flex-row md:justify-start md:text-6xl lg:ml-[7.5%] xl:ml-[8.5%]">
