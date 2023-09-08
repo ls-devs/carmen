@@ -10,8 +10,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@tanstack/react-query": "4.33.0",
-    "@tanstack/react-query-devtools": "4.33.0",
+    "@tanstack/react-query": "4.35.0",
+    "@tanstack/react-query-devtools": "4.35.0",
     "@types/node": "20.5.9",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
@@ -19,7 +19,7 @@
     "autoprefixer": "10.4.15",
     "cssnano": "^6.0.1",
     "html-to-react": "^1.6.0",
-    "million": "2.6.0-beta.12",
+    "million": "2.6.0-beta.13",
     "next": "13.4.19",
     "postcss": "8.4.29",
     "react": "18.2.0",
