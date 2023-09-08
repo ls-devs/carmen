@@ -103,7 +103,7 @@ export const Contact = () => {
 
     try {
       await fetch(
-        `${process.env.NEXT_PUBLIC_CARMEN_ADMIN_AJAX}?action=mail_before_submit&toemail=${toEmail}&message=Email de : ${data.NOM} ${data.PRENOM} <br> Email de contact : ${data.EMAIL} <br> Téléphone: ${data.TEL} <br> Objet : ${data.OBJECT} <br> Contenu du message : ${data.MESSAGE} <br> `
+        `${process.env.NEXT_PUBLIC_CARMEN_ADMIN_AJAX}?action=mail_before_submit&toemail=${toEmail}&message=Email de : ${data.NOM} ${data.PRENOM}<br>Email de contact : ${data.EMAIL}<br>Téléphone: ${data.TEL}<br>Objet : ${data.OBJECT}<br>Contenu du message : ${data.MESSAGE}<br>`
       );
     } catch (error) {
       return toast.error(`Oups ! Quelque chose s'est mal passé !`, {
