@@ -408,7 +408,7 @@ export const HomePage = () => {
         <Image
           src={'/img/home/actualites/actualites_top.png'}
           alt="ACUTALITES"
-          className="hidden sm:!-!top-[70px] absolute !-top-[35px] w-full object-contain lg:!-top-[120px]"
+          className="sm:!-!top-[70px] absolute !-top-[35px] hidden w-full object-contain lg:!-top-[120px]"
           width={1100}
           height={400}
         />
@@ -495,7 +495,14 @@ export const HomePage = () => {
       {/* GALERIE PHOTO */}
 
       {/* CONTACT */}
-      <div className="relative h-auto w-full overflow-hidden bg-red-carmen sm:flex sm:justify-center">
+      <div className="relative h-auto w-full bg-red-carmen sm:flex sm:justify-center">
+        <Image
+          src={'/img/contact/contact_socials_bot_4x.png'}
+          alt="CONTACT"
+          width={1920}
+          height={400}
+          className="absolute -top-[40px] -z-[1]  w-full min-[420px]:-top-[80px] md:-top-[100px] lg:-top-[140px] xl:-top-[220px]"
+        />
         {screenWidth < 640 && (
           <>
             <div className="mt-12 flex w-full flex-col">
