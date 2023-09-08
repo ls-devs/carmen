@@ -104,10 +104,11 @@ export const Contact = () => {
     try {
       await fetch(
         `${process.env.NEXT_PUBLIC_CARMEN_ADMIN_AJAX}?action=mail_before_submit&toemail=${toEmail}&message=
-         Email de : ${data.NOM} ${data.PRENOM} 
-         Email de contact : ${data.EMAIL} 
-         Téléphone: ${data.TEL} 
-         Objet : ${data.OBJECT}\r\Contenu du message : ${data.MESSAGE}`
+         Email de : ${data.NOM} ${data.PRENOM}\r\n 
+         Email de contact : ${data.EMAIL}\r\n 
+         Téléphone: ${data.TEL}\r\n 
+         Objet : ${data.OBJECT}\r\n 
+         Contenu du message : ${data.MESSAGE}`
       );
     } catch (error) {
       return toast.error(`Oups ! Quelque chose s'est mal passé !`, {
