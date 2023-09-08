@@ -20,7 +20,7 @@ export const Contact = () => {
   });
 
   useEffect(() => {
-    if (data) {
+    if (data && data.acf.contact_mail) {
       setToEmail(data.acf.contact_mail);
     }
   }, [data]);
@@ -103,7 +103,7 @@ export const Contact = () => {
 
     try {
       await fetch(
-        `${process.env.NEXT_PUBLIC_CARMEN_ADMIN_AJAX}?action=mail_before_submit&toemail=${toEmail}&message=Email de : ${data.NOM} ${data.PRENOM}\r\Email de contact : ${data.EMAIL}<br>Téléphone: ${data.TEL}<br>Objet : ${data.OBJECT}<br>Contenu du message : ${data.MESSAGE}<br>`
+        `${process.env.NEXT_PUBLIC_CARMEN_ADMIN_AJAX}?action=mail_before_submit&toemail=${toEmail}&message=Email de : ${data.NOM} ${data.PRENOM}\r\Email de contact : ${data.EMAIL}\r\Téléphone: ${data.TEL}\r\Objet : ${data.OBJECT}\r\Contenu du message : ${data.MESSAGE}\r\/`
       );
     } catch (error) {
       return toast.error(`Oups ! Quelque chose s'est mal passé !`, {
