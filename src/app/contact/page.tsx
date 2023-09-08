@@ -1,4 +1,4 @@
-import { fetchCarte } from '@/utils/fetchs/fetchs';
+import { fetchOptions } from '@/utils/fetchs/fetchs';
 import { Hydrate } from '@tanstack/react-query';
 import React from 'react';
 import { Contact } from './Contact';
@@ -8,7 +8,7 @@ const Page = () => {
   const dehydratedState = useDehydratedState([
     {
       qKey: 'getOptions',
-      qFn: () => fetchCarte(),
+      qFn: () => fetchOptions(),
     },
   ]);
 
