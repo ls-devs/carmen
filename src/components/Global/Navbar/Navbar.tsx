@@ -12,8 +12,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { fetchGalerie } from '@/utils/fetchs/fetchs';
 import { QueryClient } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 
 export const Navbar = () => {
+  const router = useRouter();
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [loop, setLoop] = useState<number>(0);
   const menuBurger = useRef<HTMLDivElement>(null);
   const bgBurger = useRef<HTMLDivElement>(null);
@@ -68,6 +71,7 @@ export const Navbar = () => {
       'opacity-[1]'
     );
     bgBurger.current?.classList.toggle('!top-0');
+    setMenuOpen((prev) => !prev);
     if (loop === 0) {
       menuBurger.current?.classList.toggle('z-20');
       setLoop(1);
@@ -259,7 +263,15 @@ export const Navbar = () => {
       </div>
       {/* FLEX MENU BURGER */}
       <div className="z-10 -mt-2 w-1/2 md:max-lg:mt-14 md:max-lg:w-1/2 lg:mt-7 lg:h-full">
-        <Link href="/">
+        <Link
+          onClick={() => {
+            router.push('/');
+            if (menuOpen) {
+              onMenuClick();
+            }
+          }}
+          href="/"
+        >
           <Image
             alt="Carmen Logo"
             width={300}
