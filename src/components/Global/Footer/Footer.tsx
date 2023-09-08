@@ -139,9 +139,12 @@ export const Footer = () => {
           <h3 className="text-end text-lg md:text-xl xl:text-3xl">
             {data?.acf.address}
           </h3>
-          <h3 className="hidden text-end text-2xl lg:flex">
+          <a
+            href={`mailto:${data?.acf.contact_mail}`}
+            className="hidden text-end text-2xl lg:flex"
+          >
             {data?.acf.contact_mail}
-          </h3>
+          </a>
         </div>
         <div
           className={`py-2 text-center font-thunder text-lg ${
@@ -151,7 +154,9 @@ export const Footer = () => {
           } min-[425px]:absolute min-[425px]:bottom-0 md:bottom-8 md:left-0 md:flex md:w-full md:items-center md:justify-center md:space-x-5 lg:text-2xl`}
         >
           <h3>MENTION LÉGALES</h3>
-          <h3>WASABI ARTWORK 2023©</h3>
+          <a target="_blank" href="https://wasabi-artwork.com">
+            WASABI ARTWORK 2023©
+          </a>
         </div>
       </div>
       <Image
