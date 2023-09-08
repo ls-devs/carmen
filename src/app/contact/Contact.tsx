@@ -15,12 +15,12 @@ export const Contact = () => {
   const [toEmail, setToEmail] = useState<string>('');
 
   const { data } = useQueryUtils<IOptions>({
-    qKey: ['getActualites'],
+    qKey: ['getOptions'],
     qFn: () => fetchOptions(),
   });
 
   useEffect(() => {
-    if (data && data.acf.contact_mail) {
+    if (data) {
       setToEmail(data.acf.contact_mail);
     }
   }, [data]);
