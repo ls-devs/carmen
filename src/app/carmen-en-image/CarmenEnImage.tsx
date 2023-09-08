@@ -1,8 +1,8 @@
 'use client';
 import { Button } from '@/components/Button/Button';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
-import { IGaleriePhoto } from '@/types/types';
-import { fetchGalerie } from '@/utils/fetchs/fetchs';
+import { IGaleriePhoto, IVideos } from '@/types/types';
+import { fetchGalerie, fetchVidéos } from '@/utils/fetchs/fetchs';
 import Image from 'next/image';
 import React, { ReactElement, useCallback, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
@@ -12,6 +12,7 @@ export const CarmenEnImage = () => {
   const [gridItems, setGridItems] = useState<ReactElement<HTMLDivElement>[][]>(
     []
   );
+  const [videosPres, setVideosPres] = useState<IVideos>();
 
   useEffect(() => {
     const myObserver = new ResizeObserver((_entries) => {
@@ -27,6 +28,16 @@ export const CarmenEnImage = () => {
     qKey: ['getGalerie'],
     qFn: () => fetchGalerie(),
   });
+  const { data: dataV } = useQueryUtils<IVideos[]>({
+    qKey: ['getVideos'],
+    qFn: () => fetchVidéos(),
+  });
+
+  useEffect(() => {
+    dataV?.map((vid, idx) => {
+      if (idx === 0) setVideosPres(vid);
+    });
+  }, [dataV]);
 
   const FillGrid = useCallback(() => {
     let imgIdx: number = 0;
@@ -182,28 +193,30 @@ export const CarmenEnImage = () => {
             textSize="text-xl"
             width="w-[135px]"
             height="h-[70px]"
-            classes={['']}
+            classes={['hidden']}
           />
         </div>
       </section>
-      <section className="relative flex h-auto w-full items-center justify-center bg-red-carmen sm:min-h-[700px] sm:justify-start">
+
+      <div className="relative flex h-auto w-full items-center justify-center bg-red-carmen sm:min-h-[700px] sm:justify-start">
         <Image
           src={'/img/home/videos/video_top_4x.png'}
           alt="VIDEOS"
           width={1100}
           height={300}
-          className="absolute !-top-[55px] -z-[1] w-full sm:!-top-[70px] md:!-top-[120px] lg:!-top-[150px]"
+          className="absolute !-top-[55px] -z-[1] w-full sm:!-top-[70px] md:!-top-[120px] lg:!-top-[150px] xl:!-top-[200px]"
         />
         <div className="flex h-full w-full flex-col items-center justify-center sm:mt-20 sm:items-start sm:justify-start">
           <div className="relative order-2 mt-8 h-auto w-full sm:mt-0 sm:w-[60%] sm:px-5">
             <div className="relative mb-14">
-              <video
-                autoPlay
-                muted
-                poster="/img/home/heading/heading_video_thumbnail.png"
-                className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat object-cover px-5"
-                src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-              ></video>
+              {videosPres?.acf && (
+                <iframe
+                  className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat object-cover px-5 lg:h-[450px] xl:h-[650px]"
+                  src={`${videosPres!.acf.url.replace('watch?v=', 'embed/')}`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              )}
               <h3 className="absolute -top-4 left-0 -rotate-6 font-softgank text-2xl text-cream-carmen sm:-top-16 sm:left-36 sm:z-10 sm:rotate-6 sm:text-4xl">
                 VIDÉOS
               </h3>
@@ -247,7 +260,7 @@ export const CarmenEnImage = () => {
               VIDÉOS
             </h2>
             {screenWidth >= 640 && (
-              <p className="px-5 font-thunderLC text-cream-carmen sm:flex sm:px-0 sm:pr-5">
+              <p className="px-5 font-thunderLC text-cream-carmen sm:flex sm:px-0 sm:pr-5 lg:text-lg xl:text-xl">
                 Elijah Craig, prêtre baptiste en Virginie, fonde sa distillerie
                 au Kentucky, comté de Scott en 1789. Il est considéré comme le
                 père du bourbon tel que nous le connaissons : un « mash bill »
@@ -269,7 +282,7 @@ export const CarmenEnImage = () => {
                 père du bourbon tel que nous le connaissons : un « mash bill »
                 composé principalement de maïs, pour se différencier du « Rye »
                 des états de l’est (Pennsylvanie et Maryland), et surtout
-                l��élevage en fût de chêne fortement bousin��.
+                l’élevage en fût de chêne fortement bousiné.
               </p>
             )}
           </div>
@@ -279,7 +292,7 @@ export const CarmenEnImage = () => {
                 Le terme de « Bourbon » apparait autour de 1850, avant on parle
                 de « whiskey » tout simplement. Celui-ci fait référence au comté
                 de Bourbon (dont le chef-lieu est Paris), ce terme à consonance
-                française est commun dans ces ��tats du sud et du Midwest
+                française est commun dans ces états du sud et du Midwest
                 américain qui ont appartenu à la France. A l’époque la Louisiane
                 est une zone bien plus
               </p>
@@ -294,7 +307,7 @@ export const CarmenEnImage = () => {
               height="h-[70px]"
               classes={[
                 'absolute',
-                'top-[70%]',
+                'top-[50%]',
                 '-left-2',
                 '-translate-y-[50%]',
                 'sm:!relative',
@@ -303,7 +316,7 @@ export const CarmenEnImage = () => {
             />
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 };
