@@ -10,11 +10,8 @@ export const Main = ({ children }: { children: React.ReactNode }) => {
     };
   }, []);
   return (
-    <>
-      <GoogleAnalytics trackPageViews />
-      <main className="overflow-hidden" id={usePathname()}>
-        {children}
-      </main>
-    </>
+    <main className="overflow-hidden" id={usePathname()}>
+      {children}
+    </main>
   );
 };

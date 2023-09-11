@@ -3,8 +3,8 @@ import { Main } from '@/components/Global/Main';
 import { Navbar } from '@/components/Global/Navbar/Navbar';
 import ReactQueryProvider from '@/utils/queryProvider';
 import { Inter } from 'next/font/google';
-import type { NextWebVitalsMetric } from 'next/app';
 import './globals.scss';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -13,21 +13,6 @@ export const metadata = {
   description:
     "Entre plats canaille et pièces du boucher, retrouvez l'ambiance bistrot et la cuisine généreuse de cette institution toulousaine créée en 1956.",
 };
-
-export function reportWebVitals(metric: NextWebVitalsMetric) {
-  window.addEventListener(metric.name, () => {
-    {
-      category: metric.label === 'web-vital'
-        ? 'Web Vitals'
-        : 'Next.js custom metric';
-      value: Math.round(
-        metric.name === 'CLS' ? metric.value * 1000 : metric.value
-      );
-      label: metric.id;
-      nonInteraction: true;
-    }
-  });
-}
 
 export default function RootLayout({
   children,
@@ -53,6 +38,16 @@ export default function RootLayout({
           <Main key={'main'}>{children}</Main>
           <Footer key={'footer'} />
         </ReactQueryProvider>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-SXCHXQWQSF" />
+        <Script id="google-analytics">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-SXCHXQWQSF');
+        `}
+        </Script>
       </body>
     </html>
   );

@@ -362,7 +362,7 @@ export const HomePage = () => {
               <div
                 dangerouslySetInnerHTML={{
                   __html: data?.[0].acf.video_block_text
-                    ? data?.[0].acf.video_block_text.split('\n\n')[0]
+                    ? data?.[0].acf.video_block_text.split('\n\n')[1]
                     : '',
                 }}
                 className="px-5 font-thunderLC text-cream-carmen sm:px-0 sm:pr-5"
