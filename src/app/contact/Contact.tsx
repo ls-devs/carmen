@@ -164,7 +164,7 @@ export const Contact = () => {
     <div className="mt-[120px] flex flex-col">
       <ToastContainer />
       <div className="flex flex-col">
-        <h1 className="mb-5 text-center font-thunder text-6xl text-red-carmen">
+        <h1 className="mb-5 text-center font-thunder text-6xl font-bold uppercase text-red-carmen">
           Contact
         </h1>
         <div className="flex flex-col items-center justify-center">
@@ -219,7 +219,7 @@ export const Contact = () => {
                 </label>
                 <input
                   type="text"
-                  className="ml-2 w-full appearance-none outline-none shadow-none bg-none active:bg-none focus:bg-none"
+                  className="ml-2 w-full appearance-none bg-none shadow-none outline-none focus:bg-none active:bg-none"
                   {...register('NOM')}
                 />
                 <div className="absolute -bottom-2 left-0 h-[10px] w-full">

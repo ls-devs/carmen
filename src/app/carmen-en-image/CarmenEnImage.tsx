@@ -165,8 +165,8 @@ export const CarmenEnImage = () => {
 
   return (
     <div className="relative flex flex-col">
-      <div className="mb-8 mt-20 flex items-center justify-start">
-        <h1 className="ml-20 font-thunder text-5xl text-red-carmen md:ml-20 md:text-7xl lg:ml-72 lg:text-8xl">
+      <div className="mb-12 mt-12 flex items-center justify-start">
+        <h1 className="font-bold ml-20 font-thunder text-5xl text-red-carmen md:ml-20 md:text-7xl lg:ml-72 lg:text-8xl">
           Galerie Photos
         </h1>
       </div>

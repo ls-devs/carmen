@@ -18,11 +18,11 @@ export const Actualites = () => {
   const router = useRouter();
 
   return (
-    <div className="mt-20">
-      <h1 className="mb-20 w-full text-center font-thunder text-6xl text-red-carmen xl:mb-24">
+    <div className="mt-12">
+      <h1 className="mb-20 w-full text-center font-thunder text-6xl font-bold uppercase text-red-carmen xl:mb-0">
         Actualités
       </h1>
-      <div className="relative h-auto w-full bg-red-carmen py-7 lg:mt-56">
+      <div className="relative h-auto w-full bg-red-carmen py-7 lg:mt-36">
         <div className="absolute -top-[40px] -z-[1] min-[620px]:-top-[80px] lg:-top-[120px] xl:-top-[160px]">
           <Image
             src={'/img/actualites/actu_top.png'}
@@ -37,7 +37,7 @@ export const Actualites = () => {
             alt="Actualites"
             width={1920}
             height={50}
-            className='max-h-[210px]'
+            className="max-h-[210px]"
           />
         </div>
 
@@ -86,7 +86,7 @@ export const Actualites = () => {
           </div>
         )}
       </div>
-      <div className="align-center mt-20 md:mt-36 lg:mt-48 grid columns-md auto-cols-fr auto-rows-fr gap-x-3 gap-y-3 p-4 md:grid-cols-3 md:p-8 lg:gap-x-12 lg:gap-y-12 lg:p-12 xl:mt-72 xl:gap-x-20">
+      <div className="align-center mt-20 grid columns-md auto-cols-fr auto-rows-fr gap-x-3 gap-y-3 p-4 md:mt-36 md:grid-cols-3 md:p-8 lg:mt-48 lg:gap-x-12 lg:gap-y-12 lg:p-12 xl:mt-72 xl:gap-x-20">
         {data?.map((actu, idx) => {
           return (
             idx > 0 && (

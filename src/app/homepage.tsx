@@ -1,6 +1,5 @@
 'use client';
 import { Button } from '@/components/Button/Button';
-import { Fournisseurs } from '@/components/Home/Fournisseurs';
 import { Histoire } from '@/components/Home/Histoire';
 import { Actualite } from '@/components/Home/Actualites';
 import { v4 as uuidv4 } from 'uuid';
@@ -16,6 +15,7 @@ import Link from 'next/link';
 import { ReactElement, useCallback, useEffect, useRef, useState } from 'react';
 import { IActualites, IGaleriePhoto, IHomePage, IVideos } from '@/types/types';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
+import { useRouter } from 'next/navigation';
 
 export const HomePage = () => {
   const videoHomeRef = useRef<HTMLVideoElement>(null);
@@ -23,6 +23,7 @@ export const HomePage = () => {
   const [gridItems, setGridItems] = useState<ReactElement<HTMLDivElement>[][]>(
     []
   );
+  const router = useRouter()
   const items = useRef<HTMLAnchorElement[]>([]);
   const addToItems = (item: HTMLAnchorElement) => {
     if (!items.current.includes(item)) items.current.push(item);
@@ -436,6 +437,7 @@ export const HomePage = () => {
               '-translate-y-[50%]',
               'sm:!relative',
             ]}
+            onClick={() => router.push("/actualites")}
           />
         </div>
         <Image

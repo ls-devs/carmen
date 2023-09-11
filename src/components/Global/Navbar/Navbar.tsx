@@ -438,7 +438,7 @@ export const Navbar = () => {
         alt="Carmen Header Tablette"
         className="!-top-[70px] -z-10 hidden !h-[180px] md:max-lg:flex"
       />
-      <div className="absolute left-0 top-0 hidden h-[450px] lg:flex">
+      <div className="absolute left-0 top-0 hidden h-[250px] lg:flex">
         <Image
           src={'/img/navbar/header_top_left.png'}
           width={90}
