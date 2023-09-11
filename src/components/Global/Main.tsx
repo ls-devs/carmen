@@ -1,5 +1,6 @@
 'use client';
 import { usePathname } from 'next/navigation';
+import { GoogleAnalytics } from 'nextjs-google-analytics';
 import React, { useEffect } from 'react';
 
 export const Main = ({ children }: { children: React.ReactNode }) => {
@@ -9,8 +10,11 @@ export const Main = ({ children }: { children: React.ReactNode }) => {
     };
   }, []);
   return (
-    <main className="overflow-hidden" id={usePathname()}>
-      {children}
-    </main>
+    <>
+      <GoogleAnalytics trackPageViews />
+      <main className="overflow-hidden" id={usePathname()}>
+        {children}
+      </main>
+    </>
   );
 };

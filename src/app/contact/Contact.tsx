@@ -219,7 +219,7 @@ export const Contact = () => {
                 </label>
                 <input
                   type="text"
-                  className="ml-2 w-full"
+                  className="ml-2 w-full appearance-none outline-none shadow-none bg-none active:bg-none focus:bg-none"
                   {...register('NOM')}
                 />
                 <div className="absolute -bottom-2 left-0 h-[10px] w-full">

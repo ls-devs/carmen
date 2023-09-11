@@ -337,42 +337,36 @@ export const HomePage = () => {
               VIDÉOS
             </h2>
             {screenWidth >= 640 && (
-              <p className="px-5 font-thunderLC text-cream-carmen sm:flex sm:px-0 sm:pr-5 lg:text-lg xl:text-xl">
-                Elijah Craig, prêtre baptiste en Virginie, fonde sa distillerie
-                au Kentucky, comté de Scott en 1789. Il est considéré comme le
-                père du bourbon tel que nous le connaissons : un « mash bill »
-                composé principalement de maïs, pour se différencier du « Rye »
-                des états de l’est (Pennsylvanie et Maryland), et surtout
-                l’élevage en fût de chêne fortement bousiné. Le terme de «
-                Bourbon » apparait autour de 1850, avant on parle de « whiskey »
-                tout simplement. Celui-ci fait référence au comté de Bourbon
-                (dont le chef-lieu est Paris), ce terme à consonance française
-                est commun dans ces états du sud et du Midwest américain qui ont
-                appartenu à la France. A l’époque la Louisiane est une zone bien
-                plus
-              </p>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: data?.[0].acf.video_block_text
+                    ? data?.[0].acf.video_block_text
+                    : '',
+                }}
+                className="flex-col px-5 font-thunderLC text-cream-carmen sm:px-0 sm:pr-5 lg:text-lg xl:text-xl"
+              ></div>
             )}
             {screenWidth < 640 && (
-              <p className="px-5 font-thunderLC text-cream-carmen sm:hidden sm:px-0 sm:pr-5">
-                Elijah Craig, prêtre baptiste en Virginie, fonde sa distillerie
-                au Kentucky, comté de Scott en 1789. Il est considéré comme le
-                père du bourbon tel que nous le connaissons : un « mash bill »
-                composé principalement de maïs, pour se différencier du « Rye »
-                des états de l’est (Pennsylvanie et Maryland), et surtout
-                l’élevage en fût de chêne fortement bousiné.
-              </p>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: data?.[0].acf.video_block_text
+                    ? data?.[0].acf.video_block_text.split('\n\n')[0]
+                    : '',
+                }}
+                className="px-5 font-thunderLC text-cream-carmen sm:hidden sm:px-0 sm:pr-5"
+              ></div>
             )}
           </div>
           {screenWidth < 640 && (
             <div className="order-3 sm:absolute sm:right-0 sm:top-[405px] sm:hidden sm:w-1/3">
-              <p className="px-5 font-thunderLC text-cream-carmen sm:px-0 sm:pr-5">
-                Le terme de « Bourbon » apparait autour de 1850, avant on parle
-                de « whiskey » tout simplement. Celui-ci fait référence au comté
-                de Bourbon (dont le chef-lieu est Paris), ce terme à consonance
-                française est commun dans ces états du sud et du Midwest
-                américain qui ont appartenu à la France. A l’époque la Louisiane
-                est une zone bien plus
-              </p>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: data?.[0].acf.video_block_text
+                    ? data?.[0].acf.video_block_text.split('\n\n')[0]
+                    : '',
+                }}
+                className="px-5 font-thunderLC text-cream-carmen sm:px-0 sm:pr-5"
+              ></div>
             </div>
           )}
           <div className="relative order-3 h-[140px] w-full items-center justify-start sm:mt-16 sm:flex sm:items-center sm:justify-center">

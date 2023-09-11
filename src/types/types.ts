@@ -89,6 +89,7 @@ export type IWPDefault = {
 export type IHomePage = IWPDefault & {
   acf: {
     video_url: string;
+    video_block_text: string;
   };
 };
 
