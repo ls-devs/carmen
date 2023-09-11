@@ -22,16 +22,18 @@ const Page = ({ params }: { params: { slug: string } }) => {
   }, [data, params.slug]);
 
   return (
-    <div className="relative mt-44 flex flex-col items-center justify-center bg-red-carmen md:flex-row">
+    <div className="relative mt-44 flex flex-col items-center justify-center bg-red-carmen p-8 md:flex-row xl:items-start">
       {myActu?.acf && (
         <>
-          <Image
-            src={myActu!.acf.thumbnail}
-            alt={myActu!.acf.title.toString()}
-            width={200}
-            height={200}
-            className="h-full w-full object-cover p-8 md:max-h-[300px] md:max-w-[300px] lg:max-h-[500px] lg:max-w-[500px]"
-          />
+          <div className="xl:h-[800px] xl:w-[600px]">
+            <Image
+              src={myActu!.acf.thumbnail}
+              alt={myActu!.acf.title.toString()}
+              width={200}
+              height={200}
+              className="w-full object-cover"
+            />
+          </div>
           <div className="flex flex-col items-start justify-center">
             <h1 className="px-8  py-4 font-thunder text-2xl text-cream-carmen md:text-3xl">
               {myActu.acf.title}

@@ -9,6 +9,7 @@ type ButtonProps = {
   classes?: string[];
   width?: string;
   height?: string;
+  onClick?: () => void;
   onSubmit?: (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     e?: BaseSyntheticEvent<object, any, any> | undefined
@@ -23,10 +24,15 @@ export const Button: React.FC<ButtonProps> = ({
   height,
   width,
   onSubmit,
+  onClick,
 }) => {
+  const handleClick = () => {
+    onClick && onClick();
+    onSubmit && onSubmit();
+  };
   return (
     <button
-      onClick={onSubmit ? () => onSubmit() : () => {}}
+      onClick={() => handleClick()}
       className={`flex ${height ? height : 'h-[83px]'} ${
         width ? width : 'w-[160px]'
       } cursor-pointer items-center justify-center font-thunder ${

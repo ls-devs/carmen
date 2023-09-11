@@ -104,7 +104,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="flex-center relative top-0 z-[10] w-full items-center justify-center p-3 max-[768px]:sticky md:max-lg:justify-start md:max-lg:pt-10 lg:px-[70px] xl:px-20">
+    <nav className="flex-center relative top-0 z-[10] w-full items-center justify-center p-3 max-[767px]:sticky md:max-lg:justify-start md:max-lg:pt-10 lg:px-[70px] xl:px-20">
       <div
         ref={bgBurger}
         className="top-y absolute z-10 h-[100vh] w-full transition-all duration-400 md:hidden"
@@ -182,10 +182,10 @@ export const Navbar = () => {
               </svg>
             </Link>
           </li>
-          <li className="hidden h-auto w-full">
+          <li className="h-auto w-full">
             <Link
               className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
-              href="#"
+              href="/actualites"
               onClick={() => onMenuClick()}
               onMouseEnter={async () => {
                 await qClient.prefetchQuery({
@@ -315,10 +315,10 @@ export const Navbar = () => {
             HISTOIRE
           </Link>
         </li>
-        <li className="hidden h-auto">
+        <li className="h-auto">
           <Link
             className="flex-center mt-6 flex-col px-1 font-thunder text-2xl text-red-carmen md:mt-8 min-[768px]:max-[800px]:text-lg lg:mt-0 lg:text-xl min-[1024px]:max-[1040px]:text-lg xl:text-2xl 2xl:text-3xl"
-            href="#"
+            href="/actualites"
           >
             ACTUALITÉS
           </Link>
