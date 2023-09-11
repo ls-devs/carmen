@@ -23,6 +23,14 @@ const Page = ({ params }: { params: { slug: string } }) => {
 
   return (
     <div className="relative mt-44 flex flex-col items-center justify-center bg-red-carmen p-8 md:flex-row xl:items-start">
+      <div className="absolute -top-[40px] -z-[1] min-[620px]:-top-[80px] lg:-top-[120px] xl:-top-[160px]">
+        <Image
+          src={'/img/actualites/actu_top.png'}
+          alt="Actualites"
+          width={1920}
+          height={300}
+        />
+      </div>
       {myActu?.acf && (
         <>
           <div className="xl:h-[800px] xl:w-[600px]">
