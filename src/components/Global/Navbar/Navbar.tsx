@@ -74,6 +74,8 @@ export const Navbar = () => {
     setMenuOpen((prev) => !prev);
     if (loop === 0) {
       menuBurger.current?.classList.toggle('z-20');
+      menuBurger.current?.classList.toggle('pointer-events-none');
+
       setLoop(1);
     }
 
@@ -95,6 +97,7 @@ export const Navbar = () => {
     setTimeout(() => {
       if (loop === 1) {
         menuBurger.current?.classList.toggle('z-20');
+        menuBurger.current?.classList.toggle('pointer-events-none');
         setLoop(0);
       }
     }, 200);
@@ -118,7 +121,7 @@ export const Navbar = () => {
       {/* FLEX MENU BURGER */}
       <div
         ref={menuBurger}
-        className="bg-x-300 bg-y absolute top-0 mt-24 flex h-[85vh] w-full flex-col items-center justify-center bg-cover bg-center bg-no-repeat duration-500 ease-in-out md:hidden"
+        className="bg-x-300 bg-y pointer-events-none absolute top-0 mt-24 flex h-[85vh] w-full flex-col items-center justify-center bg-cover bg-center bg-no-repeat duration-500 ease-in-out md:hidden"
       >
         <ul className="flex h-full flex-col items-center justify-start space-y-2 opacity-0 transition-all duration-1000 ease-in-out">
           <li className="h-auto w-full">
