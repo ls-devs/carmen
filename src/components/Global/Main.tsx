@@ -1,6 +1,5 @@
 'use client';
 import { usePathname } from 'next/navigation';
-import { GoogleAnalytics } from 'nextjs-google-analytics';
 import React, { useEffect } from 'react';
 
 export const Main = ({ children }: { children: React.ReactNode }) => {
