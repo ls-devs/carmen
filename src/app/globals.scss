@@ -9,6 +9,10 @@
     background-color: var(--CREAM-CARMEN);
   }
 
+  * {
+    will-change: transform;
+  }
+
   :root {
     --RED-CARMEN: #780000;
     --CREAM-CARMEN: #fff7e7;
