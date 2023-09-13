@@ -23,7 +23,7 @@ export const HomePage = () => {
   const [gridItems, setGridItems] = useState<ReactElement<HTMLDivElement>[][]>(
     []
   );
-  const router = useRouter()
+  const router = useRouter();
   const items = useRef<HTMLAnchorElement[]>([]);
   const addToItems = (item: HTMLAnchorElement) => {
     if (!items.current.includes(item)) items.current.push(item);
@@ -185,7 +185,6 @@ export const HomePage = () => {
 
     myObserver.observe(document.body);
 
-    videoHomeRef.current?.play();
     return () => {
       myObserver.unobserve(document.body);
     };
@@ -437,7 +436,7 @@ export const HomePage = () => {
               '-translate-y-[50%]',
               'sm:!relative',
             ]}
-            onClick={() => router.push("/actualites")}
+            onClick={() => router.push('/actualites')}
           />
         </div>
         <Image

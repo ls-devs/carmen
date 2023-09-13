@@ -107,10 +107,22 @@ export const Actualites = () => {
                       className="h-full w-full origin-center bg-center object-cover object-center"
                     />
                   </div>
-                  <p
-                    dangerouslySetInnerHTML={{ __html: actu.acf.intro_actu }}
-                    className="pt-8 text-center font-thunder text-lg text-red-carmen md:w-[220px] md:text-start md:text-xl lg:w-[300px] lg:text-3xl xl:w-[400px]"
-                  />
+                  <div className="w-full flex flex-col items-center justify-end">
+                    <p
+                      className="pt-8 text-start font-thunder text-[10px] text-red-carmen md:w-[200px] md:text-start md:text-xl lg:w-[300px] lg:text-[13px] xl:w-[400px] w-[300px]"
+                      dangerouslySetInnerHTML={{
+                        __html: `Postée le : ${new Date(
+                          actu.date_gmt
+                        ).toLocaleDateString()},
+                      `,
+                      }}
+                    />
+                    <h3 className='py-3 text-start text-red-carmen font-thunder uppercase w-[300px] md:w-full font-bold text-xl'>{actu.acf.title}</h3>
+                    <p
+                      dangerouslySetInnerHTML={{ __html: actu.acf.intro_actu }}
+                      className="text-start w-[300px] font-thunder text-md text-red-carmen md:w-[220px] md:text-start md:text-lg lg:w-[300px] xl:w-[400px]"
+                    />
+                  </div>
                 </Link>
               </div>
             )

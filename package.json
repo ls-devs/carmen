@@ -10,8 +10,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@tanstack/react-query": "4.35.0",
-    "@tanstack/react-query-devtools": "4.35.0",
+    "@tanstack/react-query": "4.35.3",
+    "@tanstack/react-query-devtools": "4.35.3",
     "@types/node": "20.6.0",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
@@ -32,12 +32,12 @@
     "the-new-css-reset": "^1.9.0",
     "typescript": "5.2.2",
     "unslugify": "^1.0.4",
-    "uuid": "^9.0.0",
+    "uuid": "^9.0.1",
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.6.0",
-    "@typescript-eslint/parser": "^6.6.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
     "eslint": "^8.49.0",
     "eslint-config-next": "^13.4.19",
     "eslint-config-prettier": "^9.0.0",
