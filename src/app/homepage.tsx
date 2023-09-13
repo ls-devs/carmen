@@ -289,7 +289,11 @@ export const HomePage = () => {
               {videosPres?.acf && (
                 <iframe
                   className="relative h-[300px] w-full bg-cover bg-center bg-no-repeat object-cover px-5 lg:h-[450px] xl:h-[650px]"
-                  src={`${videosPres!.acf.url.replace('watch?v=', 'embed/')}`}
+                  src={`${
+                    videosPres.acf.url.includes('shorts')
+                      ? videosPres.acf.url.replace('shorts', 'embed')
+                      : videosPres!.acf.url.replace('watch?v=', 'embed/')
+                  }`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 ></iframe>

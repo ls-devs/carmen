@@ -201,6 +201,7 @@ export type IVideos = IWPDefault & {
   acf: {
     title: string;
     url: string;
+    description: string;
   };
 };
 

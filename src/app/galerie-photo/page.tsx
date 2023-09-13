@@ -1,9 +1,22 @@
-import React from "react";
+import { useDehydratedState } from '@/hooks/useDehydratedState';
+import { fetchGalerie } from '@/utils/fetchs/fetchs';
+import Hydrate from '@/utils/hydrateClient';
+import React from 'react';
+import { GaleriePhoto } from './GaleriePhoto';
 
-export default function Page() {
+const GaleriePage = () => {
+  const dehydratedClient = useDehydratedState([
+    {
+      qKey: 'getGalerie',
+      qFn: () => fetchGalerie(),
+    },
+  ]);
+
   return (
-    <div>
-      <h1>Galerie Photo</h1>
-    </div>
+    <Hydrate state={dehydratedClient}>
+      <GaleriePhoto />
+    </Hydrate>
   );
-}
+};
+
+export default GaleriePage;
