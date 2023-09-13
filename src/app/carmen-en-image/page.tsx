@@ -1,4 +1,4 @@
-import { fetchGalerie } from '@/utils/fetchs/fetchs';
+import { fetchAccueil, fetchGalerie } from '@/utils/fetchs/fetchs';
 import React from 'react';
 import { CarmenEnImage } from './CarmenEnImage';
 import { useDehydratedState } from '@/hooks/useDehydratedState';
@@ -10,6 +10,7 @@ const GaleriePage = () => {
       qKey: 'getGalerie',
       qFn: () => fetchGalerie(),
     },
+    { qKey: 'getAcceuil', qFn: () => fetchAccueil() },
   ]);
 
   return (
