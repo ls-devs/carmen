@@ -73,7 +73,7 @@ export const Videos = () => {
                     )}
                   </div>
                   <iframe
-                    className={`h-[350px] w-full max-w-[500px] md:h-[300px] md:w-[400px] md:max-w-full lg:h-[400px] lg:min-w-[550px] xl:min-h-[500px] xl:w-full ${
+                    className={`h-[280px] w-[480px] max-w-[500px] md:h-[280px] md:w-[480px] md:max-w-full lg:h-[380px] lg:min-w-[640px] xl:min-h-[380px] ${
                       screenWidth > 1024 && idx % 2 ? 'lg:order-1' : ''
                     }`}
                     src={`${
