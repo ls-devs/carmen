@@ -56,17 +56,6 @@ export const Contact = () => {
         progress: undefined,
       });
     }
-    if (!data.PRENOM) {
-      return toast.error(`Veuillez renseigner votre prénom`, {
-        position: 'top-right',
-        autoClose: 3000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
-      });
-    }
     if (!data.TEL) {
       return toast.error(`Veuillez renseigner un numéro de téléphone`, {
         position: 'top-right',
@@ -103,7 +92,7 @@ export const Contact = () => {
 
     try {
       await fetch(
-        `${process.env.NEXT_PUBLIC_CARMEN_ADMIN_AJAX}?action=mail_before_submit&toemail=${toEmail}&message=Email de : ${data.NOM} ${data.PRENOM}<br>Email de contact : ${data.EMAIL}<br>Téléphone: ${data.TEL}<br>Objet : ${data.OBJECT}<br>Contenu du message : ${data.MESSAGE}`
+        `${process.env.NEXT_PUBLIC_CARMEN_ADMIN_AJAX}?action=mail_before_submit&toemail=${toEmail}&message=Email de : ${data.NOM} <br>Email de contact : ${data.EMAIL}<br>Téléphone: ${data.TEL}<br>Objet : ${data.OBJECT}<br>Contenu du message : ${data.MESSAGE}`
       );
     } catch (error) {
       return toast.error(`Oups ! Quelque chose s'est mal passé !`, {
@@ -119,7 +108,6 @@ export const Contact = () => {
     reset(
       {
         NOM: '',
-        PRENOM: '',
         EMAIL: '',
         TEL: '',
         OBJECT: '',
@@ -242,27 +230,6 @@ export const Contact = () => {
                   type="text"
                   className="ml-2 w-full"
                   {...register('EMAIL')}
-                />
-                <div className="absolute -bottom-2 left-0 h-[10px] w-full">
-                  <Image
-                    src={'/img/contact/contact_underline_4x.png'}
-                    height={100}
-                    width={1900}
-                    alt="NOM"
-                  />
-                </div>
-              </div>
-              <div className="relative mb-4 flex w-full items-start">
-                <label
-                  htmlFor="PRENOM"
-                  className="font-thunder text-xl font-semibold text-red-carmen"
-                >
-                  PRENOM*
-                </label>
-                <input
-                  type="text"
-                  className="ml-2 w-full"
-                  {...register('PRENOM')}
                 />
                 <div className="absolute -bottom-2 left-0 h-[10px] w-full">
                   <Image

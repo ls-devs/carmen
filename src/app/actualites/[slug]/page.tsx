@@ -34,7 +34,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
   return (
     <>
       {myActu?.acf && (
-        <h1 className="mb-8 lg:mb-24 xl:mb-40 mt-20 px-8 py-4 text-center font-thunder text-2xl font-bold uppercase text-red-carmen md:text-3xl lg:text-5xl">
+        <h1 className="mb-8 mt-20 px-8 py-4 text-center font-thunder text-2xl font-bold uppercase text-red-carmen md:text-3xl lg:mb-24 lg:text-5xl xl:mb-40">
           {myActu.acf.title}
         </h1>
       )}
@@ -49,7 +49,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
           />
         </div>
         {myActu?.acf && (
-          <div className="flex justify-center items-center">
+          <div className="flex items-center justify-center">
             <div className="absolute left-0 top-[10px] ml-4 flex w-full">
               <Button
                 color="cream-carmen"
@@ -71,18 +71,18 @@ const Page = ({ params }: { params: { slug: string } }) => {
             </div>
 
             <div className="mt-24 flex flex-col md:flex-row">
-              <div className="xl:w-[500px] xl:h-[500px] xl:min-w-[500px]">
+              <div className="xl:h-[500px] xl:w-[500px] xl:min-w-[500px]">
                 <Image
                   src={myActu!.acf.thumbnail}
                   alt={myActu!.acf.title.toString()}
                   width={200}
                   height={200}
-                  className="w-full h-full object-cover object-center"
+                  className="h-full w-full object-cover object-center"
                 />
               </div>
-              <div className="flex flex-col items-start justify-center xl:pl-28 md:pl-8 md:justify-start">
+              <div className="flex flex-col items-start justify-center md:justify-start md:pl-8 xl:pl-28">
                 <p
-                  className="py-8 font-thunder text-cream-carmen md:text-xl lg:text-3xl md:py-0"
+                  className="py-8 font-thunder text-cream-carmen md:py-0 md:text-xl lg:text-3xl"
                   dangerouslySetInnerHTML={{ __html: myActu!.acf.description }}
                 ></p>
               </div>
