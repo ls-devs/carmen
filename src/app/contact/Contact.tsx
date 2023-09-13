@@ -92,7 +92,7 @@ export const Contact = () => {
 
     try {
       await fetch(
-        `${process.env.NEXT_PUBLIC_CARMEN_ADMIN_AJAX}?action=mail_before_submit&toemail=${toEmail}&message=Email de : ${data.NOM} <br>Email de contact : ${data.EMAIL}<br>Téléphone: ${data.TEL}<br>Objet : ${data.OBJECT}<br>Contenu du message : ${data.MESSAGE}`
+        `${process.env.NEXT_PUBLIC_CARMEN_ADMIN_AJAX}?action=mail_before_submit&toemail=${toEmail}&cc=${data.EMAIL}&message=Email de : ${data.NOM} <br>Email de contact : ${data.EMAIL}<br>Téléphone: ${data.TEL}<br>Objet : ${data.OBJECT}<br>Contenu du message : ${data.MESSAGE}`
       );
     } catch (error) {
       return toast.error(`Oups ! Quelque chose s'est mal passé !`, {
