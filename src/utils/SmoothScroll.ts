@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-const SmoothScroll = (target, speed, smooth) => {
+const SmoothScroll = (target: any, speed: any, smooth: any) => {
   if (target === document)
     target =
       document.scrollingElement ||
@@ -17,7 +18,7 @@ const SmoothScroll = (target, speed, smooth) => {
   target.addEventListener('mousewheel', scrolled, { passive: false });
   target.addEventListener('DOMMouseScroll', scrolled, { passive: false });
 
-  function scrolled(e) {
+  function scrolled(e:any) {
     e.preventDefault(); // disable default scrolling
 
     const delta = normalizeWheelDelta(e);
@@ -28,7 +29,7 @@ const SmoothScroll = (target, speed, smooth) => {
     if (!moving) update();
   }
 
-  function normalizeWheelDelta(e) {
+  function normalizeWheelDelta(e:any) {
     if (e.detail) {
       if (e.wheelDelta)
         return (e.wheelDelta / e.detail / 40) * (e.detail > 0 ? 1 : -1);
