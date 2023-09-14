@@ -19,7 +19,7 @@ const Page = () => {
 
   return (
     <Hydrate state={dehydratedState}>
-      <HomePage />
+        <HomePage />
     </Hydrate>
   );
 };

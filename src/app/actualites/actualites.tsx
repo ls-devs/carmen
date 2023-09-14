@@ -6,7 +6,7 @@ import { fetchActualites } from '@/utils/fetchs/fetchs';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useEffect } from 'react';
 import slugify from 'slugify';
 
 export const Actualites = () => {
@@ -107,9 +107,9 @@ export const Actualites = () => {
                       className="h-full w-full origin-center bg-center object-cover object-center"
                     />
                   </div>
-                  <div className="w-full flex flex-col items-center justify-end">
+                  <div className="flex w-full flex-col items-center justify-end">
                     <p
-                      className="pt-8 text-start font-thunder text-[10px] text-red-carmen md:w-[200px] md:text-start md:text-xl lg:w-[300px] lg:text-[13px] xl:w-[400px] w-[300px]"
+                      className="w-[300px] pt-8 text-start font-thunder text-[10px] text-red-carmen md:w-[200px] md:text-start md:text-xl lg:w-[300px] lg:text-[13px] xl:w-[400px]"
                       dangerouslySetInnerHTML={{
                         __html: `Postée le : ${new Date(
                           actu.date_gmt
@@ -117,10 +117,12 @@ export const Actualites = () => {
                       `,
                       }}
                     />
-                    <h3 className='py-3 text-start text-red-carmen font-thunder uppercase w-[300px] md:w-full font-bold text-xl'>{actu.acf.title}</h3>
+                    <h3 className="w-[300px] py-3 text-start font-thunder text-xl font-bold uppercase text-red-carmen md:w-full">
+                      {actu.acf.title}
+                    </h3>
                     <p
                       dangerouslySetInnerHTML={{ __html: actu.acf.intro_actu }}
-                      className="text-start w-[300px] font-thunder text-md text-red-carmen md:w-[220px] md:text-start md:text-lg lg:w-[300px] xl:w-[400px]"
+                      className="text-md w-[300px] text-start font-thunder text-red-carmen md:w-[220px] md:text-start md:text-lg lg:w-[300px] xl:w-[400px]"
                     />
                   </div>
                 </Link>

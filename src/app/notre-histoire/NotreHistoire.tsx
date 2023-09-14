@@ -2,9 +2,9 @@
 import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { INotreHistoire } from '@/types/types';
 import { fetchHistoire } from '@/utils/fetchs/fetchs';
+import { Parser } from 'html-to-react';
 import Image from 'next/image';
 import React from 'react';
-import { Parser } from 'html-to-react';
 
 export const NotreHistoire = () => {
   const { data } = useQueryUtils<[INotreHistoire]>({

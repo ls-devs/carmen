@@ -28,7 +28,7 @@ export const Footer = () => {
     >
       <div className="flex h-full w-full flex-col items-center justify-center space-y-2 p-3 min-[425px]:flex-row md:my-12 md:items-center md:justify-between">
         <div className="flex-center relative mt-20 h-full w-full min-[425px]:-mt-3 min-[425px]:w-9/12 min-[575px]:w-4/6 md:-mt-4 md:w-1/3 lg:mt-4 xl:mt-6 2xl:mt-8">
-          <Link href={'/'}>
+          <Link href={'/'} prefetch={true}>
             {data && (
               <Image
                 src={`${
@@ -52,7 +52,11 @@ export const Footer = () => {
           } min-[425px]:top-4 md:left-1/2 md:top-16 md:w-1/3 md:-translate-x-1/2 md:text-center md:text-2xl xl:text-3xl`}
         >
           RÉSERVATION :
-          <Link href={`tel:${data?.acf.tel}`} className="font-normal">
+          <Link
+            prefetch={true}
+            href={`tel:${data?.acf.tel}`}
+            className="font-normal"
+          >
             {data?.acf.tel}
           </Link>
         </h3>
@@ -72,6 +76,7 @@ export const Footer = () => {
                     href={rs.link}
                     target="_blank"
                     className="m-2"
+                    prefetch={true}
                   >
                     <svg
                       className="h-[45px] w-[45px] min-[425px]:h-[35px] min-[425px]:w-[35px]"
@@ -102,6 +107,7 @@ export const Footer = () => {
                     href={rs.link}
                     target="_blank"
                     className="m-2"
+                    prefetch={true}
                   >
                     <svg
                       className="h-[45px] w-[45px] min-[425px]:h-[35px] min-[425px]:w-[35px]"
@@ -134,6 +140,7 @@ export const Footer = () => {
                     href={rs.link}
                     target="_blank"
                     className="m-2"
+                    prefetch={true}
                   >
                     <svg
                       data-name="calque 2"

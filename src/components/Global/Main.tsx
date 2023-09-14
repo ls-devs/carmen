@@ -1,13 +1,13 @@
 'use client';
+import React, { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
-import React, { useEffect } from 'react';
+import SmoothScroll from '@/utils/SmoothScroll';
 
 export const Main = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
-    window.onscroll = () => {
-      window.scrollTo(0, window.scrollY);
-    };
+    const sC =  SmoothScroll(document, 120, 20);
   }, []);
+
   return (
     <main className="overflow-hidden" id={usePathname()}>
       {children}

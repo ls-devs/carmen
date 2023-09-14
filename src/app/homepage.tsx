@@ -502,12 +502,14 @@ export const HomePage = () => {
                     14 Av. Maurice Hauriou, 31000 Toulouse
                   </h3>
                   <Link
+                    prefetch={true}
                     className="text-sm text-cream-carmen"
                     href={'mailto:chezcarmen@contact.com'}
                   >
                     chezcarmen@contact.com
                   </Link>
                   <Link
+                    prefetch={true}
                     className="font-bold text-cream-carmen"
                     href={'http://instagram.com/chezcarmentoulouse'}
                     target="_blank"
@@ -519,6 +521,7 @@ export const HomePage = () => {
               <div className="h-auto w-full">
                 <div className="relative mt-14 flex justify-start">
                   <Link
+                    prefetch={true}
                     className="ml-6 font-thunder text-2xl text-cream-carmen"
                     href={'telto:05 61 42 04 95'}
                   >
@@ -688,6 +691,7 @@ export const HomePage = () => {
                     14 Av. Maurice Hauriou, 31000 Toulouse
                   </h3>
                   <Link
+                    prefetch={true}
                     href={'telto:05.61.42.04.95'}
                     className="font-thunder text-xl font-bold text-cream-carmen"
                   >
@@ -696,12 +700,14 @@ export const HomePage = () => {
                 </div>
                 <div className="flex flex-col">
                   <Link
+                    prefetch={true}
                     href={'mailto:chezcarmen@contact.com'}
                     className="font-thunder text-xl text-cream-carmen"
                   >
                     chezcarmen@contact.com
                   </Link>
                   <Link
+                    prefetch={true}
                     className="font-thunder text-xl font-bold text-cream-carmen"
                     href={'http://instagram.com/chezcarmentoulouse'}
                     target="_blank"

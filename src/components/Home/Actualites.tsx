@@ -40,6 +40,7 @@ export const Actualite: React.FC<ActualiteProps> = ({
 
   return (
     <Link
+      prefetch={true}
       href={`actualites/${slugify(title)}`}
       ref={myRef}
       className={`absolute h-auto w-[250px] sm:h-[350px] sm:w-[520px]`}
