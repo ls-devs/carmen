@@ -25,5 +25,7 @@ const nextConfig = {
     ],
   },
 };
-export default million.next(nextConfig, { auto: { rsc: true } });
-// export default nextConfig;
+export default million.next(nextConfig, {
+  auto: { rsc: true, skip: ['useBadHook', /badVariable/g] },
+  mute: true,
+});

@@ -35,7 +35,7 @@ export const CarmenEnImage = () => {
     qFn: () => fetchVidéos(),
   });
 
-  const { data:dataH } = useQueryUtils<IHomePage[]>({
+  const { data: dataH } = useQueryUtils<IHomePage[]>({
     qKey: ['getHome'],
     qFn: () => fetchAccueil(),
   });
@@ -172,7 +172,7 @@ export const CarmenEnImage = () => {
 
   return (
     <div className="relative flex flex-col">
-      <div className="mb-12 mt-12 flex items-center justify-start">
+      <div className="my-12 flex items-center justify-start">
         <h1 className="ml-20 font-thunder text-5xl font-bold text-red-carmen md:ml-20 md:text-7xl lg:ml-72 lg:text-8xl">
           Galerie Photos
         </h1>

@@ -26,7 +26,7 @@ export const Videos = () => {
 
   return (
     <div className="flex flex-col">
-      <h1 className="mb-12 mt-12 items-center justify-center py-8 text-center font-thunder text-5xl font-bold uppercase text-red-carmen xl:mb-24 2xl:mb-44">
+      <h1 className="my-12 items-center justify-center py-8 text-center font-thunder text-5xl font-bold uppercase text-red-carmen xl:mb-24 2xl:mb-44">
         Vidéos
       </h1>
       <div className="relative">
