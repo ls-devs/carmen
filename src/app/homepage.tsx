@@ -214,12 +214,14 @@ export const HomePage = () => {
       (e as TouchEvent<HTMLDivElement>).touches[0].pageX -
         sliderContainer.current!.offsetLeft;
     scrollLeft.current = sliderContainer.current!.scrollLeft;
+    document.body.classList.add(cn('overflow-hidden'));
   };
 
   const onSliderMove = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent> | TouchEvent<HTMLDivElement>
   ) => {
     if (!isDown.current) return;
+    e.preventDefault();
     const x: number =
       (e as React.MouseEvent<HTMLDivElement, MouseEvent>).pageX ||
       (e as TouchEvent<HTMLDivElement>).touches[0].pageX -
@@ -229,7 +231,7 @@ export const HomePage = () => {
     items.current.forEach((item) => {
       item.classList.add(cn('pointer-events-none'));
     });
-
+    document.body.classList.add(cn('overflow-hidden'));
   };
 
   const onSliderLeave = (): void => {
@@ -237,6 +239,7 @@ export const HomePage = () => {
     items.current.forEach((item) => {
       item.classList.remove(cn('pointer-events-none'));
     });
+    document.body.classList.remove(cn('overflow-hidden'));
   };
 
   return (
@@ -448,7 +451,7 @@ export const HomePage = () => {
         />
         <div
           ref={sliderContainer}
-          className="relative flex h-[640px] w-full items-center justify-center overflow-hidden sm:mt-12 sm:h-[520px] sm:items-start"
+          className="relative my-4 flex h-[320px] w-full items-start justify-center overflow-hidden sm:mt-12 sm:h-[520px] sm:items-start"
           onMouseDown={(e) => onSliderClick(e)}
           onTouchStart={(e) => onSliderClick(e)}
           onMouseMove={(e) => onSliderMove(e)}

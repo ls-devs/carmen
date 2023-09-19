@@ -30,7 +30,7 @@ export default function RootLayout({
       />
       <meta property="og:locale" content="en_US" />
       <meta property="og:description" content="Chez Carmen" />
-      <meta name="viewport"/>
+      <meta name="viewport" content="width=device-width, minimum-scale=1.0"/>
       <link rel="icon" href="/img/favicon.png" sizes="any" />
 
       <body className={inter.className}>

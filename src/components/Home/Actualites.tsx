@@ -26,8 +26,6 @@ export const Actualite: React.FC<ActualiteProps> = ({
   const myRef = useRef<HTMLAnchorElement>(null);
   const [myPosition, setMyPosition] = useState<number>(0);
 
-  const enableLink = useRef<boolean>(false);
-
   useEffect(() => {
     if (screenWidth < 640) {
       setMyPosition(position * 270);
