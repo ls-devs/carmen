@@ -1,4 +1,4 @@
-// import million from 'million/compiler';
+import million from 'million/compiler';
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -25,6 +25,5 @@ const nextConfig = {
     ],
   },
 };
-
-// export default million.next(nextConfig, { auto: { rsc: true } });
-export default nextConfig;
+export default million.next(nextConfig, { auto: { rsc: true } });
+// export default nextConfig;
