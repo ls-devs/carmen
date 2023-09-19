@@ -5,9 +5,12 @@
 
 @layer base {
   body {
-    // background-color: black;
     background-color: var(--CREAM-CARMEN);
-    overflow-x: hidden;
+  }
+
+  * ::-webkit-scrollbar {
+    display: none;
+    width: 0 !important;
   }
 
   :root {
