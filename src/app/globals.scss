@@ -40,7 +40,10 @@
 }
 
 .top-y {
-  top: calc(-100vh + 160px);
+  top: calc(-100vh + 170px);
+  @media screen and (min-width: 530px) and (max-width: 768px) {
+    top: calc(-100vh + 200px);
+  }
 }
 
 .break {

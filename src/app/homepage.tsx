@@ -12,10 +12,18 @@ import {
 } from '@/utils/fetchs/fetchs';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ReactElement, useCallback, useEffect, useRef, useState } from 'react';
+import {
+  ReactElement,
+  TouchEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { IActualites, IGaleriePhoto, IHomePage, IVideos } from '@/types/types';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { useRouter } from 'next/navigation';
+import { cn } from '@/utils/cn';
 
 export const HomePage = () => {
   const videoHomeRef = useRef<HTMLVideoElement>(null);
@@ -189,6 +197,47 @@ export const HomePage = () => {
       myObserver.unobserve(document.body);
     };
   }, []);
+
+  const sliderContainer = useRef<HTMLDivElement>(null);
+  const isDown = useRef<boolean>(false);
+  const startX = useRef<number>(0);
+  const scrollLeft = useRef<number>(0);
+
+  const onSliderClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent> | TouchEvent<HTMLDivElement>
+  ) => {
+    e.preventDefault();
+    isDown.current = true;
+    sliderContainer.current?.classList.toggle(cn('cursor-grab'));
+    startX.current =
+      (e as React.MouseEvent<HTMLDivElement, MouseEvent>).pageX ||
+      (e as TouchEvent<HTMLDivElement>).touches[0].pageX -
+        sliderContainer.current!.offsetLeft;
+    scrollLeft.current = sliderContainer.current!.scrollLeft;
+  };
+
+  const onSliderMove = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent> | TouchEvent<HTMLDivElement>
+  ) => {
+    if (!isDown.current) return;
+    const x: number =
+      (e as React.MouseEvent<HTMLDivElement, MouseEvent>).pageX ||
+      (e as TouchEvent<HTMLDivElement>).touches[0].pageX -
+        sliderContainer.current!.offsetLeft;
+    const dist = x - startX.current;
+    sliderContainer.current!.scrollLeft = scrollLeft.current - dist;
+    items.current.forEach((item) => {
+      item.classList.add(cn('pointer-events-none'));
+    });
+
+  };
+
+  const onSliderLeave = (): void => {
+    isDown.current = false;
+    items.current.forEach((item) => {
+      item.classList.remove(cn('pointer-events-none'));
+    });
+  };
 
   return (
     <>
@@ -397,7 +446,17 @@ export const HomePage = () => {
           width={1100}
           height={400}
         />
-        <div className="relative flex h-[640px] w-full items-center justify-center sm:mt-12 sm:h-[520px] sm:items-start">
+        <div
+          ref={sliderContainer}
+          className="relative flex h-[640px] w-full items-center justify-center overflow-hidden sm:mt-12 sm:h-[520px] sm:items-start"
+          onMouseDown={(e) => onSliderClick(e)}
+          onTouchStart={(e) => onSliderClick(e)}
+          onMouseMove={(e) => onSliderMove(e)}
+          onTouchMove={(e) => onSliderMove(e)}
+          onMouseLeave={() => onSliderLeave()}
+          onMouseUp={() => onSliderLeave()}
+          onTouchEnd={() => onSliderLeave()}
+        >
           {dataA?.map((actu, idx) => {
             return (
               <Actualite

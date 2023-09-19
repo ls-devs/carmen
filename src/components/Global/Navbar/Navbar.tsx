@@ -12,10 +12,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { fetchGalerie } from '@/utils/fetchs/fetchs';
 import { QueryClient } from '@tanstack/react-query';
-import { useRouter } from 'next/navigation';
 
 export const Navbar = () => {
-  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [loop, setLoop] = useState<number>(0);
   const menuBurger = useRef<HTMLDivElement>(null);
@@ -33,9 +31,6 @@ export const Navbar = () => {
   });
 
   const qClient = new QueryClient();
-  const prefetchOnLinks = async (qKey: string, qFn: () => void) => {
-    await qClient.prefetchQuery({ queryKey: [`${qKey}`], queryFn: () => qFn });
-  };
 
   const multipleToggles = (
     el: SVGElement | HTMLDivElement,
@@ -44,10 +39,6 @@ export const Navbar = () => {
     classList.forEach((cl) => {
       el.classList.toggle(cl);
     });
-  };
-
-  const onClickLink = () => {
-    bgBurger.current?.classList.toggle('!top-0');
   };
 
   const onMenuClick = () => {

@@ -1,7 +1,9 @@
+import { cn } from '@/utils/cn';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 import slugify from 'slugify';
+import { setTimeout } from 'timers';
 
 type ActualiteProps = {
   addToItems: (item: HTMLAnchorElement) => void;
@@ -18,13 +20,13 @@ export const Actualite: React.FC<ActualiteProps> = ({
   screenWidth,
   position,
   title,
-  description,
   thumbnail,
   intro_actu,
-  image,
 }) => {
   const myRef = useRef<HTMLAnchorElement>(null);
   const [myPosition, setMyPosition] = useState<number>(0);
+
+  const enableLink = useRef<boolean>(false);
 
   useEffect(() => {
     if (screenWidth < 640) {
@@ -43,7 +45,9 @@ export const Actualite: React.FC<ActualiteProps> = ({
       prefetch={true}
       href={`actualites/${slugify(title)}`}
       ref={myRef}
-      className={`absolute h-auto w-[250px] sm:h-[350px] sm:w-[520px]`}
+      className={cn(
+        `pointer-events-none absolute  h-[175px] w-[260px] sm:h-[350px] sm:w-[520px]`
+      )}
       style={{ left: `${myPosition}px` }}
     >
       <Image
@@ -51,7 +55,7 @@ export const Actualite: React.FC<ActualiteProps> = ({
         alt="ACUTALITES PLACEHOLDER"
         width={250}
         height={250}
-        className="w-full object-cover sm:pl-6"
+        className="h-full w-full object-cover sm:pl-6"
       />
       <div className="flex w-full flex-col p-4 sm:p-6">
         <h3 className="font-thunder text-xl text-cream-carmen sm:text-2xl">
