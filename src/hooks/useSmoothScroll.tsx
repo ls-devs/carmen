@@ -19,15 +19,9 @@ export const useSmoothScroll = (path: string) => {
     ) {
       speed.current = 100;
     } else {
-      speed.current = 30;
+      speed.current = 40;
     }
-  }, []);
 
-  useEffect(() => {
-    pos.current = 0;
-  }, [path]);
-
-  useEffect(() => {
     const target =
       document.scrollingElement ||
       document.documentElement ||
@@ -87,4 +81,8 @@ export const useSmoothScroll = (path: string) => {
     target.addEventListener('mousewheel', scrolled, { passive: false });
     target.addEventListener('DOMMouseScroll', scrolled, { passive: false });
   }, []);
+
+  useEffect(() => {
+    pos.current = 0;
+  }, [path]);
 };

@@ -393,7 +393,7 @@ export const HomePage = () => {
         <Image
           src={'/img/home/actualites/actualites_top.png'}
           alt="ACUTALITES"
-          className="sm:!-!top-[70px] absolute !-top-[35px] hidden w-full object-contain lg:!-top-[120px]"
+          className="absolute !-top-[35px] hidden w-full object-contain sm:!-top-[70px] lg:!-top-[120px]"
           width={1100}
           height={400}
         />
