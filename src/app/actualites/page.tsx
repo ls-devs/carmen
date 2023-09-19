@@ -1,6 +1,6 @@
 import { fetchActualites } from '@/utils/fetchs/fetchs';
 import Hydrate from '@/utils/hydrateClient';
-import { Actualites } from './Actualites.1';
+import { Actualites } from './Actualites';
 import { useDehydratedState } from '@/hooks/useDehydratedState';
 
 const Page = () => {
