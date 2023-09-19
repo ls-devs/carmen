@@ -197,7 +197,7 @@ export const Contact = () => {
             </div>
           </div>
           <div className="order-3 flex w-full flex-col">
-            <div className="item-center relative mb-44 flex flex-col justify-center px-8 pt-8 md:px-16">
+            <div className="relative mb-44 flex flex-col items-center justify-center px-8 pt-8 md:px-16">
               <div className="relative mb-4 flex w-full items-start">
                 <label
                   htmlFor="NOM"

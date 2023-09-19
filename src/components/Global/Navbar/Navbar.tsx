@@ -135,7 +135,7 @@ export const Navbar = () => {
                 });
               }}
               className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
-              href="la-carte"
+              href="/la-carte"
             >
               LA CARTE
               <svg
@@ -164,7 +164,7 @@ export const Navbar = () => {
                 });
               }}
               className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
-              href="notre-histoire"
+              href="/notre-histoire"
             >
               HISTOIRE
               <svg
@@ -222,7 +222,7 @@ export const Navbar = () => {
                 });
               }}
               className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
-              href="carmen-en-image"
+              href="/carmen-en-image"
             >
               CARMEN EN IMAGE
               <svg
@@ -268,7 +268,6 @@ export const Navbar = () => {
       <div className="z-10 -mt-2 w-1/2 md:max-lg:mt-14 md:max-lg:w-1/2 lg:mt-7 lg:h-full">
         <Link
           onClick={() => {
-            router.push('/');
             if (menuOpen) {
               onMenuClick();
             }
@@ -295,7 +294,7 @@ export const Navbar = () => {
               });
             }}
             className="flex-center mt-6 flex-col px-1 font-thunder text-2xl text-red-carmen md:mt-8 min-[768px]:max-[800px]:text-lg lg:mt-0 lg:text-xl min-[1024px]:max-[1040px]:text-lg xl:text-2xl 2xl:text-3xl"
-            href="la-carte"
+            href="/la-carte"
           >
             LA CARTE
           </Link>
@@ -310,7 +309,7 @@ export const Navbar = () => {
               });
             }}
             className="flex-center mt-6 flex-col px-1 font-thunder text-2xl text-red-carmen md:mt-8 min-[768px]:max-[800px]:text-lg lg:mt-0 lg:text-xl min-[1024px]:max-[1040px]:text-lg xl:text-2xl 2xl:text-3xl"
-            href="notre-histoire"
+            href="/notre-histoire"
           >
             HISTOIRE
           </Link>
@@ -334,7 +333,7 @@ export const Navbar = () => {
               });
             }}
             className="flex-center mt-6 flex-col px-1 font-thunder text-2xl text-red-carmen md:mt-8 min-[768px]:max-[800px]:text-lg lg:mt-0 lg:text-xl min-[1024px]:max-[1040px]:text-lg xl:text-2xl 2xl:text-3xl "
-            href="carmen-en-image"
+            href="/carmen-en-image"
           >
             CARMEN EN IMAGE
           </Link>
