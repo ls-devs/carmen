@@ -19,7 +19,7 @@ export const useSmoothScroll = (path: string) => {
     ) {
       speed.current = 100;
     } else {
-      speed.current = 40;
+      speed.current = 30;
     }
 
     const target =
