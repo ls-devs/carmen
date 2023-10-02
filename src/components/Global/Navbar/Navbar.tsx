@@ -127,6 +127,7 @@ export const Navbar = () => {
               }}
               className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
               href="/la-carte"
+              prefetch
             >
               LA CARTE
               <svg
@@ -156,6 +157,7 @@ export const Navbar = () => {
               }}
               className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
               href="/notre-histoire"
+              prefetch
             >
               HISTOIRE
               <svg
@@ -185,6 +187,7 @@ export const Navbar = () => {
                   staleTime: 1800000,
                 });
               }}
+              prefetch
             >
               ACTUALITÉS
               <svg
@@ -214,6 +217,7 @@ export const Navbar = () => {
               }}
               className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
               href="/carmen-en-image"
+              prefetch
             >
               CARMEN EN IMAGE
               <svg
@@ -236,6 +240,7 @@ export const Navbar = () => {
               className="flex-center flex-col py-2 font-thunder text-4xl text-red-carmen"
               href="/contact"
               onClick={() => onMenuClick()}
+              prefetch
             >
               CONTACT
               <svg
@@ -264,6 +269,7 @@ export const Navbar = () => {
             }
           }}
           href="/"
+          prefetch
         >
           <Image
             alt="Carmen Logo"
@@ -286,6 +292,7 @@ export const Navbar = () => {
             }}
             className="flex-center mt-6 flex-col px-1 font-thunder text-2xl text-red-carmen md:mt-8 min-[768px]:max-[800px]:text-lg lg:mt-0 lg:text-xl min-[1024px]:max-[1040px]:text-lg xl:text-2xl 2xl:text-3xl"
             href="/la-carte"
+            prefetch
           >
             LA CARTE
           </Link>
@@ -301,6 +308,7 @@ export const Navbar = () => {
             }}
             className="flex-center mt-6 flex-col px-1 font-thunder text-2xl text-red-carmen md:mt-8 min-[768px]:max-[800px]:text-lg lg:mt-0 lg:text-xl min-[1024px]:max-[1040px]:text-lg xl:text-2xl 2xl:text-3xl"
             href="/notre-histoire"
+            prefetch
           >
             HISTOIRE
           </Link>
@@ -309,6 +317,7 @@ export const Navbar = () => {
           <Link
             className="flex-center mt-6 flex-col px-1 font-thunder text-2xl text-red-carmen md:mt-8 min-[768px]:max-[800px]:text-lg lg:mt-0 lg:text-xl min-[1024px]:max-[1040px]:text-lg xl:text-2xl 2xl:text-3xl"
             href="/actualites"
+            prefetch
           >
             ACTUALITÉS
           </Link>
@@ -325,6 +334,7 @@ export const Navbar = () => {
             }}
             className="flex-center mt-6 flex-col px-1 font-thunder text-2xl text-red-carmen md:mt-8 min-[768px]:max-[800px]:text-lg lg:mt-0 lg:text-xl min-[1024px]:max-[1040px]:text-lg xl:text-2xl 2xl:text-3xl "
             href="/carmen-en-image"
+            prefetch
           >
             CARMEN EN IMAGE
           </Link>
@@ -341,6 +351,7 @@ export const Navbar = () => {
             }}
             className="flex-center lg:text-xp mt-6 flex-col px-1 font-thunder text-2xl text-red-carmen md:mt-8 min-[768px]:max-[800px]:text-lg lg:mt-0 lg:text-xl min-[1024px]:max-[1040px]:text-lg xl:text-2xl 2xl:text-3xl "
             href="/contact"
+            prefetch
           >
             CONTACT
           </Link>
@@ -400,6 +411,7 @@ export const Navbar = () => {
         <Link
           className="relative mt-1 font-thunder text-[1.35rem] text-red-carmen md:max-lg:text-xl md:max-lg:text-white lg:mr-2 lg:text-xl min-[1024px]:max-[1040px]:text-lg xl:text-2xl"
           href={`tel:${data?.acf.tel}`}
+          prefetch
         >
           <svg
             className="pointer-events-none absolute  left-1/2 top-1/2 -z-10 hidden w-[135px] -translate-x-1/2 -translate-y-1/2 lg:flex xl:w-[170px] 2xl:w-[300px]"
