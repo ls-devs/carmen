@@ -536,6 +536,7 @@ export const HomePage = () => {
               width="w-[135px]"
               height="h-[70px]"
               classes={['']}
+              onClick={() => router.push('/carmen-en-image')}
             />
           </div>
         </section>

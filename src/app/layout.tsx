@@ -28,9 +28,9 @@ export default function RootLayout({
         property="og:image"
         content="https://wpcarmen.wasabi-artwork.com/wp-content/uploads/2023/07/carmen_logo_red_4x-300x115.png"
       />
-      <meta property="og:locale" content="en_US" />
+      <meta property="og:locale" content="fr_FR" />
       <meta property="og:description" content="Chez Carmen" />
-      <meta name="viewport" content="width=device-width, minimum-scale=1.0"/>
+      <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
       <link rel="icon" href="/img/favicon.png" sizes="any" />
 
       <body className={inter.className}>
