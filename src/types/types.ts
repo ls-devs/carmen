@@ -100,6 +100,7 @@ export type IGaleriePhoto = IWPDefault & {
         image: string;
         titre: string;
         description: string;
+        type: string;
       },
     ];
   };

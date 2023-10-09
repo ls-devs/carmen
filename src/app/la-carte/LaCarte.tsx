@@ -340,7 +340,7 @@ export const LaCarte = () => {
                 <h3 className="font-thunder text-4xl text-red-carmen lg:text-5xl">
                   {viandes.title}
                 </h3>
-                {data[0].acf.les_viandes[idx].plats.map((plat, idx) => {
+                {data[0].acf.les_viandes[idx].plats.map((plat, _idx) => {
                   return (
                     <p
                       key={`${plat.name}_{idx}`}
