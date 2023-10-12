@@ -5,6 +5,7 @@ import ReactQueryProvider from '@/utils/queryProvider';
 import { Inter } from 'next/font/google';
 import './globals.scss';
 import Script from 'next/script';
+import { usePathname } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
