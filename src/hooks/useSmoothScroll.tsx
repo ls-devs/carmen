@@ -4,6 +4,7 @@ export const useSmoothScroll = (path: string) => {
   const pos = useRef<number>(0);
   const smooth = useRef<number>(20);
   const speed = useRef<number>(0);
+
   useEffect(() => {
     pos.current =
       document.scrollingElement?.scrollTop ||
@@ -80,6 +81,10 @@ export const useSmoothScroll = (path: string) => {
 
     target.addEventListener('mousewheel', scrolled, { passive: false });
     target.addEventListener('DOMMouseScroll', scrolled, { passive: false });
+
+    window.addEventListener('scroll', () => {
+      console.log('scroll');
+    });
   }, []);
 
   useEffect(() => {
