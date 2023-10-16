@@ -56,13 +56,14 @@ export const CarmenEnImage = () => {
       if (imgIdx === 0) {
         dataGrid.push(
           <div key={uuidv4()} className={`relative`}>
-            <Image
-              src={`${photo.image}`}
-              width={150}
-              height={150}
-              alt={`${photo.titre}`}
-              className={`h-full w-full object-cover md:w-full`}
-            />
+            <div className="relative h-full w-full">
+              <Image
+                src={`${photo.image}`}
+                layout="fill"
+                alt={`${photo.titre}`}
+                className={`h-full w-full object-cover md:w-full`}
+              />
+            </div>
           </div>
         );
       }
@@ -72,52 +73,56 @@ export const CarmenEnImage = () => {
             key={uuidv4()}
             className={`relative h-full w-full md:row-span-2`}
           >
-            <Image
-              src={`${photo.image}`}
-              width={150}
-              height={150}
-              alt={`${photo.titre}`}
-              className="absolute left-1/2 top-1/2 h-full w-full -translate-x-[50%] -translate-y-[50%] object-cover md:left-0 md:top-0 md:col-span-2 md:h-3/4 md:w-full md:translate-x-0 md:translate-y-0"
-            />
+            <div className="relative h-full w-full">
+              <Image
+                src={`${photo.image}`}
+                layout="fill"
+                alt={`${photo.titre}`}
+                className="absolute left-1/2 top-1/2 h-full w-full -translate-x-[50%] -translate-y-[50%] object-cover md:left-0 md:top-0 md:col-span-2 md:h-3/4 md:w-full md:translate-x-0 md:translate-y-0"
+              />
+            </div>
           </div>
         );
       }
       if (imgIdx === 2) {
         dataGrid.push(
           <div key={uuidv4()} className={`relative h-full w-full`}>
-            <Image
-              src={`${photo.image}`}
-              width={150}
-              height={150}
-              alt={`${photo.titre}`}
-              className="absolute h-full w-full object-cover md:h-full md:w-full"
-            />
+            <div className="relative h-full w-full">
+              <Image
+                src={`${photo.image}`}
+                layout="fill"
+                alt={`${photo.titre}`}
+                className="absolute h-full w-full object-cover md:h-full md:w-full"
+              />
+            </div>
           </div>
         );
       }
       if (imgIdx === 3) {
         dataGrid.push(
           <div key={uuidv4()} className={`relative h-full w-full`}>
-            <Image
-              src={`${photo.image}`}
-              width={150}
-              height={150}
-              alt={`${photo.titre}`}
-              className="absolute top-1/2 h-full w-full -translate-y-[50%] object-cover md:top-3/4 md:h-1/2 md:w-full md:translate-x-0 lg:top-auto lg:h-1/2 lg:w-full lg:translate-x-0 lg:translate-y-0"
-            />
+            <div className="relative h-full w-full">
+              <Image
+                src={`${photo.image}`}
+                layout="fill"
+                alt={`${photo.titre}`}
+                className="absolute top-1/2 h-full w-full -translate-y-[50%] object-cover md:top-3/4 md:h-1/2 md:w-full md:translate-x-0 lg:top-auto lg:h-1/2 lg:w-full lg:translate-x-0 lg:translate-y-0"
+              />
+            </div>
           </div>
         );
       }
       if (imgIdx === 4) {
         dataGrid.push(
           <div key={uuidv4()} className={`relative col-span-2 md:col-span-1`}>
-            <Image
-              src={`${photo.image}`}
-              width={150}
-              height={150}
-              alt={`${photo.titre}`}
-              className="absolute w-full object-cover md:top-1/3 md:h-1/2 lg:h-full lg:w-full"
-            />
+            <div className="relative h-full w-full">
+              <Image
+                src={`${photo.image}`}
+                layout="fill"
+                alt={`${photo.titre}`}
+                className="absolute w-full object-cover md:top-1/3 md:h-1/2 lg:h-full lg:w-full"
+              />
+            </div>
           </div>
         );
       }
@@ -127,13 +132,14 @@ export const CarmenEnImage = () => {
             key={uuidv4()}
             className={`relative md:col-span-1 lg:col-start-4`}
           >
-            <Image
-              src={`${photo.image}`}
-              width={150}
-              height={150}
-              alt={`${photo.titre}`}
-              className="absolute h-full w-full object-cover md:bottom-0 md:top-8 md:h-full md:w-full lg:-top-10 lg:h-1/2"
-            />
+            <div className="relative h-full w-full lg:h-1/2">
+              <Image
+                src={`${photo.image}`}
+                layout="fill"
+                alt={`${photo.titre}`}
+                className="absolute h-full w-full object-cover md:bottom-0 md:top-8 md:h-full md:w-full lg:-top-10 lg:h-1/2"
+              />
+            </div>
           </div>
         );
       }
@@ -143,13 +149,14 @@ export const CarmenEnImage = () => {
             key={uuidv4()}
             className={`relative col-span-2  md:row-auto lg:col-start-3 lg:row-start-3`}
           >
-            <Image
-              src={`${photo.image}`}
-              width={200}
-              height={200}
-              alt={`${photo.titre}`}
-              className="absolute right-0 h-full w-full object-cover md:top-1/2 md:w-3/4 md:-translate-y-[50%] lg:top-0 lg:h-3/4 lg:w-full"
-            />
+            <div className="relative h-full w-full lg:h-3/4">
+              <Image
+                src={`${photo.image}`}
+                layout="fill"
+                alt={`${photo.titre}`}
+                className="absolute right-0 h-full w-full object-cover md:top-1/2 md:w-3/4 md:-translate-y-[50%] lg:top-0 lg:h-3/4 lg:w-full"
+              />
+            </div>
           </div>
         );
       }
