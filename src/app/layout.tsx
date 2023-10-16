@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className="h-full overflow-hidden">
+    <html lang="fr" className="h-full">
       <meta property="og:title" content="Chez Carmen" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="http://www.chezcarmen.fr" />
