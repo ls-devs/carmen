@@ -58,7 +58,7 @@ export const Fournisseurs = () => {
           Fournisseurs
         </h2>
       </div>
-      <div className="flex w-full flex-col items-center justify-center">
+      <div className="mb-20 flex w-full flex-col items-center justify-center">
         <div className="absolute left-0 hidden h-2/3 w-[220px] md:flex lg:top-1/2 lg:flex lg:translate-y-[-42%] xl:w-[15%]">
           {fournisseur?.acf.images?.[0].image && (
             <div className="relative h-full w-full">
