@@ -211,6 +211,16 @@ export type IFournisseurs = IWPDefault & {
     name: string;
     description: string;
     logo: string;
+    images: { image: string }[];
+  };
+};
+
+export type FournisseursFmt = {
+  acf: {
+    name: string;
+    description: string;
+    logo: string;
+    images: { image: string }[];
   };
 };
 

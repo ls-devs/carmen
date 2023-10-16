@@ -1,44 +1,77 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Button } from '../Button/Button';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
-import { IFournisseurs } from '@/types/types';
+import { FournisseursFmt, IFournisseurs } from '@/types/types';
 import { fetchFournisseurs } from '@/utils/fetchs/fetchs';
 
 export const Fournisseurs = () => {
-  const { data, isLoading, isFetching, isError } = useQueryUtils<
-    IFournisseurs[]
-  >({
+  const { data } = useQueryUtils<IFournisseurs[]>({
     qKey: ['getFournisseurs'],
     qFn: () => fetchFournisseurs(),
   });
+
+  const [fournisseur, setFournisseur] = useState<FournisseursFmt>();
+
+  useEffect(() => {
+    if (data) setFournisseur(data[0]);
+  }, [data]);
+
+  const nextFournisseur = (name: string = '') => {
+    data?.forEach((f, idx) => {
+      if (name === f.acf.name) {
+        if (idx === data.length - 1) {
+          setFournisseur(data?.[0]);
+        } else {
+          setFournisseur(data?.[idx + 1]);
+        }
+      }
+    });
+  };
+
+  const prevFournisseur = (name: string = '') => {
+    data?.forEach((f, idx) => {
+      if (name === f.acf.name) {
+        console.log(f.acf.name, name);
+        if (idx === 0) {
+          setFournisseur(data?.[data.length - 1]);
+        } else {
+          setFournisseur(data?.[idx - 1]);
+        }
+      }
+    });
+  };
+
   return (
     <div className="relative mb-14 flex flex-col items-center justify-center md:relative md:min-h-[900px] lg:mb-28 xl:min-h-[1200px]">
       <div className="mb-2 mt-14 md:mt-20">
-        <h2 className="flex flex-col items-center justify-center font-thunderLC text-5xl font-bold text-red-carmen">
-          <span className="font-thunder font-light">Nos</span>
+        <h2 className="flex flex-col items-center justify-center font-thunderLC text-5xl font-bold text-red-carmen md:mt-20">
+          <span className="mt-12 font-thunder font-light">Nos</span>
           FOURNISSEURS
         </h2>
       </div>
       <div className="flex w-full flex-col items-center justify-center">
         <div className="hidden md:absolute md:left-0 md:flex md:h-2/3 md:w-[220px] xl:w-[15%]">
-          <Image
-            src={'/img/home/fournisseurs/fournisseurs_placeholder.png'}
-            alt="FOURNISSEURS PLACEHOLDER"
-            width={300}
-            height={300}
-            className="h-full w-full object-cover"
-          />
+          {fournisseur?.acf.images?.[0].image && (
+            <Image
+              src={fournisseur?.acf.images?.[0].image}
+              alt="FOURNISSEURS PLACEHOLDER"
+              width={300}
+              height={300}
+              className="h-full w-full object-cover"
+            />
+          )}
         </div>
 
-        <div className="my-4 flex w-full items-center justify-between px-2 md:justify-center">
+        <div className="my-4 flex w-full items-center justify-center px-2 md:justify-center">
           <svg
+            onClick={() => prevFournisseur(fournisseur?.acf.name)}
             fill="none"
             height="23"
             viewBox="0 0 64 23"
             width="64"
             xmlns="http://www.w3.org/2000/svg"
-            className="md:hidden"
+            className="mx-8 cursor-pointer"
           >
             <g clipPath="url(#clip0_1016_162)">
               <path
@@ -62,17 +95,21 @@ export const Fournisseurs = () => {
             </defs>
           </svg>
 
-          <div>
-            <Image
-              src={'/img/home/fournisseurs/logo_dev_fournisseurs.png'}
-              width={100}
-              height={100}
-              alt="NOM FOURNISSEUR"
-            />
+          <div className="h-[150px] w-[150px]">
+            {fournisseur && (
+              <Image
+                src={fournisseur.acf.logo}
+                width={100}
+                height={100}
+                alt={fournisseur.acf.name}
+                className="w-full object-cover"
+              />
+            )}
           </div>
 
           <svg
-            className="md:hidden"
+            onClick={() => nextFournisseur(fournisseur?.acf.name)}
+            className="mx-8 cursor-pointer"
             fill="none"
             height="23"
             viewBox="0 0 64 23"
@@ -102,19 +139,20 @@ export const Fournisseurs = () => {
           </svg>
         </div>
         <div className="mt-2 flex items-center justify-center">
-          <p className="mt-2 w-1/2 px-2 text-center font-thunderLC text-lg lg:text-4xl">
-            Retrouvez les produits de l'Épicerie Canaille à Toulouse Bientôt
-            L'Épicerie Canaille sur le web !
+          <p className="mt-2 w-full px-2 text-center font-thunderLC text-2xl lg:text-4xl">
+            {fournisseur && fournisseur.acf.description}
           </p>
         </div>
-        <div className="m-4 lg:flex lg:w-full lg:items-center lg:justify-center">
-          <Image
-            src={'/img/home/fournisseurs/fournisseurs_placeholder.png'}
-            alt="FOURNISSEURS PLACEHOLDER"
-            width={300}
-            height={300}
-            className="lg:w-[400px] xl:w-[500px]"
-          />
+        <div className="m-4 flex h-[400px] w-[400px] items-center justify-center">
+          {fournisseur?.acf.images?.[1].image && (
+            <Image
+              src={fournisseur.acf.images[1].image}
+              alt={fournisseur.acf.name}
+              width={300}
+              height={300}
+              className="object-cover"
+            />
+          )}
         </div>
         <div className="my-4">
           <Button
@@ -123,26 +161,31 @@ export const Fournisseurs = () => {
             textSize="text-xl"
             width="w-[135px]"
             height="h-[70px]"
+            classes={['hidden']}
           />
         </div>
 
         <div className="hidden md:absolute md:right-0 md:top-24 md:flex md:h-2/5 md:w-[220px] xl:top-48 xl:w-[15%]">
-          <Image
-            src={'/img/home/fournisseurs/fournisseurs_placeholder.png'}
-            alt="FOURNISSEURS PLACEHOLDER"
-            width={300}
-            height={300}
-            className="w-full object-cover"
-          />
+          {fournisseur?.acf.images?.[2] && (
+            <Image
+              src={fournisseur?.acf.images?.[2].image}
+              alt="FOURNISSEURS PLACEHOLDER"
+              width={300}
+              height={300}
+              className="object-cover"
+            />
+          )}
         </div>
         <div className="hidden md:absolute md:bottom-0 md:right-0 md:flex md:h-2/5 md:w-1/5 lg:bottom-16 lg:h-[30%] lg:w-[28%]">
-          <Image
-            src={'/img/home/fournisseurs/fournisseurs_placeholder.png'}
-            alt="FOURNISSEURS PLACEHOLDER"
-            width={300}
-            height={300}
-            className="w-full object-cover"
-          />
+          {fournisseur?.acf.images?.[3].image && (
+            <Image
+              src={fournisseur?.acf.images?.[3].image}
+              alt="FOURNISSEURS PLACEHOLDER"
+              width={300}
+              height={300}
+              className="object-cover"
+            />
+          )}
         </div>
       </div>
       <Image

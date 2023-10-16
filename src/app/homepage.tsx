@@ -24,6 +24,7 @@ import { IActualites, IGaleriePhoto, IHomePage, IVideos } from '@/types/types';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { useRouter } from 'next/navigation';
 import { cn } from '@/utils/cn';
+import { Fournisseurs } from '@/components/Home/Fournisseurs';
 
 export const HomePage = () => {
   const videoHomeRef = useRef<HTMLVideoElement>(null);
@@ -433,7 +434,7 @@ export const HomePage = () => {
       </div>
       {/* VIDEOS */}
 
-      {/* <Fournisseurs /> */}
+      <Fournisseurs />
 
       {/* LES ACTUALITES CARMEN */}
       <div className="relative bg-red-carmen xl:flex xl:flex-col xl:items-center xl:justify-center">
@@ -445,7 +446,7 @@ export const HomePage = () => {
         <Image
           src={'/img/home/actualites/actualites_top.png'}
           alt="ACUTALITES"
-          className="absolute !-top-[35px] hidden w-full object-contain sm:!-top-[70px] lg:!-top-[120px]"
+          className="absolute !-top-[35px] w-full object-contain sm:!-top-[70px] lg:!-top-[120px]"
           width={1100}
           height={400}
         />
