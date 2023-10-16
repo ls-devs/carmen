@@ -1,5 +1,9 @@
+import { Footer } from '@/components/Global/Footer/Footer';
+import { Main } from '@/components/Global/Main';
+import { Navbar } from '@/components/Global/Navbar/Navbar';
+import ReactQueryProvider from '@/utils/queryProvider';
 import { Inter } from 'next/font/google';
-import './(all)/globals.scss';
+import './globals.scss';
 import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -16,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className="h-full overflow-hidden">
+    <html lang="fr">
       <meta property="og:title" content="Chez Carmen" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="http://www.chezcarmen.fr" />
@@ -29,8 +33,12 @@ export default function RootLayout({
       <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
       <link rel="icon" href="/img/favicon.png" sizes="any" />
 
-      <body className={`${inter.className} h-full overflow-hidden bg-red-carmen`}>
-        {children}
+      <body className={inter.className}>
+        <ReactQueryProvider>
+          <Navbar key={'navbar'} />
+          <Main key={'main'}>{children}</Main>
+          <Footer key={'footer'} />
+        </ReactQueryProvider>
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-SXCHXQWQSF" />
         <Script id="google-analytics">
           {`

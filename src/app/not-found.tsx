@@ -7,18 +7,7 @@ export default function NotFound() {
   const router = useRouter();
   return (
     <>
-      <div className="relative mt-10 h-auto w-full bg-red-carmen py-7 lg:mt-36">
-        <div className="absolute -top-[40px] -z-[1] min-[620px]:-top-[80px] lg:-top-[120px] xl:-top-[160px]">
-          <Image
-            src={'/img/actualites/actu_top.png'}
-            alt="Actualites"
-            width={1920}
-            height={300}
-          />
-        </div>
-      </div>
-
-      <div className="-mt-20 flex flex-col items-center justify-center bg-red-carmen">
+      <div className="-mt-20 flex h-[100vh] flex-col items-center justify-center bg-red-carmen">
         <div className="relative mt-20 flex min-h-[500px] w-[600px] flex-col items-center justify-center md:w-[800px]">
           <div className="relative min-h-[300px] w-full max-w-[300px] md:max-w-[500px]">
             <Image
