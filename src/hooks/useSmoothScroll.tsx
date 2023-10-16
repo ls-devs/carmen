@@ -49,11 +49,10 @@ export const useSmoothScroll = (path: string) => {
           (target as HTMLElement).scrollHeight -
             (frame as HTMLElement).clientHeight
         )
-      );
+      ); // limit scrolling
 
       if (!moving) update();
     };
-
     const normalizeWheelDelta = (e: WheelEvent) => {
       if (e.detail) {
         if (e.deltaY)
