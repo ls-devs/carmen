@@ -49,7 +49,7 @@ export const Fournisseurs = () => {
   };
 
   return (
-    <div className="relative mb-14 flex flex-col items-center justify-center md:relative md:min-h-[900px] lg:mb-28 xl:min-h-[1200px]">
+    <div className="relative mb-14 flex flex-col items-center justify-center md:relative md:min-h-[1000px] lg:mb-28 xl:min-h-[1200px]">
       <div className="mb-2 mt-14 md:mt-20">
         <h2 className="flex flex-col items-center justify-center font-thunderLC text-6xl font-bold text-red-carmen md:mt-20 xl:flex-row">
           <span className="mt-12 font-thunderLC font-light xl:mr-4 xl:mt-0 xl:font-normal">
@@ -59,7 +59,7 @@ export const Fournisseurs = () => {
         </h2>
       </div>
       <div className="flex w-full flex-col items-center justify-center">
-        <div className="absolute left-0 flex h-2/3 w-[220px] lg:top-1/2 lg:translate-y-[-42%] xl:w-[15%]">
+        <div className="absolute left-0 hidden h-2/3 w-[220px] md:flex lg:top-1/2 lg:flex lg:translate-y-[-42%] xl:w-[15%]">
           {fournisseur?.acf.images?.[0].image && (
             <div className="relative h-full w-full">
               <Image
@@ -111,7 +111,7 @@ export const Fournisseurs = () => {
             viewBox="0 0 64 23"
             width="64"
             xmlns="http://www.w3.org/2000/svg"
-            className="mx-8 cursor-pointer lg:hidden"
+            className="cursor-pointer lg:hidden"
           >
             <g clipPath="url(#clip0_1016_162)">
               <path
@@ -150,7 +150,7 @@ export const Fournisseurs = () => {
 
           <svg
             onClick={() => nextFournisseur(fournisseur?.acf.name)}
-            className="mx-8 cursor-pointer lg:hidden"
+            className="cursor-pointer lg:hidden"
             fill="none"
             height="23"
             viewBox="0 0 64 23"

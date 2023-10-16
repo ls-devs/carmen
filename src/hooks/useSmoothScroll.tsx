@@ -20,7 +20,7 @@ export const useSmoothScroll = (path: string) => {
     ) {
       speed.current = 100;
     } else {
-      speed.current = 30;
+      speed.current = 50;
     }
 
     const target =
@@ -49,10 +49,11 @@ export const useSmoothScroll = (path: string) => {
           (target as HTMLElement).scrollHeight -
             (frame as HTMLElement).clientHeight
         )
-      ); // limit scrolling
+      );
 
       if (!moving) update();
     };
+
     const normalizeWheelDelta = (e: WheelEvent) => {
       if (e.detail) {
         if (e.deltaY)
@@ -81,10 +82,6 @@ export const useSmoothScroll = (path: string) => {
 
     target.addEventListener('mousewheel', scrolled, { passive: false });
     target.addEventListener('DOMMouseScroll', scrolled, { passive: false });
-
-    window.addEventListener('scroll', () => {
-      console.log('scroll');
-    });
   }, []);
 
   useEffect(() => {
