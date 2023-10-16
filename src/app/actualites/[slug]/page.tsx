@@ -72,13 +72,14 @@ const Page = ({ params }: { params: { slug: string } }) => {
 
             <div className="mt-24 flex flex-col md:flex-row">
               <div className="xl:h-[500px] xl:w-[500px] xl:min-w-[500px]">
-                <Image
-                  src={myActu!.acf.thumbnail}
-                  alt={myActu!.acf.title.toString()}
-                  width={200}
-                  height={200}
-                  className="h-full w-full object-cover object-center"
-                />
+                <div className="relative h-full w-full">
+                  <Image
+                    src={myActu!.acf.thumbnail}
+                    alt={myActu!.acf.title.toString()}
+                    layout="fill"
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
               </div>
               <div className="flex flex-col items-start justify-center md:justify-start md:pl-8 xl:pl-28">
                 <p

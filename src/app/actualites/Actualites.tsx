@@ -28,7 +28,7 @@ export const Actualites = () => {
             src={'/img/actualites/actu_top.png'}
             alt="Actualites"
             width={1920}
-            height={300}
+            height={1080}
           />
         </div>
         <div className="absolute top-full -z-[1] mb-48">
@@ -36,7 +36,7 @@ export const Actualites = () => {
             src={'/img/actualites/actu_bot.png'}
             alt="Actualites"
             width={1920}
-            height={50}
+            height={1080}
             className="max-h-[210px]"
           />
         </div>
@@ -46,13 +46,14 @@ export const Actualites = () => {
             <div className="flex flex-col items-center justify-center">
               <div className="md-h-[400px] md:w-[400px] lg:h-[500px] lg:w-[500px]">
                 <Link href={`/actualites/${slugify(data?.[0].acf.title)}`}>
-                  <Image
-                    src={data?.[0] ? data?.[0].acf.thumbnail : ''}
-                    alt={data?.[0] ? data?.[0].acf.description : ''}
-                    width={300}
-                    height={300}
-                    className="h-full w-full object-cover"
-                  />
+                  <div className="relative h-full w-full">
+                    <Image
+                      src={data?.[0] ? data?.[0].acf.thumbnail : ''}
+                      alt={data?.[0] ? data?.[0].acf.description : ''}
+                      layout="fill"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
                 </Link>
               </div>
             </div>
@@ -99,13 +100,14 @@ export const Actualites = () => {
                   href={`/actualites/${slugify(actu.acf.title)}`}
                 >
                   <div className="h-[400px] w-[400px] md:h-[350px] md:w-[220px] lg:h-[500px] lg:w-[300px] xl:h-[600px] xl:w-[400px]">
-                    <Image
-                      src={actu.acf.thumbnail}
-                      alt={actu.acf.title}
-                      width={900}
-                      height={900}
-                      className="h-full w-full origin-center bg-center object-cover object-center"
-                    />
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={actu.acf.thumbnail}
+                        alt={actu.acf.title}
+                        layout="fill"
+                        className="h-full w-full origin-center bg-center object-cover object-center"
+                      />
+                    </div>
                   </div>
                   <div className="flex w-full flex-col items-center justify-end">
                     <p
