@@ -29,7 +29,7 @@ export default function RootLayout({
       <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
       <link rel="icon" href="/img/favicon.png" sizes="any" />
 
-      <body className={`${inter.className} h-full overflow-hidden bg-red-carmen`}>
+      <body className={`${inter.className} h-full overflow-hidden`}>
         {children}
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-SXCHXQWQSF" />
         <Script id="google-analytics">
