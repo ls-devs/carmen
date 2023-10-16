@@ -48,13 +48,14 @@ export const Actualite: React.FC<ActualiteProps> = ({
       )}
       style={{ left: `${myPosition}px` }}
     >
-      <Image
-        src={`${thumbnail}`}
-        alt="ACUTALITES PLACEHOLDER"
-        width={250}
-        height={250}
-        className="h-full w-full object-cover sm:pl-6"
-      />
+      <div className="relative h-full w-full">
+        <Image
+          src={`${thumbnail}`}
+          alt="ACUTALITES PLACEHOLDER"
+          layout="fill"
+          className="h-full w-full object-cover sm:pl-6"
+        />
+      </div>
       <div className="flex w-full flex-col p-4 sm:p-6">
         <h3 className="font-thunder text-xl text-cream-carmen sm:text-2xl">
           {title}
