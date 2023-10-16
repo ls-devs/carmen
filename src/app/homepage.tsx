@@ -231,7 +231,6 @@ export const HomePage = () => {
     items.current.forEach((item) => {
       item.classList.add(cn('pointer-events-none'));
     });
-    document.body.classList.add(cn('overflow-hidden'));
   };
 
   const onSliderLeave = (): void => {
@@ -239,7 +238,6 @@ export const HomePage = () => {
     items.current.forEach((item) => {
       item.classList.remove(cn('pointer-events-none'));
     });
-    document.body.classList.remove(cn('overflow-hidden'));
   };
 
   return (
