@@ -215,7 +215,6 @@ export const HomePage = () => {
       (e as TouchEvent<HTMLDivElement>).touches[0].pageX -
         sliderContainer.current!.offsetLeft;
     scrollLeft.current = sliderContainer.current!.scrollLeft;
-    document.body.classList.add(cn('overflow-hidden'));
   };
 
   const onSliderMove = (
