@@ -33,7 +33,7 @@ export default function RootLayout({
       <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
       <link rel="icon" href="/img/favicon.png" sizes="any" />
 
-      <body className={inter.className}>
+      <body className={`${inter.className}`}>
         <ReactQueryProvider>
           <Navbar key={'navbar'} />
           <Main key={'main'}>{children}</Main>

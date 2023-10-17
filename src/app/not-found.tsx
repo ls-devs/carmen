@@ -7,7 +7,7 @@ export default function NotFound() {
   const router = useRouter();
   return (
     <>
-      <div className="-mt-20 flex h-[100vh] flex-col items-center justify-center bg-red-carmen">
+      <div className="-mt-20 flex h-[107.9vh] flex-col items-center justify-center bg-red-carmen">
         <div className="relative mt-20 flex min-h-[500px] w-[600px] flex-col items-center justify-center md:w-[800px]">
           <div className="relative min-h-[300px] w-full max-w-[300px] md:max-w-[500px]">
             <Image
