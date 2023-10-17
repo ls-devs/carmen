@@ -320,6 +320,7 @@ export const Contact = () => {
             </div>
           </div>
         </div>
+        {/*
         <div className="relative mb-20 mt-16 xl:mb-[200px] xl:flex xl:flex-col xl:justify-center">
           <Image
             src={'/img/contact/contact_socials_sep_top_4x.png'}
@@ -368,6 +369,7 @@ export const Contact = () => {
             </div>
           </div>
         </div>
+ */}
         {/* CONTACT */}
         <div className="relative h-auto w-full bg-red-carmen sm:flex sm:justify-center">
           <Image
