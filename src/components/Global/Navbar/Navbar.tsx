@@ -12,8 +12,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { fetchGalerie } from '@/utils/fetchs/fetchs';
 import { QueryClient } from '@tanstack/react-query';
+import { cn } from '@/utils/cn';
 
-export const Navbar = () => {
+export const Navbar = ({ isAnim }: { isAnim: boolean }) => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [loop, setLoop] = useState<number>(0);
   const menuBurger = useRef<HTMLDivElement>(null);
@@ -95,7 +96,13 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="flex-center relative top-0 z-[10] w-full items-center justify-center p-3 max-[767px]:sticky md:max-lg:justify-start md:max-lg:pt-10 lg:px-[70px] xl:px-20">
+    <nav
+      className={cn(
+        `${
+          isAnim ? 'opacity-0' : ''
+        } flex-center relative top-0 z-[10] w-full items-center justify-center p-3 max-[767px]:sticky md:max-lg:justify-start md:max-lg:pt-10 lg:px-[70px] xl:px-20`
+      )}
+    >
       <div
         ref={bgBurger}
         className="top-y absolute z-10 h-[100vh] w-full transition-all duration-400 md:hidden"

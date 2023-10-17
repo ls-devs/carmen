@@ -5,7 +5,7 @@ import { IOptions, Inputs } from '@/types/types';
 import { fetchOptions } from '@/utils/fetchs/fetchs';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { BaseSyntheticEvent, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -28,7 +28,7 @@ export const Contact = () => {
   const sendEmail = async (
     data: Inputs,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    e: React.BaseSyntheticEvent<object, any, any> | undefined
+    _e: React.BaseSyntheticEvent<object, any, any> | undefined
   ) => {
     if (!data.NOM) {
       return toast.error(`Veuillez renseigner un nom`, {
@@ -130,7 +130,7 @@ export const Contact = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    // formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data, e) => {
     sendEmail(data, e);

@@ -1,13 +1,14 @@
 'use client';
 import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { IOptions } from '@/types/types';
+import { cn } from '@/utils/cn';
 import { fetchOptions } from '@/utils/fetchs/fetchs';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
-export const Footer = () => {
+export const Footer = ({ isAnim }: { isAnim: boolean }) => {
   const path = usePathname();
   const [route, setRoute] = useState<string>('');
   const { data } = useQueryUtils<IOptions>({
@@ -20,11 +21,15 @@ export const Footer = () => {
   }, [path]);
   return (
     <footer
-      className={`${
-        route === '/actualites' || route === '/la-carte'
-          ? 'bg-red-carmen'
-          : 'bg-cream-carmen'
-      } flex-center relative mt-20 h-auto w-full space-y-3`}
+      className={cn(
+        `${
+          route === '/actualites' || route === '/la-carte'
+            ? 'bg-red-carmen'
+            : 'bg-cream-carmen'
+        } ${
+          isAnim ? 'opacity-0' : ''
+        } flex-center relative mt-20 h-auto w-full space-y-3`
+      )}
     >
       <div className="flex h-full w-full flex-col items-center justify-center space-y-2 p-3 min-[425px]:flex-row md:my-12 md:items-center md:justify-between">
         <div className="flex-center relative mt-20 h-full w-full min-[425px]:-mt-3 min-[425px]:w-9/12 min-[575px]:w-4/6 md:-mt-4 md:w-1/3 lg:mt-4 xl:mt-6 2xl:mt-8">

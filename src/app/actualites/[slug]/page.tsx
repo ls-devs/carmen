@@ -4,7 +4,7 @@ import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { IActualites } from '@/types/types';
 import { fetchActualites } from '@/utils/fetchs/fetchs';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { notFound, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import slugify from 'slugify';
 
@@ -31,6 +31,18 @@ const Page = ({ params }: { params: { slug: string } }) => {
     });
   }, [data, params.slug]);
 
+  useEffect(() => {
+    if (data !== undefined) {
+      let is404: boolean = true;
+      data?.map((actu, idx, array): false | undefined => {
+        if (slugify(actu.acf.title) === params.slug) {
+          return (is404 = false);
+        }
+      });
+      if (is404) notFound();
+    }
+  }, [data, params.slug]);
+
   return (
     <>
       {myActu?.acf && (
@@ -38,7 +50,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
           {myActu.acf.title}
         </h1>
       )}
-      <div className="relative flex flex-col items-center justify-center bg-red-carmen p-8 px-[15%] md:flex-row xl:items-start">
+      <div className="relative flex flex-col items-center justify-center bg-red-carmen p-8 px-[10%] md:flex-row xl:items-start">
         <div className="absolute -top-[40px] -z-[1] w-full min-[620px]:-top-[80px] lg:-top-[120px] xl:-top-[160px] 2xl:-top-[190px]">
           <Image
             src={'/img/actualites/actu_top.png'}
@@ -71,7 +83,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
             </div>
 
             <div className="mt-24 flex flex-col md:flex-row">
-              <div className="xl:h-[500px] xl:w-[500px] xl:min-w-[500px]">
+              <div className="h-[500px] w-[500px] md:h-[300px] lg:h-[500px] md:min-w-[300px] lg:min-w-[500px] xl:min-w-[500px]">
                 <div className="relative h-full w-full">
                   <Image
                     src={myActu!.acf.thumbnail}

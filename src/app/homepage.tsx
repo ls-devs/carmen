@@ -26,7 +26,7 @@ import { useRouter } from 'next/navigation';
 import { cn } from '@/utils/cn';
 import { Fournisseurs } from '@/components/Home/Fournisseurs';
 
-export const HomePage = () => {
+export const HomePage = (props) => {
   const videoHomeRef = useRef<HTMLVideoElement>(null);
   const [videosPres, setVideosPres] = useState<IVideos>();
   const [gridItems, setGridItems] = useState<ReactElement<HTMLDivElement>[][]>(
@@ -63,6 +63,10 @@ export const HomePage = () => {
       if (idx === 0) setVideosPres(vid);
     });
   }, [dataV]);
+
+  useEffect(() => {
+    console.log(props);
+  }, [props]);
 
   const FillGrid = useCallback(() => {
     let imgIdx: number = 0;
