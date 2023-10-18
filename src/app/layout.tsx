@@ -19,6 +19,11 @@ export default function RootLayout({
   const [isAnim, setIsAnim] = useState<boolean>(true);
   return (
     <html lang="fr">
+      <title>Chez Carmen - Restaurant des Abattoirs</title>
+      <meta
+        name="description"
+        content="Entre plats canaille et pièces du boucher, retrouvez l'ambiance bistrot et la cuisine généreuse de cette institution toulousaine créée en 1956."
+      />
       <meta property="og:title" content="Chez Carmen" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="http://www.chezcarmen.fr" />

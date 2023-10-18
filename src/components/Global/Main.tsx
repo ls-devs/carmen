@@ -29,7 +29,7 @@ export const Global = ({
       if (isAnim) {
         setTimeout(() => {
           if (anim.current) anim.current.loop = false;
-        }, 3500);
+        }, 3000);
         anim.current.addEventListener('complete', () => {
           setIsAnim(false);
           childrens.current?.classList.toggle('opacity-0');
