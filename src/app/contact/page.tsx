@@ -1,5 +1,5 @@
 import { fetchOptions } from '@/utils/fetchs/fetchs';
-import { Hydrate } from '@tanstack/react-query';
+import Hydrate from '@/utils/hydrateClient';
 import React from 'react';
 import { Contact } from './Contact';
 import { useDehydratedState } from '@/hooks/useDehydratedState';

@@ -1,5 +1,5 @@
 import { fetchCarte } from '@/utils/fetchs/fetchs';
-import { Hydrate } from '@tanstack/react-query';
+import Hydrate from '@/utils/hydrateClient';
 import React from 'react';
 import { LaCarte } from './LaCarte';
 import { useDehydratedState } from '@/hooks/useDehydratedState';
