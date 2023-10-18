@@ -11,7 +11,7 @@ export const LaCarte = () => {
     qFn: fetchCarte,
   });
   return (
-    <div className="mt-32 flex flex-col">
+    <div className="mt-32 flex flex-col overflow-hidden">
       <div className="relative flex w-full flex-col">
         <div className="flex w-full flex-col">
           <h1 className="text-center font-thunder text-6xl font-semibold text-red-carmen md:text-8xl">

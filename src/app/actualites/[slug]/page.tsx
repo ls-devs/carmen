@@ -34,7 +34,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
   useEffect(() => {
     if (data !== undefined) {
       let is404: boolean = true;
-      data?.map((actu, idx, array): false | undefined => {
+      data?.map((actu): false | undefined => {
         if (slugify(actu.acf.title) === params.slug) {
           return (is404 = false);
         }
@@ -44,7 +44,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
   }, [data, params.slug]);
 
   return (
-    <>
+    <div className="overflow-hidden">
       {myActu?.acf && (
         <h1 className="mb-8 mt-20 px-8 py-4 text-center font-thunder text-2xl font-bold uppercase text-red-carmen md:text-3xl lg:mb-24 lg:text-5xl xl:mb-40">
           {myActu.acf.title}
@@ -122,7 +122,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
