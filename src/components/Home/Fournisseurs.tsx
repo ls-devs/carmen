@@ -66,7 +66,7 @@ export const Fournisseurs = () => {
                 quality={100}
                 src={fournisseur?.acf.images?.[0].image}
                 alt="FOURNISSEURS PLACEHOLDER"
-                layout="fill"
+                fill
                 className="h-full w-full object-cover"
               />
             </div>
@@ -140,7 +140,7 @@ export const Fournisseurs = () => {
           <div className="relative flex h-[250px] w-[250px] items-center justify-center">
             {fournisseur && (
               <Image
-                layout="fill"
+                fill
                 quality={100}
                 src={fournisseur.acf.logo}
                 alt={fournisseur.acf.name}
@@ -217,7 +217,7 @@ export const Fournisseurs = () => {
                 priority
                 src={fournisseur?.acf.images?.[2].image}
                 alt="FOURNISSEURS PLACEHOLDER"
-                layout="fill"
+                fill
                 className="w-full object-cover"
               />
             </div>
@@ -231,7 +231,7 @@ export const Fournisseurs = () => {
                 priority
                 src={fournisseur?.acf.images?.[3].image}
                 alt="FOURNISSEURS PLACEHOLDER"
-                layout="fill"
+                fill
                 className="w-full object-cover"
               />
             </div>

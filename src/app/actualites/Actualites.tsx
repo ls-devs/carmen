@@ -50,7 +50,7 @@ export const Actualites = () => {
                     <Image
                       src={data?.[0] ? data?.[0].acf.thumbnail : ''}
                       alt={data?.[0] ? data?.[0].acf.description : ''}
-                      layout="fill"
+                      fill
                       className="h-full w-full object-cover"
                     />
                   </div>
@@ -104,7 +104,7 @@ export const Actualites = () => {
                       <Image
                         src={actu.acf.thumbnail}
                         alt={actu.acf.title}
-                        layout="fill"
+                        fill
                         className="h-full w-full origin-center bg-center object-cover object-center"
                       />
                     </div>

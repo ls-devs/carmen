@@ -8,13 +8,16 @@ export const Global = ({
   children,
   isAnim,
   setIsAnim,
+  params,
 }: {
-  children: JSX.Element;
+  children: React.JSX.Element;
   isAnim: boolean;
   setIsAnim: (bool: boolean) => void;
+  params: { isAnim: boolean };
 }) => {
   const anim = useRef<AnimationItem>();
   const animationContainer = useRef<HTMLDivElement>(null);
+  const childrens = useRef<HTMLElement>(null);
   useEffect(() => {
     const animRef = anim.current;
     if (anim.current === undefined) {
@@ -28,6 +31,10 @@ export const Global = ({
       if (isAnim) {
         anim.current.addEventListener('complete', () => {
           setIsAnim(false);
+          childrens.current?.classList.toggle('opacity-0');
+          childrens.current?.classList.remove('h-[0px]');
+          childrens.current?.classList.remove('w-[0px]');
+          childrens.current?.classList.add('opacity-1');
         });
       }
     }
@@ -35,30 +42,19 @@ export const Global = ({
     return () => animRef?.destroy();
   }, [isAnim, setIsAnim]);
 
-  interface childrenWithProps {
-    isAnim: boolean;
-  }
-
-  const ChildrenWithProps = (children: ReactNode) => {
-    if (React.isValidElement<childrenWithProps>(children)) {
-      return React.cloneElement(children, { isAnim: isAnim });
-    }
-  };
-
   return (
     <main className="overflow-hidden" id={usePathname()}>
       {isAnim && (
-        <div
-          ref={animationContainer}
-          className="absolute top-0 z-10 h-[100vh] w-full bg-cream-carmen"
-        ></div>
+        <div className="absolute top-0 z-10 flex h-[100vh] w-full items-center justify-center bg-cream-carmen">
+          <div className="h-1/2 w-1/2" ref={animationContainer}></div>
+        </div>
       )}
-
-      {React.cloneElement(children, {
-        props: {
-          isAnim: isAnim,
-        },
-      })}
+      <section
+        ref={childrens}
+        className="h-[0px] w-[0px] opacity-0 transition-all"
+      >
+        {children}
+      </section>
     </main>
   );
 };

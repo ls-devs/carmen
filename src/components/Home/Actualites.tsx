@@ -52,7 +52,7 @@ export const Actualite: React.FC<ActualiteProps> = ({
         <Image
           src={`${thumbnail}`}
           alt="ACUTALITES PLACEHOLDER"
-          layout="fill"
+          fill
           className="h-full w-full object-cover sm:pl-6"
         />
       </div>

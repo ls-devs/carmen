@@ -7,7 +7,7 @@ import { useDehydratedState } from '@/hooks/useDehydratedState';
 const Page = () => {
   const dehydratedState = useDehydratedState([
     {
-      qKey: 'getOptions',
+      qKey: ['getOptions'],
       qFn: () => fetchOptions(),
     },
   ]);

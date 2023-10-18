@@ -7,7 +7,7 @@ import { GaleriePhoto } from './GaleriePhoto';
 const GaleriePage = () => {
   const dehydratedClient = useDehydratedState([
     {
-      qKey: 'getGalerie',
+      qKey: ['getGalerie'],
       qFn: () => fetchGalerie(),
     },
   ]);

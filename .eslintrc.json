@@ -14,6 +14,15 @@
     "@typescript-eslint/no-explicit-any": "error",
     "react/no-unescaped-entities": 0,
     "tailwindcss/enforces-negative-arbitrary-values": 0,
-    "tailwindcss/no-custom-classname": 0
+    "tailwindcss/no-custom-classname": 0,
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "extendDefaults": true,
+        "types": {
+          "{}": false
+        }
+      }
+    ]
   }
 }

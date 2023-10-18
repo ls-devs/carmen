@@ -7,10 +7,10 @@ import Hydrate from '@/utils/hydrateClient';
 const GaleriePage = () => {
   const dehydratedClient = useDehydratedState([
     {
-      qKey: 'getGalerie',
+      qKey: ['getGalerie'],
       qFn: () => fetchGalerie(),
     },
-    { qKey: 'getAcceuil', qFn: () => fetchAccueil() },
+    { qKey: ['getAcceuil'], qFn: () => fetchAccueil() },
   ]);
 
   return (

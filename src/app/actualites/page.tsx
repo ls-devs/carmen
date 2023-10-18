@@ -6,7 +6,7 @@ import { useDehydratedState } from '@/hooks/useDehydratedState';
 const Page = () => {
   const dehydratedState = useDehydratedState([
     {
-      qKey: 'getActualites',
+      qKey: ['getActualites'],
       qFn: () => fetchActualites(),
     },
   ]);

@@ -6,7 +6,7 @@ import { useDehydratedState } from '@/hooks/useDehydratedState';
 const VideosPage = () => {
   const dehydrateState = useDehydratedState([
     {
-      qKey: 'getVideos',
+      qKey: ['getVideos'],
       qFn: () => fetchVideos(),
     },
   ]);
