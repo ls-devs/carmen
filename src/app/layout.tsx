@@ -6,24 +6,17 @@ import ReactQueryProvider from '@/utils/queryProvider';
 import { Inter } from 'next/font/google';
 import './globals.scss';
 import Script from 'next/script';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import React from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
-  params,
 }: {
   children: React.JSX.Element;
-  params: {
-    isAnim: boolean;
-  };
 }) {
   const [isAnim, setIsAnim] = useState<boolean>(true);
-  useEffect(() => {
-    params.isAnim = isAnim;
-  }, [isAnim, params]);
   return (
     <html lang="fr">
       <meta property="og:title" content="Chez Carmen" />
@@ -40,12 +33,7 @@ export default function RootLayout({
       <body className={`${inter.className}`}>
         <ReactQueryProvider>
           <Navbar isAnim={isAnim} key={'navbar'} />
-          <Global
-            params={params}
-            isAnim={isAnim}
-            setIsAnim={setIsAnim}
-            key={'main'}
-          >
+          <Global isAnim={isAnim} setIsAnim={setIsAnim} key={'main'}>
             {children}
           </Global>
           <Footer isAnim={isAnim} key={'footer'} />

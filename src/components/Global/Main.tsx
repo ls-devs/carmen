@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { ReactNode, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import lottie, { AnimationItem } from 'lottie-web';
 import animationData from '../../../public/loader/loader_carmen.json';
@@ -8,12 +8,10 @@ export const Global = ({
   children,
   isAnim,
   setIsAnim,
-  params,
 }: {
   children: React.JSX.Element;
   isAnim: boolean;
   setIsAnim: (bool: boolean) => void;
-  params: { isAnim: boolean };
 }) => {
   const anim = useRef<AnimationItem>();
   const animationContainer = useRef<HTMLDivElement>(null);
@@ -24,11 +22,14 @@ export const Global = ({
       anim.current = lottie.loadAnimation({
         container: animationContainer.current as Element,
         renderer: 'svg',
-        loop: false,
+        loop: true,
         autoplay: true,
         animationData,
       });
       if (isAnim) {
+        setTimeout(() => {
+          if (anim.current) anim.current.loop = false;
+        }, 3500);
         anim.current.addEventListener('complete', () => {
           setIsAnim(false);
           childrens.current?.classList.toggle('opacity-0');

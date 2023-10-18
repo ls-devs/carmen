@@ -26,10 +26,7 @@ import { useRouter } from 'next/navigation';
 import { cn } from '@/utils/cn';
 import { Fournisseurs } from '@/components/Home/Fournisseurs';
 
-export const HomePage = ({ params }: { params: { isAnim: boolean } }) => {
-  useEffect(() => {
-    console.log('home', params);
-  }, [params]);
+export const HomePage = () => {
   const videoHomeRef = useRef<HTMLVideoElement>(null);
   const [videosPres, setVideosPres] = useState<IVideos>();
   const [gridItems, setGridItems] = useState<ReactElement<HTMLDivElement>[][]>(

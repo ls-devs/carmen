@@ -8,7 +8,7 @@ import Hydrate from '@/utils/hydrateClient';
 import { HomePage } from './homepage';
 import { useDehydratedState } from '@/hooks/useDehydratedState';
 
-const Page = ({ params }: { params: { isAnim: boolean } }) => {
+const Page = () => {
   const dehydratedState = useDehydratedState([
     { qKey: ['getHome'], qFn: () => fetchAccueil() },
     { qKey: ['getFournisseurs'], qFn: () => fetchFournisseurs() },
@@ -19,7 +19,7 @@ const Page = ({ params }: { params: { isAnim: boolean } }) => {
 
   return (
     <Hydrate state={dehydratedState}>
-      <HomePage params={params} />
+      <HomePage />
     </Hydrate>
   );
 };
