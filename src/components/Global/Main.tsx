@@ -20,7 +20,7 @@ export const Global = ({
   return (
     <main
       ref={main}
-      className="h-[0px] w-[0px] overflow-hidden opacity-0 transition-all"
+      className="h-[0px] w-[0px] opacity-0 transition-all"
       id={usePathname()}
     >
       {children}

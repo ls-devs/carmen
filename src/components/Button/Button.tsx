@@ -1,6 +1,4 @@
-import { Inputs } from '@/types/types';
 import React, { BaseSyntheticEvent } from 'react';
-import { SubmitHandler } from 'react-hook-form';
 
 type ButtonProps = {
   color: string;

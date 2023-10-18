@@ -96,7 +96,7 @@ export const HomePage = () => {
                 src={`${photo.image}`}
                 fill
                 alt={`${photo.titre}`}
-                className='object-cover'
+                className="object-cover"
               />
             </div>
           </div>
@@ -822,7 +822,6 @@ export const HomePage = () => {
           </>
         )}
       </div>
-
       {/* CONTACT */}
     </>
   );
