@@ -32,9 +32,8 @@ export const Global = ({
         anim.current.addEventListener('complete', () => {
           setIsAnim(false);
           childrens.current?.classList.toggle('opacity-0');
-          childrens.current?.classList.remove('h-[0px]');
-          childrens.current?.classList.remove('w-[0px]');
-          childrens.current?.classList.add('opacity-1');
+          childrens.current?.classList.toggle('h-[0px]');
+          childrens.current?.classList.toggle('w-[0px]');
         });
       }
     }
