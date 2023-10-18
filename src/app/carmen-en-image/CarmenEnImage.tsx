@@ -78,7 +78,7 @@ export const CarmenEnImage = () => {
                 src={`${photo.image}`}
                 fill
                 alt={`${photo.titre}`}
-                className="absolute left-1/2 top-1/2 h-full w-full -translate-x-[50%] -translate-y-[50%] object-cover md:left-0 md:top-0 md:col-span-2 md:h-3/4 md:w-full md:translate-x-0 md:translate-y-0"
+                className="object-cover"
               />
             </div>
           </div>
@@ -106,7 +106,7 @@ export const CarmenEnImage = () => {
                 src={`${photo.image}`}
                 fill
                 alt={`${photo.titre}`}
-                className="absolute top-1/2 h-full w-full -translate-y-[50%] object-cover md:top-3/4 md:h-1/2 md:w-full md:translate-x-0 lg:top-auto lg:h-1/2 lg:w-full lg:translate-x-0 lg:translate-y-0"
+                className="object-cover"
               />
             </div>
           </div>

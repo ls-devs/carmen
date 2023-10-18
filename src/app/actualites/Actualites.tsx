@@ -98,6 +98,7 @@ export const Actualites = () => {
                 <Link
                   className="flex flex-col items-center justify-center"
                   href={`/actualites/${slugify(actu.acf.title)}`}
+                  prefetch
                 >
                   <div className="h-[400px] w-[400px] md:h-[350px] md:w-[220px] lg:h-[500px] lg:w-[300px] xl:h-[600px] xl:w-[400px]">
                     <div className="relative h-full w-full">

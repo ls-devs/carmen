@@ -6,8 +6,10 @@ import ReactQueryProvider from '@/utils/queryProvider';
 import { Inter } from 'next/font/google';
 import './globals.scss';
 import Script from 'next/script';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import React from 'react';
+import lottie, { AnimationItem } from 'lottie-web';
+import animationData from '../../public/loader/loader_carmen.json';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,6 +19,35 @@ export default function RootLayout({
   children: React.JSX.Element;
 }) {
   const [isAnim, setIsAnim] = useState<boolean>(true);
+  const anim = useRef<AnimationItem>();
+  const animationContainer = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const animRef = anim.current;
+    if (anim.current === undefined) {
+      anim.current = lottie.loadAnimation({
+        container: animationContainer.current as Element,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData,
+      });
+      if (isAnim) {
+        anim.current.addEventListener('complete', () => {
+          animationContainer.current?.parentElement?.remove();
+          setIsAnim(false);
+        });
+      }
+    }
+
+    return () => animRef?.destroy();
+  }, [isAnim]);
+
+  useEffect(() => {
+    if (anim.current) {
+      anim.current.loop = false;
+    }
+  }, []);
+
   return (
     <html lang="fr">
       <title>Chez Carmen - Restaurant des Abattoirs</title>
@@ -36,9 +67,12 @@ export default function RootLayout({
       <link rel="icon" href="/img/favicon.png" sizes="any" />
 
       <body className={`${inter.className}`}>
+        <div className="absolute top-0 z-10 flex h-[100vh] w-full items-center justify-center bg-cream-carmen">
+          <div className="h-1/2 w-1/2" ref={animationContainer}></div>
+        </div>
         <ReactQueryProvider>
           <Navbar isAnim={isAnim} key={'navbar'} />
-          <Global isAnim={isAnim} setIsAnim={setIsAnim} key={'main'}>
+          <Global isAnim={isAnim} key={'main'}>
             {children}
           </Global>
           <Footer isAnim={isAnim} key={'footer'} />
