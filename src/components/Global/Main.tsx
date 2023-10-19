@@ -13,18 +13,17 @@ export const Global = ({
   const main = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!isAnim) {
-      main.current?.classList.toggle('opacity-0');
-      main.current?.classList.toggle('h-[0px]');
-      main.current?.classList.toggle('w-[0px]');
+      main.current?.classList.remove('opacity-0');
+      main.current?.classList.remove('h-[0px]');
+      main.current?.classList.remove('w-[0px]');
     }
   }, [isAnim]);
-  console.log(usePathname());
   return (
     <main
       ref={main}
       className={cn(
         `h-[0px] w-[0px] opacity-0 transition-all ${
-          usePathname() === '/' && 'overflow-hidden'
+          usePathname() === '/' ? 'overflow-hidden' : ''
         }`
       )}
       id={usePathname()}
