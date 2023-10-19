@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
+import { cn } from '@/utils/cn';
 
 export const Global = ({
   children,
@@ -17,10 +18,15 @@ export const Global = ({
       main.current?.classList.toggle('w-[0px]');
     }
   }, [isAnim]);
+  console.log(usePathname());
   return (
     <main
       ref={main}
-      className="h-[0px] w-[0px] opacity-0 transition-all"
+      className={cn(
+        `h-[0px] w-[0px] opacity-0 transition-all ${
+          usePathname() === '/' && 'overflow-hidden'
+        }`
+      )}
       id={usePathname()}
     >
       {children}
