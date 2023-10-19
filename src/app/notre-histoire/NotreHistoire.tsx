@@ -14,7 +14,7 @@ export const NotreHistoire = () => {
 
   return (
     <div className="mt-20">
-      <h1 className="jutify-center flex flex-col items-center font-thunder text-4xl font-bold text-red-carmen md:ml-[6%] md:w-[400px] md:flex-row md:justify-start md:text-6xl lg:ml-[7.5%] xl:ml-[9%]">
+      <h1 className="jutify-center flex flex-col items-center font-thunder text-4xl font-semibold text-red-carmen md:ml-[6%] md:w-[400px] md:flex-row md:justify-start md:text-6xl lg:ml-[7.5%] xl:ml-[9%]">
         {data && Parser().parse(data?.[0].acf.title_heading.split(' ')[0])}
         <span className="text-6xl md:mx-5">
           {data && Parser().parse(data?.[0].acf.title_heading.split(' ')[1])}

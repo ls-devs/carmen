@@ -152,7 +152,7 @@ export const Contact = () => {
     <div className="mt-[120px] flex flex-col">
       <ToastContainer />
       <div className="flex flex-col">
-        <h1 className="mb-5 text-center font-thunder text-6xl font-bold uppercase text-red-carmen">
+        <h1 className="mb-5 text-center font-thunder text-6xl font-semibold uppercase text-red-carmen">
           Contact
         </h1>
         <div className="flex flex-col items-center justify-center">
@@ -280,7 +280,7 @@ export const Contact = () => {
                 </label>
                 <input
                   type="text"
-                  className="mb-1 flex h-full w-full pt-[30px] font-thunder text-xl font-bold tracking-widest text-cream-carmen md:pt-1"
+                  className="mb-1 flex h-full w-full pt-[30px] font-thunder text-xl font-semibold tracking-widest text-cream-carmen md:pt-1"
                   {...register('OBJECT')}
                 />
                 <div className="absolute -bottom-2 left-0 h-[10px] w-full">
@@ -305,7 +305,7 @@ export const Contact = () => {
                   id=""
                   cols={30}
                   rows={10}
-                  className="w-full font-thunder text-xl font-bold tracking-widest text-cream-carmen"
+                  className="w-full font-thunder text-xl font-semibold tracking-widest text-cream-carmen"
                   {...register('MESSAGE')}
                 />
               </div>
@@ -400,7 +400,7 @@ export const Contact = () => {
                     </Link>
                     <Link
                       prefetch={true}
-                      className="font-bold text-cream-carmen"
+                      className="font-semibold text-cream-carmen"
                       href={'http://instagram.com/chezcarmentoulouse'}
                       target="_blank"
                     >
@@ -583,7 +583,7 @@ export const Contact = () => {
                     <Link
                       prefetch={true}
                       href={'telto:05.61.42.04.95'}
-                      className="font-thunder text-xl font-bold text-cream-carmen"
+                      className="font-thunder text-xl font-semibold text-cream-carmen"
                     >
                       05.61.42.04.95
                     </Link>
@@ -598,7 +598,7 @@ export const Contact = () => {
                     </Link>
                     <Link
                       prefetch={true}
-                      className="font-thunder text-xl font-bold text-cream-carmen"
+                      className="font-thunder text-xl font-semibold text-cream-carmen"
                       href={'http://instagram.com/chezcarmentoulouse'}
                       target="_blank"
                     >

@@ -51,7 +51,7 @@ export const Fournisseurs = () => {
   return (
     <div className="relative mb-14 flex flex-col items-center justify-center md:relative md:min-h-[1000px] lg:mb-28 xl:min-h-[1200px]">
       <div className="mb-2 mt-14 md:mt-20">
-        <h2 className="flex flex-col items-center justify-center font-thunderLC text-6xl font-bold text-red-carmen md:mt-20 xl:flex-row">
+        <h2 className="flex flex-col items-center justify-center font-thunderLC text-6xl font-semibold text-red-carmen md:mt-20 xl:flex-row">
           <span className="mt-12 font-thunderLC font-light xl:mr-4 xl:mt-0 xl:font-normal">
             Nos
           </span>
@@ -79,7 +79,7 @@ export const Fournisseurs = () => {
                 <li
                   key={f.id}
                   onClick={() => switchFournisseur(f.acf.name)}
-                  className="relative my-7 cursor-pointer text-center font-softgank text-4xl font-bold uppercase"
+                  className="relative my-7 cursor-pointer text-center font-softgank text-4xl font-semibold uppercase"
                 >
                   {f.acf.name}
                   {fournisseur?.acf.name === f.acf.name && (
@@ -186,7 +186,7 @@ export const Fournisseurs = () => {
         <div className="m-4 flex h-[400px] w-full items-start justify-center lg:w-[450px] xl:w-[600px]">
           {fournisseur?.acf.description && (
             <div className="flex w-full max-w-[400px] flex-col px-12 xl:max-w-[600px]">
-              <h3 className="w-full font-thunder text-xl font-bold lg:text-4xl">
+              <h3 className="w-full font-thunder text-xl font-semibold lg:text-4xl">
                 {fournisseur.acf.name}
               </h3>
               <p

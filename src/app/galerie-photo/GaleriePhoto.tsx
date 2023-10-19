@@ -70,13 +70,13 @@ export const GaleriePhoto = () => {
         <ul className="flex w-full items-center justify-center">
           <li
             onClick={() => setType('Cuisine')}
-            className="mx-4 cursor-pointer font-thunder text-4xl font-bold text-red-carmen"
+            className="mx-4 cursor-pointer font-thunder text-4xl font-semibold text-red-carmen"
           >
             CUISINE
           </li>
           <li
             onClick={() => setType('Lieu')}
-            className="mx-4 cursor-pointer font-thunder text-4xl font-bold text-red-carmen"
+            className="mx-4 cursor-pointer font-thunder text-4xl font-semibold text-red-carmen"
           >
             LIEUX
           </li>

@@ -50,7 +50,7 @@ export const Footer = ({ isAnim }: { isAnim: boolean }) => {
           </Link>
         </div>
         <h3
-          className={`absolute top-7 font-thunder text-2xl font-bold ${
+          className={`absolute top-7 font-thunder text-2xl font-semibold ${
             route === '/actualites' || route === '/la-carte'
               ? 'text-cream-carmen'
               : 'text-red-carmen'

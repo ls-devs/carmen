@@ -19,7 +19,7 @@ export const Actualites = () => {
 
   return (
     <div className="mt-12">
-      <h1 className="mb-20 w-full text-center font-thunder text-6xl font-bold uppercase text-red-carmen xl:mb-0">
+      <h1 className="mb-20 w-full text-center font-thunder text-6xl font-semibold uppercase text-red-carmen xl:mb-0">
         Actualités
       </h1>
       <div className="relative h-auto w-full bg-red-carmen py-7 lg:mt-36">
@@ -60,7 +60,7 @@ export const Actualites = () => {
 
             <div className="flex flex-col items-center justify-center space-y-3 md:items-start xl:pl-28">
               <Link href={`/actualites/${slugify(data?.[0].acf.title)}`}>
-                <h3 className="font-thunder text-2xl font-bold uppercase text-cream-carmen lg:text-3xl xl:text-4xl">
+                <h3 className="font-thunder text-2xl font-semibold uppercase text-cream-carmen lg:text-3xl xl:text-4xl">
                   {data?.[0].acf.title}
                 </h3>
               </Link>
@@ -120,7 +120,7 @@ export const Actualites = () => {
                       `,
                       }}
                     />
-                    <h3 className="w-[300px] py-3 text-start font-thunder text-xl font-bold uppercase text-red-carmen md:w-full">
+                    <h3 className="w-[300px] py-3 text-start font-thunder text-xl font-semibold uppercase text-red-carmen md:w-full">
                       {actu.acf.title}
                     </h3>
                     <p

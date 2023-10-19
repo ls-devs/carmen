@@ -46,7 +46,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
   return (
     <div className="overflow-hidden">
       {myActu?.acf && (
-        <h1 className="mb-8 mt-20 px-8 py-4 text-center font-thunder text-2xl font-bold uppercase text-red-carmen md:text-3xl lg:mb-24 lg:text-5xl xl:mb-40">
+        <h1 className="mb-8 mt-20 px-8 py-4 text-center font-thunder text-2xl font-semibold uppercase text-red-carmen md:text-3xl lg:mb-24 lg:text-5xl xl:mb-40">
           {myActu.acf.title}
         </h1>
       )}
@@ -82,7 +82,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
               />
             </div>
 
-            <div className="mt-24 flex flex-col md:flex-row">
+            <div className="mt-11 flex flex-col md:flex-row">
               <div className="h-[500px] w-[500px] md:h-[300px] md:min-w-[300px] lg:h-[500px] lg:min-w-[500px] xl:min-w-[500px]">
                 <div className="relative h-full w-full">
                   <Image

@@ -445,7 +445,7 @@ export const HomePage = () => {
         <div className="h-[40px] md:h-[100px]"></div>
         <h2 className="flex flex-col items-center justify-center font-thunder text-5xl font-extralight text-cream-carmen">
           Les actualités
-          <span className="font-thunderLC font-bold">Carmen</span>
+          <span className="font-thunderLC font-semibold">Carmen</span>
         </h2>
         <Image
           src={'/img/home/actualites/actualites_top.png'}
@@ -578,7 +578,7 @@ export const HomePage = () => {
                   </Link>
                   <Link
                     prefetch={true}
-                    className="font-bold text-cream-carmen"
+                    className="font-semibold text-cream-carmen"
                     href={'http://instagram.com/chezcarmentoulouse'}
                     target="_blank"
                   >
@@ -761,7 +761,7 @@ export const HomePage = () => {
                   <Link
                     prefetch={true}
                     href={'telto:05.61.42.04.95'}
-                    className="font-thunder text-xl font-bold text-cream-carmen"
+                    className="font-thunder text-xl font-semibold text-cream-carmen"
                   >
                     05.61.42.04.95
                   </Link>
@@ -776,7 +776,7 @@ export const HomePage = () => {
                   </Link>
                   <Link
                     prefetch={true}
-                    className="font-thunder text-xl font-bold text-cream-carmen"
+                    className="font-thunder text-xl font-semibold text-cream-carmen"
                     href={'http://instagram.com/chezcarmentoulouse'}
                     target="_blank"
                   >
