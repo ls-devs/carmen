@@ -13,7 +13,6 @@ import 'react-toastify/dist/ReactToastify.min.css';
 export const Contact = () => {
   const [screenWidth, setScreenWidth] = useState<number>(0);
   const [toEmail, setToEmail] = useState<string>('');
-
   const { data } = useQueryUtils<IOptions>({
     qKey: ['getOptions'],
     qFn: () => fetchOptions(),
@@ -126,18 +125,13 @@ export const Contact = () => {
     });
   };
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    // formState: { errors },
-  } = useForm<Inputs>();
+  const { register, handleSubmit, reset } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data, e) => {
     sendEmail(data, e);
   };
 
   useEffect(() => {
-    const myObserver = new ResizeObserver((_entries) => {
+    const myObserver = new ResizeObserver(() => {
       setScreenWidth(window.innerWidth);
     });
 
