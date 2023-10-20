@@ -23,7 +23,10 @@ export default function RootLayout({
   const animationContainer = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const animRef = anim.current;
-    if (anim.current === undefined) {
+    if (
+      anim.current === undefined &&
+      !/bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent)
+    ) {
       anim.current = lottie.loadAnimation({
         container: animationContainer.current as Element,
         renderer: 'svg',
@@ -67,9 +70,13 @@ export default function RootLayout({
       <link rel="icon" href="/img/favicon.png" sizes="any" />
 
       <body className={`${inter.className}`}>
-        <div className="absolute top-0 z-10 flex h-[100vh] w-full items-center justify-center bg-cream-carmen">
-          <div className="h-1/2 w-1/2" ref={animationContainer}></div>
-        </div>
+        {!/bot|googlebot|crawler|spider|robot|crawling/i.test(
+          navigator.userAgent
+        ) && (
+          <div className="absolute top-0 z-10 flex h-[100vh] w-full items-center justify-center bg-cream-carmen">
+            <div className="h-1/2 w-1/2" ref={animationContainer}></div>
+          </div>
+        )}
         <ReactQueryProvider>
           <Navbar isAnim={isAnim} key={'navbar'} />
           <Global isAnim={isAnim} key={'main'}>
