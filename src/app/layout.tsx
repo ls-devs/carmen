@@ -10,6 +10,7 @@ import { useEffect, useRef, useState } from 'react';
 import React from 'react';
 import lottie, { AnimationItem } from 'lottie-web';
 import animationData from '../../public/loader/loader_carmen.json';
+import { usePathname } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -48,9 +49,23 @@ export default function RootLayout({
     }
   }, []);
 
+  const path = usePathname();
+
+  const pageName = () => {
+    if (path === '/') return 'Restaurant des Abattoirs';
+
+    const pathTrim = path.replace('/', '');
+    const words = pathTrim.split('-');
+    return words
+      .map((word) => {
+        return word[0].toUpperCase() + word.substring(1);
+      })
+      .join(' ');
+  };
+
   return (
     <html lang="fr">
-      <title>Chez Carmen - Restaurant des Abattoirs</title>
+      <title>Chez Carmen - {pageName()}</title>
       <meta
         name="description"
         content="Entre plats canaille et pièces du boucher, retrouvez l'ambiance bistrot et la cuisine généreuse de cette institution toulousaine créée en 1956."

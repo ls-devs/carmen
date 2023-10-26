@@ -1,12 +1,21 @@
-'use client';
-import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { fetchPolicies } from '@/utils/fetchs/fetchs';
-import React from 'react';
-export default function Page() {
-  const { data, isFetching, isLoading, isError } = useQueryUtils({
-    qKey: ['getPolicies'],
-    qFn: fetchPolicies,
-  });
+import Hydrate from '@/utils/hydrateClient';
+import { Politique } from './Politique';
+import { useDehydratedState } from '@/hooks/useDehydratedState';
 
-  return <div></div>;
-}
+const Page = () => {
+  const dehydratedState = useDehydratedState([
+    {
+      qKey: ['getPolicies'],
+      qFn: () => fetchPolicies(),
+    },
+  ]);
+
+  return (
+    <Hydrate state={dehydratedState}>
+      <Politique />
+    </Hydrate>
+  );
+};
+
+export default Page;

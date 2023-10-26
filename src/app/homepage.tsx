@@ -466,18 +466,20 @@ export const HomePage = () => {
           onTouchEnd={() => onSliderLeave()}
         >
           {dataA?.map((actu, idx) => {
-            return (
-              <Actualite
-                key={actu.id}
-                position={idx}
-                screenWidth={screenWidth}
-                addToItems={addToItems}
-                title={actu.acf.title}
-                description={actu.acf.description}
-                intro_actu={actu.acf.intro_actu}
-                thumbnail={actu.acf.thumbnail}
-              />
-            );
+            if (idx <= 5) {
+              return (
+                <Actualite
+                  key={actu.id}
+                  position={idx}
+                  screenWidth={screenWidth}
+                  addToItems={addToItems}
+                  title={actu.acf.title}
+                  description={actu.acf.description}
+                  intro_actu={actu.acf.intro_actu}
+                  thumbnail={actu.acf.thumbnail}
+                />
+              );
+            }
           })}
         </div>
         <div className="mt-24 hidden w-full items-center justify-center sm:flex">
