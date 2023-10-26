@@ -1,3 +1,4 @@
+'use client';
 import { fetchPolicies } from '@/utils/fetchs/fetchs';
 import Hydrate from '@/utils/hydrateClient';
 import { Politique } from './Politique';
