@@ -52,7 +52,7 @@ export const Footer = ({ isAnim }: { isAnim: boolean }) => {
           className={`absolute top-7 font-thunder text-2xl font-semibold ${route === '/actualites' || route === '/la-carte'
               ? 'text-cream-carmen'
               : 'text-red-carmen'
-            } min-[425px]:top-4 md:left-1/2 md:w-1/3 md:-translate-x-1/2 md:text-center md:text-2xl xl:text-3xl md:top-[11px]`}
+            } min-[425px]:top-4 md:left-1/2 md:top-[11px] md:w-1/3 md:-translate-x-1/2 md:text-center md:text-2xl xl:text-3xl`}
         >
           RÉSERVATION :
           <Link
@@ -67,7 +67,7 @@ export const Footer = ({ isAnim }: { isAnim: boolean }) => {
           className={`m-7 flex w-full flex-col items-center justify-center font-thunder ${route === '/actualites' || route === '/la-carte'
               ? 'text-cream-carmen'
               : 'text-red-carmen'
-            } min-[425px]:m-0 min-[425px]:mb-20 min-[425px]:mt-16 min-[425px]:w-full min-[425px]:items-end min-[425px]:space-y-0 md:m-0 md:w-1/3 md:-mt-[100px]`}
+            } min-[425px]:m-0 min-[425px]:mb-20 min-[425px]:mt-16 min-[425px]:w-full min-[425px]:items-end min-[425px]:space-y-0 md:m-0 md:-mt-[100px] md:w-1/3`}
         >
           <div className="mt-5 flex w-full items-center justify-center min-[425px]:m-0 min-[425px]:justify-end">
             {data?.acf.medias.map((rs) => {

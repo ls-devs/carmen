@@ -270,7 +270,7 @@ export const NotreHistoire = () => {
             ></span>
             Aujourd'hui les stars du show-business, du sport ou de la politique
             ont remplacé les chevillards d'antan, mais quand un ancien vient
-            d��jeuner et qu'il me dit en me tapant sur l'épaule: "t'as rien
+            déjeuner et qu'il me dit en me tapant sur l'épaule: "t'as rien
             changé petit", ça me fait toujours autant chaud au cœur...
           </p>
         </div>

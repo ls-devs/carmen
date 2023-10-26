@@ -2,8 +2,8 @@
 import { useQueryUtils } from '@/hooks/useQueryUtils';
 import { IVideos } from '@/types/types';
 import { fetchVidéos } from '@/utils/fetchs/fetchs';
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export const Videos = () => {
   const [screenWidth, setScreenWidth] = useState<number>(0);
@@ -48,24 +48,21 @@ export const Videos = () => {
                   className={`flex flex-col items-center justify-center lg:flex-row lg:items-start lg:px-12`}
                 >
                   <div
-                    className={`flex w-full flex-col ${
-                      screenWidth > 1024 && idx % 2
+                    className={`flex w-full flex-col ${screenWidth > 1024 && idx % 2
                         ? 'lg:order-2 lg:ml-8 lg:items-end'
                         : 'lg:mr-8 lg:items-start'
-                    }`}
+                      }`}
                   >
                     <h3
-                      className={`text-center font-thunder text-2xl uppercase text-cream-carmen md:text-3xl xl:my-4 xl:text-4xl ${
-                        idx % 2 ? 'lg:text-end' : 'lg:text-start'
-                      }`}
+                      className={`text-center font-thunder text-2xl uppercase text-cream-carmen md:text-3xl xl:my-4 xl:text-4xl ${idx % 2 ? 'lg:text-end' : 'lg:text-start'
+                        }`}
                     >
                       {video.acf.title}
                     </h3>
                     {screenWidth >= 1024 && (
                       <p
-                        className={`text-center font-thunder text-cream-carmen xl:w-[600px] xl:text-lg 2xl:text-xl ${
-                          idx % 2 ? 'lg:text-end' : 'lg:text-start'
-                        }`}
+                        className={`text-center font-thunder text-cream-carmen xl:w-[600px] xl:text-lg 2xl:text-xl ${idx % 2 ? 'lg:text-end' : 'lg:text-start'
+                          }`}
                         dangerouslySetInnerHTML={{
                           __html: video.acf.description,
                         }}
@@ -73,14 +70,12 @@ export const Videos = () => {
                     )}
                   </div>
                   <iframe
-                    className={`h-[280px] w-[480px] max-w-[500px] md:h-[280px] md:w-[480px] md:max-w-full lg:h-[380px] lg:min-w-[640px] xl:min-h-[380px] ${
-                      screenWidth > 1024 && idx % 2 ? 'lg:order-1' : ''
-                    }`}
-                    src={`${
-                      video.acf.url.includes('shorts')
+                    className={`h-[280px] w-[480px] max-w-[500px] md:h-[280px] md:w-[480px] md:max-w-full lg:h-[380px] lg:min-w-[640px] xl:min-h-[380px] ${screenWidth > 1024 && idx % 2 ? 'lg:order-1' : ''
+                      }`}
+                    src={`${video.acf.url.includes('shorts')
                         ? video.acf.url.replace('shorts', 'embed')
                         : video.acf.url.replace('watch?v=', 'embed/')
-                    }`}
+                      }`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                   ></iframe>
