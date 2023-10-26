@@ -114,7 +114,7 @@ export const Actualites = () => {
                     <p
                       className="w-[300px] pt-8 text-start font-thunder text-[10px] text-red-carmen md:w-[200px] md:text-start md:text-xl lg:w-[300px] lg:text-[13px] xl:w-[400px]"
                       dangerouslySetInnerHTML={{
-                        __html: `${new Date(
+                        __html: `Postée le : ${new Date(
                           actu.date_gmt
                         ).toLocaleDateString()},
                       `,

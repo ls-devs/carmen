@@ -46,7 +46,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
   return (
     <div className="overflow-hidden">
       {myActu?.acf && (
-        <h1 className="mb-8  mt-20 px-8 py-4 text-center font-thunder text-2xl font-semibold uppercase text-red-carmen md:text-3xl lg:mb-24 lg:text-5xl xl:mb-40">
+        <h1 className="mb-8 mt-20 px-8 py-4 text-center font-thunder text-2xl font-semibold uppercase text-red-carmen md:text-3xl lg:mb-24 lg:text-5xl xl:mb-40">
           {myActu.acf.title}
         </h1>
       )}

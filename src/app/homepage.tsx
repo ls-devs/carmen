@@ -354,7 +354,7 @@ export const HomePage = () => {
                     }`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
-                  />
+                  ></iframe>
                 )}
                 <h3 className="absolute -top-4 left-0 -rotate-6 font-softgank text-2xl text-cream-carmen sm:-top-16 sm:left-36 sm:z-10 sm:rotate-6 sm:text-4xl">
                   VIDÉOS
@@ -466,20 +466,18 @@ export const HomePage = () => {
           onTouchEnd={() => onSliderLeave()}
         >
           {dataA?.map((actu, idx) => {
-            if (idx <= 5) {
-              return (
-                <Actualite
-                  key={actu.id}
-                  position={idx}
-                  screenWidth={screenWidth}
-                  addToItems={addToItems}
-                  title={actu.acf.title}
-                  description={actu.acf.description}
-                  intro_actu={actu.acf.intro_actu}
-                  thumbnail={actu.acf.thumbnail}
-                />
-              );
-            }
+            return (
+              <Actualite
+                key={actu.id}
+                position={idx}
+                screenWidth={screenWidth}
+                addToItems={addToItems}
+                title={actu.acf.title}
+                description={actu.acf.description}
+                intro_actu={actu.acf.intro_actu}
+                thumbnail={actu.acf.thumbnail}
+              />
+            );
           })}
         </div>
         <div className="mt-24 hidden w-full items-center justify-center sm:flex">

@@ -85,7 +85,7 @@ export const GaleriePhoto = () => {
       {pattern.map((row, idx) => {
         return (
           <div key={idx} className="grid grid-cols-1 grid-rows-1">
-            {row.map((items) => {
+            {row.map((items, idx) => {
               return items;
             })}
           </div>

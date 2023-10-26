@@ -10,10 +10,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@tanstack/react-query": "5.0.5",
-    "@tanstack/react-query-devtools": "5.4.2",
-    "@types/node": "20.8.9",
-    "@types/react": "18.2.33",
+    "@tanstack/react-query": "5.0.0",
+    "@tanstack/react-query-devtools": "5.0.1",
+    "@types/node": "20.8.7",
+    "@types/react": "18.2.29",
     "@types/react-dom": "18.2.14",
     "@types/uuid": "^9.0.6",
     "autoprefixer": "10.4.16",
@@ -21,7 +21,7 @@
     "cssnano": "^6.0.1",
     "html-to-react": "^1.7.0",
     "lottie-web": "^5.12.2",
-    "next": "13.5.1",
+    "next": "13.5.6",
     "postcss": "8.4.31",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -30,15 +30,15 @@
     "sharp": "^0.32.6",
     "slugify": "^1.6.6",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss": "3.3.5",
-    "the-new-css-reset": "^1.11.1",
+    "tailwindcss": "3.3.3",
+    "the-new-css-reset": "^1.11.0",
     "typescript": "5.2.2",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.9.0",
-    "@typescript-eslint/parser": "^6.9.0",
-    "eslint": "^8.52.0",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "eslint": "^8.51.0",
     "eslint-config-next": "^13.5.6",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
@@ -48,6 +48,6 @@
     "postcss-nesting": "^12.0.1",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.6",
-    "sass": "^1.69.5"
+    "sass": "^1.69.4"
   }
 }
