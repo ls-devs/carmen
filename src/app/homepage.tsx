@@ -220,7 +220,7 @@ export const HomePage = () => {
     startX.current =
       (e as React.MouseEvent<HTMLDivElement, MouseEvent>).pageX ||
       (e as TouchEvent<HTMLDivElement>).touches[0].pageX -
-        sliderContainer.current!.offsetLeft;
+      sliderContainer.current!.offsetLeft;
     scrollLeft.current = sliderContainer.current!.scrollLeft;
   };
 
@@ -232,7 +232,7 @@ export const HomePage = () => {
     const x: number =
       (e as React.MouseEvent<HTMLDivElement, MouseEvent>).pageX ||
       (e as TouchEvent<HTMLDivElement>).touches[0].pageX -
-        sliderContainer.current!.offsetLeft;
+      sliderContainer.current!.offsetLeft;
     const dist = x - startX.current;
     sliderContainer.current!.scrollLeft = scrollLeft.current - dist;
     items.current.forEach((item) => {
@@ -347,11 +347,10 @@ export const HomePage = () => {
                 {videosPres?.acf && (
                   <iframe
                     className="relative h-[280px] w-full bg-cover bg-center bg-no-repeat object-cover px-5 md:h-[480px] lg:h-[380px] lg:w-[640px]"
-                    src={`${
-                      videosPres.acf.url.includes('shorts')
+                    src={`${videosPres.acf.url.includes('shorts')
                         ? videosPres.acf.url.replace('shorts', 'embed')
                         : videosPres!.acf.url.replace('watch?v=', 'embed/')
-                    }`}
+                      }`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                   ></iframe>
@@ -466,18 +465,19 @@ export const HomePage = () => {
           onTouchEnd={() => onSliderLeave()}
         >
           {dataA?.map((actu, idx) => {
-            return (
-              <Actualite
-                key={actu.id}
-                position={idx}
-                screenWidth={screenWidth}
-                addToItems={addToItems}
-                title={actu.acf.title}
-                description={actu.acf.description}
-                intro_actu={actu.acf.intro_actu}
-                thumbnail={actu.acf.thumbnail}
-              />
-            );
+            if (idx <= 5)
+              return (
+                <Actualite
+                  key={actu.id}
+                  position={idx}
+                  screenWidth={screenWidth}
+                  addToItems={addToItems}
+                  title={actu.acf.title}
+                  description={actu.acf.description}
+                  intro_actu={actu.acf.intro_actu}
+                  thumbnail={actu.acf.thumbnail}
+                />
+              );
           })}
         </div>
         <div className="mt-24 hidden w-full items-center justify-center sm:flex">
@@ -521,9 +521,8 @@ export const HomePage = () => {
               return (
                 <div
                   key={`row_${idx}`}
-                  className={`galerie_grid ${
-                    idx >= 1 && 'dynamic_grid'
-                  } grid h-auto auto-rows-fr gap-4 px-4 md:px-20`}
+                  className={`galerie_grid ${idx >= 1 && 'dynamic_grid'
+                    } grid h-auto auto-rows-fr gap-4 px-4 md:px-20`}
                 >
                   {row.map((items, _idx) => {
                     return items;
